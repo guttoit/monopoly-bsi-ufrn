@@ -31,6 +31,7 @@ public class Jogo {
 
     //private Propriedade p1 = new Propriedade(1, "", null, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores);
     private Propriedade mediterraneanAvenue = new Propriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+    private Propriedade communityChest1 = new Propriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
     
 
