@@ -38,8 +38,8 @@ public class FactoryUSA implements FactoryCriador{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Propriedade criaPropriedade(int posicao,String nome, String cor, float aluguelSCasa,float c1, float c2, float c3, float c4, float hotel,  float hip, float precoCasa){
-        return new Propriedade(posicao, nome, cor, aluguelSCasa, c1, c2, c3,c4, hotel, hip, precoCasa);
+    public Propriedade criaPropriedade(int posicao,String nome, String cor, float precoP, float aluguelSCasa,float c1, float c2, float c3, float c4, float hotel,  float hip, float precoCasa){
+        return new Propriedade(posicao, nome, cor, precoP, aluguelSCasa, c1, c2, c3,c4, hotel, hip, precoCasa);
     }
 
     public GerenteJogo criaGerente() {
