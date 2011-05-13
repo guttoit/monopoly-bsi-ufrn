@@ -34,8 +34,6 @@ public class Jogo {
 
 
     
-
-
     public Jogo(FactoryCriador factory) {
         this.factory = factory;
         gerente = factory.criaGerente();
