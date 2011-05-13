@@ -29,7 +29,12 @@ public class Jogo {
     private int numJogadores;
     private List<Lugar> lugares = new ArrayList<Lugar>(40);
 
-    //private Propriedade p1 = new Propriedade(8, null, null, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores)
+    //private Propriedade p1 = new Propriedade(1, "", null, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores);
+    private Propriedade mediterraneanAvenue = new Propriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+
+    
+
+
     public Jogo() {
     }
 
