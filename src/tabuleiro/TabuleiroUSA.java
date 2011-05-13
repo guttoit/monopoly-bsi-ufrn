@@ -13,9 +13,11 @@ import java.util.List;
  */
 public class TabuleiroUSA extends Tabuleiro{
 
-    private Lugar propriedade = new Propriedade();
+    public TabuleiroUSA(int numCasas) {
+        super(40);
+    }
 
-
+   
     @Override
     public List<Lugar> getListaLugar() {
         return super.getListaLugar();

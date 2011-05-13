@@ -11,12 +11,13 @@ package player.concretos;
  */
 public class Peao {
 
-    protected Peao(){
-
-   }
     private String corPeao;
     private int posicao;
 
+    public Peao(String corPeao){
+        this.corPeao = corPeao;
+        this.posicao = 40;
+    }
     public int getPosicao() {
         return posicao;
     }

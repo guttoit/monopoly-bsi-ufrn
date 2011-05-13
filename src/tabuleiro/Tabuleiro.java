@@ -21,6 +21,7 @@ public abstract class Tabuleiro {
 
     public Tabuleiro(int numCasas) {
         this.numCasas = numCasas;
+        listaLugar = new ArrayList<Lugar>(numCasas);
     }
 
     public void addLugar(Lugar l){

@@ -18,7 +18,7 @@ import tabuleiro.Tabuleiro;
  * @author Adm
  */
 public class Jogo {
-
+    private FactoryCriador factory;
     private List<Jogador> jogadores;
     private GerenteJogo gerente;
     private Vendendor vendedor;
@@ -30,12 +30,20 @@ public class Jogo {
     private List<Lugar> lugares = new ArrayList<Lugar>(40);
 
     //private Propriedade p1 = new Propriedade(1, "", null, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores);
-    private Propriedade mediterraneanAvenue = new Propriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+    private Propriedade mediterraneanAvenue;
+
 
     
 
 
-    public Jogo() {
+    public Jogo(FactoryCriador factory) {
+        this.factory = factory;
+        gerente = factory.criaGerente();
+        criarLugares();
+    }
+
+    public void criarLugares(){
+        mediterraneanAvenue = factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
     }
 
     public void montaTabuleiro(Tabuleiro t, List<Lugar> lugares) {

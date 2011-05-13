@@ -7,15 +7,14 @@ package tabuleiro;
 
 /**
  *
- * @author Adm
+ * @author Gutto
  */
-public class Ferrovia  extends LugarFisico{
+public class ImpostoRiqueza extends Lugar{
 
-    public Ferrovia(int posicao, String nome, float preco, float hipoteca){
+
+    public ImpostoRiqueza(int posicao, String nome, float preco){
         super.setPosicao(posicao);
         super.setNome(nome);
         super.setPreco(preco);
-        super.setHipoteca(hipoteca);
-        super.setProprietario(null);
     }
 }
