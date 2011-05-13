@@ -18,19 +18,99 @@ import tabuleiro.Tabuleiro;
  * @author Adm
  */
 public class Jogo {
+
     private FactoryCriador factory;
     private List<Jogador> jogadores;
     private GerenteJogo gerente;
     private Vendendor vendedor;
     private Dado dado;
     private Peao peao;
-    //private Status status;
+  //private Status status;
     private Tabuleiro tabuleiro;
     private int numJogadores;
     private List<Lugar> lugares = new ArrayList<Lugar>(40);
-
-    //private Propriedade p1 = new Propriedade(1, "", null, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores, numJogadores);
+    
     private Propriedade mediterraneanAvenue;
+
+    private Propriedade communityChest1;
+
+    private Propriedade balticAvenue;
+
+    private Propriedade incomeTax;
+
+    private Propriedade readingRailroad;
+
+    private Propriedade orientalAvenue;
+
+    private Propriedade chance;
+
+    private Propriedade vermontAvenue;
+
+    private Propriedade connecticutAvenue;
+
+    private Propriedade jailJustVisiting;
+
+    private Propriedade stCharlesPlace;
+
+    private Propriedade electricCompany;
+
+    private Propriedade statesAvenue;
+
+    private Propriedade virginiaAvenue;
+
+    private Propriedade pennsylvaniaRailroad;
+
+    private Propriedade stJamesPlace;
+
+    private Propriedade communityChest2;
+
+    private Propriedade tennesseeAvenue;
+
+    private Propriedade newYorkAvenue;
+
+    private Propriedade freeParking;
+
+    private Propriedade kentuckyAvenue;
+
+    private Propriedade chance2;
+
+    private Propriedade indianaAvenue;
+
+    private Propriedade illinoisAvenue;
+
+    private Propriedade beORailroad;
+
+    private Propriedade atlanticAvenue;
+
+    private Propriedade ventnorAvenue;
+
+    private Propriedade waterWorks;
+
+    private Propriedade marvinGardens;
+
+    private Propriedade gotoJail;
+
+    private Propriedade pacificAvenue;
+
+    private Propriedade northCarolinaAvenue;
+
+    private Propriedade communityChest3;
+
+    private Propriedade pennsylvaniaAvenue;
+
+    private Propriedade shortLineRailroad;
+
+    private Propriedade chance3;
+
+    private Propriedade parkPlace;
+
+    private Propriedade luxuryTax;
+
+    private Propriedade boardwalk;
+
+    private Propriedade go;
+
+
 
 
     
