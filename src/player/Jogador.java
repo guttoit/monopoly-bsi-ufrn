@@ -71,4 +71,6 @@ public abstract class Jogador {
     public void setNomeJogador(String nomeJogador) {
         this.nomeJogador = nomeJogador;
     }
+
+    
 }
