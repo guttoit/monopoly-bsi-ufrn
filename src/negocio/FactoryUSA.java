@@ -71,4 +71,8 @@ public class FactoryUSA implements FactoryCriador {
     public Carta pegaCarta(int numeroCarta, String nomeCarta, String descricao, String observacoes){
          return new Carta(numeroCarta , nomeCarta, descricao, observacoes );
     }
+
+    public Carta pagaCarta() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
