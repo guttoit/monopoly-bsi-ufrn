@@ -21,6 +21,34 @@ public class MensagensJogo {
         return null;
     }
 
+    public String nivelBurrice(int nivelBurrice, int numDigitado){
+        String mensBurrice = "";
+        switch (nivelBurrice) {
+                        case 1:
+                            mensBurrice = ("Você digitou " + numDigitado
+                                    + "/n O jogo deve ter no mínimo 2 jogadores e no máximo 8. Entre com um número"
+                                    + "entre 2 e 8: ");
+                            break;
+
+                        case 2:
+                            mensBurrice = ("Você errou novamente, digitou " + numDigitado
+                                    + "/n Leia com atencão: O jogo deve ter no mínimo 2 jogadores e no máximo 8. "
+                                    + "Entre com um número entre 2 e 8: ");
+                            break;
+
+                        case 3:
+                            mensBurrice = ("Idiota, deixe de ser BURRO. Vou dizer só essa vez:"
+                                    + "/nO jogo deve ter no mínimo 2 jogadores e no máximo 8. "
+                                    + "Portanto, Então, Consoante, entre com um número entre 2 e 8!!!!: ");
+                            break;
+
+                        case 4:
+                            mensBurrice = ("Sai desse véi, na moral, desistooo.... Adeus");
+                            break;
+                    }
+                return mensBurrice;
+    }
+
     public String mensagemCores(Jogador jogador, String[] cores, int numJogador) {
 
 
@@ -47,5 +75,9 @@ public class MensagensJogo {
         }
 
         return cor;
+    }
+
+    public void geraStatus(Jogador j, Scanner teclado){
+        //gera o status
     }
 }
