@@ -16,12 +16,17 @@ public abstract class Tabuleiro {
     private int numCasas;
     private List<Lugar> listaLugar;
 
-    public Tabuleiro() {
-    }
 
     public Tabuleiro(int numCasas) {
         this.numCasas = numCasas;
-        listaLugar = new ArrayList<Lugar>(numCasas);
+        listaLugar = new ArrayList<Lugar>();
+        iniciaListaLugar(numCasas);
+    }
+
+    public void iniciaListaLugar(int num){
+        for(int i=0; i<num; i++){
+            listaLugar.add(null);
+        }
     }
 
     public void addLugar(Lugar l){

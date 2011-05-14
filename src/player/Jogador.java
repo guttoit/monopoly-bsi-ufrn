@@ -22,6 +22,7 @@ public abstract class Jogador {
 
     public Jogador(){
         listaLugarFisico = new ArrayList<LugarFisico>();
+        peao = new Peao();
     }
 
     public Jogador(Peao peao, String nome) {

@@ -29,5 +29,15 @@ public abstract class Banco {
         this.dinheiroEmCaixa = dinheiroEmCaixa;
     }
 
+    public List<Lugar> getLugares() {
+        return lugares;
+    }
+
+    public void setLugares(List<Lugar> lugares) {
+        this.lugares = lugares;
+    }
+
+    
+
 
 }

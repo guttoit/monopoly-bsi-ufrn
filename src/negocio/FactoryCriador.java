@@ -23,6 +23,8 @@ import tabuleiro.Tabuleiro;
  */
 public interface FactoryCriador {
 
+    public List<Jogador> criaListaJogadores(int numJogadores);
+
     public Jogador criaJogador();
 
     public Dado criaDado();
@@ -31,19 +33,25 @@ public interface FactoryCriador {
 
     public Lugar criaLugar();
 
-    public Propriedade criaPropriedade(int posicao, String nome, String cor, float precoP, float aluguelSCasa, float c1, float c2, float c3, float c4, float hotel, float hip, float precoCasa);
+    public List<Lugar> criaLugares(int numLugares);
 
-    public Ferrovia criaFerrovia(int posicao, String nome, float preco, float hipoteca);
+    public Propriedade criaPropriedade(Tabuleiro tab,int posicao, String nome, String cor, float precoP, float aluguelSCasa, float c1, float c2, float c3, float c4, float hotel, float hip, float precoCasa);
 
-    public ImpostoRenda criaImpostoRenda(int posicao, String nome, float preco);
+    public Ferrovia criaFerrovia(Tabuleiro tab,int posicao, String nome, float preco, float hipoteca);
 
-    public ImpostoRiqueza criaImpostoRiqueza(int posicao, String nome, float preco);
+    public ImpostoRenda criaImpostoRenda(Tabuleiro tab,int posicao, String nome, float preco);
+
+    public ImpostoRiqueza criaImpostoRiqueza(Tabuleiro tab,int posicao, String nome, float preco);
 
     public Tabuleiro criaTabuleiro(int numCasas);
 
-    public GerenteJogo criaGerente();
+    public GerenteJogo criaGerente(FactoryCriador f);
 
     public Chance criaChance();
 
     public Carta pagaCarta();
+
+    public Mensagens criaMensagens();
+
+    public Banco criaBanco();
 }

@@ -36,7 +36,7 @@ public class JogadorConcreto extends Jogador {
 
     @Override
     public Integer[] jogaDado(Dado dado) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return dado.gerarNumero();
     }
 
     /*@Override

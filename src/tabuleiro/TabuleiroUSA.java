@@ -14,7 +14,7 @@ import java.util.List;
 public class TabuleiroUSA extends Tabuleiro{
 
     public TabuleiroUSA(int numCasas) {
-        super(40);
+        super(numCasas);
     }
 
    
@@ -23,8 +23,4 @@ public class TabuleiroUSA extends Tabuleiro{
         return super.getListaLugar();
     }
 
-
-    public TabuleiroUSA(){
-        super(40);
-    }
 }
