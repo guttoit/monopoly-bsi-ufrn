@@ -7,6 +7,7 @@ package negocio;
 
 import java.util.List;
 import player.Jogador;
+import tabuleiro.Lugar;
 import tabuleiro.LugarFisico;
 
 /**
@@ -15,7 +16,7 @@ import tabuleiro.LugarFisico;
  */
 public interface  Vendendor {
 
-    public void vendeLugarFisico(Jogador jogador, LugarFisico lugarFisico);
+    public void vendeLugarFisico(Jogador jogador, Lugar lugarFisico);
     public void realizaLeilao(List<Jogador> litaJogador, LugarFisico lugarFisico );
 
 

@@ -9,7 +9,7 @@ package tabuleiro;
  *
  * @author Adm
  */
-public class ImpostoRenda extends Lugar {
+public class ImpostoRenda extends Imposto {
 
 
     public ImpostoRenda(int posicao, String nome, float preco){

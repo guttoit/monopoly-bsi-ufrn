@@ -31,10 +31,9 @@ public abstract class Jogador {
 
     }
 
-    public int jogaDado(Dado dado) {
+    public abstract Integer[] jogaDado(Dado dado);
 
-        return 0;
-    }
+        
 
     public abstract boolean comprar(LugarFisico lugarFisico);
 
