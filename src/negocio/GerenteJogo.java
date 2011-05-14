@@ -7,6 +7,8 @@ package negocio;
 
 import player.Jogador;
 import tabuleiro.Lugar;
+import tabuleiro.LugarFisico;
+import tabuleiro.Tabuleiro;
 
 /**
  *
@@ -14,8 +16,8 @@ import tabuleiro.Lugar;
  */
 public  interface GerenteJogo {
 
-       public Lugar andaPeao(int valorDado, Jogador jogador);
+       public Lugar andaPeao(Integer[] valorDado, Jogador jogador,Tabuleiro tabuleiro);
        
-       public void gerenciaCompra(Jogador jogador, Vendendor vendendor, boolean compraLeilao);
+       public void gerenciaCompra(LugarFisico l, Jogador jogador, Vendendor vendendor, boolean compraLeilao);
 
 }
