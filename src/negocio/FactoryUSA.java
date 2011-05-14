@@ -10,6 +10,8 @@ import player.Jogador;
 import player.concretos.DadoDuplo;
 import player.concretos.JogadorConcreto;
 import player.concretos.Peao;
+import tabuleiro.Carta;
+import tabuleiro.Chance;
 import tabuleiro.Ferrovia;
 import tabuleiro.ImpostoRenda;
 import tabuleiro.ImpostoRiqueza;
@@ -52,15 +54,25 @@ public class FactoryUSA implements FactoryCriador {
         return new Ferrovia(posicao, nome, preco, hipoteca);
     }
 
-    public ImpostoRenda ciraImpostoRenda(int posicao, String nome, float preco) {
+    public ImpostoRenda criaImpostoRenda(int posicao, String nome, float preco) {
         return new ImpostoRenda(posicao, nome, preco);
     }
 
-    public ImpostoRiqueza ciraImpostoRiqueza(int posicao, String nome, float preco) {
+    public ImpostoRiqueza criaImpostoRiqueza(int posicao, String nome, float preco) {
         return new ImpostoRiqueza(posicao, nome, preco);
     }
 
     public Tabuleiro criaTabuleiro(int numCasas) {
         return new TabuleiroUSA(numCasas);
+    }
+    public Chance criaChance(){
+               return null;
+    }
+    public Carta pegaCarta(int numeroCarta, String nomeCarta, String descricao, String observacoes){
+         return new Carta(numeroCarta , nomeCarta, descricao, observacoes );
+    }
+
+    public Carta pagaCarta() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

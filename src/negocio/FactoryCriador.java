@@ -8,6 +8,8 @@ import java.util.List;
 import player.Dado;
 import player.Jogador;
 import player.concretos.Peao;
+import tabuleiro.Carta;
+import tabuleiro.Chance;
 import tabuleiro.Ferrovia;
 import tabuleiro.ImpostoRenda;
 import tabuleiro.ImpostoRiqueza;
@@ -33,11 +35,15 @@ public interface FactoryCriador {
 
     public Ferrovia criaFerrovia(int posicao, String nome, float preco, float hipoteca);
 
-    public ImpostoRenda ciraImpostoRenda(int posicao, String nome, float preco);
+    public ImpostoRenda criaImpostoRenda(int posicao, String nome, float preco);
 
-    public ImpostoRiqueza ciraImpostoRiqueza(int posicao, String nome, float preco);
+    public ImpostoRiqueza criaImpostoRiqueza(int posicao, String nome, float preco);
 
     public Tabuleiro criaTabuleiro(int numCasas);
 
     public GerenteJogo criaGerente();
+
+    public Chance criaChance();
+
+    public Carta pagaCarta();
 }

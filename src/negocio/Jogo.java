@@ -10,7 +10,7 @@ import player.Dado;
 import player.Jogador;
 import player.concretos.Peao;
 import tabuleiro.Lugar;
-import tabuleiro.Propriedade;
+import tabuleiro.Lugar;
 import tabuleiro.Tabuleiro;
 
 /**
@@ -30,85 +30,86 @@ public class Jogo {
     private int numJogadores;
     private List<Lugar> lugares = new ArrayList<Lugar>(40);
 
-    private Propriedade mediterraneanAvenue;
+    
+    private Lugar mediterraneanAvenue;
 
-    private Propriedade communityChest1;
+    private Lugar communityChest1;
 
-    private Propriedade balticAvenue;
+    private Lugar balticAvenue;
 
-    private Propriedade incomeTax;
+    private Lugar incomeTax;
 
-    private Propriedade readingRailroad;
+    private Lugar readingRailroad;
 
-    private Propriedade orientalAvenue;
+    private Lugar orientalAvenue;
 
-    private Propriedade chance;
+    private Lugar chance;
 
-    private Propriedade vermontAvenue;
+    private Lugar vermontAvenue;
 
-    private Propriedade connecticutAvenue;
+    private Lugar connecticutAvenue;
 
-    private Propriedade jailJustVisiting;
+    private Lugar jailJustVisiting;
 
-    private Propriedade stCharlesPlace;
+    private Lugar stCharlesPlace;
 
-    private Propriedade electricCompany;
+    private Lugar electricCompany;
 
-    private Propriedade statesAvenue;
+    private Lugar statesAvenue;
 
-    private Propriedade virginiaAvenue;
+    private Lugar virginiaAvenue;
 
-    private Propriedade pennsylvaniaRailroad;
+    private Lugar pennsylvaniaRailroad;
 
-    private Propriedade stJamesPlace;
+    private Lugar stJamesPlace;
 
-    private Propriedade communityChest2;
+    private Lugar communityChest2;
 
-    private Propriedade tennesseeAvenue;
+    private Lugar tennesseeAvenue;
 
-    private Propriedade newYorkAvenue;
+    private Lugar newYorkAvenue;
 
-    private Propriedade freeParking;
+    private Lugar freeParking;
 
-    private Propriedade kentuckyAvenue;
+    private Lugar kentuckyAvenue;
 
-    private Propriedade chance2;
+    private Lugar chance2;
 
-    private Propriedade indianaAvenue;
+    private Lugar indianaAvenue;
 
-    private Propriedade illinoisAvenue;
+    private Lugar illinoisAvenue;
 
-    private Propriedade beORailroad;
+    private Lugar beORailroad;
 
-    private Propriedade atlanticAvenue;
+    private Lugar atlanticAvenue;
 
-    private Propriedade ventnorAvenue;
+    private Lugar ventnorAvenue;
 
-    private Propriedade waterWorks;
+    private Lugar waterWorks;
 
-    private Propriedade marvinGardens;
+    private Lugar marvinGardens;
 
-    private Propriedade gotoJail;
+    private Lugar gotoJail;
 
-    private Propriedade pacificAvenue;
+    private Lugar pacificAvenue;
 
-    private Propriedade northCarolinaAvenue;
+    private Lugar northCarolinaAvenue;
 
-    private Propriedade communityChest3;
+    private Lugar communityChest3;
 
-    private Propriedade pennsylvaniaAvenue;
+    private Lugar pennsylvaniaAvenue;
 
-    private Propriedade shortLineRailroad;
+    private Lugar shortLineRailroad;
 
-    private Propriedade chance3;
+    private Lugar chance3;
 
-    private Propriedade parkPlace;
+    private Lugar parkPlace;
 
-    private Propriedade luxuryTax;
+    private Lugar luxuryTax;
 
-    private Propriedade boardwalk;
+    private Lugar boardwalk;
 
-    private Propriedade go;
+    private Lugar go;
 
 
 
@@ -121,87 +122,87 @@ public class Jogo {
     }
 
     public void criarLugares(){
-        mediterraneanAvenue = factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        
 
         mediterraneanAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
-        communityChest1= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+       // communityChest1 = factory.criaImpostoRenda(numJogadores, null, numJogadores);
 
-        balticAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        balticAvenue= factory.criaPropriedade(3, "balticAvenue", "roxo", 60 , 4 , 20 , 60 , 80 ,160 , 450 , 30 , 50);
 
-        incomeTax = factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        incomeTax = factory.criaImpostoRenda(4, "incomeTax", 200);
 
-        readingRailroad = factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        readingRailroad = factory.criaFerrovia(5, "readingRailroad", 200, 100);
 
-        orientalAvenue = factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        orientalAvenue = factory.criaPropriedade(6, "orientalAvenue", "AzulClaro" , 100, 6, 30, 90, 270, 400, 550,50, 50);
 
-        chance = factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        //chance = factory.criaChance(7, "chance", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
-        vermontAvenue = factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        vermontAvenue = factory.criaPropriedade(8, "vermontAvenue", "AzulClaro",  100 ,  6,	30  ,  90 , 270 ,  400 ,  550,	  50,  50);
 
-        connecticutAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        connecticutAvenue= factory.criaPropriedade(9, "connecticutAvenue", "AzulClaro",	120,	8,	40,	100,	300,	450,	600,	60,	50);
 
-        jailJustVisiting= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+       // jailJustVisiting= factory.cria
 
-        stCharlesPlace= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        stCharlesPlace= factory.criaPropriedade(11, "stCharlesPlace", "Cinza",	140,	10,	50,	150,	450,	625,	750,	70,	100);
 
-        electricCompany= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+       // electricCompany= factory.criaPropriedade(12, "electricCompany", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
-        statesAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        statesAvenue= factory.criaPropriedade(13, "statesAvenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
-        virginiaAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        virginiaAvenue= factory.criaPropriedade(14, "virginiaAvenue", " ",160,	12,	60,	180,	500,	700,	900,	80,	100);
 
-        pennsylvaniaRailroad= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+   // esse usa cor     pennsylvaniaRailroad= factory.criaFerrovia(15, "pennsylvaniaRailroad", 200, 100);
 
-        stJamesPlace= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        stJamesPlace= factory.criaPropriedade(16, "stJamesPlace", "Laranja",	180,	14,	70,	200,	550,	750,	950,	90,	100);
 
-        communityChest2= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        //communityChest2= factory.criaChance();
 
-        tennesseeAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        tennesseeAvenue= factory.criaPropriedade(18, "tennesseeAvenue", "Laranja",	180,	14,	70,	200,	550,	750,	950,	90,	100);
 
-        newYorkAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        newYorkAvenue= factory.criaPropriedade(19, "newYorkAvenue", "Laranja",	200,	16,	80,	220,	600,	800,	1000,	100,	100);
 
-        freeParking= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+       // freeParking= factory.cria
 
-        kentuckyAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        kentuckyAvenue= factory.criaPropriedade(21, "kentuckyAvenue", "Vermelho",	220,	18,	90,	250,	700,	875,	1050,	110,	150);
 
-        chance2= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+       // chance2= factory.criaChance()
 
-        indianaAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        indianaAvenue= factory.criaPropriedade(23, "indianaAvenue", "Vermelho",	220,	18,	90,	250,	700,	875,	1050,	110,	150);
 
-        illinoisAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        illinoisAvenue= factory.criaPropriedade(24, "illinoisAvenue", "Vermelho",	240,	20,	100,	300,	750,	925,	1100,	120,	150);
 
-        beORailroad= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        beORailroad= factory.criaFerrovia(25, "beORailroad", 200, 100);
 
-        atlanticAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        atlanticAvenue= factory.criaPropriedade(26, "atlanticAvenue", "Amarelo",	260,	22,	110,	330,	800,	975,	1150,	130,		150);
 
-        ventnorAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        ventnorAvenue= factory.criaPropriedade(27, "ventnorAvenue", "Amarelo",	260,	22,	110,	330,	800,	975,	1150,	130,		150);
 
-        waterWorks= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+       // waterWorks= factory.cria
 
-        marvinGardens= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        marvinGardens= factory.criaPropriedade(29, "marvinGardens",  "Amarelo",	  280,	24,	120,	360,	850,	1025,	1200,	140,	150);
 
-        gotoJail= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+       // gotoJail= factory.criaPropriedade(30, "gotoJail", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
-        pacificAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        pacificAvenue= factory.criaPropriedade(31, "pacificAvenue", "Verde",	300,	26,	130,	390,	900,	1100,	1275,	150,	200);
 
-        northCarolinaAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        northCarolinaAvenue= factory.criaPropriedade(32, "northCarolinaAvenue", "Verde",	260,	22,	110,	330,	800,	975,	1150,	130,	150);
 
-        communityChest3= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+       // communityChest3= factory.criaPropriedade(33, "communityChest3", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
-        pennsylvaniaAvenue= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        pennsylvaniaAvenue= factory.criaPropriedade(34, "pennsylvaniaAvenue", "Verde",	320,	28,	150,	450,	1000,	1200,	1400,	160,	200);
 
-        shortLineRailroad= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        shortLineRailroad= factory.criaFerrovia(35, "shortLineRailroad", 200, 100);
 
-        chance3= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+       // chance3= factory.criaPropriedade(36, "chance3", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
-        parkPlace= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        parkPlace= factory.criaPropriedade(37, "parkPlace", " Azul",	350,	35,	175,	500,	1100,	1300,	1500,	175,	200);
 
-        luxuryTax= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        luxuryTax= factory.criaImpostoRiqueza(38, "luxuryTax", 75);
 
-        boardwalk= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        boardwalk= factory.criaPropriedade(39, "boardwalk", "Azul",	400,	50,	200,	600,	1400,	1700,	2000,	200,	200);
 
-        go= factory.criaPropriedade(1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        // go= factory.criaPropriedade(40, "go", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
     }
 
     public void montaTabuleiro(Tabuleiro t, List<Lugar> lugares) {
