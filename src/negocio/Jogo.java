@@ -29,6 +29,7 @@ public class Jogo {
     private Tabuleiro tabuleiro;
     private int numJogadores;
     private List<Lugar> lugares = new ArrayList<Lugar>(40);
+
     
     private Lugar mediterraneanAvenue;
 
@@ -114,8 +115,6 @@ public class Jogo {
 
 
     
-
-
     public Jogo(FactoryCriador factory) {
         this.factory = factory;
         gerente = factory.criaGerente();

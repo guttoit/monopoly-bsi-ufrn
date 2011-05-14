@@ -5,6 +5,7 @@
 
 package player.concretos;
 
+import player.Dado;
 import player.Jogador;
 import tabuleiro.LugarFisico;
 
@@ -32,5 +33,15 @@ public class JogadorConcreto extends Jogador {
     public float compraEmLeilao(LugarFisico lugarFisico, float valorAtual) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public Integer[] jogaDado(Dado dado) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    /*@Override
+     Integer[] jogaDado(Dado dado) {
+        return dado.gerarNumero();
+    }*/
 
 }
