@@ -124,7 +124,7 @@ public class GerenteConcreto implements GerenteJogo {
             } else if (l instanceof LugarFisico) {
                 LugarFisico lf = (LugarFisico) l;
                 if (lf.getProprietario() == null) {
-                    mensagens.geraStatus(jogadorVez, teclado);
+                    mensagens.geraStatus(jogadorVez, lf);
                     gerenciaCompra(lf, jogadorVez, teclado);
                 } else {
                     jogadorVez.setDinheiro((float) (jogadorVez.getDinheiro() - l.getPreco()));

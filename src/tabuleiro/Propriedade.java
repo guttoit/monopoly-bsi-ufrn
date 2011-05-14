@@ -35,6 +35,7 @@ public class Propriedade extends LugarFisico {
         aluguelCasa2 = c2;
         aluguelCasa3 = c3;
         aluguelCasa4 = c4;
+        int nivel;
         this.precoCasa = precoCasa;
         aluguelSemCasa = aluguelSCasa;
     }

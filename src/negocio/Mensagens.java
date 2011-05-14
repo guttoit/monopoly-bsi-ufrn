@@ -7,6 +7,9 @@ package negocio;
 
 import java.util.Scanner;
 import player.Jogador;
+import tabuleiro.Lugar;
+import tabuleiro.LugarFisico;
+import tabuleiro.Tabuleiro;
 
 /**
  *
@@ -24,6 +27,7 @@ public interface Mensagens {
     public String mensagemCores(Jogador jogador, String[] cores, int numJogador, Scanner teclado);
 
 
-    public void geraStatus(Jogador j, Scanner teclado);
+    public void geraStatus(Jogador j, LugarFisico l);
 
+    public void statusJogador(Jogador j, Tabuleiro t);
 }
