@@ -17,6 +17,7 @@ import tabuleiro.Ferrovia;
 import tabuleiro.ImpostoRenda;
 import tabuleiro.ImpostoRiqueza;
 import tabuleiro.Lugar;
+import tabuleiro.LugarFisico;
 import tabuleiro.Propriedade;
 import tabuleiro.Tabuleiro;
 import tabuleiro.TabuleiroUSA;
@@ -100,6 +101,12 @@ public class FactoryUSA implements FactoryCriador {
 
     public Banco criaBanco() {
         return new BancoConcreto();
+    }
+
+    public Lugar criaLugar( Tabuleiro tabuleiro, int posicao, String nome) {
+        LugarFisico l = new LugarFisico(nome, 0, posicao);
+        tabuleiro.addLugar(l);
+        return l;
     }
 
 

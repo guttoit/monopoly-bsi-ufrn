@@ -15,6 +15,13 @@ public abstract class Lugar {
 
     }
 
+    public Lugar(String nome, double preco, int posicao) {
+        this.nome = nome;
+        this.preco = preco;
+        this.posicao = posicao;
+    }
+
+
     private String nome;
     private double preco;
     private int posicao;

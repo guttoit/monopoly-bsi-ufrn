@@ -25,8 +25,11 @@ public abstract class Tabuleiro {
 
     public void iniciaListaLugar(int num){
         for(int i=0; i<num; i++){
+
             listaLugar.add(null);
+
         }
+
     }
 
     public void addLugar(Lugar l){

@@ -33,7 +33,8 @@ public class Jogo {
     private List<Lugar> lugares;
     private Scanner teclado;
     private Banco banco;
-    
+
+    private Lugar posicaoZero;
     private Lugar mediterraneanAvenue;
 
     private Lugar communityChest1;
@@ -139,6 +140,7 @@ public class Jogo {
     }
     public void criarLugares(){
         
+        posicaoZero = factory.criaLugar(tabuleiro, 0, " INICIO ");
 
         mediterraneanAvenue= factory.criaPropriedade(tabuleiro, 1, "Mediterranean Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 

@@ -94,7 +94,7 @@ public class MensagensJogo implements Mensagens {
 
     }
 
-    public void statusJogador(Jogador j, Tabuleiro t) {
+    public void statusJogador(Jogador j, Tabuleiro t  ) {
         // O status de ana – azul é o seguinte:
         //Situado na posição 39 – Boardwalk
         //Possui $304
@@ -103,7 +103,7 @@ public class MensagensJogo implements Mensagens {
         //[B & O Railroad] – ferrovia, corrida 25
         //[Pennsylvania Avenue] – propriedade verde, aluguel 28
         System.out.printf(" \nO status de " + j.getNomeJogador() + "- " + j.getPeao().getCorPeao()
-                + "\n é o segunte:\n" + " Situado na posicao" + j.getPeao().getPosicao() + "-" + t.getListaLugar().get(j.getPeao().getPosicao())
+                + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + t.getListaLugar().get(j.getPeao().getPosicao()).getNome()
                 + "\n " + "Possui" + "$" + j.getDinheiro());
         for (Lugar lugar : j.getListaLugarFisico()) {
 
