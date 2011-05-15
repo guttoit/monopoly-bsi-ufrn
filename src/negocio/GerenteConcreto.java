@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 import player.Jogador;
 import player.concretos.DadoDuplo;
+import player.concretos.Peao;
 import tabuleiro.Imposto;
 import tabuleiro.Lugar;
 import tabuleiro.LugarFisico;
@@ -18,6 +19,7 @@ import tabuleiro.Tabuleiro;
  * @author Gutto
  */
 public class GerenteConcreto implements GerenteJogo {
+
     private FactoryCriador factory;
     private String cores[] = new String[8];
     private int numJogadores = 0;
@@ -39,10 +41,25 @@ public class GerenteConcreto implements GerenteJogo {
     }
 
     public Lugar andaPeao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro) {
+        Peao p = jogador.getPeao();
+        int auxPosicao = p.getPosicao() + valorDado[0] + valorDado[1];
+
+        if(auxPosicao > 40){
+            p.setPosicao(0 + auxPosicao - 40);
+        }
         Lugar l = tabuleiro.getListaLugar().get(valorDado[0] + valorDado[1] + jogador.getPeao().getPosicao());
-        jogador.getPeao().setPosicao(l.getPosicao());
-        System.out.println("O jogador " + jogador.getNomeJogador() + "tirou " + valorDado[0]
-                + " e " + valorDado[1] + ". O peao avancou para " + l.getPosicao() + ", " + l.getNome());
+        
+        if (l == null) {
+            p.setPosicao(p.getPosicao() + valorDado[0] + valorDado[1]);
+            jogador.getPeao().setPosicao(p.getPosicao());
+            System.out.println("O jogador " + jogador.getNomeJogador() + "tirou " + valorDado[0]
+                    + " e " + valorDado[1] + ". O peao avancou para " + p.getPosicao() + ", " + "Nao existe ainda");
+        } else {
+            jogador.getPeao().setPosicao(l.getPosicao());
+            System.out.println("O jogador " + jogador.getNomeJogador() + "tirou " + valorDado[0]
+                    + " e " + valorDado[1] + ". O peao avancou para " + l.getPosicao() + ", " + l.getNome());
+        }
+
 
         return l;
     }
@@ -50,22 +67,23 @@ public class GerenteConcreto implements GerenteJogo {
     public void gerenciaJogo(Tabuleiro tab, Scanner teclado, Banco b, List<Jogador> jogadores, Mensagens mensagens) {
         int auxNumJogadores;
         int nivelBurrice = 0;
+        System.out.println("Digite o numero de jogadores: ");
         while (numJogadores == 0 && nivelBurrice < 4) {
-            if (nivelBurrice == 0) {
-                System.out.println("Digite o numero de jogadores: ");
-            }
-            if (teclado.hasNextInt()) {
+           
+             if(teclado.hasNextInt()) {
+
                 auxNumJogadores = teclado.nextInt();
-                
+
                 if (auxNumJogadores >= 2 && auxNumJogadores <= 8) {
                     numJogadores = auxNumJogadores;
-                   
+
                 } else {
                     nivelBurrice++;
                     System.out.println(mensagens.nivelBurrice(nivelBurrice, auxNumJogadores));
                 }
             } else {
                 System.out.println("Digite um número inteiro entre 2 e 8: ");
+                teclado.nextLine();
             }
         }
         if (nivelBurrice == 4) {
@@ -93,7 +111,7 @@ public class GerenteConcreto implements GerenteJogo {
         System.out.println("\nO jogo iniciou\n");
         int i = 0;
         while (numJogadores >= 2) {
-            if( i>= numJogadores ){
+            if (i >= numJogadores) {
                 i = 0;
             }
             realizaJogada(jogadores, tab, jogadores.get(i), teclado, b, mensagens);
@@ -108,16 +126,20 @@ public class GerenteConcreto implements GerenteJogo {
     public void realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens) {
         Lugar l;
         String comando = "";
+        boolean acertouComando = false;
 
         System.out.println("\nA jogada de " + jogadorVez.getNomeJogador() + " comecou.");
-        System.out.println("\nComandos disponiveis: [Jogar]   [Sair]");
+        System.out.println("\nComandos disponiveis: [Jogar]   [Sair] [status]");
         System.out.println("\nEntre com o comando");
-        comando = teclado.nextLine();
+        comando = teclado.nextLine().trim();
+        while(!acertouComando)
+        
         if (comando.equalsIgnoreCase("sair")) {
+            acertouComando = true;
             System.exit(0);
         } else if (comando.equalsIgnoreCase("jogar")) {
-           // jogadorVez.jogaDado(new DadoDuplo());
-
+            // jogadorVez.jogaDado(new DadoDuplo());
+            acertouComando = true;
             l = andaPeao(jogadorVez.jogaDado(new DadoDuplo()), jogadorVez, tab);
             if (l == null) {
                 System.out.println("\nNao faz nada.");
@@ -140,8 +162,14 @@ public class GerenteConcreto implements GerenteJogo {
             } else {
                 //ImplementarCompanhia e
             }
+        }else if(comando.equalsIgnoreCase("status")){
+            mensagens.statusJogador(jogadorVez, tab);
+            acertouComando = true;
+        }else{
+            System.out.println("Comando errado. Os comandos disponíveis sao: [jogar] [sair] [status] "
+                    + "\n Digite um desses comandos... ");
         }
-
+        comando = teclado.nextLine().trim();
     }
 
     public boolean gerenciaCompra(LugarFisico l, Jogador jogador, Scanner teclado) {

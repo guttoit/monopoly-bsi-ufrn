@@ -52,7 +52,7 @@ public class MensagensJogo implements Mensagens {
     }
 
     public String mensagemNome(int numJogador, Scanner teclado) {
-        System.out.println("Entre com o nome do jogador " + numJogador + " :");
+        System.out.println("\nEntre com o nome do jogador " + numJogador + " :");
         String nome = teclado.nextLine().trim();
 
         return nome;
