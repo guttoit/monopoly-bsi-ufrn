@@ -11,6 +11,14 @@ import player.Jogador;
  *
  * @author Adm
  */
+
+/**
+ *
+ * @classAbstract A classe Lugar é  representa o lugar dos tabuleiros que podem ser comprados, ou seja
+ * os titulos
+ *
+ */
+
 public class LugarFisico extends Lugar {
     private float hipoteca;
     private Jogador proprietario;

@@ -21,6 +21,10 @@ import tabuleiro.Tabuleiro;
  *
  * @author Gutto
  */
+/**
+     *
+     * @interface
+     */
 public interface FactoryCriador {
 
     public List<Jogador> criaListaJogadores(int numJogadores);

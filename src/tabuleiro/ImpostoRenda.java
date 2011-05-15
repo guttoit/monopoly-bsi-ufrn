@@ -9,6 +9,14 @@ package tabuleiro;
  *
  * @author Adm
  */
+
+/**
+ *
+ * @class A class ImpostoRenda é um tipo de imposto. Representa uma taxa de 200 a ser paga pelo jogador 
+ * ao Banco. 
+ */
+
+
 public class ImpostoRenda extends Imposto {
 
 

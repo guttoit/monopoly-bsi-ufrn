@@ -9,6 +9,12 @@ package tabuleiro;
  *
  * @author Gutto
  */
+
+/**
+ *
+ * @class A class ImpostoRiqueza é um tipo de imposto. Representa uma taxa de $75 a ser paga pelo jogador
+ * ao Banco.
+ */
 public class ImpostoRiqueza extends Imposto{
 
 
