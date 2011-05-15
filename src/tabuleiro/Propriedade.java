@@ -8,6 +8,15 @@ package tabuleiro;
  *
  * @author Adm
  */
+
+
+
+/**
+ *
+ * @class classe Propriedade é um lugar fisico que representa imóvel.
+ *
+ *
+ */
 public class Propriedade extends LugarFisico {
 
     private float aluguelSemCasa;

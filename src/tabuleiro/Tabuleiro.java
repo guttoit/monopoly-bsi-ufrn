@@ -11,6 +11,14 @@ import java.util.List;
  *
  * @author Adm
  */
+
+
+/**
+ *
+ * @class A classe Taluleiro é uma classe abstrata que serve de interface pra qualquer tipo de tabuleiro
+ *
+ *
+ */
 public abstract class Tabuleiro {
 
     private int numCasas;
@@ -22,6 +30,8 @@ public abstract class Tabuleiro {
         listaLugar = new ArrayList<Lugar>();
         iniciaListaLugar(numCasas);
     }
+
+
 
     public void iniciaListaLugar(int num){
         for(int i=0; i<num; i++){
@@ -35,10 +45,17 @@ public abstract class Tabuleiro {
     public void addLugar(Lugar l){
         listaLugar.add(l.getPosicao(), l);
     }
+    /**
+     * Método que  pega uma lista de lugares
+     *
+     * @return listaLugar
+     *
+     */
 
     public List<Lugar> getListaLugar() {
         return listaLugar;
     }
+
 
     public void setListaLugar(List<Lugar> listaLugar) {
         this.listaLugar = listaLugar;

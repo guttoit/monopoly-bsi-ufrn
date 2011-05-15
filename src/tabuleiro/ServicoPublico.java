@@ -9,6 +9,13 @@ package tabuleiro;
  *
  * @author Adm
  */
+
+/**
+ *
+ * @class classe Servico publico é um lugar fisico que representa .....
+ *
+ *
+ */
 public class ServicoPublico extends Lugar {
 
     public ServicoPublico() {
