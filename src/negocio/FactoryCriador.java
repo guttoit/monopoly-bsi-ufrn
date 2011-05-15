@@ -31,7 +31,7 @@ public interface FactoryCriador {
 
     public Peao criaPeao(String cor);
 
-    public Lugar criaLugar();
+    public Lugar criaLugar( Tabuleiro tabuleiro , int posicao, String nome);
 
     public List<Lugar> criaLugares(int numLugares);
 

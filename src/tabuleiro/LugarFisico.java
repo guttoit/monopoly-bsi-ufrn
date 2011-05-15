@@ -20,6 +20,12 @@ public class LugarFisico extends Lugar {
 
     }
 
+    public LugarFisico(String nome, float preco, int posicao ){
+
+        super(nome, preco, posicao);
+
+    }
+
 
 
 
