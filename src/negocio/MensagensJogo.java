@@ -89,8 +89,8 @@ public class MensagensJogo implements Mensagens {
 
     public void geraStatus(Jogador j, LugarFisico l) {
 
-        System.out.printf("A título da propriedade" + j.getPeao().getPosicao() + "Está disponivel por " + l.getPreco()
-                + j.getNomeJogador() + "Voce possui" + j.getDinheiro());
+        System.out.printf("A título da propriedade " + j.getPeao().getPosicao() + " Está disponivel por : " + l.getPreco()
+                + j.getNomeJogador() + " Voce possui " + j.getDinheiro() + "\n Deseja Comprar ?  sim [s] ou nao [n] ");
 
     }
 

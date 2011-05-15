@@ -52,12 +52,12 @@ public class GerenteConcreto implements GerenteJogo {
         if (l == null) {
             p.setPosicao(p.getPosicao() + valorDado[0] + valorDado[1]);
             jogador.getPeao().setPosicao(p.getPosicao());
-            System.out.println("O jogador " + jogador.getNomeJogador() + "tirou " + valorDado[0]
-                    + " e " + valorDado[1] + ". O peao avancou para " + p.getPosicao() + ", " + "Nao existe ainda");
+            System.out.println("O jogador  " + jogador.getNomeJogador() + "tirou  " + valorDado[0]
+                    + " e " + valorDado[1] + ". O peao avancou para " + p.getPosicao() + ", " + " Nao existe ainda ");
         } else {
             jogador.getPeao().setPosicao(l.getPosicao());
-            System.out.println("O jogador " + jogador.getNomeJogador() + "tirou " + valorDado[0]
-                    + " e " + valorDado[1] + ". O peao avancou para " + l.getPosicao() + ", " + l.getNome());
+            System.out.println("O jogador " + jogador.getNomeJogador() + " tirou " + valorDado[0]
+                    + " e " + valorDado[1] + ". O peao avancou para  " + l.getPosicao() + ", " + l.getNome());
         }
 
 
@@ -118,7 +118,7 @@ public class GerenteConcreto implements GerenteJogo {
             i++;
         }
         if (numJogadores == 1) {
-            System.out.println("\n\n\nParabéns " + jogadores.get(0) + " ! Você é o mais novo"
+            System.out.println("\n\n\n Parabéns " + jogadores.get(0) + " ! Você é o mais novo"
                     + " milionario da America!");
         }
     }
