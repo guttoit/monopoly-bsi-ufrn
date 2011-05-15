@@ -81,7 +81,7 @@ public class MensagensJogo implements Mensagens {
             }
 
             System.out.println("\n Essa cor não existe ou não está no nosso jogo. Digite"
-                    + "uma cor da lista de cores : ");
+                    + "uma cor da lista de cores : " + todasCores);
         }
 
         return cor;

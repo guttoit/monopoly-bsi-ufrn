@@ -144,79 +144,79 @@ public class Jogo {
 
        // communityChest1 = factory.criaImpostoRenda(tabuleiro, numJogadores, null, numJogadores);
 
-        balticAvenue= factory.criaPropriedade(tabuleiro,3, "balticAvenue", "roxo", 60 , 4 , 20 , 60 , 80 ,160 , 450 , 30 , 50);
+        balticAvenue= factory.criaPropriedade(tabuleiro,3, "Baltic Avenue", "roxo", 60 , 4 , 20 , 60 , 80 ,160 , 450 , 30 , 50);
 
-        incomeTax = factory.criaImpostoRenda(tabuleiro,4, "incomeTax", 200);
+        incomeTax = factory.criaImpostoRenda(tabuleiro,4, "Income Tax", 200);
 
-        readingRailroad = factory.criaFerrovia(tabuleiro,5, "readingRailroad", 200, 100);
+        readingRailroad = factory.criaFerrovia(tabuleiro,5, "Reading Railroad", 200, 100);
 
-        orientalAvenue = factory.criaPropriedade(tabuleiro,6, "orientalAvenue", "AzulClaro" , 100, 6, 30, 90, 270, 400, 550,50, 50);
+        orientalAvenue = factory.criaPropriedade(tabuleiro,6, "Oriental Avenue", "AzulClaro" , 100, 6, 30, 90, 270, 400, 550,50, 50);
 
         //chance = factory.criaChance(tabuleiro,7, "chance", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
-        vermontAvenue = factory.criaPropriedade(tabuleiro,8, "vermontAvenue", "AzulClaro",  100 ,  6,	30  ,  90 , 270 ,  400 ,  550,	  50,  50);
+        vermontAvenue = factory.criaPropriedade(tabuleiro,8, "Vermont Avenue", "AzulClaro",  100 ,  6,	30  ,  90 , 270 ,  400 ,  550,	  50,  50);
 
-        connecticutAvenue= factory.criaPropriedade(tabuleiro,9, "connecticutAvenue", "AzulClaro",	120,	8,	40,	100,	300,	450,	600,	60,	50);
+        connecticutAvenue= factory.criaPropriedade(tabuleiro,9, "Connecticut Avenue", "AzulClaro",	120,	8,	40,	100,	300,	450,	600,	60,	50);
 
        // jailJustVisiting= factory.cria
 
-        stCharlesPlace= factory.criaPropriedade(tabuleiro,11, "stCharlesPlace", "Cinza",	140,	10,	50,	150,	450,	625,	750,	70,	100);
+        stCharlesPlace= factory.criaPropriedade(tabuleiro,11, "St Charles Place", "Cinza",	140,	10,	50,	150,	450,	625,	750,	70,	100);
 
   //serviços públicos  electricCompany= factory.criaPropriedade(tabuleiro,12, "electricCompany", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
-        statesAvenue= factory.criaPropriedade(tabuleiro,13, "statesAvenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        statesAvenue= factory.criaPropriedade(tabuleiro,13, "States Avenue", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
-        virginiaAvenue= factory.criaPropriedade(tabuleiro,14, "virginiaAvenue", " ",160,	12,	60,	180,	500,	700,	900,	80,	100);
+        virginiaAvenue= factory.criaPropriedade(tabuleiro,14, "Virginia Avenue", " ",160,	12,	60,	180,	500,	700,	900,	80,	100);
 
    // esse usa cor     pennsylvaniaRailroad= factory.criaFerrovia(tabuleiro,15, "pennsylvaniaRailroad", 200, 100);
 
-        stJamesPlace= factory.criaPropriedade(tabuleiro,16, "stJamesPlace", "Laranja",	180,	14,	70,	200,	550,	750,	950,	90,	100);
+        stJamesPlace= factory.criaPropriedade(tabuleiro,16, "St James Place", "Laranja",	180,	14,	70,	200,	550,	750,	950,	90,	100);
 
         //communityChest2= factory.criaChance();
 
-        tennesseeAvenue= factory.criaPropriedade(tabuleiro,18, "tennesseeAvenue", "Laranja",	180,	14,	70,	200,	550,	750,	950,	90,	100);
+        tennesseeAvenue= factory.criaPropriedade(tabuleiro,18, "Tennessee Avenue", "Laranja",	180,	14,	70,	200,	550,	750,	950,	90,	100);
 
-        newYorkAvenue= factory.criaPropriedade(tabuleiro,19, "newYorkAvenue", "Laranja",	200,	16,	80,	220,	600,	800,	1000,	100,	100);
+        newYorkAvenue= factory.criaPropriedade(tabuleiro,19, "New York Avenue", "Laranja",	200,	16,	80,	220,	600,	800,	1000,	100,	100);
 
        // freeParking= factory.cria
 
-        kentuckyAvenue= factory.criaPropriedade(tabuleiro,21, "kentuckyAvenue", "Vermelho",	220,	18,	90,	250,	700,	875,	1050,	110,	150);
+        kentuckyAvenue= factory.criaPropriedade(tabuleiro,21, "Kentucky Avenue", "Vermelho",	220,	18,	90,	250,	700,	875,	1050,	110,	150);
 
        // chance2= factory.criaChance()
 
-        indianaAvenue= factory.criaPropriedade(tabuleiro,23, "indianaAvenue", "Vermelho",	220,	18,	90,	250,	700,	875,	1050,	110,	150);
+        indianaAvenue= factory.criaPropriedade(tabuleiro,23, "Indiana Avenue", "Vermelho",	220,	18,	90,	250,	700,	875,	1050,	110,	150);
 
-        illinoisAvenue= factory.criaPropriedade(tabuleiro,24, "illinoisAvenue", "Vermelho",	240,	20,	100,	300,	750,	925,	1100,	120,	150);
+        illinoisAvenue= factory.criaPropriedade(tabuleiro,24, "Illinois Avenue", "Vermelho",	240,	20,	100,	300,	750,	925,	1100,	120,	150);
 
-        beORailroad= factory.criaFerrovia(tabuleiro,25, "beORailroad", 200, 100);
+        beORailroad= factory.criaFerrovia(tabuleiro,25, "Be O Railroad", 200, 100);
 
-        atlanticAvenue= factory.criaPropriedade(tabuleiro,26, "atlanticAvenue", "Amarelo",	260,	22,	110,	330,	800,	975,	1150,	130,		150);
+        atlanticAvenue= factory.criaPropriedade(tabuleiro,26, "Atlantic Avenue", "Amarelo",	260,	22,	110,	330,	800,	975,	1150,	130,		150);
 
-        ventnorAvenue= factory.criaPropriedade(tabuleiro,27, "ventnorAvenue", "Amarelo",	260,	22,	110,	330,	800,	975,	1150,	130,		150);
+        ventnorAvenue= factory.criaPropriedade(tabuleiro,27, "Ventnor Avenue", "Amarelo",	260,	22,	110,	330,	800,	975,	1150,	130,		150);
 
        //serviços públicos  waterWorks= factory.cria
 
-        marvinGardens= factory.criaPropriedade(tabuleiro,29, "marvinGardens",  "Amarelo",	  280,	24,	120,	360,	850,	1025,	1200,	140,	150);
+        marvinGardens= factory.criaPropriedade(tabuleiro,29, "Marvin Gardens",  "Amarelo",	  280,	24,	120,	360,	850,	1025,	1200,	140,	150);
 
        // gotoJail= factory.criaPropriedade(tabuleiro,30, "gotoJail", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
-        pacificAvenue= factory.criaPropriedade(tabuleiro,31, "pacificAvenue", "Verde",	300,	26,	130,	390,	900,	1100,	1275,	150,	200);
+        pacificAvenue= factory.criaPropriedade(tabuleiro,31, "Pacific Avenue", "Verde",	300,	26,	130,	390,	900,	1100,	1275,	150,	200);
 
-        northCarolinaAvenue= factory.criaPropriedade(tabuleiro,32, "northCarolinaAvenue", "Verde",	260,	22,	110,	330,	800,	975,	1150,	130,	150);
+        northCarolinaAvenue= factory.criaPropriedade(tabuleiro,32, "North Carolina Avenue", "Verde",	260,	22,	110,	330,	800,	975,	1150,	130,	150);
 
        // communityChest3= factory.criaPropriedade(tabuleiro,33, "communityChest3", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
-        pennsylvaniaAvenue= factory.criaPropriedade(tabuleiro,34, "pennsylvaniaAvenue", "Verde",	320,	28,	150,	450,	1000,	1200,	1400,	160,	200);
+        pennsylvaniaAvenue= factory.criaPropriedade(tabuleiro,34, "Pennsylvania Avenue", "Verde",	320,	28,	150,	450,	1000,	1200,	1400,	160,	200);
 
-        shortLineRailroad= factory.criaFerrovia(tabuleiro,35, "shortLineRailroad", 200, 100);
+        shortLineRailroad= factory.criaFerrovia(tabuleiro,35, "ShortLine Railroad", 200, 100);
 
        // chance3= factory.criaPropriedade(tabuleiro,36, "chance3", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
 
-        parkPlace= factory.criaPropriedade(tabuleiro,37, "parkPlace", " Azul",	350,	35,	175,	500,	1100,	1300,	1500,	175,	200);
+        parkPlace= factory.criaPropriedade(tabuleiro,37, "Park Place", " Azul",	350,	35,	175,	500,	1100,	1300,	1500,	175,	200);
 
-        luxuryTax= factory.criaImpostoRiqueza(tabuleiro,38, "luxuryTax", 75);
+        luxuryTax= factory.criaImpostoRiqueza(tabuleiro,38, "Luxury Tax", 75);
 
-        boardwalk= factory.criaPropriedade(tabuleiro,39, "boardwalk", "Azul",	400,	50,	200,	600,	1400,	1700,	2000,	200,	200);
+        boardwalk= factory.criaPropriedade(tabuleiro,39, "Boardwalk", "Azul",	400,	50,	200,	600,	1400,	1700,	2000,	200,	200);
 
         // go= factory.criaPropriedade(tabuleiro,40, "go", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
     }
