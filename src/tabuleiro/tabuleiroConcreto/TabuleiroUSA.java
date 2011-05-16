@@ -16,7 +16,7 @@ import tabuleiro.Tabuleiro;
 
 /**
  *
- * @class A classe TaluleiroUSA é um tipo Tabuleiro esclheco preprerencialmente para ser usado nessa versao
+ * @class A classe TaluleiroUSA é um tipo Tabuleiro esclhido preferencialmente para ser usado nessa versao
  * do jogo.
  *
  *

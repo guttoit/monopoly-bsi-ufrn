@@ -13,6 +13,11 @@ import tabuleiro.tabuleiroConcreto.LugarFisico;
  *
  * @author Adm
  */
+
+ /**
+     *@class A classe dJogador é uma classe abstrata que serve de interface para um jocgador concreto. Na mesma contem as assinaturas dos metodos abstratos:
+  * jogaDado(), comprar() e Compra em Leilao.
+     */
 public abstract class Jogador {
 
     private String nomeJogador;
@@ -31,13 +36,13 @@ public abstract class Jogador {
         listaLugarFisico = new ArrayList<LugarFisico>();
 
     }
-
+// Assinatura do metodo jogaDado que recebe uma instancia de dado com parametro.
     public abstract Integer[] jogaDado(Dado dado);
 
         
-
+// Assinatura do metodo compra que serve para verificar se um jogador quer comprar um lugar fisico
     public abstract boolean comprar(LugarFisico lugarFisico);
-
+// Assinatura do metodo compra que serve para verificar se um jogador quer comprar um lugar fisico
     public abstract float compraEmLeilao(LugarFisico lugarFisico, float valorAtual);
 
     public List<LugarFisico> getListaLugarFisico() {

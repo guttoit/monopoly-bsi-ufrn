@@ -104,7 +104,7 @@ public class MensagensJogo implements Mensagens {
         //[B & O Railroad] – ferrovia, corrida 25
         //[Pennsylvania Avenue] – propriedade verde, aluguel 28
         if (t.getListaLugar().get(j.getPeao().getPosicao()) == null) {
-            System.out.printf(" \nO status de " + j.getNomeJogador() + "- " + j.getPeao().getCorPeao()
+            System.out.printf(" \nO status de " + j.getNomeJogador() + " - " + j.getPeao().getCorPeao()
                     + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + " Lugar nao implementado"
                     + "\n " + "Possui" + "$" + j.getDinheiro()+ "\n");
         } else {
