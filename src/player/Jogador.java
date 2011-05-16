@@ -36,15 +36,15 @@ public abstract class Jogador {
         listaLugarFisico = new ArrayList<LugarFisico>();
 
     }
-// Assinatura do metodo jogaDado que recebe uma instancia de dado com parametro.
+// Assinatura do metodo abstrato jogaDado que recebe uma instancia de dado com parametro.
     public abstract Integer[] jogaDado(Dado dado);
 
         
-// Assinatura do metodo compra que serve para verificar se um jogador quer comprar um lugar fisico
+// Assinatura do metodo abstrato compra que serve para verificar se um jogador quer comprar um lugar fisico
     public abstract boolean comprar(LugarFisico lugarFisico);
-// Assinatura do metodo compra que serve para verificar se um jogador quer comprar um lugar fisico
+// Assinatura do metodo compra que serve para jogador  comprar num leilao
     public abstract float compraEmLeilao(LugarFisico lugarFisico, float valorAtual);
-
+//  metodo que pega uma lista de lugares fisicos
     public List<LugarFisico> getListaLugarFisico() {
         return listaLugarFisico;
     }
