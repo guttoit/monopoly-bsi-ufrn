@@ -23,7 +23,7 @@ import tabuleiro.Tabuleiro;
  */
 /**
      *
-     * @interface
+     * @interface A interface FatoryCriador contém as assinaturas dos métodos de FactoryUSA.
      */
 public interface FactoryCriador {
 

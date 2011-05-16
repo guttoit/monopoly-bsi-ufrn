@@ -15,6 +15,11 @@ import tabuleiro.tabuleiroConcreto.LugarFisico;
  *
  * @author Gutto
  */
+
+/**
+ *
+ * @class VendedorConcreto implementa vendedor. É responsável por realizar a venda de imóveis
+ */
 public class VendedorConcreto implements Vendendor{
 
     public void vendeLugarFisico(Jogador jogador, Lugar lugarFisico) {
