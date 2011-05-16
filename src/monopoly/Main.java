@@ -15,6 +15,13 @@ import negocio.negocioConcreto.Jogo;
  *
  * @author Adm
  */
+
+
+/**
+ *
+ * @class Main é a classe princial que inicializa o Jogo criando instancias de fatory e jogo e chamanado
+ * o metodo para iniciar o jogo. A partir desse ponto, o jogo pode ser utilidados pelos usuários.
+ */
 public class Main {
 
 

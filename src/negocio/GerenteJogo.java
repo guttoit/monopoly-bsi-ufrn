@@ -16,6 +16,12 @@ import tabuleiro.Tabuleiro;
  *
  * @author Adm
  */
+
+/**
+ *
+ * @interface GerenteJogo contem as assinaturas dos métodos utilizados por GerenteConcreto para
+ * realizar os princiapais passos do jogo.
+ */
 public  interface GerenteJogo {
 
       public Lugar andaPeao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro);

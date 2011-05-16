@@ -14,6 +14,12 @@ import tabuleiro.tabuleiroConcreto.LugarFisico;
  *
  * @author Adm
  */
+
+/**
+ *
+ * @interface vendedor contem as assinaturas dos métodos utilizados por vendedorConcreto para vender
+ * lugar fisico e realizar leilao.
+ */
 public interface  Vendendor {
 
     public void vendeLugarFisico(Jogador jogador, Lugar lugarFisico);
