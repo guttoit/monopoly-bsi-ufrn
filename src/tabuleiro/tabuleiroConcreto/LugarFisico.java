@@ -3,9 +3,10 @@
  * and open the template in the editor.
  */
 
-package tabuleiro;
+package tabuleiro.tabuleiroConcreto;
 
 import player.Jogador;
+import tabuleiro.Lugar;
 
 /**
  *

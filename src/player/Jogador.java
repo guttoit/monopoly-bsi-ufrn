@@ -7,7 +7,7 @@ package player;
 import java.util.ArrayList;
 import player.concretos.Peao;
 import java.util.List;
-import tabuleiro.LugarFisico;
+import tabuleiro.tabuleiroConcreto.LugarFisico;
 
 /**
  *
