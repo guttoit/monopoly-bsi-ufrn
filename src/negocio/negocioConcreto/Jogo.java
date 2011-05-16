@@ -19,6 +19,11 @@ import tabuleiro.*;
  *
  * @author Adm
  */
+
+/**
+ *
+ * @class A classe Jogo detem os componentes necessarios que são utilizados durante o Jogo.
+ */
 public class Jogo {
 
     private FactoryCriador factory;
@@ -304,7 +309,7 @@ public class Jogo {
 
          go= factory.criaPropriedade(tabuleiro,0, "go", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
     }
-
+// monta o tabuleiro com seus respectivos lugares.
     public void montaTabuleiro(Tabuleiro t, List<Lugar> lugares) {
         if (t.getNumCasas() != lugares.size()) {
         } else {
@@ -313,7 +318,7 @@ public class Jogo {
             }
         }
     }
-
+//pega uma lista de jogadores e os retorna
     public List<Jogador> getJogadores() {
         return jogadores;
     }

@@ -148,7 +148,7 @@ public class GerenteConcreto implements GerenteJogo {
             System.exit(0);
         }
     }
-
+// metodo que vai decidir qual tipo de jogada o jogador realizará.
     public void realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens) {
         Lugar l;
         String comando = "";
@@ -207,7 +207,7 @@ public class GerenteConcreto implements GerenteJogo {
         }
 
     }
-
+// metodo que ira descontar alugual do jogador de acordo com a quantidade de ferrovias que o dono tem.
     public void descontaAluguel(LugarFisico lf, Jogador jogadorVez) {
 
         Jogador proprietario = lf.getProprietario();
@@ -227,7 +227,7 @@ public class GerenteConcreto implements GerenteJogo {
         }
 
     }
-
+// metodo que ira descontar o imposto do jogador de acordo com o tipo de imposto, mandando o dinheiro descontado para o banco
     public void descontaImposto(Lugar l, Jogador jogadorVez, Banco b) {
         Imposto imposto = (Imposto) l;
         if (imposto instanceof ImpostoRenda) {
@@ -240,7 +240,9 @@ public class GerenteConcreto implements GerenteJogo {
             b.setDinheiroEmCaixa(b.getDinheiroEmCaixa() + 75);
         }
     }
-
+//Gerencia compra é responsável por decidir se o jogador fará uma compra ou não.
+//
+//
     public boolean gerenciaCompra(LugarFisico l, Jogador jogador, Scanner teclado) {
         String comprou = "";
         boolean acertouComando = false;
