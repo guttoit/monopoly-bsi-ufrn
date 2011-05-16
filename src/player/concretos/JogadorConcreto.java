@@ -7,7 +7,7 @@ package player.concretos;
 
 import player.Dado;
 import player.Jogador;
-import tabuleiro.LugarFisico;
+import tabuleiro.tabuleiroConcreto.LugarFisico;
 
 /**
  *

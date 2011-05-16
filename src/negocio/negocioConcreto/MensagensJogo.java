@@ -2,15 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package negocio;
+package negocio.negocioConcreto;
 
 import java.util.Scanner;
+import negocio.Mensagens;
 import player.Jogador;
 import player.concretos.Peao;
-import tabuleiro.Ferrovia;
+import tabuleiro.tabuleiroConcreto.Ferrovia;
 import tabuleiro.Lugar;
-import tabuleiro.LugarFisico;
-import tabuleiro.Propriedade;
+import tabuleiro.tabuleiroConcreto.LugarFisico;
+import tabuleiro.tabuleiroConcreto.Propriedade;
 import tabuleiro.Tabuleiro;
 
 /**

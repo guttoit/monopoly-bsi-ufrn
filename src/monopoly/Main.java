@@ -6,8 +6,8 @@
 package monopoly;
 
 import negocio.FactoryCriador;
-import negocio.FactoryUSA;
-import negocio.Jogo;
+import negocio.negocioConcreto.FactoryUSA;
+import negocio.negocioConcreto.Jogo;
 
 
 
