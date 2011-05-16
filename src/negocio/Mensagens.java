@@ -15,6 +15,13 @@ import tabuleiro.Tabuleiro;
  *
  * @author Gutto
  */
+/**
+ *
+ * @interface Mensagens contem as assinaturas dos métodos utilizados por MensagensJogo para exibir
+ * as principais mensagens do sistema.
+ */
+
+
 public interface Mensagens {
 
     public String mensagensBoasVindas();

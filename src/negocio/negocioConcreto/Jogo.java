@@ -22,7 +22,7 @@ import tabuleiro.*;
 
 /**
  *
- * @class A classe Jogo detem os componentes necessarios que são utilizados durante o Jogo.
+ * @class A classe Jogo detem os componentes necessarios para serem utilizados durante o Jogo.
  */
 public class Jogo {
 
@@ -134,7 +134,7 @@ public class Jogo {
     public void iniciaJogo(){
         gerente.gerenciaJogo(tabuleiro, teclado, banco, jogadores, mensagens);
     }
-
+// inicializa as variáveis através do fatory
     public void inicializaVariaveis(){
         gerente = factory.criaGerente(factory);
         tabuleiro = factory.criaTabuleiro(40);
@@ -144,7 +144,7 @@ public class Jogo {
         lugares = factory.criaLugares(40);
         banco = factory.criaBanco();
     }
-
+// cria os lugares com seus atributos
     public void criaLugaresTeste(){
          mediterraneanAvenue= factory.criaPropriedade(tabuleiro, 1, "Mediterranean Avenue", "roxo", 60, 200, 10, 30, 90, 160, 250, 30, 90);
 

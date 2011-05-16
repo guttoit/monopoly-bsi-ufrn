@@ -27,6 +27,14 @@ import tabuleiro.Tabuleiro;
  *
  * @author Gutto
  */
+
+
+/**
+ *
+ * @class A class GerenteConcreto implementa o GerenteJogo. Ela tem a responsabilidade de gerenciar
+ * um modo específico de Jogo.
+ */
+
 public class GerenteConcreto implements GerenteJogo {
 
     private FactoryCriador factory;
@@ -48,7 +56,7 @@ public class GerenteConcreto implements GerenteJogo {
         cores[6] = "Laranja";
         cores[7] = "Rosa";
     }
-
+// faz o peao andar e identifica onde o mesmo se localizará a partir da jogada atual
     public Lugar andaPeao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro) {
         Peao p = jogador.getPeao();
         int auxPosicao = p.getPosicao() + valorDado[0] + valorDado[1];
@@ -74,14 +82,14 @@ public class GerenteConcreto implements GerenteJogo {
 
         return l;
     }
-
+// verifica onde um jogador está localizado no tabuleiro para receber gratificação por uma volta no tabuleiro
     public void verificaPosicao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro) {
         int posicaoAtual = jogador.getPeao().getPosicao();
         if (posicaoAtual < 40 && (posicaoAtual + valorDado[0] + valorDado[1]) > 40) {
             jogador.setDinheiro(jogador.getDinheiro() + 200);
         }
     }
-
+// faz a genrencia da quantidades de jogadores com seus respectivos nomes.
     public void gerenciaJogo(Tabuleiro tab, Scanner teclado, Banco b, List<Jogador> jogadores, Mensagens mensagens) {
         int auxNumJogadores;
         int nivelBurrice = 0;
