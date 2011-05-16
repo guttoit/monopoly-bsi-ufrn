@@ -54,7 +54,7 @@ public class MensagensJogo implements Mensagens {
 
     public String mensagemNome(int numJogador, Scanner teclado) {
         System.out.println("\nEntre com o nome do jogador " + numJogador + " :");
-        String nome = teclado.nextLine().trim();
+        String nome = teclado.next().trim();
 
         return nome;
     }
@@ -70,10 +70,10 @@ public class MensagensJogo implements Mensagens {
 
         String cor = "";
 
-        System.out.println(todasCores);
-        System.out.println("Cor do Jogador " + numJogador + ": ");
+        System.out.println("\n" + todasCores);
+        System.out.println("\nCor do Jogador " + numJogador + ": ");
         while (!acertouCor) {
-            cor = teclado.nextLine().trim();
+            cor = teclado.next().trim();
             for (String c : cores) {
                 if (cor.equalsIgnoreCase(c)) {
                     acertouCor = true;
@@ -82,7 +82,7 @@ public class MensagensJogo implements Mensagens {
             }
 
             System.out.println("\n Essa cor não existe ou não está no nosso jogo. Digite"
-                    + "uma cor da lista de cores : " + todasCores);
+                    + "uma cor da lista de cores : \n" + todasCores);
         }
 
         return cor;
@@ -90,12 +90,12 @@ public class MensagensJogo implements Mensagens {
 
     public void geraStatus(Jogador j, LugarFisico l) {
 
-        System.out.printf("A título da propriedade " + j.getPeao().getPosicao() + " Está disponivel por : " + l.getPreco()
-                + j.getNomeJogador() + " Voce possui " + j.getDinheiro() + "\n Deseja Comprar ?  sim [s] ou nao [n] ");
+        System.out.printf("\nO título da propriedade " + j.getPeao().getPosicao() + " Está disponivel por : " + l.getPreco()
+                + " " + j.getNomeJogador() + ".\n Voce possui " + j.getDinheiro() + "\n Deseja Comprar ?  sim [s] ou nao [n] ");
 
     }
 
-    public void statusJogador(Jogador j, Tabuleiro t  ) {
+    public void statusJogador(Jogador j, Tabuleiro t) {
         // O status de ana – azul é o seguinte:
         //Situado na posição 39 – Boardwalk
         //Possui $304
@@ -103,16 +103,24 @@ public class MensagensJogo implements Mensagens {
         //[Baltic Avenue] – propriedade roxa, aluguel 4
         //[B & O Railroad] – ferrovia, corrida 25
         //[Pennsylvania Avenue] – propriedade verde, aluguel 28
-        System.out.printf(" \nO status de " + j.getNomeJogador() + "- " + j.getPeao().getCorPeao()
-                + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + t.getListaLugar().get(j.getPeao().getPosicao()).getNome()
-                + "\n " + "Possui" + "$" + j.getDinheiro());
+        if (t.getListaLugar().get(j.getPeao().getPosicao()) == null) {
+            System.out.printf(" \nO status de " + j.getNomeJogador() + "- " + j.getPeao().getCorPeao()
+                    + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + " Lugar nao implementado"
+                    + "\n " + "Possui" + "$" + j.getDinheiro()+ "\n");
+        } else {
+            System.out.printf(" \nO status de " + j.getNomeJogador() + "- " + j.getPeao().getCorPeao()
+                    + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + t.getListaLugar().get(j.getPeao().getPosicao()).getNome()
+                    + "\n " + "Possui" + "$" + j.getDinheiro() + "\n");
+        }
         for (Lugar lugar : j.getListaLugarFisico()) {
 
             if (lugar instanceof Propriedade) {
-                System.out.printf(lugar.getNome() + "Propriedade " + j.getPeao().getCorPeao() + lugar.getPreco());
+                Propriedade p = (Propriedade)lugar;
+                System.out.printf("\n Propriedade " + lugar.getNome()+ " " + p.getCor() + " " + lugar.getPreco());
             }
             if (lugar instanceof Ferrovia) {
-                System.out.printf(lugar.getNome() + "Ferrovia " + j.getPeao().getCorPeao() + lugar.getPreco());
+                Ferrovia f = (Ferrovia)lugar;
+                System.out.printf("\n Ferrovia " + lugar.getNome() + lugar.getPreco());
             }
         }
 

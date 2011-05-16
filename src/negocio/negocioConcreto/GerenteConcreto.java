@@ -4,6 +4,7 @@
  */
 package negocio.negocioConcreto;
 
+import java.util.ArrayList;
 import tabuleiro.tabuleiroConcreto.ImpostoRiqueza;
 import tabuleiro.tabuleiroConcreto.ImpostoRenda;
 import java.util.List;
@@ -31,7 +32,7 @@ public class GerenteConcreto implements GerenteJogo {
     private FactoryCriador factory;
     private String cores[] = new String[8];
     private int numJogadores = 0;
-
+    
     public GerenteConcreto(FactoryCriador f) {
         factory = f;
         inicializaCores();
@@ -93,6 +94,8 @@ public class GerenteConcreto implements GerenteJogo {
 
                 if (auxNumJogadores >= 2 && auxNumJogadores <= 8) {
                     numJogadores = auxNumJogadores;
+                    jogadores = factory.criaListaJogadores(numJogadores);
+
 
                 } else {
                     nivelBurrice++;
@@ -100,7 +103,8 @@ public class GerenteConcreto implements GerenteJogo {
                 }
             } else {
                 System.out.println("Digite um número inteiro entre 2 e 8: ");
-                teclado.nextLine();
+                teclado.next();
+
             }
         }
         if (nivelBurrice == 4) {
@@ -109,10 +113,12 @@ public class GerenteConcreto implements GerenteJogo {
 
         String auxCor[] = cores;
         String corDigitada = "";
-        String nome;
+        String nome = "";
+
+
         for (int i = 0; i < numJogadores; i++) {
             System.out.println("\nEntre com o nome do jogador " + i + " :");
-            nome = teclado.nextLine().trim();
+            nome = teclado.next();
             //nome = mensagens.mensagemNome(i, teclado);
             jogadores.get(i).setNomeJogador(nome);
             System.out.println("\n O nome escolhido foi " + nome);
@@ -137,7 +143,7 @@ public class GerenteConcreto implements GerenteJogo {
             i++;
         }
         if (numJogadores == 1) {
-            System.out.println("\n\n\n Parabéns " + jogadores.get(0) + " ! Você é o mais novo"
+            System.out.println("\n\n\n Parabéns " + jogadores.get(0).getNomeJogador() + " ! Você é o mais novo"
                     + " milionario da America!");
             System.exit(0);
         }
@@ -151,7 +157,7 @@ public class GerenteConcreto implements GerenteJogo {
         System.out.println("\nA jogada de " + jogadorVez.getNomeJogador() + " comecou.");
         System.out.println("\nComandos disponiveis: [Jogar]   [Sair]   [status]");
         System.out.println("\nEntre com o comando");
-        comando = teclado.nextLine().trim();
+        comando = teclado.next().trim();
         while (!acertouComando) {
             if (comando.equalsIgnoreCase("sair")) {
                 acertouComando = true;
@@ -159,7 +165,7 @@ public class GerenteConcreto implements GerenteJogo {
                 if (jogadores.size() <= 1) {
                     System.exit(0);
                 }
-
+                return;
             } else if (comando.equalsIgnoreCase("jogar")) {
                 // jogadorVez.jogaDado(new DadoDuplo());
                 acertouComando = true;
@@ -191,11 +197,11 @@ public class GerenteConcreto implements GerenteJogo {
             } else {
                 System.out.println("Comando errado. Os comandos disponíveis sao: [jogar] [sair] [status] "
                         + "\n Digite um desses comandos... ");
-                comando = teclado.nextLine().trim();
+                comando = teclado.next().trim();
             }
         }
-        if (jogadorVez.getDinheiro() <= 0) {
-            System.out.println("Você perdeu. Seu saldo e: " + jogadorVez.getDinheiro());
+        if (jogadorVez.getDinheiro() <= 0 ) {
+            System.out.println("\n" + jogadorVez.getNomeJogador() + " Você perdeu. Seu saldo é: " + jogadorVez.getDinheiro());
             numJogadores--;
             jogadores.remove(jogadorVez);
         }
@@ -242,11 +248,12 @@ public class GerenteConcreto implements GerenteJogo {
             while (!acertouComando) {
 
                 //Criar essa mensagem em mensagem mensagens.mensagemCompra(jogador, l);
-                comprou = teclado.nextLine();
+                comprou = teclado.next();
                 if (comprou.trim().equalsIgnoreCase("s") || comprou.trim().equalsIgnoreCase("Sim")) {
                     if (jogador.getDinheiro() > l.getPreco()) {
                         jogador.setDinheiro((float) (jogador.getDinheiro() - l.getPreco()));
                         l.setProprietario(jogador);
+                        jogador.getListaLugarFisico().add(l);
                         acertouComando = true;
                         return true;
                     } else {
