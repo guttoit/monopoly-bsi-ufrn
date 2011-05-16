@@ -2,10 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package negocio;
+package negocio.negocioConcreto;
 
 import java.util.ArrayList;
 import java.util.List;
+import negocio.Banco;
+import negocio.FactoryCriador;
+import negocio.GerenteJogo;
+import negocio.Mensagens;
 import player.Dado;
 import player.Jogador;
 import player.concretos.DadoDuplo;
@@ -13,13 +17,13 @@ import player.concretos.JogadorConcreto;
 import player.concretos.Peao;
 import tabuleiro.Carta;
 import tabuleiro.Chance;
-import tabuleiro.Ferrovia;
-import tabuleiro.ImpostoRenda;
-import tabuleiro.ImpostoRiqueza;
+import tabuleiro.tabuleiroConcreto.Ferrovia;
+import tabuleiro.tabuleiroConcreto.ImpostoRenda;
+import tabuleiro.tabuleiroConcreto.ImpostoRiqueza;
 import tabuleiro.Lugar;
-import tabuleiro.Propriedade;
+import tabuleiro.tabuleiroConcreto.Propriedade;
 import tabuleiro.Tabuleiro;
-import tabuleiro.TabuleiroUSA;
+import tabuleiro.tabuleiroConcreto.TabuleiroUSA;
 
 /**
  *

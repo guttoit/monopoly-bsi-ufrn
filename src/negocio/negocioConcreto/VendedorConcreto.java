@@ -3,12 +3,13 @@
  * and open the template in the editor.
  */
 
-package negocio;
+package negocio.negocioConcreto;
 
 import java.util.List;
+import negocio.Vendendor;
 import player.Jogador;
 import tabuleiro.Lugar;
-import tabuleiro.LugarFisico;
+import tabuleiro.tabuleiroConcreto.LugarFisico;
 
 /**
  *

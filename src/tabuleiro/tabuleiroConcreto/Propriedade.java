@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package tabuleiro;
+package tabuleiro.tabuleiroConcreto;
 
 /**
  *
@@ -11,6 +11,7 @@ package tabuleiro;
 public class Propriedade extends LugarFisico {
 
     private float aluguelSemCasa;
+    private float aluguelAtual;
     private int nCasas;
     private float hotel;
     private float aluguelCasa1;
@@ -38,6 +39,7 @@ public class Propriedade extends LugarFisico {
         int nivel;
         this.precoCasa = precoCasa;
         aluguelSemCasa = aluguelSCasa;
+        aluguelAtual = aluguelSCasa;
     }
 
     public float getAluguelSemCasa() {
@@ -114,6 +116,15 @@ public class Propriedade extends LugarFisico {
         this.nCasas = nCasas;
     }
 
+    public float getAluguelAtual() {
+        return aluguelAtual;
+    }
+
+    public void setAluguelAtual(float aluguelAtual) {
+        this.aluguelAtual = aluguelAtual;
+    }
+
+    
        
 
     
