@@ -8,7 +8,7 @@ package negocio;
 import java.util.List;
 import player.Jogador;
 import tabuleiro.Lugar;
-import tabuleiro.LugarFisico;
+import tabuleiro.tabuleiroConcreto.LugarFisico;
 
 /**
  *

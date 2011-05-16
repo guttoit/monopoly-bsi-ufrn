@@ -10,11 +10,11 @@ import player.Jogador;
 import player.concretos.Peao;
 import tabuleiro.Carta;
 import tabuleiro.Chance;
-import tabuleiro.Ferrovia;
-import tabuleiro.ImpostoRenda;
-import tabuleiro.ImpostoRiqueza;
+import tabuleiro.tabuleiroConcreto.Ferrovia;
+import tabuleiro.tabuleiroConcreto.ImpostoRenda;
+import tabuleiro.tabuleiroConcreto.ImpostoRiqueza;
 import tabuleiro.Lugar;
-import tabuleiro.Propriedade;
+import tabuleiro.tabuleiroConcreto.Propriedade;
 import tabuleiro.Tabuleiro;
 
 /**

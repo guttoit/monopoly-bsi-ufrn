@@ -3,14 +3,14 @@
  * and open the template in the editor.
  */
 
-package negocio;
+package negocio.negocioConcreto;
+
+import negocio.Banco;
 
 /**
  *
- * @author Adm
+ * @author Gutto
  */
-class ImpostoRenda {
-
+public class BancoConcreto extends Banco{
     
-
 }
