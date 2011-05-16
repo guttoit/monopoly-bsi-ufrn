@@ -13,6 +13,10 @@ import tabuleiro.tabuleiroConcreto.LugarFisico;
  *
  * @author Gutto
  */
+
+  /**
+     *@class A classe jogadorConcreto é uma classe concreta que extende jogador. A mesma tem um peao e o nome especificos para este jogo.
+     */
 public class JogadorConcreto extends Jogador {
 
     

@@ -11,6 +11,13 @@ import tabuleiro.Imposto;
  *
  * @author Adm
  */
+
+
+ /*
+     *@class A classe ImpostoRiqueza é uma classe concreta. É um tipo de imposto que representa uma taxa de $75 a ser paga pelo jogardo
+   * que cair neste lugar.
+     *
+     */
 public class ImpostoRiqueza extends Imposto{
 
 

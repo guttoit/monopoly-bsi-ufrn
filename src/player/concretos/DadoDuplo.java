@@ -12,6 +12,11 @@ import player.Dado;
  *
  * @author Gutto
  */
+
+      /**
+     *@class A classe dadoDuplo é uma classe concreta que implementa um dado. A mesma tem a essecialidade de gerar dois numeros aleatórios
+     * a ser ultilizado pelo jogador durante sua jogada.
+     */
 public class DadoDuplo implements Dado{
 
     public DadoDuplo(){

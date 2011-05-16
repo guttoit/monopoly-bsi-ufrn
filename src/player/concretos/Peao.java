@@ -9,6 +9,13 @@ package player.concretos;
  *
  * @author Adm
  */
+
+
+/**
+ *
+ * @class A classe peao pertence a um jogador e fica em uma das posiçoes do tabuleiro.Além disso, detem a posição
+ * onde está localizada jutamente com sua cor
+ */
 public class Peao {
 
     private String corPeao;

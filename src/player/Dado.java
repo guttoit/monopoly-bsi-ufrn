@@ -11,6 +11,11 @@ package player;
  *
  * @author Adm
  */
+
+  /**
+     *@interface Dado é uma interface. Quando jogador a utiliza, a mesma resulta  valores equivalentes a
+   * proxima posição que o mesma vai se alocar.
+     */
 public interface Dado {
      public Integer[] gerarNumero();
 }

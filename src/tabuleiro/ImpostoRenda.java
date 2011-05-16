@@ -12,8 +12,8 @@ package tabuleiro;
 
 /**
  *
- * @class A class ImpostoRenda é um tipo de imposto. Representa uma taxa de 200 a ser paga pelo jogador 
- * ao Banco. 
+ * @class A class ImpostoRenda é um tipo de imposto. Representa uma taxa de a ser paga pelo jogador
+ * ao Banco. Serve de interface para outros tipos de imposto de renda.
  */
 
 

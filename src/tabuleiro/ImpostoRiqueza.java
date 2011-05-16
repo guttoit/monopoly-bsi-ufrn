@@ -12,8 +12,8 @@ package tabuleiro;
 
 /**
  *
- * @class A class ImpostoRiqueza é um tipo de imposto. Representa uma taxa de $75 a ser paga pelo jogador
- * ao Banco.
+ * @class A class ImpostoRiqueza é um tipo de imposto. Representa uma taxa a ser paga pelo jogador
+ * ao Banco. Serve de interface para outros tipos de imposto riqueza.
  */
 public class ImpostoRiqueza extends Imposto{
 
