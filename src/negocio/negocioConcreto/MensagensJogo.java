@@ -35,7 +35,8 @@ public class MensagensJogo implements Mensagens {
 
  /**
  * Metodo para mostrar mensagem de tetativas de execucoes erradas.
- * @param nivelBurrice int, numDigitado int
+ * @param nivelBurrice
+  * @param numDigitado
  */
     public String nivelBurrice(int nivelBurrice, int numDigitado) {
         String mensBurrice = "";
@@ -69,7 +70,10 @@ public class MensagensJogo implements Mensagens {
 
     /**
  * Metodo para mostrar a mensagem inicial pedindo o nome do jogador
- * @param numJogador int, numDigitado Scanner
+ * @param numJogador
+ * @param  teclado
+ *
+ * @return  String
  */
     public String mensagemNome(int numJogador, Scanner teclado) {
         System.out.println("\nEntre com o nome do jogador " + numJogador + " :");
@@ -81,7 +85,11 @@ public class MensagensJogo implements Mensagens {
 
  /**
  * Metodo para mostrar as mensagem com as cores disponiveis no jogo
- * @param jogador Jogador, cores String[], numJogador int, teclado Scanner
+ * @param jogador Jogador, 
+  * @param cores
+  * @param numJogador
+  * @param teclado
+  * @return String
  */
     public String mensagemCores(Jogador jogador, String[] cores, int numJogador, Scanner teclado) {
 
@@ -111,14 +119,28 @@ public class MensagensJogo implements Mensagens {
 
         return cor;
     }
-// mostra em que posicao está a propriedade e pegunta se o jogador deseja comprá-la
+
+
+
+
+ /**
+  * * Metodo para mostrar em que posicao está a propriedade e pegunta se o jogador deseja comprá-la
+  * @param j
+  * @param l
+  */
+
     public void geraStatus(Jogador j, LugarFisico l) {
 
         System.out.printf("\nO título da propriedade " + j.getPeao().getPosicao() + " Está disponivel por : " + l.getPreco()
                 + " " + j.getNomeJogador() + ".\n Voce possui " + j.getDinheiro() + "\n Deseja Comprar ?  sim [s] ou nao [n] ");
 
     }
-// mostra a situacao atual do jogador
+
+    /**
+     * Metodo para mostrar a situacao atual do jogador
+     * @param j
+     * @param t
+     */
     public void statusJogador(Jogador j, Tabuleiro t) {
         
         if (t.getListaLugar().get(j.getPeao().getPosicao()) == null) {
