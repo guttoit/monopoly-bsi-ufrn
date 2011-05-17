@@ -68,7 +68,7 @@ public class GerenteConcreto implements GerenteJogo {
 
         verificaPosicao(valorDado, jogador, tabuleiro);
 
-        if (auxPosicao > 40) {
+        if (auxPosicao >= 40) {
             p.setPosicao(0 + auxPosicao - 40);
         }
         Lugar l = tabuleiro.getListaLugar().get(valorDado[0] + valorDado[1] + jogador.getPeao().getPosicao());
@@ -147,7 +147,7 @@ public class GerenteConcreto implements GerenteJogo {
 
 
         for (int i = 0; i < numJogadores; i++) {
-            System.out.println("\nEntre com o nome do jogador " + i + " :");
+            System.out.println("\nEntre com o nome do jogador " + (i+1) + " :");
             nome = teclado.next();
             //nome = mensagens.mensagemNome(i, teclado);
             jogadores.get(i).setNomeJogador(nome);
@@ -165,12 +165,18 @@ public class GerenteConcreto implements GerenteJogo {
 
         System.out.println("\nO jogo iniciou\n");
         int i = 0;
+        int j = 0;
         while (numJogadores >= 2) {
             if (i >= numJogadores) {
                 i = 0;
             }
-            realizaJogada(jogadores, tab, jogadores.get(i), teclado, b, mensagens);
-            i++;
+            j = realizaJogada(jogadores, tab, jogadores.get(i), teclado, b, mensagens, i);
+            if(i == j){
+                i++;
+            }else{
+                i = j;
+            }
+            
         }
         if (numJogadores == 1) {
             System.out.println("\n\n\n Parabéns " + jogadores.get(0).getNomeJogador() + " ! Você é o mais novo"
@@ -188,7 +194,7 @@ public class GerenteConcreto implements GerenteJogo {
      * @param b
      * @param mensagens
      */
-    public void realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens) {
+    public int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens, int numJogAtual) {
         Lugar l;
         String comando = "";
         boolean acertouComando = false;
@@ -201,10 +207,12 @@ public class GerenteConcreto implements GerenteJogo {
             if (comando.equalsIgnoreCase("sair")) {
                 acertouComando = true;
                 jogadores.remove(jogadorVez);
+                numJogadores--;
+                //numJogAtual --;
                 if (jogadores.size() <= 1) {
                     System.exit(0);
                 }
-                return;
+                return numJogAtual;
             } else if (comando.equalsIgnoreCase("jogar")) {
                 // jogadorVez.jogaDado(new DadoDuplo());
                 acertouComando = true;
@@ -224,6 +232,7 @@ public class GerenteConcreto implements GerenteJogo {
                     descontaImposto(l, jogadorVez, b);
                     if (jogadorVez.getDinheiro() <= 0) {
                         System.out.println("Você perdeu. Seu saldo e: " + jogadorVez.getDinheiro());
+                  //      numJogAtual--;
                         numJogadores--;
                         jogadores.remove(jogadorVez);
                     }
@@ -241,9 +250,11 @@ public class GerenteConcreto implements GerenteJogo {
         }
         if (jogadorVez.getDinheiro() <= 0 ) {
             System.out.println("\n" + jogadorVez.getNomeJogador() + " Você perdeu. Seu saldo é: " + jogadorVez.getDinheiro());
+            //numJogAtual--;
             numJogadores--;
             jogadores.remove(jogadorVez);
         }
+        return numJogAtual;
 
     }
  

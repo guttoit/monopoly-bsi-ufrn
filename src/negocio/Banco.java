@@ -15,13 +15,21 @@ import tabuleiro.Lugar;
 
 /**
  *
- * @class Banco é uma classe abstrata que serve como inteface para bancoConcreto. Sua responsabilidade
- * é armazenar valores dos jogadores como resceber impostos.
+ * Banco é uma classe abstrata que serve como inteface para qualquer bancoConcreto. Sua responsabilidade
+ * é receber o pagamento das propriedades oferecidas aos jogadores bem como receber o pagamento de
+ * impostos.
  */
 
 public abstract class Banco {
 
     public Banco() {
+    }
+    /**
+     * Construtor do banco que recebe uma lista de lugares do tabuleiro como parâmetro.
+     * @param lugares
+     */
+    public Banco(List<Lugar> lugares) {
+        this.lugares = lugares;
     }
     private List<Lugar> lugares;
     
