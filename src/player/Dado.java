@@ -13,7 +13,7 @@ package player;
  */
 
   /**
-     *@interface Dado é uma interface. Quando jogador a utiliza, a mesma resulta  valores equivalentes a
+     *@interface  é uma interface. Quando jogador a utiliza, a mesma resulta  valores equivalentes a
    * proxima posição que o mesma vai se alocar.
      */
 public interface Dado {

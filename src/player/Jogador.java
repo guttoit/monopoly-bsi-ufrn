@@ -39,12 +39,11 @@ public abstract class Jogador {
 // Assinatura do metodo abstrato jogaDado que recebe uma instancia de dado com parametro.
     public abstract Integer[] jogaDado(Dado dado);
 
-        
-// Assinatura do metodo abstrato compra que serve para verificar se um jogador quer comprar um lugar fisico
-    public abstract boolean comprar(LugarFisico lugarFisico);
-// Assinatura do metodo compra que serve para jogador  comprar num leilao
-    public abstract float compraEmLeilao(LugarFisico lugarFisico, float valorAtual);
-//  metodo que pega uma lista de lugares fisicos
+
+     /**
+     *  metodo que pega uma lista de lugares fisicos
+     * @return List<LugarFisico>
+     */
     public List<LugarFisico> getListaLugarFisico() {
         return listaLugarFisico;
     }
@@ -75,6 +74,10 @@ public abstract class Jogador {
 
     public void setNomeJogador(String nomeJogador) {
         this.nomeJogador = nomeJogador;
+    }
+
+    public boolean comprar(LugarFisico l) {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     

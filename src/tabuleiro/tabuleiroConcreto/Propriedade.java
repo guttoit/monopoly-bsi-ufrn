@@ -33,6 +33,9 @@ public class Propriedade extends LugarFisico {
     public Propriedade() {
     }
 
+
+
+
     public Propriedade(int posicao,String nome, String cor, float precoP, float aluguelSCasa,float c1, float c2, float c3, float c4, float hotel,  float hip, float precoCasa){
         super.setPreco(precoP);
         super.setNome(nome);

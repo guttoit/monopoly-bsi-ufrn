@@ -28,20 +28,19 @@ public class JogadorConcreto extends Jogador {
         super(p,nome);
     }
 
-    @Override
-    public boolean comprar(LugarFisico lugarFisico) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public float compraEmLeilao(LugarFisico lugarFisico, float valorAtual) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+     /**
+     * Método que recebe um dado como parametro e chama gerarnumero().
+     *@param dado Dado
+     * @return Integer[] int com os numeros gerados
+     *
+     */
 
     @Override
     public Integer[] jogaDado(Dado dado) {
         return dado.gerarNumero();
     }
+
+   
 
     /*@Override
      Integer[] jogaDado(Dado dado) {

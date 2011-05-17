@@ -12,7 +12,7 @@ package tabuleiro;
 
 /**
  *
- * @interface A classe Lugar é uma interface que representa qualquer lugar do tabuleiro.
+ * @class A classe Lugar é uma interface que representa qualquer lugar do tabuleiro.
  *
  */
 public abstract class Lugar {
