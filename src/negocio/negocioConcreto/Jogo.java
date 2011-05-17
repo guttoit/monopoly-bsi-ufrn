@@ -134,7 +134,10 @@ public class Jogo {
     public void iniciaJogo(){
         gerente.gerenciaJogo(tabuleiro, teclado, banco, jogadores, mensagens);
     }
-// inicializa as variáveis através do fatory
+
+    /**
+     * inicializa as variáveis através do fatory
+     */
     public void inicializaVariaveis(){
         gerente = factory.criaGerente(factory);
         tabuleiro = factory.criaTabuleiro(40);
@@ -144,7 +147,10 @@ public class Jogo {
         lugares = factory.criaLugares(40);
         banco = factory.criaBanco();
     }
-// cria os lugares com seus atributos
+
+    /**
+     * cria os lugares com seus atributos
+     */
     public void criaLugaresTeste(){
          mediterraneanAvenue= factory.criaPropriedade(tabuleiro, 1, "Mediterranean Avenue", "roxo", 60, 200, 10, 30, 90, 160, 250, 30, 90);
 
@@ -226,6 +232,9 @@ public class Jogo {
 
          go= factory.criaLugar(tabuleiro,0, "inicio");
     }
+    /**
+     * Metodo para criar lugares no Tabuleiro.
+     */
     public void criarLugares(){
         
 
@@ -309,7 +318,11 @@ public class Jogo {
 
          go= factory.criaPropriedade(tabuleiro,0, "go", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
     }
-// monta o tabuleiro com seus respectivos lugares.
+    /**
+     * Metodo para montar o tabuleiro com seus respectivos lugares.
+     * @param t
+     * @param lugares
+     */
     public void montaTabuleiro(Tabuleiro t, List<Lugar> lugares) {
         if (t.getNumCasas() != lugares.size()) {
         } else {
@@ -318,7 +331,11 @@ public class Jogo {
             }
         }
     }
-//pega uma lista de jogadores e os retorna
+
+    /**
+     * pega uma lista de jogadores e os retorna
+     * @return List<Jogador>
+     */
     public List<Jogador> getJogadores() {
         return jogadores;
     }
