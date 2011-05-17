@@ -55,7 +55,13 @@ public class GerenteConcreto implements GerenteJogo {
         cores[6] = "Laranja";
         cores[7] = "Rosa";
     }
-// faz o peao andar e identifica onde o mesmo se localizará a partir da jogada atual
+    /**
+     * Faz o peao andar e identifica onde o mesmo se localizará a partir da jogada atual
+     * @param valorDado
+     * @param jogador
+     * @param tabuleiro
+     * @return Lugar
+     */
     public Lugar andaPeao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro) {
         Peao p = jogador.getPeao();
         int auxPosicao = p.getPosicao() + valorDado[0] + valorDado[1];
@@ -81,14 +87,31 @@ public class GerenteConcreto implements GerenteJogo {
 
         return l;
     }
-// verifica onde um jogador está localizado no tabuleiro para receber gratificação por uma volta no tabuleiro
+ 
+    /**
+     * Verifica onde um jogador está localizado no tabuleiro 
+     * para receber gratificação por dar uma volta no tabuleiro 
+     * @param valorDado
+     * @param jogador
+     * @param tabuleiro
+     */
+
     public void verificaPosicao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro) {
         int posicaoAtual = jogador.getPeao().getPosicao();
         if (posicaoAtual < 40 && (posicaoAtual + valorDado[0] + valorDado[1]) > 40) {
             jogador.setDinheiro(jogador.getDinheiro() + 200);
         }
     }
-// faz a genrencia da quantidades de jogadores com seus respectivos nomes.
+
+    /**
+     * Método utilizado pra gerenciar o jogo. É ele que "conversa" com o jogador ou dispara outros 
+     * métodos. 
+     * @param tab
+     * @param teclado
+     * @param b
+     * @param jogadores
+     * @param mensagens
+     */
     public void gerenciaJogo(Tabuleiro tab, Scanner teclado, Banco b, List<Jogador> jogadores, Mensagens mensagens) {
         int auxNumJogadores;
         int nivelBurrice = 0;
@@ -154,8 +177,17 @@ public class GerenteConcreto implements GerenteJogo {
                     + " milionario da America!");
             System.exit(0);
         }
-    }
-// metodo que vai decidir qual tipo de jogada o jogador realizará.
+    } 
+    /**
+     * Método responsável por analisar e realizar a jogada escolhida pelo jogador. Ele é chamado
+     * pelo método gerenciaJogo, logo após a fase de coleta das informações dos jogadores.
+     * @param jogadores
+     * @param tab
+     * @param jogadorVez
+     * @param teclado
+     * @param b
+     * @param mensagens
+     */
     public void realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens) {
         Lugar l;
         String comando = "";
@@ -183,7 +215,7 @@ public class GerenteConcreto implements GerenteJogo {
                     LugarFisico lf = (LugarFisico) l;
                     if (lf.getProprietario() == null) {
                         mensagens.geraStatus(jogadorVez, lf);
-                        gerenciaCompra(lf, jogadorVez, teclado);
+                        gerenciaCompra(lf, jogadorVez, teclado, b);
                     } else {
                         descontaAluguel(lf, jogadorVez);
                     }
@@ -214,7 +246,13 @@ public class GerenteConcreto implements GerenteJogo {
         }
 
     }
-// metodo que ira descontar alugual do jogador de acordo com a quantidade de ferrovias que o dono tem.
+ 
+    /**
+     * Método chamado caso o jogador caia em uma lugarFisico que já tenha dono, como uma propriedade
+     * ou uma ferrovia. Ele irá anilsar e descontar o preço do aluguel daquele lugar.
+     * @param lf
+     * @param jogadorVez
+     */
     public void descontaAluguel(LugarFisico lf, Jogador jogadorVez) {
 
         Jogador proprietario = lf.getProprietario();
@@ -234,7 +272,15 @@ public class GerenteConcreto implements GerenteJogo {
         }
 
     }
-// metodo que ira descontar o imposto do jogador de acordo com o tipo de imposto, mandando o dinheiro descontado para o banco
+
+    /**
+     * Esse método será chamado caso o jogador caia em uma posição que represente um imposto, que pode ser
+     * imposto de renda ou imposto de riqueza. Descontando o seu respectivo valor no dinheiro do jogador
+     * e enviando ao banco.
+     * @param l
+     * @param jogadorVez
+     * @param b
+     */
     public void descontaImposto(Lugar l, Jogador jogadorVez, Banco b) {
         Imposto imposto = (Imposto) l;
         if (imposto instanceof ImpostoRenda) {
@@ -247,10 +293,17 @@ public class GerenteConcreto implements GerenteJogo {
             b.setDinheiroEmCaixa(b.getDinheiroEmCaixa() + 75);
         }
     }
-//Gerencia compra é responsável por decidir se o jogador fará uma compra ou não.
-//
-//
-    public boolean gerenciaCompra(LugarFisico l, Jogador jogador, Scanner teclado) {
+
+
+    /**
+     * Gerencia compra é responsável por receber o comando do jogador dizendo se ele comprou ou não
+     * o lugarFísico oferecido.
+     * @param l
+     * @param jogador
+     * @param teclado
+     * @return boolean
+     */
+    public boolean gerenciaCompra(LugarFisico l, Jogador jogador, Scanner teclado, Banco b) {
         String comprou = "";
         boolean acertouComando = false;
         if (l.getProprietario() == null) {
@@ -261,6 +314,7 @@ public class GerenteConcreto implements GerenteJogo {
                 if (comprou.trim().equalsIgnoreCase("s") || comprou.trim().equalsIgnoreCase("Sim")) {
                     if (jogador.getDinheiro() > l.getPreco()) {
                         jogador.setDinheiro((float) (jogador.getDinheiro() - l.getPreco()));
+                        b.setDinheiroEmCaixa((float) (b.getDinheiroEmCaixa() + l.getPreco()));
                         l.setProprietario(jogador);
                         jogador.getListaLugarFisico().add(l);
                         acertouComando = true;
