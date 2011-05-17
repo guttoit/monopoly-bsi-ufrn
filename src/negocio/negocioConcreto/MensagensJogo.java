@@ -30,7 +30,13 @@ public class MensagensJogo implements Mensagens {
     public String mensagensBoasVindas() {
         return null;
     }
-// mensagem de tetativas de execucao erradas.
+
+
+
+ /**
+ * Metodo para mostrar mensagem de tetativas de execucoes erradas.
+ * @param nivelBurrice int, numDigitado int
+ */
     public String nivelBurrice(int nivelBurrice, int numDigitado) {
         String mensBurrice = "";
         switch (nivelBurrice) {
@@ -58,14 +64,25 @@ public class MensagensJogo implements Mensagens {
         }
         return mensBurrice;
     }
-// mansagem inicial pedindo o nome do jogador
+//
+
+
+    /**
+ * Metodo para mostrar a mensagem inicial pedindo o nome do jogador
+ * @param numJogador int, numDigitado Scanner
+ */
     public String mensagemNome(int numJogador, Scanner teclado) {
         System.out.println("\nEntre com o nome do jogador " + numJogador + " :");
         String nome = teclado.next().trim();
 
         return nome;
     }
-// mostra as cores disponiveis
+//
+
+ /**
+ * Metodo para mostrar as mensagem com as cores disponiveis no jogo
+ * @param jogador Jogador, cores String[], numJogador int, teclado Scanner
+ */
     public String mensagemCores(Jogador jogador, String[] cores, int numJogador, Scanner teclado) {
 
         boolean acertouCor = false;
