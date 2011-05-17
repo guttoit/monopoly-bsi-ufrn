@@ -25,11 +25,9 @@ public class VendedorConcreto implements Vendendor{
     /**
     *  Metodo para vender um lugar físico e passar a posse da propriedade para o jogador.
     *
-    * @paran jogador Jogador, lugar Lugar
-    *
+    *@paran jogador 
+    *@param lugar
     */
-
-
     public void vendeLugarFisico(Jogador jogador, Lugar lugarFisico) {
         LugarFisico l = (LugarFisico) lugarFisico;
         if(jogador.comprar(l)){
