@@ -12,11 +12,11 @@ import tabuleiro.Imposto;
  * @author Adm
  */
 
-  /*
-     *@class A classe ImpostoRenda é uma classe concreta. É um tipo de imposto que representa uma taxa de $200 a ser paga pelo jogardo
+  /**
+   *@class A classe ImpostoRenda é uma classe concreta. É um tipo de imposto que representa uma taxa de $200 a ser paga pelo jogardo
    * que cair neste lugar.
-     *
-     */
+   *
+   */
 
 
 public class ImpostoRenda extends Imposto {

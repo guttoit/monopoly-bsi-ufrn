@@ -23,6 +23,12 @@ public class DadoDuplo implements Dado{
         
     }
 
+     /**
+     * Método que irá gerar dois numeros aleatórios entre 1 e 6 cada um.
+     *
+     * @return numeros
+     */
+
     public Integer[] gerarNumero() {
         Random random = new Random();
         Integer[] numeros = new Integer[2];

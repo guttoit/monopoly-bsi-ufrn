@@ -30,8 +30,10 @@ public abstract class Tabuleiro {
         listaLugar = new ArrayList<Lugar>();
         iniciaListaLugar(numCasas);
     }
-
-
+     /**
+      * Metodo que inicializa uma lista de lugares com null
+     * @param num int
+     */
 
     public void iniciaListaLugar(int num){
         for(int i=0; i<num; i++){
@@ -41,16 +43,18 @@ public abstract class Tabuleiro {
         }
 
     }
+     /**
+     * Método que  pega uma lista de lugares
+     *
+     *
+     *
+     */
 
     public void addLugar(Lugar l){
         listaLugar.add(l.getPosicao(), l);
     }
-    /**
-     * Método que  pega uma lista de lugares
-     *
-     * @return listaLugar
-     *
-     */
+
+
 
     public List<Lugar> getListaLugar() {
         return listaLugar;
