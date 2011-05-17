@@ -24,12 +24,46 @@ import tabuleiro.Tabuleiro;
  */
 public  interface GerenteJogo {
 
+    /**
+     * Faz o peao andar e identifica onde o mesmo se localizará a partir da jogada atual
+     * @param valorDado
+     * @param jogador
+     * @param tabuleiro
+     * @return Lugar
+     */
       public Lugar andaPeao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro);
 
+      /**
+     * Método utilizado pra gerenciar o jogo. É ele que "conversa" com o jogador ou dispara outros
+     * métodos.
+     * @param tab
+     * @param teclado
+     * @param b
+     * @param jogadores
+     * @param mensagens
+     */
     public void gerenciaJogo(Tabuleiro tab, Scanner teclado, Banco b, List<Jogador> jogadores, Mensagens mensagens);
 
+    /**
+     * Método responsável por analisar e realizar a jogada escolhida pelo jogador. Ele é chamado
+     * pelo método gerenciaJogo, logo após a fase de coleta das informações dos jogadores.
+     * @param jogadores
+     * @param tab
+     * @param jogadorVez
+     * @param teclado
+     * @param b
+     * @param mensagens
+     */
     public void realizaJogada(List<Jogador> jogadores,Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens);
 
-    public boolean gerenciaCompra(LugarFisico l, Jogador jogador, Scanner teclado);
+    /**
+     * Gerencia compra é responsável por receber o comando do jogador dizendo se ele comprou ou não
+     * o lugarFísico oferecido.
+     * @param l
+     * @param jogador
+     * @param teclado
+     * @return boolean
+     */
+    public boolean gerenciaCompra(LugarFisico l, Jogador jogador, Scanner teclado, Banco b);
 
 }
