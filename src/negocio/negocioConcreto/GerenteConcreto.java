@@ -55,13 +55,7 @@ public class GerenteConcreto implements GerenteJogo {
         cores[6] = "Laranja";
         cores[7] = "Rosa";
     }
-    /**
-     * Faz o peao andar e identifica onde o mesmo se localizará a partir da jogada atual
-     * @param valorDado
-     * @param jogador
-     * @param tabuleiro
-     * @return Lugar
-     */
+
     public Lugar andaPeao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro) {
         Peao p = jogador.getPeao();
         int auxPosicao = p.getPosicao() + valorDado[0] + valorDado[1];
