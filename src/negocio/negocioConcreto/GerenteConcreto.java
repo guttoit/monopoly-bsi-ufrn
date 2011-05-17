@@ -4,7 +4,6 @@
  */
 package negocio.negocioConcreto;
 
-import java.util.ArrayList;
 import tabuleiro.tabuleiroConcreto.ImpostoRiqueza;
 import tabuleiro.tabuleiroConcreto.ImpostoRenda;
 import java.util.List;

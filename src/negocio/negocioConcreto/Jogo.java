@@ -10,7 +10,6 @@ import negocio.Banco;
 import negocio.FactoryCriador;
 import negocio.GerenteJogo;
 import negocio.Mensagens;
-import negocio.Vendendor;
 import player.Dado;
 import player.Jogador;
 import player.concretos.Peao;
@@ -29,7 +28,6 @@ public class Jogo {
     private FactoryCriador factory;
     private List<Jogador> jogadores;
     private GerenteJogo gerente;
-    private Vendendor vendedor;
     private Dado dado;
     private Peao peao;
     private Mensagens mensagens;
@@ -367,11 +365,4 @@ public class Jogo {
         this.tabuleiro = tabuleiro;
     }
 
-    public Vendendor getVendedor() {
-        return vendedor;
-    }
-
-    public void setVendedor(Vendendor vendedor) {
-        this.vendedor = vendedor;
-    }
 }
