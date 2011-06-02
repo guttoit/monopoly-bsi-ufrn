@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -13,6 +14,7 @@ import negocio.FactoryCriador;
 import negocio.GerenteJogo;
 import negocio.Mensagens;
 import player.Jogador;
+import player.concretos.Baralho;
 import player.concretos.DadoDuplo;
 import player.concretos.Peao;
 import tabuleiro.tabuleiroConcreto.Ferrovia;
@@ -21,6 +23,8 @@ import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.tabuleiroConcreto.Propriedade;
 import tabuleiro.Tabuleiro;
+import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
+import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
 
 /**
  *
@@ -97,6 +101,7 @@ public class GerenteConcreto implements GerenteJogo {
             jogador.setDinheiro(jogador.getDinheiro() + 200);
             return true;
         }
+
         return false;
     }
 
@@ -219,6 +224,10 @@ public class GerenteConcreto implements GerenteJogo {
                     System.out.println("\nNao faz nada.");
                 } else if (l.getPosicao() == 40) {
                     //Não faz nada
+                } else if (l instanceof CofreComunitarioConcreto) {
+                    //Implementear
+                } else if (l instanceof SorteRevesConcreto) {
+                    //Implementar
                 } else if (l instanceof LugarFisico) {
                     LugarFisico lf = (LugarFisico) l;
                     if (lf.getProprietario() == null) {
@@ -230,12 +239,7 @@ public class GerenteConcreto implements GerenteJogo {
 
                 } else if (l instanceof Imposto) {
                     descontaImposto(l, jogadorVez, b);
-                    if (jogadorVez.getDinheiro() <= 0) {
-                        System.out.println("Você perdeu. Seu saldo e: " + jogadorVez.getDinheiro());
-                        //      numJogAtual--;
-                        numJogadores--;
-                        jogadores.remove(jogadorVez);
-                    }
+
                 } else {
                     //ImplementarCompanhia e
                 }
@@ -248,6 +252,7 @@ public class GerenteConcreto implements GerenteJogo {
                 comando = teclado.next().trim();
             }
         }
+
         if (jogadorVez.getDinheiro() <= 0) {
             System.out.println("\n" + jogadorVez.getNomeJogador() + " Você perdeu. Seu saldo é: " + jogadorVez.getDinheiro());
             //numJogAtual--;
