@@ -12,6 +12,8 @@ import negocio.GerenteJogo;
 import negocio.Mensagens;
 import player.Dado;
 import player.Jogador;
+import player.concretos.Baralho;
+import player.concretos.CartaCofresComunitarios;
 import player.concretos.Peao;
 import tabuleiro.*;
 /**
@@ -37,6 +39,9 @@ public class Jogo {
     private List<Lugar> lugares;
     private Scanner teclado;
     private Banco banco;
+
+    private Baralho baralho;
+
 
     private Lugar posicaoZero;
     private Lugar mediterraneanAvenue;
@@ -118,6 +123,7 @@ public class Jogo {
     private Lugar boardwalk;
 
     private Lugar go;
+    private CartaCofresComunitarios AvanceParaOPontoDePartidaGo;
 
 
 
@@ -144,6 +150,7 @@ public class Jogo {
         teclado = new Scanner(System.in);
         lugares = factory.criaLugares(40);
         banco = factory.criaBanco();
+        baralho = factory.criaBaralho();
     }
 
     /**
@@ -316,6 +323,60 @@ public class Jogo {
 
          go= factory.criaPropriedade(tabuleiro,0, "go", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
     }
+    public void  criaCartasCofresComunitarios(){
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 1 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 2 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 3 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 4 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 5 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 6 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 7 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 8 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 9 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 10 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 11 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 12 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 13 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 14 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 15 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 16 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
     /**
      * Metodo para montar o tabuleiro com seus respectivos lugares.
      * @param t
