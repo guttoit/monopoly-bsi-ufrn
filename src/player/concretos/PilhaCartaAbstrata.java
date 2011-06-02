@@ -13,10 +13,7 @@ import java.util.List;
  */
 public abstract class PilhaCartaAbstrata {
 
-    public PilhaCartaAbstrata(List<CartaCofresComunitarios> listaCartaCofresComunitarios, List<CartaSorteReves> listaCartaSorteReves ) {
-        this.listaCartaCofresComunitarios = listaCartaCofresComunitarios;
-        this.listaCartaSorteReves = listaCartaSorteReves;
-    }
+   
 
     public List<CartaCofresComunitarios> listaCartaCofresComunitarios ;
     public List<CartaSorteReves> listaCartaSorteReves ;

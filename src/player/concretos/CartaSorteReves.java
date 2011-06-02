@@ -5,6 +5,10 @@
 
 package player.concretos;
 
+import java.util.List;
+
+
+
 /**
  *
  * @author Adm
@@ -17,11 +21,18 @@ package player.concretos;
  * 
  */
 
-public class CartaSorteReves  extends PilhaCartaAbstrata{
+public class CartaSorteReves  extends PilhaCartaAbstrata {
 
-    public CartaSorteReves(int numeroCarta, String nomeCarta, String descricao, String observacoes) {
-
+    public CartaSorteReves(List<CartaCofresComunitarios> listaCartaCofresComunitarios, List<CartaSorteReves> listaCartaSorteReves, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
+        this.numeroCarta = numeroCarta;
+        this.nomeCarta = nomeCarta;
+        this.descricao = descricao;
+        this.observacoes = observacoes;
     }
+
+
+
+    
     public int numeroCarta;
     public String nomeCarta;
     public String descricao;
