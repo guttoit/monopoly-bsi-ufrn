@@ -12,10 +12,13 @@ import negocio.GerenteJogo;
 import negocio.Mensagens;
 import player.Dado;
 import player.Jogador;
+import player.concretos.Baralho;
+import player.concretos.CartaCofresComunitarios;
 import player.concretos.DadoDuplo;
 import player.concretos.JogadorConcreto;
 import player.concretos.Peao;
-import tabuleiro.Carta;
+import player.concretos.CartaSorteReves;
+import player.concretos.PilhaCartaAbstrata;
 import tabuleiro.Chance;
 import tabuleiro.tabuleiroConcreto.Ferrovia;
 import tabuleiro.tabuleiroConcreto.ImpostoRenda;
@@ -91,14 +94,12 @@ public class FactoryUSA implements FactoryCriador {
     public Chance criaChance() {
         return null;
     }
-// Cria uma Carta // Falta implementar
-    public Carta pegaCarta(int numeroCarta, String nomeCarta, String descricao, String observacoes) {
-        return new Carta(numeroCarta, nomeCarta, descricao, observacoes);
+// Cria uma CartaSorteReves // Falta implementar
+    public CartaSorteReves criaBaralho(PilhaCartaAbstrata pilhaCartas) {
+
+        return null;
     }
-// Cria uma carta // Falta implementar
-    public Carta pagaCarta() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+
 // Cria uma Lista de Jogadores e adiciona os jogadores concrestos na mesma.
     public List<Jogador> criaListaJogadores(int numJogadores) {
         ArrayList<Jogador> jogadores = new ArrayList<Jogador>(numJogadores);
@@ -124,5 +125,17 @@ public class FactoryUSA implements FactoryCriador {
         LugarFisico l = new LugarFisico(nome, 0, posicao);
         lugares.add(l);
         return l;
+    }
+
+    public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public CartaSorteReves criaCartasSorteReves(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Baralho criaBaralho() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
