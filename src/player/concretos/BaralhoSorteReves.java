@@ -5,13 +5,16 @@
 
 package player.concretos;
 
+import java.util.List;
 import tabuleiro.Carta;
 
 /**
  *
  * @author Adm
  */
-public class CartaCofresComunitarios extends Carta {
+public class BaralhoSorteReves extends Baralho {
 
-    
+    public BaralhoSorteReves(List<Carta> listaCarta) {
+        super(listaCarta);
+    }
 }

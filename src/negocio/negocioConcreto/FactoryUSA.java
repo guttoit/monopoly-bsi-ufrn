@@ -133,4 +133,32 @@ public class FactoryUSA implements FactoryCriador {
     public Baralho criaBaralho() {
        throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    public Lugar criaLugar(Tabuleiro tabuleiro, int posicao, String nome) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Propriedade criaPropriedade(Tabuleiro tab, int posicao, String nome, String cor, float precoP, float aluguelSCasa, float c1, float c2, float c3, float c4, float hotel, float hip, float precoCasa) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Ferrovia criaFerrovia(Tabuleiro tab, int posicao, String nome, float preco, float hipoteca) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public ImpostoRenda criaImpostoRenda(Tabuleiro tab, int posicao, String nome, float preco) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public ImpostoRiqueza criaImpostoRiqueza(Tabuleiro tab, int posicao, String nome, float preco) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public List<CartaCofresComunitarios> criaListaCartasCofresComunitarios(int i) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public List<CartaSorteReves> criaListaCartasSorteReves(int i) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
