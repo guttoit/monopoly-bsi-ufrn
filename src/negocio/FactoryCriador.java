@@ -66,5 +66,9 @@ public interface FactoryCriador {
 
     public Baralho criaBaralho();
 
+    public List<CartaCofresComunitarios> criaListaCartasCofresComunitarios(int i);
+
+    public List<CartaSorteReves> criaListaCartasSorteReves(int i);
+
 
 }
