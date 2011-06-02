@@ -5,47 +5,22 @@
 
 package player.concretos;
 
+import tabuleiro.Carta;
+
 /**
  *
  * @author Adm
  */
-public class CartaCofresComunitarios extends PilhaCartaAbstrata {
-   
+public class CartaCofresComunitarios extends Carta {
+
+    public CartaCofresComunitarios() {
+        super();
+    }
+
+    public CartaCofresComunitarios(int numeroCarta, String nomeCarta, String descricao, String observacoes) {
+        super(numeroCarta, nomeCarta, descricao, observacoes);
+    }
+
     
-    public int numeroCarta;
-    public String nomeCarta;
-    public String descricao;
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getNomeCarta() {
-        return nomeCarta;
-    }
-
-    public void setNomeCarta(String nomeCarta) {
-        this.nomeCarta = nomeCarta;
-    }
-
-    public int getNumeroCarta() {
-        return numeroCarta;
-    }
-
-    public void setNumeroCarta(int numeroCarta) {
-        this.numeroCarta = numeroCarta;
-    }
-
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
-    }
-    public String observacoes;
+    
 }

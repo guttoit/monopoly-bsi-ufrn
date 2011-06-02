@@ -103,7 +103,7 @@ public class MensagensJogo implements Mensagens {
         String cor = "";
 
         System.out.println("\n" + todasCores);
-        System.out.println("\nCor do Jogador " + numJogador + ": ");
+        System.out.println("\nCor do Jogador " + (numJogador + 1) + ": ");
         while (!acertouCor) {
             cor = teclado.next().trim();
             for (String c : cores) {

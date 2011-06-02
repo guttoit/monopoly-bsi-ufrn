@@ -14,6 +14,7 @@ import player.Dado;
 import player.Jogador;
 import player.concretos.Baralho;
 import player.concretos.CartaCofresComunitarios;
+import player.concretos.CartaSorteReves;
 import player.concretos.Peao;
 import tabuleiro.*;
 /**
@@ -123,6 +124,27 @@ public class Jogo {
     private Lugar boardwalk;
 
     private Lugar go;
+
+    public List<CartaSorteReves> getCartaSorteReveses() {
+        return cartaSorteReveses;
+    }
+
+    public void setCartaSorteReveses(List<CartaSorteReves> cartaSorteReveses) {
+        this.cartaSorteReveses = cartaSorteReveses;
+    }
+
+    public List<CartaCofresComunitarios> getCartasCofresComunitarios() {
+        return cartasCofresComunitarios;
+    }
+
+    public void setCartasCofresComunitarios(List<CartaCofresComunitarios> cartasCofresComunitarios) {
+        this.cartasCofresComunitarios = cartasCofresComunitarios;
+    }
+    
+    private List<CartaCofresComunitarios> cartasCofresComunitarios;
+    
+    private List<CartaSorteReves> cartaSorteReveses;
+
     private CartaCofresComunitarios avanceParaOPontoDePartidaGo;
     private CartaCofresComunitarios erroDoBancoEmSeuFavor;
     private CartaCofresComunitarios taxaDoMedico;
@@ -343,7 +365,7 @@ public class Jogo {
 
         boardwalk= factory.criaPropriedade(lugares,39, "boardwalk", "Azul",	400,	500,	200,	600,	1400,	1700,	2000,	200,	200);
 
-         go= factory.criaPropriedade(lugares,0, "go", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+         go= factory.criaLugar(lugares,40, "Go");
     }
 
 
