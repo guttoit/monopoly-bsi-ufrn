@@ -23,11 +23,11 @@ public class Peao {
 
     public Peao(String corPeao){
         this.corPeao = corPeao;
-        this.posicao = 0;
+        this.posicao = 40;
     }
 
     public Peao() {
-        this.posicao = 0;
+        this.posicao = 40;
     }
     public int getPosicao() {
         return posicao;

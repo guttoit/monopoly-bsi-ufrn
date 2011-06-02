@@ -54,14 +54,10 @@ public class FactoryUSA implements FactoryCriador {
     public Peao criaPeao(String cor) {
         return new Peao(cor);
     }
-// Cria um  Lugar e retorna uma exceção.
-    public Lugar criaLugar() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 // Cria uma  Propriedade  com suas caracteristicas e adiciona no respestivo lugar no tabuleiro.
-    public Propriedade criaPropriedade(Tabuleiro tab, int posicao, String nome, String cor, float precoP, float aluguelSCasa, float c1, float c2, float c3, float c4, float hotel, float hip, float precoCasa) {
+    public Propriedade criaPropriedade(List<Lugar> lugares, int posicao, String nome, String cor, float precoP, float aluguelSCasa, float c1, float c2, float c3, float c4, float hotel, float hip, float precoCasa) {
         Propriedade p = new Propriedade(posicao, nome, cor, precoP, aluguelSCasa, c1, c2, c3, c4, hotel, hip, precoCasa);
-        tab.addLugar(p);
+        lugares.add(p);
         return p;
     }
 // Cria um gerente, sendo ele responsável pela criacao dos objetos dos jogo, invocando uma instancia de FatoryCriador
@@ -69,18 +65,21 @@ public class FactoryUSA implements FactoryCriador {
         return new GerenteConcreto(f);
     }
 // Cria uma Ferrovia, adiciona suas caracteristicas e retorna uma isntancia de Ferrovia
-    public Ferrovia criaFerrovia(Tabuleiro tab, int posicao, String nome, float preco, float hipoteca) {
+    public Ferrovia criaFerrovia(List<Lugar> lugares, int posicao, String nome, float preco, float hipoteca) {
         Ferrovia f = new Ferrovia(posicao, nome, preco, hipoteca);
+        lugares.add(f);
         return f;
     }
 // Cria um imposto de Renda, adiciona suas caracteristicas e retorna uma instancia de Imposto de Renda
-    public ImpostoRenda criaImpostoRenda(Tabuleiro tab, int posicao, String nome, float preco) {
+    public ImpostoRenda criaImpostoRenda(List<Lugar> lugares, int posicao, String nome, float preco) {
         ImpostoRenda ir = new ImpostoRenda(posicao, nome, preco);
+        lugares.add(ir);
         return ir;
     }
 // Cria um imposto Riqueza, adiciona suas caracteristicas e retorna uma instancia de Imposto riqueza
-    public ImpostoRiqueza criaImpostoRiqueza(Tabuleiro tab, int posicao, String nome, float preco) {
+    public ImpostoRiqueza criaImpostoRiqueza(List<Lugar> lugares, int posicao, String nome, float preco) {
         ImpostoRiqueza iRiqueza = new ImpostoRiqueza(posicao, nome, preco);
+        lugares.add(iRiqueza);
         return iRiqueza;
     }
 // Cria um tabuleiro com sua quantidade de espaços
@@ -117,9 +116,9 @@ public class FactoryUSA implements FactoryCriador {
         return new BancoConcreto();
     }
 // Cria Lugar e adiciona no Tabuleiro retornando uma instancia de um lugar fisico.
-    public Lugar criaLugar(Tabuleiro tabuleiro, int posicao, String nome) {
+    public Lugar criaLugar(List<Lugar> lugares, int posicao, String nome) {
         LugarFisico l = new LugarFisico(nome, 0, posicao);
-        tabuleiro.addLugar(l);
+        lugares.add(l);
         return l;
     }
 

@@ -38,17 +38,17 @@ public interface FactoryCriador {
 
     public Peao criaPeao(String cor);
 
-    public Lugar criaLugar( Tabuleiro tabuleiro , int posicao, String nome);
+    public Lugar criaLugar( List<Lugar> lugares , int posicao, String nome);
 
     public List<Lugar> criaLugares(int numLugares);
 
-    public Propriedade criaPropriedade(Tabuleiro tab,int posicao, String nome, String cor, float precoP, float aluguelSCasa, float c1, float c2, float c3, float c4, float hotel, float hip, float precoCasa);
+    public Propriedade criaPropriedade(List<Lugar> lugares,int posicao, String nome, String cor, float precoP, float aluguelSCasa, float c1, float c2, float c3, float c4, float hotel, float hip, float precoCasa);
 
-    public Ferrovia criaFerrovia(Tabuleiro tab,int posicao, String nome, float preco, float hipoteca);
+    public Ferrovia criaFerrovia(List<Lugar> lugares,int posicao, String nome, float preco, float hipoteca);
 
-    public ImpostoRenda criaImpostoRenda(Tabuleiro tab,int posicao, String nome, float preco);
+    public ImpostoRenda criaImpostoRenda(List<Lugar> lugares,int posicao, String nome, float preco);
 
-    public ImpostoRiqueza criaImpostoRiqueza(Tabuleiro tab,int posicao, String nome, float preco);
+    public ImpostoRiqueza criaImpostoRiqueza(List<Lugar> lugares,int posicao, String nome, float preco);
 
     public Tabuleiro criaTabuleiro(int numCasas);
 

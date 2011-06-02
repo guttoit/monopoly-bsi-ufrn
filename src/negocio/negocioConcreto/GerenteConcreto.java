@@ -26,20 +26,17 @@ import tabuleiro.Tabuleiro;
  *
  * @author Gutto
  */
-
-
 /**
  *
  * @class A class GerenteConcreto implementa o GerenteJogo. Ela tem a responsabilidade de gerenciar
  * um modo específico de Jogo.
  */
-
 public class GerenteConcreto implements GerenteJogo {
 
     private FactoryCriador factory;
     private String cores[] = new String[8];
     private int numJogadores = 0;
-    
+
     public GerenteConcreto(FactoryCriador f) {
         factory = f;
         inicializaCores();
@@ -58,22 +55,25 @@ public class GerenteConcreto implements GerenteJogo {
 
     public Lugar andaPeao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro) {
         Peao p = jogador.getPeao();
-        int auxPosicao = p.getPosicao() + valorDado[0] + valorDado[1];
+        // Variável usada para facilitar os calculos
+        int aux = (p.getPosicao() + valorDado[0] + valorDado[1]);
 
-        verificaPosicao(valorDado, jogador, tabuleiro);
-
-        if (auxPosicao > 40) {
-            p.setPosicao(0 + auxPosicao - 40);
+        if (verificaPosicao(valorDado, jogador, tabuleiro)) {
+            p.setPosicao(0 + aux - 40);
+        } else {
+            p.setPosicao(aux);
         }
-        Lugar l = tabuleiro.getListaLugar().get(valorDado[0] + valorDado[1] + jogador.getPeao().getPosicao());
+        Lugar l = tabuleiro.getListaLugar().get(p.getPosicao());
 
-        if (l == null) {
-            p.setPosicao(p.getPosicao() + valorDado[0] + valorDado[1]);
-            jogador.getPeao().setPosicao(p.getPosicao());
+        if (p.getPosicao() == 40) {
+            System.out.println("O jogador  " + jogador.getNomeJogador() + "tirou  " + valorDado[0]
+                    + " e " + valorDado[1] + ". O peao avancou para " + p.getPosicao() + ", " + l.getNome());
+        } else if (l == null) {
+
             System.out.println("O jogador  " + jogador.getNomeJogador() + "tirou  " + valorDado[0]
                     + " e " + valorDado[1] + ". O peao avancou para " + p.getPosicao() + ", " + " Nao existe ainda ");
         } else {
-            jogador.getPeao().setPosicao(l.getPosicao());
+
             System.out.println("O jogador " + jogador.getNomeJogador() + " tirou " + valorDado[0]
                     + " e " + valorDado[1] + ". O peao avancou para  " + l.getPosicao() + ", " + l.getNome());
         }
@@ -81,7 +81,7 @@ public class GerenteConcreto implements GerenteJogo {
 
         return l;
     }
- 
+
     /**
      * Verifica onde um jogador está localizado no tabuleiro 
      * para receber gratificação por dar uma volta no tabuleiro 
@@ -89,12 +89,15 @@ public class GerenteConcreto implements GerenteJogo {
      * @param jogador
      * @param tabuleiro
      */
-
-    public void verificaPosicao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro) {
+    public boolean verificaPosicao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro) {
         int posicaoAtual = jogador.getPeao().getPosicao();
-        if (posicaoAtual < 40 && (posicaoAtual + valorDado[0] + valorDado[1]) > 40) {
+        if (posicaoAtual == 40) {
+            return true;
+        } else if (posicaoAtual < 40 && (posicaoAtual + valorDado[0] + valorDado[1]) > 40) {
             jogador.setDinheiro(jogador.getDinheiro() + 200);
+            return true;
         }
+        return false;
     }
 
     /**
@@ -141,7 +144,7 @@ public class GerenteConcreto implements GerenteJogo {
 
 
         for (int i = 0; i < numJogadores; i++) {
-            System.out.println("\nEntre com o nome do jogador " + i + " :");
+            System.out.println("\nEntre com o nome do jogador " + (i + 1) + " :");
             nome = teclado.next();
             //nome = mensagens.mensagemNome(i, teclado);
             jogadores.get(i).setNomeJogador(nome);
@@ -159,19 +162,26 @@ public class GerenteConcreto implements GerenteJogo {
 
         System.out.println("\nO jogo iniciou\n");
         int i = 0;
+        int j = 0;
         while (numJogadores >= 2) {
             if (i >= numJogadores) {
                 i = 0;
             }
-            realizaJogada(jogadores, tab, jogadores.get(i), teclado, b, mensagens);
-            i++;
+            j = realizaJogada(jogadores, tab, jogadores.get(i), teclado, b, mensagens, i);
+            if (i == j) {
+                i++;
+            } else {
+                i = j;
+            }
+
         }
         if (numJogadores == 1) {
             System.out.println("\n\n\n Parabéns " + jogadores.get(0).getNomeJogador() + " ! Você é o mais novo"
                     + " milionario da America!");
             System.exit(0);
         }
-    } 
+    }
+
     /**
      * Método responsável por analisar e realizar a jogada escolhida pelo jogador. Ele é chamado
      * pelo método gerenciaJogo, logo após a fase de coleta das informações dos jogadores.
@@ -182,7 +192,7 @@ public class GerenteConcreto implements GerenteJogo {
      * @param b
      * @param mensagens
      */
-    public void realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens) {
+    public int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens, int numJogAtual) {
         Lugar l;
         String comando = "";
         boolean acertouComando = false;
@@ -195,16 +205,20 @@ public class GerenteConcreto implements GerenteJogo {
             if (comando.equalsIgnoreCase("sair")) {
                 acertouComando = true;
                 jogadores.remove(jogadorVez);
+                numJogadores--;
+                //numJogAtual --;
                 if (jogadores.size() <= 1) {
                     System.exit(0);
                 }
-                return;
+                return numJogAtual;
             } else if (comando.equalsIgnoreCase("jogar")) {
                 // jogadorVez.jogaDado(new DadoDuplo());
                 acertouComando = true;
                 l = andaPeao(jogadorVez.jogaDado(new DadoDuplo()), jogadorVez, tab);
                 if (l == null) {
                     System.out.println("\nNao faz nada.");
+                } else if (l.getPosicao() == 40) {
+                    //Não faz nada
                 } else if (l instanceof LugarFisico) {
                     LugarFisico lf = (LugarFisico) l;
                     if (lf.getProprietario() == null) {
@@ -218,6 +232,7 @@ public class GerenteConcreto implements GerenteJogo {
                     descontaImposto(l, jogadorVez, b);
                     if (jogadorVez.getDinheiro() <= 0) {
                         System.out.println("Você perdeu. Seu saldo e: " + jogadorVez.getDinheiro());
+                        //      numJogAtual--;
                         numJogadores--;
                         jogadores.remove(jogadorVez);
                     }
@@ -233,14 +248,16 @@ public class GerenteConcreto implements GerenteJogo {
                 comando = teclado.next().trim();
             }
         }
-        if (jogadorVez.getDinheiro() <= 0 ) {
+        if (jogadorVez.getDinheiro() <= 0) {
             System.out.println("\n" + jogadorVez.getNomeJogador() + " Você perdeu. Seu saldo é: " + jogadorVez.getDinheiro());
+            //numJogAtual--;
             numJogadores--;
             jogadores.remove(jogadorVez);
         }
+        return numJogAtual;
 
     }
- 
+
     /**
      * Método chamado caso o jogador caia em uma lugarFisico que já tenha dono, como uma propriedade
      * ou uma ferrovia. Ele irá anilsar e descontar o preço do aluguel daquele lugar.
@@ -287,7 +304,6 @@ public class GerenteConcreto implements GerenteJogo {
             b.setDinheiroEmCaixa(b.getDinheiroEmCaixa() + 75);
         }
     }
-
 
     /**
      * Gerencia compra é responsável por receber o comando do jogador dizendo se ele comprou ou não
