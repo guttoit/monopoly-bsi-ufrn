@@ -21,8 +21,6 @@ import player.concretos.JogadorConcreto;
 import player.concretos.Peao;
 import player.concretos.CartaSorteReves;
 import player.concretos.PilhaCartaAbstrata;
-import tabuleiro.Carta;
-import tabuleiro.Chance;
 import tabuleiro.tabuleiroConcreto.Ferrovia;
 import tabuleiro.tabuleiroConcreto.ImpostoRenda;
 import tabuleiro.tabuleiroConcreto.ImpostoRiqueza;
@@ -69,7 +67,7 @@ public class FactoryUSA implements FactoryCriador {
 // Cria um gerente, sendo ele responsável pela criacao dos objetos dos jogo, invocando uma instancia de FatoryCriador
 
     public GerenteJogo criaGerente(FactoryCriador f) {
-        return new GerenteConcreto(f);
+        return (GerenteJogo) new GerenteConcreto(f);
     }
 // Cria uma Ferrovia, adiciona suas caracteristicas e retorna uma isntancia de Ferrovia
 

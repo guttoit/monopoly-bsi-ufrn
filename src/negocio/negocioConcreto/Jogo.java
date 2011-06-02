@@ -125,6 +125,15 @@ public class Jogo {
 
     private Lugar go;
 
+    private Lugar sorteReves1;
+    private Lugar sorteReves2;
+    private Lugar sorteReves3;
+
+    private Lugar cofreComunitario1;
+    private Lugar cofreComunitario2;
+    private Lugar cofreComunitario3;
+
+
     public List<CartaSorteReves> getCartaSorteReveses() {
         return cartaSorteReveses;
     }
@@ -161,6 +170,8 @@ public class Jogo {
     private CartaCofresComunitarios voceTirouOSegundoLugarNoConcursoDeBeleza;
     private CartaCofresComunitarios voceHerdou;
     private CartaCofresComunitarios voceDevePagarOsReparosDaRua;
+
+    
 
 
 
@@ -289,7 +300,7 @@ public class Jogo {
 
         mediterraneanAvenue= factory.criaPropriedade(lugares, 1, "Mediterranean Avenue", "roxo", 60, 500, 10, 30, 90, 160, 250, 30, 90);
 
-       // communityChest1 = factory.criaImpostoRenda(lugares, numJogadores, null, numJogadores);
+       // cofreComunitario1 = factory.cria
 
         balticAvenue= factory.criaPropriedade(lugares,3, "balticAvenue", "roxo", 60 , 500 , 20 , 60 , 80 ,160 , 450 , 30 , 50);
 
