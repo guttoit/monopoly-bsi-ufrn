@@ -7,8 +7,11 @@ package negocio;
 import java.util.List;
 import player.Dado;
 import player.Jogador;
+import player.concretos.Baralho;
+import player.concretos.CartaCofresComunitarios;
 import player.concretos.Peao;
-import tabuleiro.Carta;
+import player.concretos.CartaSorteReves;
+import player.concretos.PilhaCartaAbstrata;
 import tabuleiro.Chance;
 import tabuleiro.tabuleiroConcreto.Ferrovia;
 import tabuleiro.tabuleiroConcreto.ImpostoRenda;
@@ -53,9 +56,15 @@ public interface FactoryCriador {
 
     public Chance criaChance();
 
-    public Carta pagaCarta();
+    public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho , int numeroCarta , String nomeCarta, String descricao , String observacoes);
+
+    public CartaSorteReves criaCartasSorteReves(Baralho baralho , int numeroCarta , String nomeCarta, String descricao , String observacoes);
 
     public Mensagens criaMensagens();
 
     public Banco criaBanco();
+
+    public Baralho criaBaralho();
+
+
 }

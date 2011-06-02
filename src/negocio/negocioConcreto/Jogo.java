@@ -12,6 +12,8 @@ import negocio.GerenteJogo;
 import negocio.Mensagens;
 import player.Dado;
 import player.Jogador;
+import player.concretos.Baralho;
+import player.concretos.CartaCofresComunitarios;
 import player.concretos.Peao;
 import tabuleiro.*;
 /**
@@ -37,6 +39,9 @@ public class Jogo {
     private List<Lugar> lugares;
     private Scanner teclado;
     private Banco banco;
+
+    private Baralho baralho;
+
 
     private Lugar posicaoZero;
     private Lugar mediterraneanAvenue;
@@ -118,6 +123,22 @@ public class Jogo {
     private Lugar boardwalk;
 
     private Lugar go;
+    private CartaCofresComunitarios avanceParaOPontoDePartidaGo;
+    private CartaCofresComunitarios erroDoBancoEmSeuFavor;
+    private CartaCofresComunitarios taxaDoMedico;
+    private CartaCofresComunitarios aberturaDaGrandeOpera;
+    private CartaCofresComunitarios daLiquidacaoForaDeEstoque;
+    private CartaCofresComunitarios saiaLivreDaPrisaoSemPagar;
+    private CartaCofresComunitarios vaParaAPrisao;
+    private CartaCofresComunitarios restituicaoDoImpostoDeRenda;
+    private CartaCofresComunitarios aniversarioDoSeguroDeVida;
+    private CartaCofresComunitarios pagueOHospital;
+    private CartaCofresComunitarios pagueTaxaDaEscola;
+    private CartaCofresComunitarios recebaPorSeusServicos;
+    private CartaCofresComunitarios aniversarioDosFundosDeNatal;
+    private CartaCofresComunitarios voceTirouOSegundoLugarNoConcursoDeBeleza;
+    private CartaCofresComunitarios voceHerdou;
+    private CartaCofresComunitarios voceDevePagarOsReparosDaRua;
 
 
 
@@ -153,6 +174,7 @@ public class Jogo {
         teclado = new Scanner(System.in);
         lugares = factory.criaLugares(40);
         banco = factory.criaBanco();
+        //baralho = factory.criaBaralho();
     }
 
    /*
@@ -321,8 +343,57 @@ public class Jogo {
 
         boardwalk= factory.criaPropriedade(lugares,39, "boardwalk", "Azul",	400,	500,	200,	600,	1400,	1700,	2000,	200,	200);
 
-         go= factory.criaPropriedade(lugares,0, "go", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+         go= factory.criaLugar(lugares, 40, "Go");
     }
+
+
+
+    
+    public void  criaCartasCofresComunitarios(){
+
+            avanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 1 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            erroDoBancoEmSeuFavor = factory.criaCartasCofresComunitarios(baralho, 2 , "ErroDoBancoEmSeuFavor", "Receba $200", "");
+
+            taxaDoMedico = factory.criaCartasCofresComunitarios(baralho, 3 , "TaxaDoMedico", "Pague $50", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+
+            aberturaDaGrandeOpera = factory.criaCartasCofresComunitarios(baralho, 4 , "AberturaDaGrandeOpera", "Receba $50 de cada jogador pelas entradas", "");
+
+            daLiquidacaoForaDeEstoque = factory.criaCartasCofresComunitarios(baralho, 5 , "DaLiquidacaoForaDeEstoque", "Receba $45", "");
+
+            saiaLivreDaPrisaoSemPagar = factory.criaCartasCofresComunitarios(baralho, 6 , "SaiaLivreDaPrisaoSemPagar", "Esta carta pode ser mantida até o uso ou venda.", "Veja a user story sobre a prisão");
+
+            vaParaAPrisao = factory.criaCartasCofresComunitarios(baralho, 7 , "VaParaAPrisao", "Vá direto para a prisão – Não passe pelo ponto de partida – Não receba $200", "");
+
+            restituicaoDoImpostoDeRenda = factory.criaCartasCofresComunitarios(baralho, 8 , "RestituicaoDoImpostoDeRenda", "Receba $20", "");
+
+            aniversarioDoSeguroDeVida = factory.criaCartasCofresComunitarios(baralho, 9 , "AniversarioDoSeguroDeVida", "Receba $100", "");
+
+            pagueOHospital = factory.criaCartasCofresComunitarios(baralho, 10 , "PagueOHospital", "Pague $100", "");
+
+            pagueTaxaDaEscola = factory.criaCartasCofresComunitarios(baralho, 11 , "PagueTaxaDaEscola", "Pague $150", "");
+
+            recebaPorSeusServicos = factory.criaCartasCofresComunitarios(baralho, 12 , "RecebaPorSeusServicos", "Receba $25", "");
+
+            aniversarioDosFundosDeNatal = factory.criaCartasCofresComunitarios(baralho, 13 , "AniversarioDosFundosDeNatal", "Receba $100", "");
+
+            voceTirouOSegundoLugarNoConcursoDeBeleza = factory.criaCartasCofresComunitarios(baralho, 14 , "VoceTirouOSegundoLugarNoConcursoDeBeleza", "Receba $10", "");
+
+            voceHerdou = factory.criaCartasCofresComunitarios(baralho, 15 , "VoceHerdou", "Receba $100", "");
+
+            voceDevePagarOsReparosDaRua = factory.criaCartasCofresComunitarios(baralho, 16 , "VoceDevePagarOsReparosDaRua", "Pague $40 por cada casa, $115 por hotel", "Isso se aplica apenas às casas e hotéis que o jogador possui; ele não precisa pagar pelas casas e hotéis dos outros jogadores.");
+
+ }
+
+
+
+
+
+
+
+
+
+
     /**
      * Metodo para montar o tabuleiro com seus respectivos lugares.
      * @param t
