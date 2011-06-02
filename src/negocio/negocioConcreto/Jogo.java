@@ -123,7 +123,22 @@ public class Jogo {
     private Lugar boardwalk;
 
     private Lugar go;
-    private CartaCofresComunitarios AvanceParaOPontoDePartidaGo;
+    private CartaCofresComunitarios avanceParaOPontoDePartidaGo;
+    private CartaCofresComunitarios erroDoBancoEmSeuFavor;
+    private CartaCofresComunitarios taxaDoMedico;
+    private CartaCofresComunitarios aberturaDaGrandeOpera;
+    private CartaCofresComunitarios daLiquidacaoForaDeEstoque;
+    private CartaCofresComunitarios saiaLivreDaPrisaoSemPagar;
+    private CartaCofresComunitarios vaParaAPrisao;
+    private CartaCofresComunitarios restituicaoDoImpostoDeRenda;
+    private CartaCofresComunitarios aniversarioDoSeguroDeVida;
+    private CartaCofresComunitarios pagueOHospital;
+    private CartaCofresComunitarios pagueTaxaDaEscola;
+    private CartaCofresComunitarios recebaPorSeusServicos;
+    private CartaCofresComunitarios aniversarioDosFundosDeNatal;
+    private CartaCofresComunitarios voceTirouOSegundoLugarNoConcursoDeBeleza;
+    private CartaCofresComunitarios voceHerdou;
+    private CartaCofresComunitarios voceDevePagarOsReparosDaRua;
 
 
 
@@ -323,50 +338,45 @@ public class Jogo {
 
          go= factory.criaPropriedade(tabuleiro,0, "go", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
     }
+
+
+
+    
     public void  criaCartasCofresComunitarios(){
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 1 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            avanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 1 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 2 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            erroDoBancoEmSeuFavor = factory.criaCartasCofresComunitarios(baralho, 2 , "ErroDoBancoEmSeuFavor", "Receba $200", "");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 3 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            taxaDoMedico = factory.criaCartasCofresComunitarios(baralho, 3 , "TaxaDoMedico", "Pague $50", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 4 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            aberturaDaGrandeOpera = factory.criaCartasCofresComunitarios(baralho, 4 , "AberturaDaGrandeOpera", "Receba $50 de cada jogador pelas entradas", "");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 5 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            daLiquidacaoForaDeEstoque = factory.criaCartasCofresComunitarios(baralho, 5 , "DaLiquidacaoForaDeEstoque", "Receba $45", "");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 6 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            saiaLivreDaPrisaoSemPagar = factory.criaCartasCofresComunitarios(baralho, 6 , "SaiaLivreDaPrisaoSemPagar", "Esta carta pode ser mantida até o uso ou venda.", "Veja a user story sobre a prisão");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 7 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            vaParaAPrisao = factory.criaCartasCofresComunitarios(baralho, 7 , "VaParaAPrisao", "Vá direto para a prisão – Não passe pelo ponto de partida – Não receba $200", "");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 8 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            restituicaoDoImpostoDeRenda = factory.criaCartasCofresComunitarios(baralho, 8 , "RestituicaoDoImpostoDeRenda", "Receba $20", "");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 9 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            aniversarioDoSeguroDeVida = factory.criaCartasCofresComunitarios(baralho, 9 , "AniversarioDoSeguroDeVida", "Receba $100", "");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 10 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            pagueOHospital = factory.criaCartasCofresComunitarios(baralho, 10 , "PagueOHospital", "Pague $100", "");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 11 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            pagueTaxaDaEscola = factory.criaCartasCofresComunitarios(baralho, 11 , "PagueTaxaDaEscola", "Pague $150", "");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 12 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            recebaPorSeusServicos = factory.criaCartasCofresComunitarios(baralho, 12 , "RecebaPorSeusServicos", "Receba $25", "");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 13 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            aniversarioDosFundosDeNatal = factory.criaCartasCofresComunitarios(baralho, 13 , "AniversarioDosFundosDeNatal", "Receba $100", "");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 14 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            voceTirouOSegundoLugarNoConcursoDeBeleza = factory.criaCartasCofresComunitarios(baralho, 14 , "VoceTirouOSegundoLugarNoConcursoDeBeleza", "Receba $10", "");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 15 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            voceHerdou = factory.criaCartasCofresComunitarios(baralho, 15 , "VoceHerdou", "Receba $100", "");
 
-            AvanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 16 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            voceDevePagarOsReparosDaRua = factory.criaCartasCofresComunitarios(baralho, 16 , "VoceDevePagarOsReparosDaRua", "Pague $40 por cada casa, $115 por hotel", "Isso se aplica apenas às casas e hotéis que o jogador possui; ele não precisa pagar pelas casas e hotéis dos outros jogadores.");
 
-
-
-
-
-
-
-
-
-
-    }
+ }
 
 
 

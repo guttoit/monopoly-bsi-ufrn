@@ -11,9 +11,9 @@ import sun.security.smartcardio.SunPCSC.Factory;
  *
  * @author Adm
  */
-public class Baralho extends PilhaCartaAbstrata {
+public class Baralho {
 
-    public void iniciliza()
+      PilhaCartaAbstrata pilhaCartaAbstrata;
 
 
 

@@ -11,9 +11,7 @@ package player.concretos;
  */
 public class CartaCofresComunitarios extends PilhaCartaAbstrata {
    
-    public CartaCofresComunitarios(int numeroCarta, String nomeCarta, String descricao, String observacoes) {
-
-    }
+    
     public int numeroCarta;
     public String nomeCarta;
     public String descricao;
