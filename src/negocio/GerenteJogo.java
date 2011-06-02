@@ -54,7 +54,7 @@ public  interface GerenteJogo {
      * @param b
      * @param mensagens
      */
-    public void realizaJogada(List<Jogador> jogadores,Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens);
+    public int realizaJogada(List<Jogador> jogadores,Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens, int i);
 
     /**
      * Gerencia compra é responsável por receber o comando do jogador dizendo se ele comprou ou não
