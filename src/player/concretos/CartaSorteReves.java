@@ -5,7 +5,7 @@
 
 package player.concretos;
 
-import java.util.List;
+import tabuleiro.Carta;
 
 
 
@@ -21,56 +21,15 @@ import java.util.List;
  * 
  */
 
-public class CartaSorteReves  extends PilhaCartaAbstrata {
+public class CartaSorteReves  extends Carta {
 
-    public CartaSorteReves(List<CartaCofresComunitarios> listaCartaCofresComunitarios, List<CartaSorteReves> listaCartaSorteReves, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
-        this.numeroCarta = numeroCarta;
-        this.nomeCarta = nomeCarta;
-        this.descricao = descricao;
-        this.observacoes = observacoes;
+    public CartaSorteReves() {
+        super();
     }
 
-
+    public CartaSorteReves(int numeroCarta, String nomeCarta, String descricao, String observacoes) {
+        super(numeroCarta, nomeCarta, descricao, observacoes);
+    }
 
     
-    public int numeroCarta;
-    public String nomeCarta;
-    public String descricao;
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getNomeCarta() {
-        return nomeCarta;
-    }
-
-    public void setNomeCarta(String nomeCarta) {
-        this.nomeCarta = nomeCarta;
-    }
-
-    public int getNumeroCarta() {
-        return numeroCarta;
-    }
-
-    public void setNumeroCarta(int numeroCarta) {
-        this.numeroCarta = numeroCarta;
-    }
-
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
-    }
-    public String observacoes;
-
-  
-
-
 }
