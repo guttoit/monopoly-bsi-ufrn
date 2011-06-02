@@ -10,6 +10,7 @@ import sun.security.smartcardio.SunPCSC.Factory;
 /**
  *
  * @author Adm
+ *
  */
 public class Baralho {
 

@@ -12,6 +12,8 @@ import negocio.GerenteJogo;
 import negocio.Mensagens;
 import player.Dado;
 import player.Jogador;
+import player.concretos.Baralho;
+import player.concretos.CartaCofresComunitarios;
 import player.concretos.DadoDuplo;
 import player.concretos.JogadorConcreto;
 import player.concretos.Peao;
@@ -91,13 +93,7 @@ public class FactoryUSA implements FactoryCriador {
     }
 // Cria uma CartaSorteReves // Falta implementar
     public CartaSorteReves criaBaralho(PilhaCartaAbstrata pilhaCartas) {
-
-
-
-
-
-
-        return null;
+         return null;
     }
 
 // Cria uma Lista de Jogadores e adiciona os jogadores concrestos na mesma.
@@ -125,5 +121,17 @@ public class FactoryUSA implements FactoryCriador {
         LugarFisico l = new LugarFisico(nome, 0, posicao);
         tabuleiro.addLugar(l);
         return l;
+    }
+
+    public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public CartaSorteReves criaCartasSorteReves(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Baralho criaBaralho() {
+       throw new UnsupportedOperationException("Not supported yet.");
     }
 }
