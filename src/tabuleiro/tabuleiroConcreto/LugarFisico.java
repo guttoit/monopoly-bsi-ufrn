@@ -23,25 +23,29 @@ import tabuleiro.Lugar;
 public class LugarFisico extends Lugar {
     private float hipoteca;
     private Jogador proprietario;
-
+    private float preco;
 
     /**
      *
      */
     public LugarFisico(){
+        
+    }
+
+    public LugarFisico(String nome, int posicao, float preco) {
+        super(nome, posicao);
+        this.preco = preco;
 
     }
 
-    /**
-     *
-     * @param nome
-     * @param preco
-     * @param posicao
-     */
-    public LugarFisico(String nome, float preco, int posicao ){
+    
 
-        super(nome, preco, posicao);
+    public float getPreco() {
+        return preco;
+    }
 
+    public void setPreco(float preco) {
+        this.preco = preco;
     }
 
 
@@ -49,7 +53,7 @@ public class LugarFisico extends Lugar {
 
 
 
-
+    
 
     /**
      *

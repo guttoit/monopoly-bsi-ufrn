@@ -14,7 +14,7 @@ import tabuleiro.Lugar;
 public class CofreComunitarioConcreto extends Lugar {
 
     public CofreComunitarioConcreto(String nome, double preco, int posicao) {
-        super(nome, preco, posicao);
+        super(nome,posicao);
     }
 
 }
