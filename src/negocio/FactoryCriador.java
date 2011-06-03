@@ -210,6 +210,8 @@ public interface FactoryCriador {
 
     public Lugar criaVaParaPrisao(String nome, int posicao);
 
+    public Lugar criaServicopublico(String nome, int posicao, float preco);
+
 
 
 
