@@ -43,7 +43,9 @@ public class Jogo {
     private Scanner teclado;
     private Banco banco;
 
-    private Baralho baralho;
+    private Baralho baralhoCofreComunitario;
+
+    private Baralho baralhoSorteReves;
 
 
     private Lugar posicaoZero;
@@ -423,72 +425,72 @@ public class Jogo {
      */
     public void  criaCartasCofresComunitarios(){
 
-            avanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 1 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            avanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 1 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
 
-            erroDoBancoEmSeuFavor = factory.criaCartasCofresComunitarios(baralho, 2 , "ErroDoBancoEmSeuFavor", "Receba $200", "");
+            erroDoBancoEmSeuFavor = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 2 , "ErroDoBancoEmSeuFavor", "Receba $200", "");
 
-            taxaDoMedico = factory.criaCartasCofresComunitarios(baralho, 3 , "TaxaDoMedico", "Pague $50", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            taxaDoMedico = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 3 , "TaxaDoMedico", "Pague $50", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
 
-            aberturaDaGrandeOpera = factory.criaCartasCofresComunitarios(baralho, 4 , "AberturaDaGrandeOpera", "Receba $50 de cada jogador pelas entradas", "");
+            aberturaDaGrandeOpera = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 4 , "AberturaDaGrandeOpera", "Receba $50 de cada jogador pelas entradas", "");
 
-            daLiquidacaoForaDeEstoque = factory.criaCartasCofresComunitarios(baralho, 5 , "DaLiquidacaoForaDeEstoque", "Receba $45", "");
+            daLiquidacaoForaDeEstoque = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 5 , "DaLiquidacaoForaDeEstoque", "Receba $45", "");
 
-            saiaLivreDaPrisaoSemPagar = factory.criaCartasCofresComunitarios(baralho, 6 , "SaiaLivreDaPrisaoSemPagar", "Esta carta pode ser mantida até o uso ou venda.", "Veja a user story sobre a prisão");
+            saiaLivreDaPrisaoSemPagar = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 6 , "SaiaLivreDaPrisaoSemPagar", "Esta carta pode ser mantida até o uso ou venda.", "Veja a user story sobre a prisão");
 
-            vaParaAPrisao = factory.criaCartasCofresComunitarios(baralho, 7 , "VaParaAPrisao", "Vá direto para a prisão – Não passe pelo ponto de partida – Não receba $200", "");
+            vaParaAPrisao = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 7 , "VaParaAPrisao", "Vá direto para a prisão – Não passe pelo ponto de partida – Não receba $200", "");
 
-            restituicaoDoImpostoDeRenda = factory.criaCartasCofresComunitarios(baralho, 8 , "RestituicaoDoImpostoDeRenda", "Receba $20", "");
+            restituicaoDoImpostoDeRenda = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 8 , "RestituicaoDoImpostoDeRenda", "Receba $20", "");
 
-            aniversarioDoSeguroDeVida = factory.criaCartasCofresComunitarios(baralho, 9 , "AniversarioDoSeguroDeVida", "Receba $100", "");
+            aniversarioDoSeguroDeVida = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 9 , "AniversarioDoSeguroDeVida", "Receba $100", "");
 
-            pagueOHospital = factory.criaCartasCofresComunitarios(baralho, 10 , "PagueOHospital", "Pague $100", "");
+            pagueOHospital = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 10 , "PagueOHospital", "Pague $100", "");
 
-            pagueTaxaDaEscola = factory.criaCartasCofresComunitarios(baralho, 11 , "PagueTaxaDaEscola", "Pague $150", "");
+            pagueTaxaDaEscola = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 11 , "PagueTaxaDaEscola", "Pague $150", "");
 
-            recebaPorSeusServicos = factory.criaCartasCofresComunitarios(baralho, 12 , "RecebaPorSeusServicos", "Receba $25", "");
+            recebaPorSeusServicos = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 12 , "RecebaPorSeusServicos", "Receba $25", "");
 
-            aniversarioDosFundosDeNatal = factory.criaCartasCofresComunitarios(baralho, 13 , "AniversarioDosFundosDeNatal", "Receba $100", "");
+            aniversarioDosFundosDeNatal = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 13 , "AniversarioDosFundosDeNatal", "Receba $100", "");
 
-            voceTirouOSegundoLugarNoConcursoDeBeleza = factory.criaCartasCofresComunitarios(baralho, 14 , "VoceTirouOSegundoLugarNoConcursoDeBeleza", "Receba $10", "");
+            voceTirouOSegundoLugarNoConcursoDeBeleza = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 14 , "VoceTirouOSegundoLugarNoConcursoDeBeleza", "Receba $10", "");
 
-            voceHerdou = factory.criaCartasCofresComunitarios(baralho, 15 , "VoceHerdou", "Receba $100", "");
+            voceHerdou = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 15 , "VoceHerdou", "Receba $100", "");
 
-            voceDevePagarOsReparosDaRua = factory.criaCartasCofresComunitarios(baralho, 16 , "VoceDevePagarOsReparosDaRua", "Pague $40 por cada casa, $115 por hotel", "Isso se aplica apenas às casas e hotéis que o jogador possui; ele não precisa pagar pelas casas e hotéis dos outros jogadores.");
+            voceDevePagarOsReparosDaRua = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 16 , "VoceDevePagarOsReparosDaRua", "Pague $40 por cada casa, $115 por hotel", "Isso se aplica apenas às casas e hotéis que o jogador possui; ele não precisa pagar pelas casas e hotéis dos outros jogadores.");
 
  }
 
 public void  criaCartasSorteReves(){
 
 
-            avanceParaOPontoDePartida = factory.criaCartasSorteReves(baralho, 1 , "avanceParaOPontoDePartida", "Receba $200", "");
+            avanceParaOPontoDePartida = factory.criaCartasSorteReves(baralhoSorteReves, 1 , "avanceParaOPontoDePartida", "Receba $200", "");
 
-            avancePara = factory.criaCartasSorteReves(baralho, 2 , "avancePara", "Illinois Avenue", "O jogador não recebe $200 se passar pelo Ponto de Partida.");
+            avancePara = factory.criaCartasSorteReves(baralhoSorteReves, 2 , "avancePara", "Illinois Avenue", "O jogador não recebe $200 se passar pelo Ponto de Partida.");
 
-            avanceParaStCharlesPlace = factory.criaCartasSorteReves(baralho, 3 , "avanceParaStCharlesPlace", "Se passer pelo ponto de partida, receba $200", "");
+            avanceParaStCharlesPlace = factory.criaCartasSorteReves(baralhoSorteReves, 3 , "avanceParaStCharlesPlace", "Se passer pelo ponto de partida, receba $200", "");
 
-            avanceOPeaoParaOServicoPublicoMaisProximo = factory.criaCartasSorteReves(baralho,4 , "avanceOPeaoParaOServicoPublicoMaisProximo", "Se não tiver dono você pode comprá-lo do banco.Se tiver, lance os dados e pague ao dono 10 vezes o resultado do lançamento.", " O jogador não recebe $200 se passar pelo Ponto de Partida.");
+            avanceOPeaoParaOServicoPublicoMaisProximo = factory.criaCartasSorteReves(baralhoSorteReves,4 , "avanceOPeaoParaOServicoPublicoMaisProximo", "Se não tiver dono você pode comprá-lo do banco.Se tiver, lance os dados e pague ao dono 10 vezes o resultado do lançamento.", " O jogador não recebe $200 se passar pelo Ponto de Partida.");
 
-            avanceOPeaoParaAFerroviaMaisProxima = factory.criaCartasSorteReves(baralho, 5 , "avanceOPeaoParaAFerroviaMaisProxima", "Pague ao dono duas vezes o valor que ele deveria receber normalmente.Se a ferrovia não tiver dono, você pode comprá-la do banco.", "O jogador não recebe $200 se passar pelo Ponto de Partida. ");
+            avanceOPeaoParaAFerroviaMaisProxima = factory.criaCartasSorteReves(baralhoSorteReves, 5 , "avanceOPeaoParaAFerroviaMaisProxima", "Pague ao dono duas vezes o valor que ele deveria receber normalmente.Se a ferrovia não tiver dono, você pode comprá-la do banco.", "O jogador não recebe $200 se passar pelo Ponto de Partida. ");
 
-            oBancoLhePagouDividendosDe = factory.criaCartasSorteReves(baralho, 6 , "oBancoLhePagouDividendosDe", "$50", "");
+            oBancoLhePagouDividendosDe = factory.criaCartasSorteReves(baralhoSorteReves, 6 , "oBancoLhePagouDividendosDe", "$50", "");
 
-            volte3Espacos = factory.criaCartasSorteReves(baralho, 7 , "volte3Espacos", "   ", "");
+            volte3Espacos = factory.criaCartasSorteReves(baralhoSorteReves, 7 , "volte3Espacos", "   ", "");
 
-            vaDiretamenteParaAPrisao = factory.criaCartasSorteReves(baralho, 8 , "vaDiretamenteParaAPrisao", "Não passe pelo ponto de partida, não receba $200.", "");
+            vaDiretamenteParaAPrisao = factory.criaCartasSorteReves(baralhoSorteReves, 8 , "vaDiretamenteParaAPrisao", "Não passe pelo ponto de partida, não receba $200.", "");
 
-            facaAmanutencaoDeTodasAsSuasPropriedades = factory.criaCartasSorteReves(baralho, 9 , "facaAmanutencaoDeTodasAsSuasPropriedades", "Para cada casa pague $25, para cada hotel $10.", " Somente para casas e hotéis que o jogador construiu.");
+            facaAmanutencaoDeTodasAsSuasPropriedades = factory.criaCartasSorteReves(baralhoSorteReves, 9 , "facaAmanutencaoDeTodasAsSuasPropriedades", "Para cada casa pague $25, para cada hotel $10.", " Somente para casas e hotéis que o jogador construiu.");
 
-            pagueImpostoDePobrezaDe = factory.criaCartasSorteReves(baralho, 10 , "pagueImpostoDePobrezaDe", "$15", "");
+            pagueImpostoDePobrezaDe = factory.criaCartasSorteReves(baralhoSorteReves, 10 , "pagueImpostoDePobrezaDe", "$15", "");
 
-            estaCartaPodeSerMantidaAteSeuUsoOuVenda = factory.criaCartasSorteReves(baralho, 11 , "estaCartaPodeSerMantidaAteSeuUsoOuVenda", "Get Out Of Jail Free", " Veja user stories sobre Prisão ");
+            estaCartaPodeSerMantidaAteSeuUsoOuVenda = factory.criaCartasSorteReves(baralhoSorteReves, 11 , "estaCartaPodeSerMantidaAteSeuUsoOuVenda", "Get Out Of Jail Free", " Veja user stories sobre Prisão ");
 
-            deUmaVoltaNaReading = factory.criaCartasSorteReves(baralho, 12 , "deUmaVoltaNaReading", "Se você passer pelo Ponto de Partida receba $200", "");
+            deUmaVoltaNaReading = factory.criaCartasSorteReves(baralhoSorteReves, 12 , "deUmaVoltaNaReading", "Se você passer pelo Ponto de Partida receba $200", "");
 
-            deUmaCaminhadaNoBoardWalk = factory.criaCartasSorteReves(baralho, 13 , "deUmaCaminhadaNoBoardWalk ", "Avance o peão para Board Walk", "");
+            deUmaCaminhadaNoBoardWalk = factory.criaCartasSorteReves(baralhoSorteReves, 13 , "deUmaCaminhadaNoBoardWalk ", "Avance o peão para Board Walk", "");
 
-            voceFoiEleitoPresidenteDoTabuleiro = factory.criaCartasSorteReves(baralho, 14 , "voceFoiEleitoPresidenteDoTabuleiro", "Pague $50 para cada jogador", "");
+            voceFoiEleitoPresidenteDoTabuleiro = factory.criaCartasSorteReves(baralhoSorteReves, 14 , "voceFoiEleitoPresidenteDoTabuleiro", "Pague $50 para cada jogador", "");
 
-            seusEmprestimosEInvestimentoFizeramAniversario = factory.criaCartasSorteReves(baralho, 15 , "seusEmprestimosEInvestimentoFizeramAniversario", "Receba $150", "");
+            seusEmprestimosEInvestimentoFizeramAniversario = factory.criaCartasSorteReves(baralhoSorteReves, 15 , "seusEmprestimosEInvestimentoFizeramAniversario", "Receba $150", "");
 
 
 
