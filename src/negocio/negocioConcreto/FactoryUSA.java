@@ -29,6 +29,7 @@ import tabuleiro.tabuleiroConcreto.Propriedade;
 import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.tabuleiroConcreto.Prisao;
+import tabuleiro.tabuleiroConcreto.ServicoPublico;
 import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
 import tabuleiro.tabuleiroConcreto.TabuleiroUSA;
 import tabuleiro.tabuleiroConcreto.VaParaPrisao;
@@ -193,6 +194,9 @@ public class FactoryUSA implements FactoryCriador {
         VaParaPrisao vaParaPrisao = new VaParaPrisao(nome, posicao);
             return vaParaPrisao;
     }
-
+    public Lugar criaServicopublico(String nome, int posicao, float preco){
+         ServicoPublico servicoPublico = new ServicoPublico(nome, posicao, preco);
+         return servicoPublico;
+    }
 }
 
