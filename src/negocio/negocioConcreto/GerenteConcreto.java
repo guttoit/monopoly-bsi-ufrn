@@ -21,7 +21,9 @@ import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
+import tabuleiro.tabuleiroConcreto.Prisao;
 import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
+import tabuleiro.tabuleiroConcreto.VaParaPrisao;
 
 /**
  *
@@ -119,6 +121,7 @@ public class GerenteConcreto implements GerenteJogo {
         }
         // Pega o lugar no qual o peão se encontra após ter andado
         Lugar l = tabuleiro.getListaLugar().get(p.getPosicao());
+
 
         // Chama o método mostraMensAndaPeao da classe MensagensJogo para mostrar ao usuário o seu lugar no jogo.
         mensagens.mostraMensAndaPeao(jogador, l, valorDado);
@@ -289,7 +292,13 @@ public class GerenteConcreto implements GerenteJogo {
                           baralhoSorteReves.retiraCartaPilha();
                 } else if (l instanceof CofreComunitarioConcreto){
                           baralhoCofreComunitario.retiraCartaPilha();
+                } else if (l instanceof VaParaPrisao){
+                          jogadorVez.getPeao().setPosicao(10);
+                } else if (l instanceof Prisao){
+                          mensagens.visitaPrisao();
                 }
+
+
             } else if (comando.equalsIgnoreCase("status")) {
                 mensagens.statusJogador(jogadorVez, tab);
                 acertouComando = true;
