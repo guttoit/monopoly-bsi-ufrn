@@ -22,6 +22,12 @@ import tabuleiro.Imposto;
 public class ImpostoRenda extends Imposto {
 
 
+    /**
+     *
+     * @param posicao
+     * @param nome
+     * @param preco
+     */
     public ImpostoRenda(int posicao, String nome, float preco){
         super.setPosicao(posicao);
         super.setNome(nome);

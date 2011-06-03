@@ -22,6 +22,9 @@ import tabuleiro.Lugar;
 
 public abstract class Banco {
 
+    /**
+     * Construtor padrão
+     */
     public Banco() {
     }
     /**
@@ -36,18 +39,34 @@ public abstract class Banco {
     
     private float dinheiroEmCaixa;
 
+    /**
+     *
+     * @return float
+     */
     public float getDinheiroEmCaixa() {
         return dinheiroEmCaixa;
     }
 
+    /**
+     *
+     * @param dinheiroEmCaixa float
+     */
     public void setDinheiroEmCaixa(float dinheiroEmCaixa) {
         this.dinheiroEmCaixa = dinheiroEmCaixa;
     }
 
+    /**
+     *
+     * @return ArrayList<Lugares>
+     */
     public List<Lugar> getLugares() {
         return lugares;
     }
 
+    /**
+     *
+     * @param lugares List<Lugar>
+     */
     public void setLugares(List<Lugar> lugares) {
         this.lugares = lugares;
     }

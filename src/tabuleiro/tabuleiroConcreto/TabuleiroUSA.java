@@ -23,11 +23,19 @@ import tabuleiro.Tabuleiro;
  */
 public class TabuleiroUSA extends Tabuleiro{
 
+    /**
+     *
+     * @param numCasas
+     */
     public TabuleiroUSA(int numCasas) {
         super(numCasas);
     }
 
    
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Lugar> getListaLugar() {
         return super.getListaLugar();

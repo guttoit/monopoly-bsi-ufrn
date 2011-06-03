@@ -13,10 +13,20 @@ import tabuleiro.Carta;
  */
 public class CartaCofresComunitarios extends Carta {
 
+    /**
+     *
+     */
     public CartaCofresComunitarios() {
         super();
     }
 
+    /**
+     *
+     * @param numeroCarta
+     * @param nomeCarta
+     * @param descricao
+     * @param observacoes
+     */
     public CartaCofresComunitarios(int numeroCarta, String nomeCarta, String descricao, String observacoes) {
         super(numeroCarta, nomeCarta, descricao, observacoes);
     }

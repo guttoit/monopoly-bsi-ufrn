@@ -25,6 +25,10 @@ public abstract class Tabuleiro {
     private List<Lugar> listaLugar;
 
 
+    /**
+     *
+     * @param numCasas
+     */
     public Tabuleiro(int numCasas) {
         this.numCasas = numCasas;
         listaLugar = new ArrayList<Lugar>();
@@ -56,19 +60,35 @@ public abstract class Tabuleiro {
 
 
 
+    /**
+     *
+     * @return
+     */
     public List<Lugar> getListaLugar() {
         return listaLugar;
     }
 
 
+    /**
+     *
+     * @param listaLugar
+     */
     public void setListaLugar(List<Lugar> listaLugar) {
         this.listaLugar = listaLugar;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNumCasas() {
         return numCasas;
     }
 
+    /**
+     *
+     * @param numCasas
+     */
     public void setNumCasas(int numCasas) {
         this.numCasas = numCasas;
     }

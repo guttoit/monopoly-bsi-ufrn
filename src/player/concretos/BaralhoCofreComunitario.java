@@ -14,10 +14,17 @@ import tabuleiro.Carta;
  */
 public class BaralhoCofreComunitario extends Baralho {
 
+    /**
+     *
+     */
     public BaralhoCofreComunitario() {
     }
 
 
+    /**
+     *
+     * @param listaCarta
+     */
     public BaralhoCofreComunitario(List<Carta> listaCarta) {
         super(listaCarta);
     }

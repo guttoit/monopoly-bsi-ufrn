@@ -18,6 +18,12 @@ package tabuleiro;
 public class ImpostoRiqueza extends Imposto{
 
 
+    /**
+     *
+     * @param posicao
+     * @param nome
+     * @param preco
+     */
     public ImpostoRiqueza(int posicao, String nome, float preco){
         super.setPosicao(posicao);
         super.setNome(nome);

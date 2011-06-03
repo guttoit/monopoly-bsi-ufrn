@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import negocio.Banco;
 import negocio.FactoryCriador;
+import negocio.GerenteCompraVenda;
 import negocio.GerenteJogo;
 import negocio.Mensagens;
 import player.Dado;
@@ -33,26 +34,29 @@ import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.tabuleiroConcreto.TabuleiroUSA;
 
 /**
- *
- * @author Gutto
- */
-/**
- *
- * @class FatoryUsa é uma classe concreta que implementa FactoryCriador e
+ *@author Gutto
+ * FatoryUsa é uma classe concreta que implementa FactoryCriador e
  * tem a responsabilidade de criar objetos do jogo.
  */
 public class FactoryUSA implements FactoryCriador {
-// Cria um Jogador e retorna um JogadorConcreto
 
+    /*
+     * Retorna um JogadorConcreto
+     */
     public Jogador criaJogador() {
         return new JogadorConcreto();
     }
-// Cria um  Dado e retorna um DadoDuplo
 
+    /*
+     * Retorna um DadoDuplo
+     */
     public Dado criaDado() {
         return new DadoDuplo();
     }
 // Cria um  Peao e retorna um Peao com sua respectiviva cor
+    /*
+     *
+     */
 
     public Peao criaPeao(String cor) {
         return new Peao(cor);
@@ -66,8 +70,8 @@ public class FactoryUSA implements FactoryCriador {
     }
 // Cria um gerente, sendo ele responsável pela criacao dos objetos dos jogo, invocando uma instancia de FatoryCriador
 
-    public GerenteJogo criaGerente(FactoryCriador f) {
-        return (GerenteJogo) new GerenteConcreto(f);
+    public GerenteJogo criaGerente(FactoryCriador f, Mensagens mens, GerenteCompraVenda gCV) {
+        return new GerenteConcreto(f,mens,gCV);
     }
 // Cria uma Ferrovia, adiciona suas caracteristicas e retorna uma isntancia de Ferrovia
 
@@ -97,7 +101,11 @@ public class FactoryUSA implements FactoryCriador {
     }
 
 // Cria uma CartaSorteReves // Falta implementar
-
+    /**
+     *
+     * @param pilhaCartas
+     * @return
+     */
     public CartaSorteReves criaBaralho(PilhaCartaAbstrata pilhaCartas) {
         return null;
     }
@@ -151,5 +159,9 @@ public class FactoryUSA implements FactoryCriador {
 
     public BaralhoSorteReves criaBaralhoSorteReves() {
         return new BaralhoSorteReves();
+    }
+
+    public GerenteCompraVenda criaGerenteCompraVenda(FactoryCriador f) {
+        return new GerenteCompraVendaConcreto();
     }
 }

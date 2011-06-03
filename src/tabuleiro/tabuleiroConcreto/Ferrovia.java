@@ -19,6 +19,13 @@ package tabuleiro.tabuleiroConcreto;
      */
 public class Ferrovia  extends LugarFisico{
 
+    /**
+     *
+     * @param posicao
+     * @param nome
+     * @param preco
+     * @param hipoteca
+     */
     public Ferrovia(int posicao, String nome, float preco, float hipoteca){
         super.setPosicao(posicao);
         super.setNome(nome);

@@ -30,12 +30,30 @@ public class Propriedade extends LugarFisico {
     private float precoCasa;
     private String cor;
 
+    /**
+     *
+     */
     public Propriedade() {
     }
 
 
 
 
+    /**
+     *
+     * @param posicao
+     * @param nome
+     * @param cor
+     * @param precoP
+     * @param aluguelSCasa
+     * @param c1
+     * @param c2
+     * @param c3
+     * @param c4
+     * @param hotel
+     * @param hip
+     * @param precoCasa
+     */
     public Propriedade(int posicao,String nome, String cor, float precoP, float aluguelSCasa,float c1, float c2, float c3, float c4, float hotel,  float hip, float precoCasa){
         super.setPreco(precoP);
         super.setNome(nome);
@@ -54,84 +72,164 @@ public class Propriedade extends LugarFisico {
         aluguelAtual = aluguelSCasa;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getAluguelSemCasa() {
         return aluguelSemCasa;
     }
 
+    /**
+     *
+     * @param aluguelSemCasa
+     */
     public void setAluguelSemCasa(float aluguelSemCasa) {
         this.aluguelSemCasa = aluguelSemCasa;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCor() {
         return cor;
     }
 
+    /**
+     *
+     * @param cor
+     */
     public void setCor(String cor) {
         this.cor = cor;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getAluguelCasa1() {
         return aluguelCasa1;
     }
 
+    /**
+     *
+     * @param aluguelCasa1
+     */
     public void setAluguelCasa1(float aluguelCasa1) {
         this.aluguelCasa1 = aluguelCasa1;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getAluguelCasa2() {
         return aluguelCasa2;
     }
 
+    /**
+     *
+     * @param aluguelCasa2
+     */
     public void setAluguelCasa2(float aluguelCasa2) {
         this.aluguelCasa2 = aluguelCasa2;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getAluguelCasa3() {
         return aluguelCasa3;
     }
 
+    /**
+     *
+     * @param aluguelCasa3
+     */
     public void setAluguelCasa3(float aluguelCasa3) {
         this.aluguelCasa3 = aluguelCasa3;
     }
 
+    /**
+     * 
+     * @return
+     */
     public float getAluguelCasa4() {
         return aluguelCasa4;
     }
 
+    /**
+     *
+     * @param aluguelCasa4
+     */
     public void setAluguelCasa4(float aluguelCasa4) {
         this.aluguelCasa4 = aluguelCasa4;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getHotel() {
         return hotel;
     }
 
+    /**
+     *
+     * @param hotel
+     */
     public void setHotel(float hotel) {
         this.hotel = hotel;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getPrecoCasa() {
         return precoCasa;
     }
 
+    /**
+     *
+     * @param precoCasa
+     */
     public void setPrecoCasa(float precoCasa) {
         this.precoCasa = precoCasa;
     }
 
    
 
+    /**
+     *
+     * @return
+     */
     public int getnCasas() {
         return nCasas;
     }
 
+    /**
+     *
+     * @param nCasas
+     */
     public void setnCasas(int nCasas) {
         this.nCasas = nCasas;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getAluguelAtual() {
         return aluguelAtual;
     }
 
+    /**
+     *
+     * @param aluguelAtual
+     */
     public void setAluguelAtual(float aluguelAtual) {
         this.aluguelAtual = aluguelAtual;
     }

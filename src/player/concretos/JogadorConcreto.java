@@ -20,9 +20,17 @@ public class JogadorConcreto extends Jogador {
 
     
 
+    /**
+     *
+     */
     public JogadorConcreto(){
         super();
     }
+    /**
+     *
+     * @param p
+     * @param nome
+     */
     public JogadorConcreto(Peao p, String nome){
         super(p,nome);
     }

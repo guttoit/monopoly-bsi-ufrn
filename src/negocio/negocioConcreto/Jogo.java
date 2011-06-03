@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 import negocio.Banco;
 import negocio.FactoryCriador;
+import negocio.GerenteCompraVenda;
 import negocio.GerenteJogo;
 import negocio.Mensagens;
 import player.Dado;
@@ -31,6 +32,7 @@ public class Jogo {
     private FactoryCriador factory;
     private List<Jogador> jogadores;
     private GerenteJogo gerente;
+    private GerenteCompraVenda gerenteCompraVendaConcreto;
     private Dado dado;
     private Peao peao;
     private Mensagens mensagens;
@@ -193,17 +195,19 @@ public class Jogo {
      * Método responsável por dar início ao jogo. Ele chama o método gerenciaJogo do Gerente.
      */
     public void iniciaJogo(){
-        gerente.gerenciaJogo(tabuleiro, teclado, banco, jogadores, mensagens);
+        gerente.gerenciaJogo(tabuleiro, teclado, banco, jogadores);
     }
 
     /**
      * inicializa as variáveis através do fatory
      */
     public void inicializaVariaveis(){
-        gerente = factory.criaGerente(factory);
+        mensagens = factory.criaMensagens();
+        gerenteCompraVendaConcreto = factory.criaGerenteCompraVenda(factory);
+        gerente = factory.criaGerente(factory,mensagens, gerenteCompraVendaConcreto);
         tabuleiro = factory.criaTabuleiro(40);
         jogadores = factory.criaListaJogadores(8);
-        mensagens = factory.criaMensagens();
+       
         teclado = new Scanner(System.in);
         lugares = factory.criaLugares(40);
         banco = factory.criaBanco();

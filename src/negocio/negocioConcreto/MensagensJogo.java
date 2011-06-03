@@ -37,6 +37,7 @@ public class MensagensJogo implements Mensagens {
  * Metodo para mostrar mensagem de tetativas de execucoes erradas.
  * @param nivelBurrice
   * @param numDigitado
+  * @return
  */
     public String nivelBurrice(int nivelBurrice, int numDigitado) {
         String mensBurrice = "";
@@ -166,7 +167,28 @@ public class MensagensJogo implements Mensagens {
 
     }
 
+    /**
+     *
+     * @param j
+     * @param t
+     */
     public void geraStatus(Jogador j, Tabuleiro t) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void mostraMensAndaPeao(Jogador jogador, Lugar l, Integer[] valorDado) {
+        Peao p = jogador.getPeao();
+        if (p.getPosicao() == 40) {
+            System.out.println("O jogador  " + jogador.getNomeJogador() + "tirou  " + valorDado[0]
+                    + " e " + valorDado[1] + ". O peao avancou para " + p.getPosicao() + ", " + l.getNome());
+        } else if (l == null) {
+
+            System.out.println("O jogador  " + jogador.getNomeJogador() + "tirou  " + valorDado[0]
+                    + " e " + valorDado[1] + ". O peao avancou para " + p.getPosicao() + ", " + " Nao existe ainda ");
+        } else {
+
+            System.out.println("O jogador " + jogador.getNomeJogador() + " tirou " + valorDado[0]
+                    + " e " + valorDado[1] + ". O peao avancou para  " + l.getPosicao() + ", " + l.getNome());
+        }
     }
 }
