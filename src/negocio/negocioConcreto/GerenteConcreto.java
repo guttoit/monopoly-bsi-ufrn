@@ -197,7 +197,7 @@ public class GerenteConcreto implements GerenteJogo {
      * @param b
      * @param mensagens
      */
-    public int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens, int numJogAtual) {
+    public int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens, int numJogAtual, Baralho baralho ) {
         Lugar l;
         String comando = "";
         boolean acertouComando = false;
@@ -225,7 +225,7 @@ public class GerenteConcreto implements GerenteJogo {
                 } else if (l.getPosicao() == 40) {
                     //Não faz nada
                 } else if (l instanceof CofreComunitarioConcreto) {
-                    //Implementear
+                    //
                 } else if (l instanceof SorteRevesConcreto) {
                     //Implementar
                 } else if (l instanceof LugarFisico) {
@@ -349,5 +349,9 @@ public class GerenteConcreto implements GerenteJogo {
         }
         return false;
 
+    }
+
+    public int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens, int i) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
