@@ -20,6 +20,9 @@ import tabuleiro.Lugar;
  */
 public class ServicoPublico extends Lugar {
 
+    /**
+     *
+     */
     public ServicoPublico() {
     }
 

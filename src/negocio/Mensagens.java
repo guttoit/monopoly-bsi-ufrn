@@ -6,6 +6,7 @@ package negocio;
 
 import java.util.Scanner;
 import player.Jogador;
+import player.concretos.Peao;
 import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.Tabuleiro;
@@ -24,13 +25,15 @@ public interface Mensagens {
     /**
      * Metodo para mostrar mensagesn de boas vindas ao usuario
      *
+     * @return
      */
     public String mensagensBoasVindas();
 
     /**
-     * Metodo para mostrar mensagem de tetativas de execucoes erradas.
+     * Metodo para mostrar mensagem de tentativas de execucoes erradas.
      * @param nivelBurrice
      * @param numDigitado
+     * @return
      */
     public String nivelBurrice(int nivelBurrice, int numDigitado);
 
@@ -66,4 +69,6 @@ public interface Mensagens {
      * @param t
      */
     public void statusJogador(Jogador j, Tabuleiro t);
+
+    public void mostraMensAndaPeao(Jogador jogador, Lugar l, Integer[] valorDado);
 }

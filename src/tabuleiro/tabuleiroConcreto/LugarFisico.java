@@ -25,10 +25,19 @@ public class LugarFisico extends Lugar {
     private Jogador proprietario;
 
 
+    /**
+     *
+     */
     public LugarFisico(){
 
     }
 
+    /**
+     *
+     * @param nome
+     * @param preco
+     * @param posicao
+     */
     public LugarFisico(String nome, float preco, int posicao ){
 
         super(nome, preco, posicao);
@@ -42,18 +51,34 @@ public class LugarFisico extends Lugar {
 
 
 
+    /**
+     *
+     * @return
+     */
     public Jogador getProprietario() {
         return proprietario;
     }
 
+    /**
+     *
+     * @param proprietario
+     */
     public void setProprietario(Jogador proprietario) {
         this.proprietario = proprietario;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getHipoteca() {
         return hipoteca;
     }
 
+    /**
+     *
+     * @param hipoteca
+     */
     public void setHipoteca(float hipoteca) {
         this.hipoteca = hipoteca;
     }

@@ -12,11 +12,10 @@ import negocio.Banco;
  * @author Gutto
  */
 
-
 /**
  *
- * @class BancoConcreto é uma classe concreta que extende banco.
+ * BancoConcreto é uma classe concreta que extende banco.
  */
 public class BancoConcreto extends Banco{
-    
+
 }

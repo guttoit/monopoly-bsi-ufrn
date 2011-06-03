@@ -21,26 +21,49 @@ public class Peao {
     private String corPeao;
     private int posicao;
 
+    /**
+     *
+     * @param corPeao
+     */
     public Peao(String corPeao){
         this.corPeao = corPeao;
         this.posicao = 40;
     }
 
+    /**
+     *
+     */
     public Peao() {
         this.posicao = 40;
     }
+    /**
+     *
+     * @return
+     */
     public int getPosicao() {
         return posicao;
     }
 
+    /**
+     *
+     * @param posicao
+     */
     public void setPosicao(int posicao) {
         this.posicao = posicao;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCorPeao() {
         return corPeao;
     }
 
+    /**
+     *
+     * @param corPeao
+     */
     public void setCorPeao(String corPeao) {
         this.corPeao = corPeao;
     }

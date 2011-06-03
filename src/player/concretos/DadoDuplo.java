@@ -19,6 +19,9 @@ import player.Dado;
      */
 public class DadoDuplo implements Dado{
 
+    /**
+     *
+     */
     public DadoDuplo(){
         
     }

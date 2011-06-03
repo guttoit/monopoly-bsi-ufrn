@@ -17,5 +17,9 @@ package player;
    * proxima posição que o mesma vai se alocar.
      */
 public interface Dado {
-     public Integer[] gerarNumero();
+    /**
+     *
+     * @return
+     */
+    public Integer[] gerarNumero();
 }

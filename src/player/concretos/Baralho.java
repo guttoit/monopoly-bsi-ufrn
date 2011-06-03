@@ -21,10 +21,17 @@ public abstract class Baralho {
     private Stack<Carta> pilhaJogo;
     private Stack<Carta> pilhaDescarte;
 
+    /**
+     *
+     */
     public Baralho() {
     }
 
     
+    /**
+     *
+     * @param listaCarta
+     */
     public Baralho(List<Carta> listaCarta) {
         pilhaDescarte = new Stack<Carta>();
         pilhaJogo = new Stack<Carta>();
@@ -34,11 +41,18 @@ public abstract class Baralho {
 
     
 
+    /**
+     *
+     * @param carta
+     */
     public void addCarta(Carta carta) {
 
         listaCarta.add(carta);
     }
 
+    /**
+     *
+     */
     public void tracarBaralho(){
         Carta carta;
         Random random = new Random();
@@ -54,44 +68,80 @@ public abstract class Baralho {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public Carta retiraCartaPilha(){
         Carta c = pilhaJogo.pop();
         addPilhaDescarte(c);
         return c;
     }
 
+    /**
+     *
+     * @param carta
+     */
     public void addPilhaJogo(Carta carta) {
 
         pilhaJogo.push(carta);
 
     }
 
+    /**
+     *
+     * @param carta
+     */
     public void addPilhaDescarte(Carta carta) {
 
         pilhaDescarte.push(carta);
 
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Carta> getListaCarta() {
         return listaCarta;
     }
 
+    /**
+     *
+     * @param listaCarta
+     */
     public void setListaCarta(List<Carta> listaCarta) {
         this.listaCarta = listaCarta;
     }
 
+    /**
+     *
+     * @return
+     */
     public Stack<Carta> getPilhaDescarte() {
         return pilhaDescarte;
     }
 
+    /**
+     *
+     * @param pilhaDescarte
+     */
     public void setPilhaDescarte(Stack<Carta> pilhaDescarte) {
         this.pilhaDescarte = pilhaDescarte;
     }
 
+    /**
+     *
+     * @return
+     */
     public Stack<Carta> getPilhaJogo() {
         return pilhaJogo;
     }
 
+    /**
+     *
+     * @param pilhaJogo
+     */
     public void setPilhaJogo(Stack<Carta> pilhaJogo) {
         this.pilhaJogo = pilhaJogo;
     }

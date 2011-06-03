@@ -14,11 +14,18 @@ import tabuleiro.Carta;
  */
 public class BaralhoSorteReves extends Baralho {
 
+    /**
+     *
+     */
     public BaralhoSorteReves() {
     }
 
     
 
+    /**
+     *
+     * @param listaCarta
+     */
     public BaralhoSorteReves(List<Carta> listaCarta) {
         super(listaCarta);
     }

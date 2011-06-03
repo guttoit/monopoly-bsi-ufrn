@@ -10,8 +10,11 @@ import java.util.List;
 import java.util.Scanner;
 import negocio.Banco;
 import negocio.FactoryCriador;
+import negocio.GerenteCompraVenda;
 import negocio.GerenteJogo;
 import negocio.Mensagens;
+import negocio.objetosNulo.GerenteCompraVendaObjetoNulo;
+import negocio.objetosNulo.MensagensObjetoNulo;
 import player.Jogador;
 import player.concretos.DadoDuplo;
 import player.concretos.Peao;
@@ -36,12 +39,38 @@ public class GerenteConcreto implements GerenteJogo {
     private FactoryCriador factory;
     private String cores[] = new String[8];
     private int numJogadores = 0;
-
+    private Mensagens mensagens = new MensagensObjetoNulo();
+    private GerenteCompraVenda gerenteCompraVenda = new GerenteCompraVendaObjetoNulo();
+    
+    /**
+     *
+     * @param f FactoryCriador
+     */
     public GerenteConcreto(FactoryCriador f) {
         factory = f;
         inicializaCores();
     }
 
+    /**
+     *
+     * @param f
+     * @param mens
+     */
+    public GerenteConcreto(FactoryCriador f, Mensagens mens){
+        factory = f;
+        inicializaCores();
+        this.mensagens = mens;
+    }
+    public GerenteConcreto(FactoryCriador f, Mensagens mens, GerenteCompraVenda gerente){
+        factory = f;
+        inicializaCores();
+        this.mensagens = mens;
+        this.gerenteCompraVenda = gerente;
+    }
+
+    /**
+     * Método usado para inicar um vetor String contendo as cores disponíveis para os jogadores.
+     */
     public void inicializaCores() {
         cores[0] = "Preto";
         cores[1] = "Branco";
@@ -53,18 +82,29 @@ public class GerenteConcreto implements GerenteJogo {
         cores[7] = "Rosa";
     }
 
+    /*
+     * Desloca o peão no tabuleiro de acordo com o resultado do dado.
+     * Caso o peão passe pela posição inicial o jogador receberá um bônus de R$ 200
+     */
     public Lugar andaPeao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro) {
         Peao p = jogador.getPeao();
         // Variável usada para facilitar os calculos
         int aux = (p.getPosicao() + valorDado[0] + valorDado[1]);
 
+        // Verifica se o peão passou pela posição de origem ou não. Caso tenha passado, a sua posição
+        // é transforma nos parâmetros que o jogo aceita.
         if (verificaPosicao(valorDado, jogador, tabuleiro)) {
             p.setPosicao(0 + aux - 40);
         } else {
             p.setPosicao(aux);
         }
+        // Pega o lugar no qual o peão se encontra após ter andado
         Lugar l = tabuleiro.getListaLugar().get(p.getPosicao());
 
+        // Chama o método mostraMensAndaPeao da classe MensagensJogo para mostrar ao usuário o seu lugar no jogo.
+        mensagens.mostraMensAndaPeao(jogador, l, valorDado);
+        
+        /*
         if (p.getPosicao() == 40) {
             System.out.println("O jogador  " + jogador.getNomeJogador() + "tirou  " + valorDado[0]
                     + " e " + valorDado[1] + ". O peao avancou para " + p.getPosicao() + ", " + l.getNome());
@@ -76,7 +116,7 @@ public class GerenteConcreto implements GerenteJogo {
 
             System.out.println("O jogador " + jogador.getNomeJogador() + " tirou " + valorDado[0]
                     + " e " + valorDado[1] + ". O peao avancou para  " + l.getPosicao() + ", " + l.getNome());
-        }
+        }*/
 
 
         return l;
@@ -88,6 +128,7 @@ public class GerenteConcreto implements GerenteJogo {
      * @param valorDado
      * @param jogador
      * @param tabuleiro
+     * @return
      */
     public boolean verificaPosicao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro) {
         int posicaoAtual = jogador.getPeao().getPosicao();
@@ -107,12 +148,13 @@ public class GerenteConcreto implements GerenteJogo {
      * @param teclado
      * @param b
      * @param jogadores
-     * @param mensagens
      */
-    public void gerenciaJogo(Tabuleiro tab, Scanner teclado, Banco b, List<Jogador> jogadores, Mensagens mensagens) {
+    public void gerenciaJogo(Tabuleiro tab, Scanner teclado, Banco banco, List<Jogador> jogadores) {
         int auxNumJogadores;
         int nivelBurrice = 0;
         System.out.println("Digite o numero de jogadores: ");
+        // Esse laço é usado para verificar se o jogador tem condições de entender os comandos do jogo.
+        // Caso o jogador erre o número de jogadores mais de 4 vezes o jogo é encerrado.
         while (numJogadores == 0 && nivelBurrice < 4) {
 
             if (teclado.hasNextInt()) {
@@ -138,11 +180,66 @@ public class GerenteConcreto implements GerenteJogo {
             return;
         }
 
+        
+        // Chama o método para receber os nomes e as cores dos jogadores
+        armazenaNomeECorJogadores(jogadores, numJogadores, teclado);
+        
+        /*
         String auxCor[] = cores;
         String corDigitada = "";
         String nome = "";
+        for (int i = 0; i < numJogadores; i++) {
+            System.out.println("\nEntre com o nome do jogador " + (i + 1) + " :");
+            nome = teclado.next();
+            //nome = mensagens.mensagemNome(i, teclado);
+            jogadores.get(i).setNomeJogador(nome);
+            System.out.println("\n O nome escolhido foi " + nome);
+            corDigitada = mensagens.mensagemCores(jogadores.get(i), auxCor, i, teclado);
+            jogadores.get(i).getPeao().setCorPeao(corDigitada);
+            jogadores.get(i).setDinheiro(1500);
+            for (int j = 0; j < auxCor.length; j++) {
+                if (corDigitada.equalsIgnoreCase(auxCor[j])) {
+                    auxCor[j] = "";
+                }
+            }
+            System.out.println("\n A cor escolhida foi " + corDigitada + "\n");
+        }*/
+
+        System.out.println("\nO jogo iniciou\n");
+
+        int jogadorAtual = 0;
+        int jogadorDepoisJogada = 0;
+        while (numJogadores >= 2) {
+            if (jogadorAtual >= numJogadores) {
+                jogadorAtual = 0;
+            }
+            jogadorDepoisJogada = realizaJogada(jogadores, tab, jogadores.get(jogadorAtual), teclado, banco, jogadorAtual);
+
+            if (jogadorDepoisJogada < jogadorAtual) {
+                jogadorAtual = jogadorDepoisJogada;
+            }
+            jogadorAtual++;
+
+        }
+        if (numJogadores == 1) {
+            System.out.println("\n\n\n Parabéns " + jogadores.get(0).getNomeJogador() + " ! Você é o mais novo"
+                    + " milionario da America!");
+            System.exit(0);
+        }
+    }
+
+    /**
+     * Método que irá pegar os nomes e as respectivas cores dos jogadores
+     * @param jogadores
+     * @param numJogadores
+     * @param teclado
+     */
 
 
+    public void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado){
+        String auxCor[] = cores;
+        String corDigitada = "";
+        String nome = "";
         for (int i = 0; i < numJogadores; i++) {
             System.out.println("\nEntre com o nome do jogador " + (i + 1) + " :");
             nome = teclado.next();
@@ -160,39 +257,12 @@ public class GerenteConcreto implements GerenteJogo {
             System.out.println("\n A cor escolhida foi " + corDigitada + "\n");
         }
 
-        System.out.println("\nO jogo iniciou\n");
-        int i = 0;
-        int j = 0;
-        while (numJogadores >= 2) {
-            if (i >= numJogadores) {
-                i = 0;
-            }
-            j = realizaJogada(jogadores, tab, jogadores.get(i), teclado, b, mensagens, i);
-            if (i == j) {
-                i++;
-            } else {
-                i = j;
-            }
-
-        }
-        if (numJogadores == 1) {
-            System.out.println("\n\n\n Parabéns " + jogadores.get(0).getNomeJogador() + " ! Você é o mais novo"
-                    + " milionario da America!");
-            System.exit(0);
-        }
     }
 
-    /**
-     * Método responsável por analisar e realizar a jogada escolhida pelo jogador. Ele é chamado
-     * pelo método gerenciaJogo, logo após a fase de coleta das informações dos jogadores.
-     * @param jogadores
-     * @param tab
-     * @param jogadorVez
-     * @param teclado
-     * @param b
-     * @param mensagens
-     */
-    public int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, Mensagens mensagens, int numJogAtual) {
+    public void gerenciaVezJogador(){
+
+    }
+    public int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int numJogAtual) {
         Lugar l;
         String comando = "";
         boolean acertouComando = false;
@@ -206,13 +276,15 @@ public class GerenteConcreto implements GerenteJogo {
                 acertouComando = true;
                 jogadores.remove(jogadorVez);
                 numJogadores--;
-                //numJogAtual --;
+                numJogAtual --;
+                //Verifica se só existe um jogador
                 if (jogadores.size() <= 1) {
+                    System.out.println("\n\n\n Parabéns " + jogadores.get(0).getNomeJogador() + " ! Seu adversário desistiu e"
+                            + " você é o mais novo" + " milionario da America!");
                     System.exit(0);
                 }
                 return numJogAtual;
             } else if (comando.equalsIgnoreCase("jogar")) {
-                // jogadorVez.jogaDado(new DadoDuplo());
                 acertouComando = true;
                 l = andaPeao(jogadorVez.jogaDado(new DadoDuplo()), jogadorVez, tab);
                 if (l == null) {
@@ -223,19 +295,19 @@ public class GerenteConcreto implements GerenteJogo {
                     LugarFisico lf = (LugarFisico) l;
                     if (lf.getProprietario() == null) {
                         mensagens.geraStatus(jogadorVez, lf);
-                        gerenciaCompra(lf, jogadorVez, teclado, b);
+                        gerenteCompraVenda.gerenciaCompra(lf, jogadorVez, teclado, b);
                     } else {
-                        descontaAluguel(lf, jogadorVez);
+                        gerenteCompraVenda.descontaAluguel(lf, jogadorVez);
                     }
 
                 } else if (l instanceof Imposto) {
-                    descontaImposto(l, jogadorVez, b);
-                    if (jogadorVez.getDinheiro() <= 0) {
+                    gerenteCompraVenda.descontaImposto(l, jogadorVez, b);
+                    /*if (jogadorVez.getDinheiro() <= 0) {
                         System.out.println("Você perdeu. Seu saldo e: " + jogadorVez.getDinheiro());
-                        //      numJogAtual--;
+                        numJogAtual--;
                         numJogadores--;
                         jogadores.remove(jogadorVez);
-                    }
+                    }*/
                 } else {
                     //ImplementarCompanhia e
                 }
@@ -250,7 +322,7 @@ public class GerenteConcreto implements GerenteJogo {
         }
         if (jogadorVez.getDinheiro() <= 0) {
             System.out.println("\n" + jogadorVez.getNomeJogador() + " Você perdeu. Seu saldo é: " + jogadorVez.getDinheiro());
-            //numJogAtual--;
+            numJogAtual--;
             numJogadores--;
             jogadores.remove(jogadorVez);
         }
@@ -264,7 +336,7 @@ public class GerenteConcreto implements GerenteJogo {
      * @param lf
      * @param jogadorVez
      */
-    public void descontaAluguel(LugarFisico lf, Jogador jogadorVez) {
+    /*public void descontaAluguel(LugarFisico lf, Jogador jogadorVez) {
 
         Jogador proprietario = lf.getProprietario();
         if (lf instanceof Propriedade) {
@@ -283,7 +355,7 @@ public class GerenteConcreto implements GerenteJogo {
         }
 
     }
-
+*/
     /**
      * Esse método será chamado caso o jogador caia em uma posição que represente um imposto, que pode ser
      * imposto de renda ou imposto de riqueza. Descontando o seu respectivo valor no dinheiro do jogador
@@ -292,7 +364,7 @@ public class GerenteConcreto implements GerenteJogo {
      * @param jogadorVez
      * @param b
      */
-    public void descontaImposto(Lugar l, Jogador jogadorVez, Banco b) {
+    /*public void descontaImposto(Lugar l, Jogador jogadorVez, Banco b) {
         Imposto imposto = (Imposto) l;
         if (imposto instanceof ImpostoRenda) {
 
@@ -304,15 +376,17 @@ public class GerenteConcreto implements GerenteJogo {
             b.setDinheiroEmCaixa(b.getDinheiroEmCaixa() + 75);
         }
     }
-
+*/
     /**
      * Gerencia compra é responsável por receber o comando do jogador dizendo se ele comprou ou não
      * o lugarFísico oferecido.
      * @param l
      * @param jogador
      * @param teclado
+     * @param b
      * @return boolean
      */
+    /*
     public boolean gerenciaCompra(LugarFisico l, Jogador jogador, Scanner teclado, Banco b) {
         String comprou = "";
         boolean acertouComando = false;
@@ -345,4 +419,70 @@ public class GerenteConcreto implements GerenteJogo {
         return false;
 
     }
+*/
+    /**
+     *
+     * @return
+     */
+    public String[] getCores() {
+        return cores;
+    }
+
+    /**
+     *
+     * @param cores
+     */
+    public void setCores(String[] cores) {
+        this.cores = cores;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public FactoryCriador getFactory() {
+        return factory;
+    }
+
+    /**
+     *
+     * @param factory
+     */
+    public void setFactory(FactoryCriador factory) {
+        this.factory = factory;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Mensagens getMensagens() {
+        return mensagens;
+    }
+
+    /**
+     *
+     * @param mensagens
+     */
+    public void setMensagens(Mensagens mensagens) {
+        this.mensagens = mensagens;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getNumJogadores() {
+        return numJogadores;
+    }
+
+    /**
+     *
+     * @param numJogadores
+     */
+    public void setNumJogadores(int numJogadores) {
+        this.numJogadores = numJogadores;
+    }
+
+    
 }

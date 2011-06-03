@@ -18,6 +18,9 @@ package tabuleiro;
 public class Chance extends Lugar {
 
 
+    /**
+     *
+     */
     public Chance() {
         throw new UnsupportedOperationException("Not yet implemented");
     }
