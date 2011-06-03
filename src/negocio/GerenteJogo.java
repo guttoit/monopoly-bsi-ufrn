@@ -8,6 +8,7 @@ package negocio;
 import java.util.List;
 import java.util.Scanner;
 import player.Jogador;
+import player.concretos.Baralho;
 import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.Tabuleiro;

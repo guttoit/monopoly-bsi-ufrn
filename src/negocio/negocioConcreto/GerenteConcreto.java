@@ -11,12 +11,17 @@ import negocio.Mensagens;
 import negocio.objetosNulo.GerenteCompraVendaObjetoNulo;
 import negocio.objetosNulo.MensagensObjetoNulo;
 import player.Jogador;
+import player.concretos.Baralho;
+import player.concretos.BaralhoCofreComunitario;
+import player.concretos.BaralhoSorteReves;
 import player.concretos.DadoDuplo;
 import player.concretos.Peao;
 import tabuleiro.Imposto;
 import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.Tabuleiro;
+import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
+import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
 
 /**
  *
@@ -34,6 +39,11 @@ public class GerenteConcreto implements GerenteJogo {
     private int numJogadores = 0;
     private Mensagens mensagens = new MensagensObjetoNulo();
     private GerenteCompraVenda gerenteCompraVenda = new GerenteCompraVendaObjetoNulo();
+    private Baralho baralhoSorteReves;
+    private Baralho baralhoCofreComunitario;
+
+
+
 
     /**
      *
@@ -67,7 +77,15 @@ public class GerenteConcreto implements GerenteJogo {
         this.gerenteCompraVenda = gerente;
     }
 
+     public GerenteConcreto(FactoryCriador f, Mensagens mens, GerenteCompraVenda gerente, Baralho baralhoSorteReves, Baralho baralhoCofreComunitario){
+        factory = f;
+        inicializaCores();
+        this.mensagens = mens;
+        this.gerenteCompraVenda = gerente;
+        this.baralhoCofreComunitario = baralhoCofreComunitario;
+        this.baralhoSorteReves = baralhoSorteReves;
 
+      }
 
     /**
      * Método usado para inicar um vetor String contendo as cores disponíveis para os jogadores.
@@ -226,7 +244,7 @@ public class GerenteConcreto implements GerenteJogo {
 
     }
 
-    public int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int numJogAtual) {
+    public int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int numJogAtual, BaralhoCofreComunitario baralhoCofreComunitario, BaralhoSorteReves baralhoSorteReves) {
         Lugar l;
         String comando = "";
         boolean acertouComando = false;
@@ -267,8 +285,10 @@ public class GerenteConcreto implements GerenteJogo {
                 } else if (l instanceof Imposto) {
                     gerenteCompraVenda.descontaImposto(l, jogadorVez, b);
                     
-                } else {
-                    //ImplementarCompanhia e
+                } else if (l instanceof SorteRevesConcreto ) {
+                          baralhoSorteReves.retiraCartaPilha();
+                } else if (l instanceof CofreComunitarioConcreto){
+                          baralhoCofreComunitario.retiraCartaPilha();
                 }
             } else if (comando.equalsIgnoreCase("status")) {
                 mensagens.statusJogador(jogadorVez, tab);
@@ -351,5 +371,9 @@ public class GerenteConcreto implements GerenteJogo {
      */
     public void setNumJogadores(int numJogadores) {
         this.numJogadores = numJogadores;
+    }
+
+    public int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int i) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
