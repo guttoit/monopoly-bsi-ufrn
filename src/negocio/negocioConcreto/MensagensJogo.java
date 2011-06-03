@@ -176,6 +176,12 @@ public class MensagensJogo implements Mensagens {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     *
+     * @param jogador
+     * @param l
+     * @param valorDado
+     */
     public void mostraMensAndaPeao(Jogador jogador, Lugar l, Integer[] valorDado) {
         Peao p = jogador.getPeao();
         if (p.getPosicao() == 40) {

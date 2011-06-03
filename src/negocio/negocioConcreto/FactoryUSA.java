@@ -161,6 +161,11 @@ public class FactoryUSA implements FactoryCriador {
         return new BaralhoSorteReves();
     }
 
+    /**
+     *
+     * @param f
+     * @return
+     */
     public GerenteCompraVenda criaGerenteCompraVenda(FactoryCriador f) {
         return new GerenteCompraVendaConcreto();
     }

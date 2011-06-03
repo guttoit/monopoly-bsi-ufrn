@@ -70,5 +70,11 @@ public interface Mensagens {
      */
     public void statusJogador(Jogador j, Tabuleiro t);
 
+    /**
+     *
+     * @param jogador
+     * @param l
+     * @param valorDado
+     */
     public void mostraMensAndaPeao(Jogador jogador, Lugar l, Integer[] valorDado);
 }
