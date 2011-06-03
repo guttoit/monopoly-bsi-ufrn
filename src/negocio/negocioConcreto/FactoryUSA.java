@@ -21,6 +21,7 @@ import player.concretos.JogadorConcreto;
 import player.concretos.Peao;
 import player.concretos.CartaSorteReves;
 import player.concretos.PilhaCartaAbstrata;
+import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
 import tabuleiro.tabuleiroConcreto.Ferrovia;
 import tabuleiro.tabuleiroConcreto.ImpostoRenda;
 import tabuleiro.tabuleiroConcreto.ImpostoRiqueza;
@@ -30,6 +31,7 @@ import tabuleiro.tabuleiroConcreto.Propriedade;
 
 import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
+import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
 import tabuleiro.tabuleiroConcreto.TabuleiroUSA;
 
 /**
@@ -133,17 +135,6 @@ public class FactoryUSA implements FactoryCriador {
         return l;
     }
 
-    public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
-        CartaCofresComunitarios carta = new CartaCofresComunitarios(numeroCarta, nomeCarta, descricao, observacoes);
-        baralho.addCarta(carta);
-        return carta;
-    }
-
-    public CartaSorteReves criaCartasSorteReves(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
-        CartaSorteReves carta = new CartaSorteReves(numeroCarta, nomeCarta, descricao, observacoes);
-        baralho.addCarta(carta);
-        return carta;
-    }
 
     public BaralhoCofreComunitario criaBaralhoCofreComunitario() {
         return new BaralhoCofreComunitario();
@@ -152,4 +143,29 @@ public class FactoryUSA implements FactoryCriador {
     public BaralhoSorteReves criaBaralhoSorteReves() {
         return new BaralhoSorteReves();
     }
+
+    public CofreComunitarioConcreto criaCofresComunitarios(int posicao, String nome) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public SorteRevesConcreto criaSorteReves(int posicao, String nome) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    
+
+    public CartaSorteReves criaCartasSorteReves(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
+        CartaSorteReves cartaSorteReves = new CartaSorteReves(numeroCarta, nomeCarta, descricao, observacoes);
+        baralho.addCarta(cartaSorteReves);
+        return cartaSorteReves;
+    }
+
+    public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
+        CartaCofresComunitarios cartaCofreComunitarios = new CartaCofresComunitarios(numeroCarta, nomeCarta, descricao, observacoes);
+        baralho.addCarta(cartaCofreComunitarios);
+        return cartaCofreComunitarios;
+    }
+
+
+   
 }

@@ -19,6 +19,8 @@ import tabuleiro.tabuleiroConcreto.ImpostoRiqueza;
 import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.Propriedade;
 import tabuleiro.Tabuleiro;
+import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
+import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
 
 /**
  *
@@ -54,9 +56,9 @@ public interface FactoryCriador {
 
     public GerenteJogo criaGerente(FactoryCriador f);
 
-    public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes);
+    public CofreComunitarioConcreto criaCofresComunitarios( int posicao, String nome);
 
-    public CartaSorteReves criaCartasSorteReves(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes);
+    public SorteRevesConcreto criaSorteReves( int posicao , String nome);
 
     public Mensagens criaMensagens();
 
@@ -65,5 +67,9 @@ public interface FactoryCriador {
     public BaralhoCofreComunitario criaBaralhoCofreComunitario();
 
     public BaralhoSorteReves criaBaralhoSorteReves();
+
+    public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes);
+
+    public CartaSorteReves criaCartasSorteReves(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes);
 
 }
