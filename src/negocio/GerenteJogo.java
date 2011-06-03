@@ -67,6 +67,6 @@ public  interface GerenteJogo {
      * @param b
      * @return boolean
      */
-    //public boolean gerenciaCompra(LugarFisico l, Jogador jogador, Scanner teclado, Banco b);
+    
 
 }

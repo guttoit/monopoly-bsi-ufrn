@@ -109,21 +109,6 @@ public class GerenteConcreto implements GerenteJogo {
         // Chama o método mostraMensAndaPeao da classe MensagensJogo para mostrar ao usuário o seu lugar no jogo.
         mensagens.mostraMensAndaPeao(jogador, l, valorDado);
 
-        /*
-        if (p.getPosicao() == 40) {
-            System.out.println("O jogador  " + jogador.getNomeJogador() + "tirou  " + valorDado[0]
-                    + " e " + valorDado[1] + ". O peao avancou para " + p.getPosicao() + ", " + l.getNome());
-        } else if (l == null) {
-
-            System.out.println("O jogador  " + jogador.getNomeJogador() + "tirou  " + valorDado[0]
-                    + " e " + valorDado[1] + ". O peao avancou para " + p.getPosicao() + ", " + " Nao existe ainda ");
-        } else {
-
-            System.out.println("O jogador " + jogador.getNomeJogador() + " tirou " + valorDado[0]
-                    + " e " + valorDado[1] + ". O peao avancou para  " + l.getPosicao() + ", " + l.getNome());
-        }*/
-
-
         return l;
     }
 
@@ -189,27 +174,6 @@ public class GerenteConcreto implements GerenteJogo {
         // Chama o método para receber os nomes e as cores dos jogadores
         armazenaNomeECorJogadores(jogadores, numJogadores, teclado);
 
-        /*
-        String auxCor[] = cores;
-        String corDigitada = "";
-        String nome = "";
-        for (int i = 0; i < numJogadores; i++) {
-            System.out.println("\nEntre com o nome do jogador " + (i + 1) + " :");
-            nome = teclado.next();
-            //nome = mensagens.mensagemNome(i, teclado);
-            jogadores.get(i).setNomeJogador(nome);
-            System.out.println("\n O nome escolhido foi " + nome);
-            corDigitada = mensagens.mensagemCores(jogadores.get(i), auxCor, i, teclado);
-            jogadores.get(i).getPeao().setCorPeao(corDigitada);
-            jogadores.get(i).setDinheiro(1500);
-            for (int j = 0; j < auxCor.length; j++) {
-                if (corDigitada.equalsIgnoreCase(auxCor[j])) {
-                    auxCor[j] = "";
-                }
-            }
-            System.out.println("\n A cor escolhida foi " + corDigitada + "\n");
-        }*/
-
         System.out.println("\nO jogo iniciou\n");
 
         int jogadorAtual = 0;
@@ -219,7 +183,9 @@ public class GerenteConcreto implements GerenteJogo {
                 jogadorAtual = 0;
             }
             jogadorDepoisJogada = realizaJogada(jogadores, tab, jogadores.get(jogadorAtual), teclado, banco, jogadorAtual);
-
+            // Verifica se algum jogador desistiu do jogo ou perdeu.
+            // Caso sim, o próximo jogador estará na mesma posição na lista de jogadores que o jogador
+            //que saiu
             if (jogadorDepoisJogada < jogadorAtual) {
                 jogadorAtual = jogadorDepoisJogada;
             }
@@ -264,12 +230,6 @@ public class GerenteConcreto implements GerenteJogo {
 
     }
 
-    /**
-     *
-     */
-    public void gerenciaVezJogador(){
-
-    }
     public int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int numJogAtual) {
         Lugar l;
         String comando = "";
@@ -338,96 +298,6 @@ public class GerenteConcreto implements GerenteJogo {
 
     }
 
-    /**
-     * Método chamado caso o jogador caia em uma lugarFisico que já tenha dono, como uma propriedade
-     * ou uma ferrovia. Ele irá anilsar e descontar o preço do aluguel daquele lugar.
-     * @param lf
-     * @param jogadorVez
-     */
-    /*public void descontaAluguel(LugarFisico lf, Jogador jogadorVez) {
-
-        Jogador proprietario = lf.getProprietario();
-        if (lf instanceof Propriedade) {
-            Propriedade p = (Propriedade) lf;
-            jogadorVez.setDinheiro((float) (jogadorVez.getDinheiro() - p.getAluguelAtual()));
-            proprietario.setDinheiro(proprietario.getDinheiro() + p.getAluguelAtual());
-        } else if (lf instanceof Ferrovia) {
-            int numFerrovias = 0;
-            for (LugarFisico lugar : proprietario.getListaLugarFisico()) {
-                if (lugar instanceof Ferrovia) {
-                    numFerrovias++;
-                }
-            }
-            jogadorVez.setDinheiro(jogadorVez.getDinheiro() - numFerrovias * 25);
-            proprietario.setDinheiro(proprietario.getDinheiro() + numFerrovias * 25);
-        }
-
-    }
-*/
-    /**
-     * Esse método será chamado caso o jogador caia em uma posição que represente um imposto, que pode ser
-     * imposto de renda ou imposto de riqueza. Descontando o seu respectivo valor no dinheiro do jogador
-     * e enviando ao banco.
-     * @param l
-     * @param jogadorVez
-     * @param b
-     */
-    /*public void descontaImposto(Lugar l, Jogador jogadorVez, Banco b) {
-        Imposto imposto = (Imposto) l;
-        if (imposto instanceof ImpostoRenda) {
-
-            jogadorVez.setDinheiro((float) (jogadorVez.getDinheiro() - 200));
-            b.setDinheiroEmCaixa(b.getDinheiroEmCaixa() + 200);
-
-        } else if (imposto instanceof ImpostoRiqueza) {
-            jogadorVez.setDinheiro((float) (jogadorVez.getDinheiro() - 75));
-            b.setDinheiroEmCaixa(b.getDinheiroEmCaixa() + 75);
-        }
-    }
-*/
-    /**
-     * Gerencia compra é responsável por receber o comando do jogador dizendo se ele comprou ou não
-     * o lugarFísico oferecido.
-     * @param l
-     * @param jogador
-     * @param teclado
-     * @param b
-     * @return boolean
-     */
-    /*
-    public boolean gerenciaCompra(LugarFisico l, Jogador jogador, Scanner teclado, Banco b) {
-        String comprou = "";
-        boolean acertouComando = false;
-        if (l.getProprietario() == null) {
-            while (!acertouComando) {
-
-                //Criar essa mensagem em mensagem mensagens.mensagemCompra(jogador, l);
-                comprou = teclado.next();
-                if (comprou.trim().equalsIgnoreCase("s") || comprou.trim().equalsIgnoreCase("Sim")) {
-                    if (jogador.getDinheiro() > l.getPreco()) {
-                        jogador.setDinheiro((float) (jogador.getDinheiro() - l.getPreco()));
-                        b.setDinheiroEmCaixa((float) (b.getDinheiroEmCaixa() + l.getPreco()));
-                        l.setProprietario(jogador);
-                        jogador.getListaLugarFisico().add(l);
-                        acertouComando = true;
-                        return true;
-                    } else {
-                        System.out.println(" \n Seu dinheiro e insuficiente... Fica pra proxima");
-                    }
-
-                } else if (comprou.trim().equalsIgnoreCase("n") || comprou.trim().equalsIgnoreCase("Nao")) {
-                    acertouComando = true;
-                    return false;
-                } else {
-                    System.out.println("\n Comando invalido. Digite S para comprar "
-                            + "ou N para nao compra: ");
-                }
-            }
-        }
-        return false;
-
-    }
-*/
     /**
      *
      * @return
