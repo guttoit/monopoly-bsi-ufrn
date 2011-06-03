@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package negocio.negocioConcreto;
 
 import java.util.ArrayList;
@@ -22,6 +18,7 @@ import player.concretos.JogadorConcreto;
 import player.concretos.Peao;
 import player.concretos.CartaSorteReves;
 import player.concretos.PilhaCartaAbstrata;
+import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
 import tabuleiro.tabuleiroConcreto.Ferrovia;
 import tabuleiro.tabuleiroConcreto.ImpostoRenda;
 import tabuleiro.tabuleiroConcreto.ImpostoRiqueza;
@@ -31,6 +28,7 @@ import tabuleiro.tabuleiroConcreto.Propriedade;
 
 import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
+import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
 import tabuleiro.tabuleiroConcreto.TabuleiroUSA;
 
 /**
@@ -169,4 +167,18 @@ public class FactoryUSA implements FactoryCriador {
     public GerenteCompraVenda criaGerenteCompraVenda(FactoryCriador f) {
         return new GerenteCompraVendaConcreto();
     }
+
+    
+   
+
+    public CofreComunitarioConcreto criaCofresComunitarios(int posicao, String nome) {
+            CofreComunitarioConcreto cofreComunitarioConcreto = new CofreComunitarioConcreto( nome, posicao);
+        return cofreComunitarioConcreto;
+    }
+
+    public SorteRevesConcreto criaSorteReves(int posicao, String nome) {
+        SorteRevesConcreto sorteRevesConcreto = new SorteRevesConcreto(nome,posicao);
+         return sorteRevesConcreto;
+    }
 }
+
