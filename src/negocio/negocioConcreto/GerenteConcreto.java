@@ -1,8 +1,6 @@
 
 package negocio.negocioConcreto;
 
-import tabuleiro.tabuleiroConcreto.ImpostoRiqueza;
-import tabuleiro.tabuleiroConcreto.ImpostoRenda;
 import java.util.List;
 import java.util.Scanner;
 import negocio.Banco;
@@ -15,11 +13,9 @@ import negocio.objetosNulo.MensagensObjetoNulo;
 import player.Jogador;
 import player.concretos.DadoDuplo;
 import player.concretos.Peao;
-import tabuleiro.tabuleiroConcreto.Ferrovia;
 import tabuleiro.Imposto;
 import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
-import tabuleiro.tabuleiroConcreto.Propriedade;
 import tabuleiro.Tabuleiro;
 
 /**
@@ -356,6 +352,4 @@ public class GerenteConcreto implements GerenteJogo {
     public void setNumJogadores(int numJogadores) {
         this.numJogadores = numJogadores;
     }
-
-
 }
