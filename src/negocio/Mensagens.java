@@ -77,4 +77,8 @@ public interface Mensagens {
      * @param valorDado
      */
     public void mostraMensAndaPeao(Jogador jogador, Lugar l, Integer[] valorDado);
+
+
+
+    public void visitaPrisao();
 }
