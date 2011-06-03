@@ -28,8 +28,10 @@ import tabuleiro.tabuleiroConcreto.Propriedade;
 
 import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
+import tabuleiro.tabuleiroConcreto.Prisao;
 import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
 import tabuleiro.tabuleiroConcreto.TabuleiroUSA;
+import tabuleiro.tabuleiroConcreto.VaParaPrisao;
 
 /**
  *@author Gutto
@@ -180,5 +182,17 @@ public class FactoryUSA implements FactoryCriador {
         SorteRevesConcreto sorteRevesConcreto = new SorteRevesConcreto(nome,posicao);
          return sorteRevesConcreto;
     }
+   
+
+    public Lugar criaPrisao(String nome, int posicao) {
+         Prisao prisao = new  Prisao(nome, posicao);
+           return prisao;
+    }
+
+    public Lugar criaVaParaPrisao(String nome, int posicao) {
+        VaParaPrisao vaParaPrisao = new VaParaPrisao(nome, posicao);
+            return vaParaPrisao;
+    }
+
 }
 
