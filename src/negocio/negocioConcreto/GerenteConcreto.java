@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package negocio.negocioConcreto;
 
 import tabuleiro.tabuleiroConcreto.ImpostoRiqueza;
@@ -41,7 +38,7 @@ public class GerenteConcreto implements GerenteJogo {
     private int numJogadores = 0;
     private Mensagens mensagens = new MensagensObjetoNulo();
     private GerenteCompraVenda gerenteCompraVenda = new GerenteCompraVendaObjetoNulo();
-    
+
     /**
      *
      * @param f FactoryCriador
@@ -67,6 +64,8 @@ public class GerenteConcreto implements GerenteJogo {
         this.mensagens = mens;
         this.gerenteCompraVenda = gerente;
     }
+
+
 
     /**
      * Método usado para inicar um vetor String contendo as cores disponíveis para os jogadores.
@@ -103,7 +102,7 @@ public class GerenteConcreto implements GerenteJogo {
 
         // Chama o método mostraMensAndaPeao da classe MensagensJogo para mostrar ao usuário o seu lugar no jogo.
         mensagens.mostraMensAndaPeao(jogador, l, valorDado);
-        
+
         /*
         if (p.getPosicao() == 40) {
             System.out.println("O jogador  " + jogador.getNomeJogador() + "tirou  " + valorDado[0]
@@ -123,8 +122,8 @@ public class GerenteConcreto implements GerenteJogo {
     }
 
     /**
-     * Verifica onde um jogador está localizado no tabuleiro 
-     * para receber gratificação por dar uma volta no tabuleiro 
+     * Verifica onde um jogador está localizado no tabuleiro
+     * para receber gratificação por dar uma volta no tabuleiro
      * @param valorDado
      * @param jogador
      * @param tabuleiro
@@ -142,8 +141,8 @@ public class GerenteConcreto implements GerenteJogo {
     }
 
     /**
-     * Método utilizado pra gerenciar o jogo. É ele que "conversa" com o jogador ou dispara outros 
-     * métodos. 
+     * Método utilizado pra gerenciar o jogo. É ele que "conversa" com o jogador ou dispara outros
+     * métodos.
      * @param tab
      * @param teclado
      * @param b
@@ -180,10 +179,10 @@ public class GerenteConcreto implements GerenteJogo {
             return;
         }
 
-        
+
         // Chama o método para receber os nomes e as cores dos jogadores
         armazenaNomeECorJogadores(jogadores, numJogadores, teclado);
-        
+
         /*
         String auxCor[] = cores;
         String corDigitada = "";
@@ -484,5 +483,5 @@ public class GerenteConcreto implements GerenteJogo {
         this.numJogadores = numJogadores;
     }
 
-    
+
 }

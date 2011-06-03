@@ -13,8 +13,7 @@ import negocio.GerenteJogo;
 import negocio.Mensagens;
 import player.Dado;
 import player.Jogador;
-import player.concretos.BaralhoCofreComunitario;
-import player.concretos.BaralhoSorteReves;
+import player.concretos.Baralho;
 import player.concretos.CartaCofresComunitarios;
 import player.concretos.CartaSorteReves;
 import player.concretos.Peao;
@@ -44,8 +43,7 @@ public class Jogo {
     private Scanner teclado;
     private Banco banco;
 
-    private BaralhoSorteReves baralhoSorteReves;
-    private BaralhoCofreComunitario baralhoCofreComunitario;
+    private Baralho baralho;
 
 
     private Lugar posicaoZero;
@@ -129,34 +127,27 @@ public class Jogo {
 
     private Lugar go;
 
-    /**
-     *
-     * @return
-     */
+    private Lugar sorteReves1;
+    private Lugar sorteReves2;
+    private Lugar sorteReves3;
+
+    private Lugar cofreComunitario1;
+    private Lugar cofreComunitario2;
+    private Lugar cofreComunitario3;
+
+
     public List<CartaSorteReves> getCartaSorteReveses() {
         return cartaSorteReveses;
     }
 
-    /**
-     *
-     * @param cartaSorteReveses
-     */
     public void setCartaSorteReveses(List<CartaSorteReves> cartaSorteReveses) {
         this.cartaSorteReveses = cartaSorteReveses;
     }
 
-    /**
-     *
-     * @return
-     */
     public List<CartaCofresComunitarios> getCartasCofresComunitarios() {
         return cartasCofresComunitarios;
     }
 
-    /**
-     *
-     * @param cartasCofresComunitarios
-     */
     public void setCartasCofresComunitarios(List<CartaCofresComunitarios> cartasCofresComunitarios) {
         this.cartasCofresComunitarios = cartasCofresComunitarios;
     }
@@ -181,6 +172,8 @@ public class Jogo {
     private CartaCofresComunitarios voceTirouOSegundoLugarNoConcursoDeBeleza;
     private CartaCofresComunitarios voceHerdou;
     private CartaCofresComunitarios voceDevePagarOsReparosDaRua;
+
+    
 
 
 
@@ -211,17 +204,14 @@ public class Jogo {
     public void inicializaVariaveis(){
         mensagens = factory.criaMensagens();
         gerenteCompraVendaConcreto = factory.criaGerenteCompraVenda(factory);
-        gerente = factory.criaGerente(factory, mensagens, gerenteCompraVendaConcreto);
-
+        gerente = factory.criaGerente(factory,mensagens, gerenteCompraVendaConcreto);
         tabuleiro = factory.criaTabuleiro(40);
         jogadores = factory.criaListaJogadores(8);
-        
-        
+       
         teclado = new Scanner(System.in);
         lugares = factory.criaLugares(40);
         banco = factory.criaBanco();
-        baralhoCofreComunitario = factory.criaBaralhoCofreComunitario();
-        baralhoSorteReves = factory.criaBaralhoSorteReves();
+//        baralho = factory.criaBaralho();
     }
 
    /*
@@ -314,7 +304,7 @@ public class Jogo {
 
         mediterraneanAvenue= factory.criaPropriedade(lugares, 1, "Mediterranean Avenue", "roxo", 60, 500, 10, 30, 90, 160, 250, 30, 90);
 
-       // communityChest1 = factory.criaImpostoRenda(lugares, numJogadores, null, numJogadores);
+       // cofreComunitario1 = factory.cria
 
         balticAvenue= factory.criaPropriedade(lugares,3, "balticAvenue", "roxo", 60 , 500 , 20 , 60 , 80 ,160 , 450 , 30 , 50);
 
@@ -396,42 +386,39 @@ public class Jogo {
 
 
     
-    /**
-     *
-     */
     public void  criaCartasCofresComunitarios(){
 
-            avanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 1 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            avanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 1 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
 
-            erroDoBancoEmSeuFavor = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 2 , "ErroDoBancoEmSeuFavor", "Receba $200", "");
+            erroDoBancoEmSeuFavor = factory.criaCartasCofresComunitarios(baralho, 2 , "ErroDoBancoEmSeuFavor", "Receba $200", "");
 
-            taxaDoMedico = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 3 , "TaxaDoMedico", "Pague $50", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
+            taxaDoMedico = factory.criaCartasCofresComunitarios(baralho, 3 , "TaxaDoMedico", "Pague $50", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
 
-            aberturaDaGrandeOpera = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 4 , "AberturaDaGrandeOpera", "Receba $50 de cada jogador pelas entradas", "");
+            aberturaDaGrandeOpera = factory.criaCartasCofresComunitarios(baralho, 4 , "AberturaDaGrandeOpera", "Receba $50 de cada jogador pelas entradas", "");
 
-            daLiquidacaoForaDeEstoque = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 5 , "DaLiquidacaoForaDeEstoque", "Receba $45", "");
+            daLiquidacaoForaDeEstoque = factory.criaCartasCofresComunitarios(baralho, 5 , "DaLiquidacaoForaDeEstoque", "Receba $45", "");
 
-            saiaLivreDaPrisaoSemPagar = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 6 , "SaiaLivreDaPrisaoSemPagar", "Esta carta pode ser mantida até o uso ou venda.", "Veja a user story sobre a prisão");
+            saiaLivreDaPrisaoSemPagar = factory.criaCartasCofresComunitarios(baralho, 6 , "SaiaLivreDaPrisaoSemPagar", "Esta carta pode ser mantida até o uso ou venda.", "Veja a user story sobre a prisão");
 
-            vaParaAPrisao = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 7 , "VaParaAPrisao", "Vá direto para a prisão – Não passe pelo ponto de partida – Não receba $200", "");
+            vaParaAPrisao = factory.criaCartasCofresComunitarios(baralho, 7 , "VaParaAPrisao", "Vá direto para a prisão – Não passe pelo ponto de partida – Não receba $200", "");
 
-            restituicaoDoImpostoDeRenda = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 8 , "RestituicaoDoImpostoDeRenda", "Receba $20", "");
+            restituicaoDoImpostoDeRenda = factory.criaCartasCofresComunitarios(baralho, 8 , "RestituicaoDoImpostoDeRenda", "Receba $20", "");
 
-            aniversarioDoSeguroDeVida = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 9 , "AniversarioDoSeguroDeVida", "Receba $100", "");
+            aniversarioDoSeguroDeVida = factory.criaCartasCofresComunitarios(baralho, 9 , "AniversarioDoSeguroDeVida", "Receba $100", "");
 
-            pagueOHospital = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 10 , "PagueOHospital", "Pague $100", "");
+            pagueOHospital = factory.criaCartasCofresComunitarios(baralho, 10 , "PagueOHospital", "Pague $100", "");
 
-            pagueTaxaDaEscola = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 11 , "PagueTaxaDaEscola", "Pague $150", "");
+            pagueTaxaDaEscola = factory.criaCartasCofresComunitarios(baralho, 11 , "PagueTaxaDaEscola", "Pague $150", "");
 
-            recebaPorSeusServicos = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 12 , "RecebaPorSeusServicos", "Receba $25", "");
+            recebaPorSeusServicos = factory.criaCartasCofresComunitarios(baralho, 12 , "RecebaPorSeusServicos", "Receba $25", "");
 
-            aniversarioDosFundosDeNatal = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 13 , "AniversarioDosFundosDeNatal", "Receba $100", "");
+            aniversarioDosFundosDeNatal = factory.criaCartasCofresComunitarios(baralho, 13 , "AniversarioDosFundosDeNatal", "Receba $100", "");
 
-            voceTirouOSegundoLugarNoConcursoDeBeleza = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 14 , "VoceTirouOSegundoLugarNoConcursoDeBeleza", "Receba $10", "");
+            voceTirouOSegundoLugarNoConcursoDeBeleza = factory.criaCartasCofresComunitarios(baralho, 14 , "VoceTirouOSegundoLugarNoConcursoDeBeleza", "Receba $10", "");
 
-            voceHerdou = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 15 , "VoceHerdou", "Receba $100", "");
+            voceHerdou = factory.criaCartasCofresComunitarios(baralho, 15 , "VoceHerdou", "Receba $100", "");
 
-            voceDevePagarOsReparosDaRua = factory.criaCartasCofresComunitarios(baralhoCofreComunitario, 16 , "VoceDevePagarOsReparosDaRua", "Pague $40 por cada casa, $115 por hotel", "Isso se aplica apenas às casas e hotéis que o jogador possui; ele não precisa pagar pelas casas e hotéis dos outros jogadores.");
+            voceDevePagarOsReparosDaRua = factory.criaCartasCofresComunitarios(baralho, 16 , "VoceDevePagarOsReparosDaRua", "Pague $40 por cada casa, $115 por hotel", "Isso se aplica apenas às casas e hotéis que o jogador possui; ele não precisa pagar pelas casas e hotéis dos outros jogadores.");
 
  }
 
@@ -465,90 +452,46 @@ public class Jogo {
         return jogadores;
     }
 
-    /**
-     *
-     * @param jogadores
-     */
     public void setJogadores(List<Jogador> jogadores) {
         this.jogadores = jogadores;
     }
 
-    /**
-     *
-     * @return
-     */
     public Dado getDado() {
         return dado;
     }
 
-    /**
-     *
-     * @param dado
-     */
     public void setDado(Dado dado) {
         this.dado = dado;
     }
 
-    /**
-     *
-     * @return
-     */
     public GerenteJogo getGerente() {
         return gerente;
     }
 
-    /**
-     *
-     * @param gerente
-     */
     public void setGerente(GerenteJogo gerente) {
         this.gerente = gerente;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getNumJogadores() {
         return numJogadores;
     }
 
-    /**
-     *
-     * @param numJogadores
-     */
     public void setNumJogadores(int numJogadores) {
         this.numJogadores = numJogadores;
     }
 
-    /**
-     *
-     * @return
-     */
     public Peao getPeao() {
         return peao;
     }
 
-    /**
-     *
-     * @param peao
-     */
     public void setPeao(Peao peao) {
         this.peao = peao;
     }
 
-    /**
-     *
-     * @return
-     */
     public Tabuleiro getTabuleiro() {
         return tabuleiro;
     }
 
-    /**
-     *
-     * @param tabuleiro
-     */
     public void setTabuleiro(Tabuleiro tabuleiro) {
         this.tabuleiro = tabuleiro;
     }

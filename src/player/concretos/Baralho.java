@@ -4,11 +4,11 @@
  */
 package player.concretos;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Stack;
-import tabuleiro.Carta;
+import  java.util.ArrayList;
+import  java.util.List;
+import  java.util.Random;
+import  java.util.Stack;
+import  tabuleiro.Carta;
 
 /**
  *
