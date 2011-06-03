@@ -16,7 +16,8 @@ package tabuleiro;
  *
  */
 public abstract class Lugar {
-
+    private String nome;
+    private int posicao;
     /**
      *
      */
@@ -27,19 +28,16 @@ public abstract class Lugar {
     /**
      *
      * @param nome
-     * @param preco
+     * 
      * @param posicao
      */
-    public Lugar(String nome, double preco, int posicao) {
+    public Lugar(String nome,int posicao) {
         this.nome = nome;
-        this.preco = preco;
         this.posicao = posicao;
     }
 
 
-    private String nome;
-    private double preco;
-    private int posicao;
+    
 
     /**
      *
@@ -73,20 +71,6 @@ public abstract class Lugar {
         this.posicao = posicao;
     }
 
-    /**
-     *
-     * @return
-     */
-    public double getPreco() {
-        return preco;
-    }
-
-    /**
-     *
-     * @param preco
-     */
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
+    
 
 }

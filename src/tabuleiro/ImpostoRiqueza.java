@@ -17,7 +17,7 @@ package tabuleiro;
  */
 public class ImpostoRiqueza extends Imposto{
 
-
+    private float preco;
     /**
      *
      * @param posicao

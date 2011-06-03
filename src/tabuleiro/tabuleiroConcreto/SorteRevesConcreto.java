@@ -14,7 +14,7 @@ import tabuleiro.Lugar;
 public class SorteRevesConcreto extends Lugar{
 
     public SorteRevesConcreto(String nome, double preco, int posicao) {
-        super(nome, preco, posicao);
+        super(nome,posicao);
     }
 
 

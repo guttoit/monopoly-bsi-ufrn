@@ -29,7 +29,7 @@ public class Propriedade extends LugarFisico {
     private float aluguelCasa4;
     private float precoCasa;
     private String cor;
-
+    private float preco;
     /**
      *
      */

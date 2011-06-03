@@ -157,11 +157,11 @@ public class MensagensJogo implements Mensagens {
 
             if (lugar instanceof Propriedade) {
                 Propriedade p = (Propriedade)lugar;
-                System.out.printf("\n Propriedade " + lugar.getNome()+ " " + p.getCor() + " " + lugar.getPreco());
+                System.out.printf("\n Propriedade " + lugar.getNome()+ " " + p.getCor() + " " + p.getPreco());
             }
             if (lugar instanceof Ferrovia) {
                 Ferrovia f = (Ferrovia)lugar;
-                System.out.printf("\n Ferrovia " + lugar.getNome() + lugar.getPreco());
+                System.out.printf("\n Ferrovia " + lugar.getNome() + f.getPreco());
             }
         }
 
