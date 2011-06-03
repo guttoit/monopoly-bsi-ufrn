@@ -270,12 +270,7 @@ public class GerenteConcreto implements GerenteJogo {
 
                 } else if (l instanceof Imposto) {
                     gerenteCompraVenda.descontaImposto(l, jogadorVez, b);
-                    /*if (jogadorVez.getDinheiro() <= 0) {
-                        System.out.println("Você perdeu. Seu saldo e: " + jogadorVez.getDinheiro());
-                        numJogAtual--;
-                        numJogadores--;
-                        jogadores.remove(jogadorVez);
-                    }*/
+                    
                 } else {
                     //ImplementarCompanhia e
                 }
