@@ -136,18 +136,34 @@ public class Jogo {
     private Lugar cofreComunitario3;
 
 
+    /**
+     *
+     * @return
+     */
     public List<CartaSorteReves> getCartaSorteReveses() {
         return cartaSorteReveses;
     }
 
+    /**
+     *
+     * @param cartaSorteReveses
+     */
     public void setCartaSorteReveses(List<CartaSorteReves> cartaSorteReveses) {
         this.cartaSorteReveses = cartaSorteReveses;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<CartaCofresComunitarios> getCartasCofresComunitarios() {
         return cartasCofresComunitarios;
     }
 
+    /**
+     *
+     * @param cartasCofresComunitarios
+     */
     public void setCartasCofresComunitarios(List<CartaCofresComunitarios> cartasCofresComunitarios) {
         this.cartasCofresComunitarios = cartasCofresComunitarios;
     }
@@ -386,6 +402,9 @@ public class Jogo {
 
 
     
+    /**
+     *
+     */
     public void  criaCartasCofresComunitarios(){
 
             avanceParaOPontoDePartidaGo = factory.criaCartasCofresComunitarios(baralho, 1 , "AvanceParaOPontoDePartidaGo", "Receba $200", "Isso não é um bônus, ou seja, os $200 referem-se ao valor que o jogador recebe normalmente ao passar pelo Ponto de Partida.");
@@ -452,46 +471,90 @@ public class Jogo {
         return jogadores;
     }
 
+    /**
+     *
+     * @param jogadores
+     */
     public void setJogadores(List<Jogador> jogadores) {
         this.jogadores = jogadores;
     }
 
+    /**
+     *
+     * @return
+     */
     public Dado getDado() {
         return dado;
     }
 
+    /**
+     *
+     * @param dado
+     */
     public void setDado(Dado dado) {
         this.dado = dado;
     }
 
+    /**
+     *
+     * @return
+     */
     public GerenteJogo getGerente() {
         return gerente;
     }
 
+    /**
+     *
+     * @param gerente
+     */
     public void setGerente(GerenteJogo gerente) {
         this.gerente = gerente;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNumJogadores() {
         return numJogadores;
     }
 
+    /**
+     *
+     * @param numJogadores
+     */
     public void setNumJogadores(int numJogadores) {
         this.numJogadores = numJogadores;
     }
 
+    /**
+     *
+     * @return
+     */
     public Peao getPeao() {
         return peao;
     }
 
+    /**
+     *
+     * @param peao
+     */
     public void setPeao(Peao peao) {
         this.peao = peao;
     }
 
+    /**
+     *
+     * @return
+     */
     public Tabuleiro getTabuleiro() {
         return tabuleiro;
     }
 
+    /**
+     *
+     * @param tabuleiro
+     */
     public void setTabuleiro(Tabuleiro tabuleiro) {
         this.tabuleiro = tabuleiro;
     }

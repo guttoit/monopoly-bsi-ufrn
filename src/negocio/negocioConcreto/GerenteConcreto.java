@@ -58,6 +58,12 @@ public class GerenteConcreto implements GerenteJogo {
         inicializaCores();
         this.mensagens = mens;
     }
+    /**
+     *
+     * @param f
+     * @param mens
+     * @param gerente
+     */
     public GerenteConcreto(FactoryCriador f, Mensagens mens, GerenteCompraVenda gerente){
         factory = f;
         inicializaCores();
@@ -145,7 +151,7 @@ public class GerenteConcreto implements GerenteJogo {
      * métodos.
      * @param tab
      * @param teclado
-     * @param b
+     * @param banco
      * @param jogadores
      */
     public void gerenciaJogo(Tabuleiro tab, Scanner teclado, Banco banco, List<Jogador> jogadores) {
@@ -258,6 +264,9 @@ public class GerenteConcreto implements GerenteJogo {
 
     }
 
+    /**
+     *
+     */
     public void gerenciaVezJogador(){
 
     }

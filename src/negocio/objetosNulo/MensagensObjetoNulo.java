@@ -42,6 +42,12 @@ public class MensagensObjetoNulo implements Mensagens{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     *
+     * @param jogador
+     * @param l
+     * @param valorDado
+     */
     public void mostraMensAndaPeao(Jogador jogador, Lugar l, Integer[] valorDado) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

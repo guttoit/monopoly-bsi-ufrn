@@ -42,7 +42,6 @@ public  interface GerenteJogo {
      * @param teclado
      * @param b
      * @param jogadores
-     * @param mensagens
      */
     public void gerenciaJogo(Tabuleiro tab, Scanner teclado, Banco b, List<Jogador> jogadores);
 
@@ -54,7 +53,6 @@ public  interface GerenteJogo {
      * @param jogadorVez
      * @param teclado
      * @param b
-     * @param mensagens
      * @param i
      * @return
      */

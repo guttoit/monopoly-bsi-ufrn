@@ -135,11 +135,18 @@ public interface FactoryCriador {
 
     /**
      *
-     * @param f, mens
+     * @param f
+     * @param mens 
+     * @param gCV
      * @return GerenteJogo
      */
     public GerenteJogo criaGerente(FactoryCriador f, Mensagens mens, GerenteCompraVenda gCV);
 
+    /**
+     *
+     * @param f
+     * @return
+     */
     public GerenteCompraVenda criaGerenteCompraVenda(FactoryCriador f);
 
     /**
