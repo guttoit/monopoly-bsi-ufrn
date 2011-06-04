@@ -19,8 +19,6 @@ import tabuleiro.Tabuleiro;
  *
  * @author Gutto
  */
-
-
 /**
  *
  * @class A classe MensagensJogo implementa Mensagens e é resposável pos mostrar as pricipais mensagens
@@ -32,14 +30,12 @@ public class MensagensJogo implements Mensagens {
         return null;
     }
 
-
-
- /**
- * Metodo para mostrar mensagem de tetativas de execucoes erradas.
- * @param nivelBurrice
-  * @param numDigitado
-  * @return
- */
+    /**
+     * Metodo para mostrar mensagem de tetativas de execucoes erradas.
+     * @param nivelBurrice
+     * @param numDigitado
+     * @return
+     */
     public String nivelBurrice(int nivelBurrice, int numDigitado) {
         String mensBurrice = "";
         switch (nivelBurrice) {
@@ -69,14 +65,13 @@ public class MensagensJogo implements Mensagens {
     }
 //
 
-
     /**
- * Metodo para mostrar a mensagem inicial pedindo o nome do jogador
- * @param numJogador
- * @param  teclado
- *
- * @return  String
- */
+     * Metodo para mostrar a mensagem inicial pedindo o nome do jogador
+     * @param numJogador
+     * @param  teclado
+     *
+     * @return  String
+     */
     public String mensagemNome(int numJogador, Scanner teclado) {
         System.out.println("\nEntre com o nome do jogador " + numJogador + " :");
         String nome = teclado.next().trim();
@@ -85,14 +80,14 @@ public class MensagensJogo implements Mensagens {
     }
 //
 
- /**
- * Metodo para mostrar as mensagem com as cores disponiveis no jogo
- * @param jogador Jogador, 
-  * @param cores
-  * @param numJogador
-  * @param teclado
-  * @return String
- */
+    /**
+     * Metodo para mostrar as mensagem com as cores disponiveis no jogo
+     * @param jogador Jogador,
+     * @param cores
+     * @param numJogador
+     * @param teclado
+     * @return String
+     */
     public String mensagemCores(Jogador jogador, String[] cores, int numJogador, Scanner teclado) {
 
         boolean acertouCor = false;
@@ -122,15 +117,11 @@ public class MensagensJogo implements Mensagens {
         return cor;
     }
 
-
-
-
- /**
-  * * Metodo para mostrar em que posicao está a propriedade e pegunta se o jogador deseja comprá-la
-  * @param j
-  * @param l
-  */
-
+    /**
+     * * Metodo para mostrar em que posicao está a propriedade e pegunta se o jogador deseja comprá-la
+     * @param j
+     * @param l
+     */
     public void geraStatus(Jogador j, LugarFisico l) {
 
         System.out.printf("\nO título da propriedade " + j.getPeao().getPosicao() + " " + l.getNome() + " está disponivel por : " + l.getPreco()
@@ -138,40 +129,40 @@ public class MensagensJogo implements Mensagens {
 
     }
 
-
     /**
      *
      * @param j
      * @param carta
      */
-    public void mensagemSorteCofre(Jogador j, Carta carta){
-        System.out.printf("\nVocê tirou a carta " + carta.getNomeCarta()+ "\n" + carta.getDescricao());
-                
+    public void mensagemSorteCofre(Jogador j, Carta carta) {
+        System.out.printf("\nVocê tirou a carta " + carta.getNomeCarta() + "\n" + carta.getDescricao());
+
     }
+
     /**
      * Metodo para mostrar a situacao atual do jogador
      * @param j
      * @param t
      */
     public void statusJogador(Jogador j, Tabuleiro t) {
-        
-        if (t.getListaLugar().get(j.getPeao().getPosicao()) == null) {
+        int posicaoLugar = j.getPeao().getPosicao() + 1;
+        if (t.getListaLugar().get(posicaoLugar) == null) {
             System.out.printf(" \nO status de " + j.getNomeJogador() + " - " + j.getPeao().getCorPeao()
                     + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + " Lugar nao implementado"
-                    + "\n " + "Possui" + "$" + j.getDinheiro()+ "\n");
+                    + "\n " + "Possui" + "$" + j.getDinheiro() + "\n");
         } else {
             System.out.printf(" \nO status de " + j.getNomeJogador() + "- " + j.getPeao().getCorPeao()
-                    + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + t.getListaLugar().get(j.getPeao().getPosicao()).getNome()
+                    + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + t.getListaLugar().get(posicaoLugar).getNome()
                     + "\n " + "Possui" + "$" + j.getDinheiro() + "\n");
         }
         for (Lugar lugar : j.getListaLugarFisico()) {
 
             if (lugar instanceof Propriedade) {
-                Propriedade p = (Propriedade)lugar;
-                System.out.printf("\n Propriedade " + lugar.getNome()+ " " + p.getCor() + " " + p.getPreco());
+                Propriedade p = (Propriedade) lugar;
+                System.out.printf("\n Propriedade " + lugar.getNome() + " " + p.getCor() + " " + p.getPreco());
             }
             if (lugar instanceof Ferrovia) {
-                Ferrovia f = (Ferrovia)lugar;
+                Ferrovia f = (Ferrovia) lugar;
                 System.out.printf("\n Ferrovia " + lugar.getNome() + f.getPreco());
             }
         }
@@ -195,10 +186,7 @@ public class MensagensJogo implements Mensagens {
      */
     public void mostraMensAndaPeao(Jogador jogador, Lugar l, Integer[] valorDado) {
         Peao p = jogador.getPeao();
-        if (p.getPosicao() == 40) {
-            System.out.println("O jogador  " + jogador.getNomeJogador() + "tirou  " + valorDado[0]
-                    + " e " + valorDado[1] + ". O peao avancou para " + p.getPosicao() + ", " + l.getNome());
-        } else if (l == null) {
+        if (l == null) {
 
             System.out.println("O jogador  " + jogador.getNomeJogador() + "tirou  " + valorDado[0]
                     + " e " + valorDado[1] + ". O peao avancou para " + p.getPosicao() + ", " + " Nao existe ainda ");
@@ -209,9 +197,30 @@ public class MensagensJogo implements Mensagens {
         }
     }
 
-    public void visitaPrisao(){
-          System.out.println("Visitando Prisao");
-
+    public void visitaPrisao() {
+        System.out.println("Visitando Prisao");
 
     }
+
+    public void vaParaPrisao() {
+        System.out.println(" Você está preso.");
+
+    }
+
+    public String mensagemEstaPreso(Jogador jogador, Scanner teclado) {
+        System.out.println("\nA jogada de " + jogador.getNomeJogador() + " comecou.");
+        System.out.println("\n" + jogador.getNomeJogador() + " Você está na prisão.\n");
+        System.out.println("\nComandos disponiveis: [pagar] [jogar] [status] [sair]");
+        System.out.println("\nEntre com o comando");
+        return teclado.next().trim();
+    }
+
+    public String mensagemEstaPresoComCarta(Jogador jogador, Scanner teclado) {
+        System.out.println("\nA jogada de " + jogador.getNomeJogador() + " comecou.");
+        System.out.println("\n" + jogador.getNomeJogador() + " Você está na prisão.\n");
+        System.out.println("\nComandos disponiveis: [pagar] [carta] [jogar] [status] [sair]");
+        System.out.println("\nEntre com o comando");
+        return teclado.next().trim();
+    }
+
 }

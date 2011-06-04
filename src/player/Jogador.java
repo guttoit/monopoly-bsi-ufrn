@@ -27,15 +27,19 @@ public abstract class Jogador {
     private boolean estaNaPrisao;
     private boolean temCartaSorteRevesSairPrisao;
     private boolean temCartaCofreComuSairPrisao;
-    /**
-     *
-     */
+    private int tentativasSairPrisao;
+    private int numVezesDadosIguais;
+    private boolean jogaNovamente;
+    
     public Jogador(){
         listaLugarFisico = new ArrayList<LugarFisico>();
         peao = new Peao();
         estaNaPrisao = false;
         temCartaCofreComuSairPrisao = false;
         temCartaSorteRevesSairPrisao = false;
+        tentativasSairPrisao = 0;
+        numVezesDadosIguais = 0;
+        jogaNovamente = false;
     }
 
     /**
@@ -50,6 +54,9 @@ public abstract class Jogador {
         estaNaPrisao = false;
         temCartaCofreComuSairPrisao = false;
         temCartaSorteRevesSairPrisao = false;
+        tentativasSairPrisao = 0;
+        numVezesDadosIguais = 0;
+        jogaNovamente = false;
 
     }
 // Assinatura do metodo abstrato jogaDado que recebe uma instancia de dado com parametro.
@@ -182,6 +189,31 @@ public abstract class Jogador {
         this.temCartaSorteRevesSairPrisao = temCartaSorteRevesSairPrisao;
     }
 
+    public int getTentativasSairPrisao() {
+        return tentativasSairPrisao;
+    }
+
+    public void setTentativasSairPrisao(int tentativasSairPrisao) {
+        this.tentativasSairPrisao = tentativasSairPrisao;
+    }
+
+    public int getNumVezesDadosIguais() {
+        return numVezesDadosIguais;
+    }
+
+    public void setNumVezesDadosIguais(int numVezesDadosIguais) {
+        this.numVezesDadosIguais = numVezesDadosIguais;
+    }
+
+    public boolean isJogaNovamente() {
+        return jogaNovamente;
+    }
+
+    public void setJogaNovamente(boolean jogaNovamente) {
+        this.jogaNovamente = jogaNovamente;
+    }
+
+    
 
     
 }
