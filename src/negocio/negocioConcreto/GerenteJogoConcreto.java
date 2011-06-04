@@ -362,7 +362,7 @@ public class GerenteJogoConcreto extends GerenteJogo {
     }
 
     /**
-     *
+     * 
      * @return
      */
     String[] getCores() {
