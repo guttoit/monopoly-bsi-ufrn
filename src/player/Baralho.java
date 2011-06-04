@@ -80,6 +80,9 @@ public abstract class Baralho {
         return c;
     }
 
+    /**
+     *
+     */
     public void restauraBaralho(){
         while(!pilhaDescarte.empty()){
             pilhaJogo.push(pilhaDescarte.pop());

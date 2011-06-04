@@ -20,10 +20,18 @@ public class Imposto extends Lugar{
 
     private float preco;
 
+    /**
+     *
+     * @return
+     */
     public float getPreco() {
         return preco;
     }
 
+    /**
+     *
+     * @param preco
+     */
     public void setPreco(float preco) {
         this.preco = preco;
     }

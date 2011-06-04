@@ -21,6 +21,9 @@ import player.Carta;
 
 public class CartaSorteReves  extends Carta {
 
+    /**
+     *
+     */
     public CartaSorteReves() {
         super();
     }

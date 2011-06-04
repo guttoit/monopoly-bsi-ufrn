@@ -141,12 +141,26 @@ public interface FactoryCriador {
      * @param f
      * @param mens 
      * @param gCV
+     * @param gSC
      * @return GerenteJogo
      */
     public GerenteJogo criaGerente(FactoryCriador f, Mensagens mens, GerenteCompraVenda gCV, GerenteSorteCofre gSC);
 
-    public GerenteSorteCofre criaGerenteSorteCofre (BaralhoSorteReves bSR, BaralhoCofreComunitario bCC);
+    /**
+     *
+     * @param bSR
+     * @param bCC
+     * @return
+     */
+    public GerenteSorteCofre criaGerenteSorteCofre(BaralhoSorteReves bSR, BaralhoCofreComunitario bCC);
         
+    /**
+     *
+     * @param lugares
+     * @param posicao
+     * @param nome
+     * @return
+     */
     public CofreComunitarioConcreto criaCofresComunitarios(List<Lugar> lugares, int posicao, String nome);
 
     /**
@@ -167,6 +181,13 @@ public interface FactoryCriador {
      */
     public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes);
 
+    /**
+     *
+     * @param lugares
+     * @param posicao
+     * @param nome
+     * @return
+     */
     public SorteRevesConcreto criaSorteReves(List<Lugar> lugares, int posicao , String nome);
 
     /**

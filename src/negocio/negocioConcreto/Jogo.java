@@ -381,6 +381,9 @@ public class Jogo {
 
     }
 
+    /**
+     *
+     */
     public void criaCartasSorteReves() {
 
 

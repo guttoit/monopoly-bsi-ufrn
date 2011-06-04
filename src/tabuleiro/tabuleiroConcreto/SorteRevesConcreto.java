@@ -13,6 +13,11 @@ import tabuleiro.Lugar;
  */
 public class SorteRevesConcreto extends Lugar{
 
+    /**
+     * 
+     * @param nome
+     * @param posicao
+     */
     public SorteRevesConcreto(String nome, int posicao) {
         super(nome, posicao);
     }

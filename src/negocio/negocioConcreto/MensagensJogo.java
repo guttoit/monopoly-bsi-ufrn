@@ -139,6 +139,11 @@ public class MensagensJogo implements Mensagens {
     }
 
 
+    /**
+     *
+     * @param j
+     * @param carta
+     */
     public void mensagemSorteCofre(Jogador j, Carta carta){
         System.out.printf("\nVocê tirou a carta " + carta.getNomeCarta()+ "\n" + carta.getDescricao());
                 

@@ -22,8 +22,14 @@ import tabuleiro.Lugar;
 
 public abstract class Banco {
 
+    /**
+     *
+     */
     protected  List<Lugar> lugares;
 
+    /**
+     *
+     */
     protected float dinheiroEmCaixa;
     /**
      * Construtor padrão
