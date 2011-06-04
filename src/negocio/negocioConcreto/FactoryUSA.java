@@ -99,12 +99,26 @@ public class FactoryUSA implements FactoryCriador {
         return iRiqueza;
     }
 
+    /**
+     *
+     * @param lugares
+     * @param posicao
+     * @param nome
+     * @return
+     */
     public CofreComunitarioConcreto criaCofresComunitarios(List<Lugar> lugares, int posicao, String nome) {
         CofreComunitarioConcreto cofreComunitarioConcreto = new CofreComunitarioConcreto(nome, posicao);
         lugares.add(cofreComunitarioConcreto);
         return cofreComunitarioConcreto;
     }
 
+    /**
+     *
+     * @param lugares
+     * @param posicao
+     * @param nome
+     * @return
+     */
     public SorteRevesConcreto criaSorteReves(List<Lugar> lugares, int posicao, String nome) {
         SorteRevesConcreto sorteRevesConcreto = new SorteRevesConcreto(nome, posicao);
         lugares.add(sorteRevesConcreto);
@@ -120,6 +134,12 @@ public class FactoryUSA implements FactoryCriador {
         return new GerenteJogoConcreto(factory, mensagens, gerenteCompraVendaConcreto, gerenteSorteCofre);
     }
 
+    /**
+     *
+     * @param bSR
+     * @param bCC
+     * @return
+     */
     public GerenteSorteCofre criaGerenteSorteCofre(BaralhoSorteReves bSR, BaralhoCofreComunitario bCC) {
         return new GerenteSorteCofreConcreto(bSR, bCC);
     }

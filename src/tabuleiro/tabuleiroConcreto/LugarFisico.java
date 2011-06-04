@@ -32,6 +32,12 @@ public class LugarFisico extends Lugar {
         
     }
 
+    /**
+     *
+     * @param nome
+     * @param posicao
+     * @param preco
+     */
     public LugarFisico(String nome, int posicao, float preco) {
         super(nome, posicao);
         this.preco = preco;
@@ -40,10 +46,18 @@ public class LugarFisico extends Lugar {
 
     
 
+    /**
+     *
+     * @return
+     */
     public float getPreco() {
         return preco;
     }
 
+    /**
+     *
+     * @param preco
+     */
     public void setPreco(float preco) {
         this.preco = preco;
     }

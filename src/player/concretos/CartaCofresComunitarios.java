@@ -13,6 +13,9 @@ import player.Carta;
  */
 public class CartaCofresComunitarios extends Carta {
 
+    /**
+     *
+     */
     public CartaCofresComunitarios() {
         super();
     }

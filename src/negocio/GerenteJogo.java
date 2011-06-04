@@ -27,16 +27,42 @@ import tabuleiro.Tabuleiro;
  */
 public abstract class GerenteJogo {
 
+    /**
+     *
+     */
     protected FactoryCriador factory;
+    /**
+     *
+     */
     protected  int numJogadores = 0;
+    /**
+     *
+     */
     protected  Mensagens mensagens = new MensagensObjetoNulo();
+    /**
+     *
+     */
     protected  GerenteCompraVenda gerenteCompraVenda = new GerenteCompraVendaObjetoNulo();
+    /**
+     *
+     */
     protected  GerenteSorteCofre gerenteSorteCofre;
 
+    /**
+     *
+     * @param factory
+     */
     public GerenteJogo(FactoryCriador factory) {
         this.factory = factory;
     }
 
+    /**
+     *
+     * @param factory
+     * @param mensagens
+     * @param gerenteCompraVenda
+     * @param gerenteSorteCofre
+     */
     public GerenteJogo(FactoryCriador factory, Mensagens mensagens, GerenteCompraVenda gerenteCompraVenda, GerenteSorteCofre gerenteSorteCofre) {
         this.factory = factory;
         this.gerenteSorteCofre = gerenteSorteCofre;
@@ -46,6 +72,9 @@ public abstract class GerenteJogo {
 
 
 
+    /**
+     *
+     */
     public abstract void inicializaCores();
     /**
      * Faz o peao andar e identifica onde o mesmo se localizará a partir da jogada atual
@@ -56,6 +85,13 @@ public abstract class GerenteJogo {
      */
       public abstract Lugar andaPeao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro);
 
+      /**
+       *
+       * @param valorDado
+       * @param jogador
+       * @param tabuleiro
+       * @return
+       */
       public abstract boolean verificaPosicao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro);
       /**
      * Método utilizado pra gerenciar o jogo. É ele que "conversa" com o jogador ou dispara outros
@@ -138,7 +174,13 @@ public abstract class GerenteJogo {
      */
     public abstract int realizaJogada(List<Jogador> jogadores,Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int i);
 
-     public abstract void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado);
+    /**
+     *
+     * @param jogadores
+     * @param numJogadores
+     * @param teclado
+     */
+    public abstract void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado);
     
 
 }

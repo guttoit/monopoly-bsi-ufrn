@@ -134,26 +134,50 @@ public abstract class Jogador {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isEstaNaPrisao() {
         return estaNaPrisao;
     }
 
+    /**
+     *
+     * @param estaNaPrisao
+     */
     public void setEstaNaPrisao(boolean estaNaPrisao) {
         this.estaNaPrisao = estaNaPrisao;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isTemCartaCofreComuSairPrisao() {
         return temCartaCofreComuSairPrisao;
     }
 
+    /**
+     *
+     * @param temCartaCofreComuSairPrisao
+     */
     public void setTemCartaCofreComuSairPrisao(boolean temCartaCofreComuSairPrisao) {
         this.temCartaCofreComuSairPrisao = temCartaCofreComuSairPrisao;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isTemCartaSorteRevesSairPrisao() {
         return temCartaSorteRevesSairPrisao;
     }
 
+    /**
+     *
+     * @param temCartaSorteRevesSairPrisao
+     */
     public void setTemCartaSorteRevesSairPrisao(boolean temCartaSorteRevesSairPrisao) {
         this.temCartaSorteRevesSairPrisao = temCartaSorteRevesSairPrisao;
     }

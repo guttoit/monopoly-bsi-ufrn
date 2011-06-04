@@ -32,11 +32,22 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
     private String cores[] = new String[8];
  
+    /**
+     *
+     * @param factory
+     */
     public GerenteJogoConcreto(FactoryCriador factory) {
         super(factory);
     }
 
 
+    /**
+     *
+     * @param f
+     * @param mens
+     * @param gerente
+     * @param gerenteSorteCofre
+     */
     public GerenteJogoConcreto(FactoryCriador f, Mensagens mens, GerenteCompraVenda gerente, GerenteSorteCofre gerenteSorteCofre){
         super(f, mens, gerente, gerenteSorteCofre);
         inicializaCores();
@@ -263,18 +274,34 @@ public class GerenteJogoConcreto extends GerenteJogo {
         this.numJogadores = numJogadores;
     }
 
+    /**
+     *
+     * @return
+     */
     public GerenteCompraVenda getGerenteCompraVenda() {
         return gerenteCompraVenda;
     }
 
+    /**
+     *
+     * @param gerenteCompraVenda
+     */
     public void setGerenteCompraVenda(GerenteCompraVenda gerenteCompraVenda) {
         this.gerenteCompraVenda = gerenteCompraVenda;
     }
 
+    /**
+     *
+     * @return
+     */
     public GerenteSorteCofre getGerenteSorteCofre() {
         return gerenteSorteCofre;
     }
 
+    /**
+     *
+     * @param gerenteSorteCofre
+     */
     public void setGerenteSorteCofre(GerenteSorteCofre gerenteSorteCofre) {
         this.gerenteSorteCofre = gerenteSorteCofre;
     }

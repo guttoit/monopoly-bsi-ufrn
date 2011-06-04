@@ -26,13 +26,30 @@ import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
  */
 public class GerenteSorteCofreConcreto extends GerenteSorteCofre {
 
+    /**
+     *
+     * @param bSR
+     * @param bCC
+     */
     public GerenteSorteCofreConcreto(BaralhoSorteReves bSR, BaralhoCofreComunitario bCC) {
         super(bSR, bCC);
     }
 
+    /**
+     *
+     */
     public GerenteSorteCofreConcreto() {
     }
 
+    /**
+     *
+     * @param jogador
+     * @param cofreComunitario
+     * @param mensagens
+     * @param tabuleiro
+     * @param jogadores
+     * @param b
+     */
     @Override
     public void gerenciaJogadaCarta(Jogador jogador, CofreComunitarioConcreto cofreComunitario, MensagensJogo mensagens, Tabuleiro tabuleiro, List<Jogador> jogadores, Banco b) {
         Carta cartaTirada = baralhoCofreComunitario.retiraCartaPilha();
@@ -92,6 +109,15 @@ public class GerenteSorteCofreConcreto extends GerenteSorteCofre {
         }
     }
 
+    /**
+     *
+     * @param jogador
+     * @param sorteRevesConcreto
+     * @param mensagens
+     * @param tabuleiro
+     * @param jogadores
+     * @param b
+     */
     @Override
     public void gerenciaJogadaCarta(Jogador jogador, SorteRevesConcreto sorteRevesConcreto, MensagensJogo mensagens, Tabuleiro tabuleiro, List<Jogador> jogadores, Banco b) {
         Carta cartaTirada = baralhoSorteReves.retiraCartaPilha();
@@ -168,6 +194,14 @@ public class GerenteSorteCofreConcreto extends GerenteSorteCofre {
     /*
      * Função que realiza a ação da carta 5 do baralho SorteReves. <br/0>
      *
+     */
+    /**
+     *
+     * @param jogador
+     * @param tabuleiro
+     * @param jogadores
+     * @param b
+     * @param mensagens
      */
     public void acaoSorteReves5(Jogador jogador, Tabuleiro tabuleiro, List<Jogador> jogadores, Banco b, Mensagens mensagens) {
         List<Lugar> listaLugares = tabuleiro.getListaLugar();

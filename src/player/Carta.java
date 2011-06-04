@@ -20,6 +20,9 @@ public abstract class Carta {
     private String descricao;
     private String observacoes;
 
+    /**
+     *
+     */
     public Carta() {
     }
     /**
