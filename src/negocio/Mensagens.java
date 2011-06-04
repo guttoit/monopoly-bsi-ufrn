@@ -6,7 +6,6 @@ package negocio;
 
 import java.util.Scanner;
 import player.Jogador;
-import player.concretos.Peao;
 import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.Tabuleiro;
@@ -78,7 +77,12 @@ public interface Mensagens {
      */
     public void mostraMensAndaPeao(Jogador jogador, Lugar l, Integer[] valorDado);
 
-
-
     public void visitaPrisao();
+
+    public void vaParaPrisao();
+
+    public String mensagemEstaPreso(Jogador jogador, Scanner teclado);
+
+    public String mensagemEstaPresoComCarta(Jogador jogador, Scanner teclado);
+
 }

@@ -143,6 +143,9 @@ public abstract class GerenteJogo {
 
     }
 
+    public abstract Lugar realizaJogadaPrisao(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int numJogAtual);
+
+
     /**
      * Método responsável por analisar e realizar a jogada escolhida pelo jogador. Ele é chamado
      * pelo método gerenciaJogo, logo após a fase de coleta das informações dos jogadores.
@@ -163,4 +166,5 @@ public abstract class GerenteJogo {
      * @param teclado
      */
     public abstract void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado);
+
 }

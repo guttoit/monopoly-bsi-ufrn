@@ -77,6 +77,8 @@ public class GerenteSorteCofreConcreto extends GerenteSorteCofre {
                 //Vai para a prisao
                 jogador.getPeao().setPosicao(10);
                 jogador.setEstaNaPrisao(true);
+                jogador.setJogaNovamente(false);
+                jogador.setNumVezesDadosIguais(0);
                 break;
             case 8:
                 jogador.setDinheiro(jogador.getDinheiro() + 20);
@@ -159,6 +161,8 @@ public class GerenteSorteCofreConcreto extends GerenteSorteCofre {
                 // Vai para a prisão
                 jogador.getPeao().setPosicao(10);
                 jogador.setEstaNaPrisao(true);
+                jogador.setJogaNovamente(false);
+                jogador.setNumVezesDadosIguais(0);
                 break;
             case 9:
                 // Deve fazer a manutenção das suas casas e hoteis

@@ -56,4 +56,16 @@ public class MensagensObjetoNulo implements Mensagens{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    public void vaParaPrisao() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public String mensagemEstaPreso(Jogador jogador, Scanner teclado) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public String mensagemEstaPresoComCarta(Jogador jogador, Scanner teclado) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }

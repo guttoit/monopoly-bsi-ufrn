@@ -1,4 +1,3 @@
-
 package negocio.negocioConcreto;
 
 import java.util.List;
@@ -10,8 +9,6 @@ import negocio.GerenteJogo;
 import negocio.GerenteSorteCofre;
 import negocio.Mensagens;
 import player.Jogador;
-import player.concretos.BaralhoCofreComunitario;
-import player.concretos.BaralhoSorteReves;
 import player.concretos.DadoDuplo;
 import player.concretos.Peao;
 import tabuleiro.Imposto;
@@ -22,6 +19,7 @@ import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
 import tabuleiro.tabuleiroConcreto.Prisao;
 import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
 import tabuleiro.tabuleiroConcreto.VaParaPrisao;
+
 /**
  *
  * @author Gutto
@@ -43,7 +41,6 @@ public class GerenteJogoConcreto extends GerenteJogo {
         super(factory);
     }
 
-
     /**
      *
      * @param f
@@ -51,10 +48,10 @@ public class GerenteJogoConcreto extends GerenteJogo {
      * @param gerente
      * @param gerenteSorteCofre
      */
-    public GerenteJogoConcreto(FactoryCriador f, Mensagens mens, GerenteCompraVenda gerente, GerenteSorteCofre gerenteSorteCofre){
+    public GerenteJogoConcreto(FactoryCriador f, Mensagens mens, GerenteCompraVenda gerente, GerenteSorteCofre gerenteSorteCofre) {
         super(f, mens, gerente, gerenteSorteCofre);
         inicializaCores();
-        
+
     }
 
     /**
@@ -80,10 +77,56 @@ public class GerenteJogoConcreto extends GerenteJogo {
         // Variável usada para facilitar os calculos
         int aux = (p.getPosicao() + valorDado[0] + valorDado[1]);
 
+        if (jogador.isEstaNaPrisao()) {
+            // Verifica se os valores dados são diferentes, caso seja, ele incrementa uma tentativa de sair
+            // da prisão. Se atingir três tentativas ou jogador paga 50 e sai da prisão...
+            if (valorDado[0] != valorDado[1]) {
+                jogador.setTentativasSairPrisao(jogador.getTentativasSairPrisao() + 1);
+                jogador.setJogaNovamente(false);
+                if (jogador.getTentativasSairPrisao() == 3) {
+                    System.out.println("\n Você tentou sair 3 vezes da prisao e não conseguiu... Será"
+                            + " descontado 50 reais da sua conta.");
+                    jogador.setDinheiro(jogador.getDinheiro() - 50);
+                    jogador.setEstaNaPrisao(false);
+                } else {
+                    for (Lugar l : tabuleiro.getListaLugar()) {
+                        if (l instanceof Prisao) {
+                            return l;
+                        }
+                    }
+                }
+            } else {
+                jogador.setTentativasSairPrisao(0);
+                jogador.setEstaNaPrisao(false);
+                System.out.println("\n Você tirou números iguais e conseguiu sair da prisão...");
+            }
+        } else // Verifica se os valores dos dados são iguais, caso seja ele poderá jogar novamente, porém
+        // se for a terceira vez seguida que ele tira números iguais, então ele irá para a prisão
+        if (valorDado[0] == valorDado[1]) {
+            jogador.setNumVezesDadosIguais(jogador.getNumVezesDadosIguais() + 1);
+            if (jogador.getNumVezesDadosIguais() >= 3) {
+                jogador.setNumVezesDadosIguais(0);
+                System.out.println("\n Você tirou números iguais três vezes siguidas e vai para prisão...");
+                jogador.getPeao().setPosicao(10);
+                jogador.setEstaNaPrisao(true);
+                jogador.setJogaNovamente(false);
+                for (Lugar l : tabuleiro.getListaLugar()) {
+                    if (l instanceof Prisao) {
+                        return l;
+                    }
+                }
+            } else {
+                jogador.setJogaNovamente(true);
+            }
+        } else {
+            jogador.setJogaNovamente(false);
+            jogador.setNumVezesDadosIguais(0);
+        }
+
         // Verifica se o peão passou pela posição de origem ou não. Caso tenha passado, a sua posição
         // é transforma nos parâmetros que o jogo aceita.
         if (verificaPosicao(valorDado, jogador, tabuleiro)) {
-            if(aux == 40){
+            if (aux == 40) {
                 p.setPosicao(40 - 1);
             }
             p.setPosicao(0 + aux - 40);
@@ -91,7 +134,7 @@ public class GerenteJogoConcreto extends GerenteJogo {
             p.setPosicao(aux);
         }
         // Pega o lugar no qual o peão se encontra após ter andado
-        Lugar l = tabuleiro.getListaLugar().get(p.getPosicao()+1);
+        Lugar l = tabuleiro.getListaLugar().get(p.getPosicao() + 1);
 
 
         // Chama o método mostraMensAndaPeao da classe MensagensJogo para mostrar ao usuário o seu lugar no jogo.
@@ -118,13 +161,14 @@ public class GerenteJogoConcreto extends GerenteJogo {
         }
         return false;
     }
+
     /**
      * Método que irá pegar os nomes e as respectivas cores dos jogadores
      * @param jogadores
      * @param numJogadores
      * @param teclado
      */
-    public void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado){
+    public void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado) {
         String auxCor[] = cores;
         String corDigitada = "";
         String nome = "";
@@ -146,22 +190,97 @@ public class GerenteJogoConcreto extends GerenteJogo {
         }
 
     }
+    //Variável usada apenas nos métodos realizaJogada e realizaJogadaPrisao
+    String comando = "";
+
+    public Lugar realizaJogadaPrisao(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int numJogAtual) {
+        Lugar l = null;
+        String comando = "";
+        // Verifica se o jogador possui uma carta para sair da prisão. Caso possua então
+        // é mostrado a ele a opção de usar carta.
+        if (jogadorVez.isTemCartaCofreComuSairPrisao() || jogadorVez.isTemCartaSorteRevesSairPrisao()) {
+            comando = mensagens.mensagemEstaPresoComCarta(jogadorVez, teclado);
+        } else {
+            comando = mensagens.mensagemEstaPreso(jogadorVez, teclado);
+        }
+
+        if (comando.equalsIgnoreCase("pagar")) {
+            jogadorVez.setDinheiro(jogadorVez.getDinheiro() - 50);
+            jogadorVez.setEstaNaPrisao(false);
+
+            l = andaPeao(jogadorVez.jogaDado(new DadoDuplo()), jogadorVez, tab);
+
+        } else if (comando.equalsIgnoreCase("carta")) {
+            if (jogadorVez.isTemCartaCofreComuSairPrisao()) {
+                jogadorVez.setTemCartaCofreComuSairPrisao(false);
+
+            } else if (jogadorVez.isTemCartaSorteRevesSairPrisao()) {
+                jogadorVez.setTemCartaSorteRevesSairPrisao(false);
+
+            }
+            jogadorVez.setEstaNaPrisao(false);
+
+            l = andaPeao(jogadorVez.jogaDado(new DadoDuplo()), jogadorVez, tab);
+
+        }
+        return l;
+    }
 
     public int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int numJogAtual) {
-        Lugar l;
-        String comando = "";
+        Lugar l = null;
         boolean acertouComando = false;
 
+        /*if (jogadorVez.isEstaNaPrisao()) {
+        while (!acertouComando) {
+        // Verifica se o jogador possui uma carta para sair da prisão. Caso possua então
+        // é mostrado a ele a opção de usar carta.
+        if (jogadorVez.isTemCartaCofreComuSairPrisao() || jogadorVez.isTemCartaSorteRevesSairPrisao()) {
+        mensagens.mensagemEstaPresoComCarta(jogadorVez);
+        } else {
+        mensagens.mensagemEstaPreso(jogadorVez);
+        }
+        comando = teclado.next();
+        if (comando.equalsIgnoreCase("pagar")) {
+        jogadorVez.setDinheiro(jogadorVez.getDinheiro() - 50);
+        jogadorVez.setEstaNaPrisao(false);
+        acertouComando = true;
+        return numJogAtual;
+        } else if (comando.equalsIgnoreCase("carta")) {
+        if (jogadorVez.isTemCartaCofreComuSairPrisao()) {
+        jogadorVez.setEstaNaPrisao(false);
+        jogadorVez.setTemCartaCofreComuSairPrisao(false);
+        acertouComando = true;
+        return numJogAtual;
+        } else if (jogadorVez.isTemCartaSorteRevesSairPrisao()) {
+        jogadorVez.setEstaNaPrisao(false);
+        jogadorVez.setTemCartaSorteRevesSairPrisao(false);
+        acertouComando = true;
+        return numJogAtual;
+        }
+        } else if (comando.equalsIgnoreCase("jogar")) {
+        l = andaPeao(jogadorVez.jogaDado(new DadoDuplo()), jogadorVez, tab);
+        acertouComando = true;
+        }
+        }
         System.out.println("\nA jogada de " + jogadorVez.getNomeJogador() + " comecou.");
         System.out.println("\nComandos disponiveis: [Jogar]   [Sair]   [status]");
         System.out.println("\nEntre com o comando");
-        comando = teclado.next().trim();
-        while (!acertouComando) {
+        comando = teclado.next().trim();*/
+        while (!acertouComando || jogadorVez.isJogaNovamente()) {
+            if (jogadorVez.isEstaNaPrisao()) {
+                l = realizaJogadaPrisao(jogadores, tab, jogadorVez, teclado, b, numJogAtual);
+
+            } else {
+                System.out.println("\nA jogada de " + jogadorVez.getNomeJogador() + " comecou.");
+                System.out.println("\nComandos disponiveis: [Jogar]   [Sair]   [status]");
+                System.out.println("\nEntre com o comando");
+                comando = teclado.next().trim();
+            }
             if (comando.equalsIgnoreCase("sair")) {
                 acertouComando = true;
                 jogadores.remove(jogadorVez);
                 numJogadores--;
-                numJogAtual --;
+                numJogAtual--;
                 //Verifica se só existe um jogador
                 if (jogadores.size() <= 1) {
                     System.out.println("\n\n\n Parabéns " + jogadores.get(0).getNomeJogador() + " ! Seu adversário desistiu e"
@@ -169,53 +288,76 @@ public class GerenteJogoConcreto extends GerenteJogo {
                     System.exit(0);
                 }
                 return numJogAtual;
+            } else if (comando.equalsIgnoreCase("status")) {
+                mensagens.statusJogador(jogadorVez, tab);
+                acertouComando = true;
+                return numJogAtual;
             } else if (comando.equalsIgnoreCase("jogar")) {
                 acertouComando = true;
                 l = andaPeao(jogadorVez.jogaDado(new DadoDuplo()), jogadorVez, tab);
+            }
+            if (comando.equalsIgnoreCase("jogar") || comando.equalsIgnoreCase("pagar") || comando.equalsIgnoreCase("carta")) {
                 if (l == null) {
-                    System.out.println("\nNao faz nada.");
+                    if (jogadorVez.getNumVezesDadosIguais() >= 3) {
+                        System.out.println("\nNao faz nada.");
+
+                    }
+
                 } else if (l.getPosicao() == 40) {
+                    return numJogAtual;
                     //Não faz nada
                 } else if (l instanceof LugarFisico) {
                     LugarFisico lf = (LugarFisico) l;
                     if (lf.getProprietario() == null) {
                         mensagens.geraStatus(jogadorVez, lf);
                         gerenteCompraVenda.gerenciaCompra(lf, jogadorVez, teclado, b);
+
                     } else {
                         gerenteCompraVenda.descontaAluguel(lf, jogadorVez);
+
                     }
 
                 } else if (l instanceof Imposto) {
                     gerenteCompraVenda.descontaImposto(l, jogadorVez, b);
-                } else if(l instanceof SorteRevesConcreto){
-                    SorteRevesConcreto sorteReves= (SorteRevesConcreto) l;
-                    gerenteSorteCofre.gerenciaJogadaCarta(jogadorVez, sorteReves, (MensagensJogo) mensagens, tab, jogadores, b);
-                }else if(l instanceof CofreComunitarioConcreto){
-                    CofreComunitarioConcreto cofreComunitario= (CofreComunitarioConcreto) l;
-                    gerenteSorteCofre.gerenciaJogadaCarta(jogadorVez, cofreComunitario, (MensagensJogo) mensagens, tab, jogadores, b);
-                } else if (l instanceof VaParaPrisao){
-                          jogadorVez.getPeao().setPosicao(10);
-                          jogadorVez.setEstaNaPrisao(true);
-                } else if (l instanceof Prisao){
-                          mensagens.visitaPrisao();
-                }
 
-            } else if (comando.equalsIgnoreCase("status")) {
-                mensagens.statusJogador(jogadorVez, tab);
-                acertouComando = true;
+                } else if (l instanceof SorteRevesConcreto) {
+                    SorteRevesConcreto sorteReves = (SorteRevesConcreto) l;
+                    gerenteSorteCofre.gerenciaJogadaCarta(jogadorVez, sorteReves, (MensagensJogo) mensagens, tab, jogadores, b);
+
+                } else if (l instanceof CofreComunitarioConcreto) {
+                    CofreComunitarioConcreto cofreComunitario = (CofreComunitarioConcreto) l;
+                    gerenteSorteCofre.gerenciaJogadaCarta(jogadorVez, cofreComunitario, (MensagensJogo) mensagens, tab, jogadores, b);
+
+                } else if (l instanceof VaParaPrisao) {
+                    mensagens.vaParaPrisao();
+                    jogadorVez.getPeao().setPosicao(10);
+                    jogadorVez.setEstaNaPrisao(true);
+
+                } else if (l instanceof Prisao) {
+                    if (jogadorVez.isEstaNaPrisao()) {
+                        System.out.println("\n Você tentou sair da prisão mas não conseguiu. Fica para a"
+                                + "próxima");
+
+                    } else if (jogadorVez.getNumVezesDadosIguais() >= 3) {
+                    } else {
+                        mensagens.visitaPrisao();
+                    }
+
+                }
             } else {
-                System.out.println("Comando errado. Os comandos disponíveis sao: [jogar] [sair] [status] "
-                        + "\n Digite um desses comandos... ");
-                comando = teclado.next().trim();
+                System.out.println("\nComando errado. Tente novamente.");
+
+            }
+            if (jogadorVez.getDinheiro() <= 0) {
+                System.out.println("\n" + jogadorVez.getNomeJogador() + " Você perdeu. Seu saldo é: " + jogadorVez.getDinheiro());
+                numJogAtual--;
+                numJogadores--;
+                jogadores.remove(jogadorVez);
             }
         }
-        if (jogadorVez.getDinheiro() <= 0) {
-            System.out.println("\n" + jogadorVez.getNomeJogador() + " Você perdeu. Seu saldo é: " + jogadorVez.getDinheiro());
-            numJogAtual--;
-            numJogadores--;
-            jogadores.remove(jogadorVez);
-        }
+
         return numJogAtual;
+
 
     }
 
@@ -223,8 +365,10 @@ public class GerenteJogoConcreto extends GerenteJogo {
      *
      * @return
      */
-    public String[] getCores() {
+    String[] getCores() {
         return cores;
+
+
     }
 
     /**
@@ -233,6 +377,9 @@ public class GerenteJogoConcreto extends GerenteJogo {
      */
     public void setCores(String[] cores) {
         this.cores = cores;
+
+
+
     }
 
     /**
@@ -241,6 +388,9 @@ public class GerenteJogoConcreto extends GerenteJogo {
      */
     public FactoryCriador getFactory() {
         return factory;
+
+
+
     }
 
     /**
@@ -249,6 +399,8 @@ public class GerenteJogoConcreto extends GerenteJogo {
      */
     public void setFactory(FactoryCriador factory) {
         this.factory = factory;
+
+
     }
 
     /**
@@ -257,6 +409,9 @@ public class GerenteJogoConcreto extends GerenteJogo {
      */
     public Mensagens getMensagens() {
         return mensagens;
+
+
+
     }
 
     /**
@@ -265,6 +420,8 @@ public class GerenteJogoConcreto extends GerenteJogo {
      */
     public void setMensagens(Mensagens mensagens) {
         this.mensagens = mensagens;
+
+
     }
 
     /**
@@ -273,6 +430,9 @@ public class GerenteJogoConcreto extends GerenteJogo {
      */
     public int getNumJogadores() {
         return numJogadores;
+
+
+
     }
 
     /**
@@ -281,8 +441,9 @@ public class GerenteJogoConcreto extends GerenteJogo {
      */
     public void setNumJogadores(int numJogadores) {
         this.numJogadores = numJogadores;
-    }
 
+
+    }
 
     /**
      *
@@ -290,13 +451,20 @@ public class GerenteJogoConcreto extends GerenteJogo {
      */
     public GerenteCompraVenda getGerenteCompraVenda() {
         return gerenteCompraVenda;
+
+
+
     }
+
     /**
      *
      * @param gerenteCompraVenda
      */
     public void setGerenteCompraVenda(GerenteCompraVenda gerenteCompraVenda) {
         this.gerenteCompraVenda = gerenteCompraVenda;
+
+
+
     }
 
     /**
@@ -305,6 +473,9 @@ public class GerenteJogoConcreto extends GerenteJogo {
      */
     public GerenteSorteCofre getGerenteSorteCofre() {
         return gerenteSorteCofre;
+
+
+
     }
 
     /**
@@ -313,6 +484,7 @@ public class GerenteJogoConcreto extends GerenteJogo {
      */
     public void setGerenteSorteCofre(GerenteSorteCofre gerenteSorteCofre) {
         this.gerenteSorteCofre = gerenteSorteCofre;
-    }
 
+
+    }
 }
