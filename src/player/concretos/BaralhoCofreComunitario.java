@@ -5,8 +5,9 @@
 
 package player.concretos;
 
+import player.Baralho;
 import java.util.List;
-import tabuleiro.Carta;
+import player.Carta;
 
 /**
  *
@@ -18,6 +19,7 @@ public class BaralhoCofreComunitario extends Baralho {
      *
      */
     public BaralhoCofreComunitario() {
+        super();
     }
 
 

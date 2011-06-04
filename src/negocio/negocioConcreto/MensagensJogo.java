@@ -8,6 +8,7 @@ import java.util.Scanner;
 import negocio.Mensagens;
 import player.Jogador;
 import player.concretos.Peao;
+import player.Carta;
 import tabuleiro.tabuleiroConcreto.Ferrovia;
 import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
@@ -132,11 +133,16 @@ public class MensagensJogo implements Mensagens {
 
     public void geraStatus(Jogador j, LugarFisico l) {
 
-        System.out.printf("\nO título da propriedade " + j.getPeao().getPosicao() + " Está disponivel por : " + l.getPreco()
+        System.out.printf("\nO título da propriedade " + j.getPeao().getPosicao() + " " + l.getNome() + " está disponivel por : " + l.getPreco()
                 + " " + j.getNomeJogador() + ".\n Voce possui " + j.getDinheiro() + "\n Deseja Comprar ?  sim [s] ou nao [n] ");
 
     }
 
+
+    public void mensagemSorteCofre(Jogador j, Carta carta){
+        System.out.printf("\nVocê tirou a carta " + carta.getNomeCarta()+ "\n" + carta.getDescricao());
+                
+    }
     /**
      * Metodo para mostrar a situacao atual do jogador
      * @param j

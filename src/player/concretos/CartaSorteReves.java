@@ -5,9 +5,7 @@
 
 package player.concretos;
 
-import tabuleiro.Carta;
-
-
+import player.Carta;
 
 /**
  *
@@ -17,15 +15,12 @@ import tabuleiro.Carta;
 
 /**
  *
- * @class A class CartaSorteReves não está implementada
+ * @class 
  * 
  */
 
 public class CartaSorteReves  extends Carta {
 
-    /**
-     *
-     */
     public CartaSorteReves() {
         super();
     }
@@ -40,6 +35,5 @@ public class CartaSorteReves  extends Carta {
     public CartaSorteReves(int numeroCarta, String nomeCarta, String descricao, String observacoes) {
         super(numeroCarta, nomeCarta, descricao, observacoes);
     }
-
     
 }

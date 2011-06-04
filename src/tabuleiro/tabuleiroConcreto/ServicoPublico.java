@@ -19,12 +19,19 @@ import tabuleiro.Lugar;
  *
  */
 public class ServicoPublico extends Lugar {
-
+        private float preco;
     /**
      *
      */
     public ServicoPublico() {
     }
+
+    public ServicoPublico(String nome, int posicao, float preco) {
+        super(nome, posicao);
+        this.preco = preco;
+
+    }
+
 
 
 

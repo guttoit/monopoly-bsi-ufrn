@@ -2,7 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package tabuleiro;
+package player;
+
+import java.util.List;
+import negocio.Banco;
+import negocio.Mensagens;
+import player.Jogador;
 
 /**
  *
@@ -10,23 +15,13 @@ package tabuleiro;
  */
 public abstract class Carta {
 
-    /**
-     *
-     */
-    public int numeroCarta;
-    /**
-     *
-     */
-    public String nomeCarta;
-    /**
-     *
-     */
-    public String descricao;
-    /**
-     *
-     */
-    public String observacoes;
+    private int numeroCarta;
+    private String nomeCarta;
+    private String descricao;
+    private String observacoes;
 
+    public Carta() {
+    }
     /**
      *
      * @param numeroCarta
@@ -41,13 +36,6 @@ public abstract class Carta {
         this.observacoes = observacoes;
     }
 
-    /**
-     *
-     */
-    public Carta() {
-    }
-
-    
 
     /**
      *

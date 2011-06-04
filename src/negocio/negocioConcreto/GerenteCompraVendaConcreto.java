@@ -91,6 +91,7 @@ public class GerenteCompraVendaConcreto implements GerenteCompraVenda {
                         return true;
                     } else {
                         System.out.println(" \n Seu dinheiro e insuficiente... Fica pra proxima");
+                        return false;
                     }
 
                 } else if (comprou.trim().equalsIgnoreCase("n") || comprou.trim().equalsIgnoreCase("Nao")) {

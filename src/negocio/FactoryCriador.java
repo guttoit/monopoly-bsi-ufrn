@@ -5,9 +5,10 @@
 package negocio;
 
 import java.util.List;
+import negocio.negocioConcreto.GerenteSorteCofreConcreto;
 import player.Dado;
 import player.Jogador;
-import player.concretos.Baralho;
+import player.Baralho;
 import player.concretos.BaralhoCofreComunitario;
 import player.concretos.BaralhoSorteReves;
 import player.concretos.CartaCofresComunitarios;
@@ -142,10 +143,11 @@ public interface FactoryCriador {
      * @param gCV
      * @return GerenteJogo
      */
-    public GerenteJogo criaGerente(FactoryCriador f, Mensagens mens, GerenteCompraVenda gCV);
+    public GerenteJogo criaGerente(FactoryCriador f, Mensagens mens, GerenteCompraVenda gCV, GerenteSorteCofre gSC);
 
-
-    public CofreComunitarioConcreto criaCofresComunitarios( int posicao, String nome);
+    public GerenteSorteCofre criaGerenteSorteCofre (BaralhoSorteReves bSR, BaralhoCofreComunitario bCC);
+        
+    public CofreComunitarioConcreto criaCofresComunitarios(List<Lugar> lugares, int posicao, String nome);
 
     /**
      *
@@ -165,7 +167,7 @@ public interface FactoryCriador {
      */
     public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes);
 
-    public SorteRevesConcreto criaSorteReves( int posicao , String nome);
+    public SorteRevesConcreto criaSorteReves(List<Lugar> lugares, int posicao , String nome);
 
     /**
      *

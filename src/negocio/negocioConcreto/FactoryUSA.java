@@ -6,18 +6,18 @@ import negocio.Banco;
 import negocio.FactoryCriador;
 import negocio.GerenteCompraVenda;
 import negocio.GerenteJogo;
+import negocio.GerenteSorteCofre;
 import negocio.Mensagens;
 import player.Dado;
 import player.Jogador;
-import player.concretos.Baralho;
+import player.Baralho;
 import player.concretos.BaralhoCofreComunitario;
 import player.concretos.BaralhoSorteReves;
-import player.concretos.CartaCofresComunitarios;
 import player.concretos.DadoDuplo;
 import player.concretos.JogadorConcreto;
 import player.concretos.Peao;
+import player.concretos.CartaCofresComunitarios;
 import player.concretos.CartaSorteReves;
-import player.concretos.PilhaCartaAbstrata;
 import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
 import tabuleiro.tabuleiroConcreto.Ferrovia;
 import tabuleiro.tabuleiroConcreto.ImpostoRenda;
@@ -59,104 +59,69 @@ public class FactoryUSA implements FactoryCriador {
     public Peao criaPeao(String cor) {
         return new Peao(cor);
     }
-// Cria uma  Propriedade  com suas caracteristicas e adiciona no respestivo lugar no tabuleiro.
 
-    public Propriedade criaPropriedade(List<Lugar> lugares, int posicao, String nome, String cor, float precoP, float aluguelSCasa, float c1, float c2, float c3, float c4, float hotel, float hip, float precoCasa) {
-        Propriedade p = new Propriedade(posicao, nome, cor, precoP, aluguelSCasa, c1, c2, c3, c4, hotel, hip, precoCasa);
-        lugares.add(p);
-        return p;
-    }
-// Cria um gerente, sendo ele responsável pela criacao dos objetos dos jogo, invocando uma instancia de FatoryCriador
-
-    public GerenteJogo criaGerente(FactoryCriador f, Mensagens mens, GerenteCompraVenda gCV) {
-        return new GerenteConcreto(f,mens,gCV);
-    }
-// Cria uma Ferrovia, adiciona suas caracteristicas e retorna uma isntancia de Ferrovia
-
-    public Ferrovia criaFerrovia(List<Lugar> lugares, int posicao, String nome, float preco, float hipoteca) {
-        Ferrovia f = new Ferrovia(posicao, nome, preco, hipoteca);
-        lugares.add(f);
-        return f;
-    }
-// Cria um imposto de Renda, adiciona suas caracteristicas e retorna uma instancia de Imposto de Renda
-
-    public ImpostoRenda criaImpostoRenda(List<Lugar> lugares, int posicao, String nome, float preco) {
-        ImpostoRenda ir = new ImpostoRenda(posicao, nome, preco);
-        lugares.add(ir);
-        return ir;
-    }
-// Cria um imposto Riqueza, adiciona suas caracteristicas e retorna uma instancia de Imposto riqueza
-
-    public ImpostoRiqueza criaImpostoRiqueza(List<Lugar> lugares, int posicao, String nome, float preco) {
-        ImpostoRiqueza iRiqueza = new ImpostoRiqueza(posicao, nome, preco);
-        lugares.add(iRiqueza);
-        return iRiqueza;
-    }
-// Cria um tabuleiro com sua quantidade de espaços
-
-    public Tabuleiro criaTabuleiro(int numCasas) {
-        return new TabuleiroUSA(numCasas);
-    }
-
-// Cria uma CartaSorteReves // Falta implementar
-    /**
-     *
-     * @param pilhaCartas
-     * @return
-     */
-    public CartaSorteReves criaBaralho(PilhaCartaAbstrata pilhaCartas) {
-        return null;
-    }
-
-// Cria uma Lista de Jogadores e adiciona os jogadores concrestos na mesma.
-    public List<Jogador> criaListaJogadores(int numJogadores) {
-        ArrayList<Jogador> jogadores = new ArrayList<Jogador>(numJogadores);
-        for (int i = 0; i < numJogadores; i++) {
-            jogadores.add(new JogadorConcreto());
-        }
-        return jogadores;
-    }
-// Cria  mensagens e retorna MensagensJogo que seram exibidas no decorrer do jogo.
-
-    public Mensagens criaMensagens() {
-        return new MensagensJogo();
-    }
-// Cria uma Lista de Lugares e retorna Um ArrayList de Lugares com a quantidade de lugares.
-
+    // Cria uma Lista de Lugares e retorna Um ArrayList de Lugares com a quantidade de lugares.
     public List<Lugar> criaLugares(int numLugares) {
         return new ArrayList<Lugar>(numLugares);
     }
-// Cria  cria um Banco e retorna um Banco concreto que serve para armazenar finanças do jogo.
 
-    public Banco criaBanco() {
-        return new BancoConcreto();
-    }
-// Cria Lugar e adiciona no Tabuleiro retornando uma instancia de um lugar fisico.
-
+    // Cria Lugar e adiciona no Tabuleiro retornando uma instancia de um lugar fisico.
     public Lugar criaLugar(List<Lugar> lugares, int posicao, String nome) {
         LugarFisico l = new LugarFisico(nome, 0, posicao);
         lugares.add(l);
         return l;
     }
 
-    public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
-        CartaCofresComunitarios carta = new CartaCofresComunitarios(numeroCarta, nomeCarta, descricao, observacoes);
-        baralho.addCarta(carta);
-        return carta;
+    // Cria uma  Propriedade  com suas caracteristicas e adiciona no respestivo lugar no tabuleiro.
+    public Propriedade criaPropriedade(List<Lugar> lugares, int posicao, String nome, String cor, float precoP, float aluguelSCasa, float c1, float c2, float c3, float c4, float hotel, float hip, float precoCasa) {
+        Propriedade p = new Propriedade(posicao, nome, cor, precoP, aluguelSCasa, c1, c2, c3, c4, hotel, hip, precoCasa);
+        lugares.add(p);
+        return p;
+    }
+    // Cria uma Ferrovia, adiciona suas caracteristicas e retorna uma isntancia de Ferrovia
+    public Ferrovia criaFerrovia(List<Lugar> lugares, int posicao, String nome, float preco, float hipoteca) {
+        Ferrovia f = new Ferrovia(posicao, nome, preco, hipoteca);
+        lugares.add(f);
+        return f;
     }
 
-    public CartaSorteReves criaCartasSorteReves(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
-        CartaSorteReves carta = new CartaSorteReves(numeroCarta, nomeCarta, descricao, observacoes);
-        baralho.addCarta(carta);
-        return carta;
+    // Cria um imposto de Renda, adiciona suas caracteristicas e retorna uma instancia de Imposto de Renda
+    public ImpostoRenda criaImpostoRenda(List<Lugar> lugares, int posicao, String nome, float preco) {
+        ImpostoRenda ir = new ImpostoRenda(posicao, nome, preco);
+        lugares.add(ir);
+        return ir;
     }
 
-    public BaralhoCofreComunitario criaBaralhoCofreComunitario() {
-        return new BaralhoCofreComunitario();
+    // Cria um imposto Riqueza, adiciona suas caracteristicas e retorna uma instancia de Imposto riqueza
+    public ImpostoRiqueza criaImpostoRiqueza(List<Lugar> lugares, int posicao, String nome, float preco) {
+        ImpostoRiqueza iRiqueza = new ImpostoRiqueza(posicao, nome, preco);
+        lugares.add(iRiqueza);
+        return iRiqueza;
     }
 
-    public BaralhoSorteReves criaBaralhoSorteReves() {
-        return new BaralhoSorteReves();
+    public CofreComunitarioConcreto criaCofresComunitarios(List<Lugar> lugares, int posicao, String nome) {
+        CofreComunitarioConcreto cofreComunitarioConcreto = new CofreComunitarioConcreto(nome, posicao);
+        lugares.add(cofreComunitarioConcreto);
+        return cofreComunitarioConcreto;
+    }
+
+    public SorteRevesConcreto criaSorteReves(List<Lugar> lugares, int posicao, String nome) {
+        SorteRevesConcreto sorteRevesConcreto = new SorteRevesConcreto(nome, posicao);
+        lugares.add(sorteRevesConcreto);
+        return sorteRevesConcreto;
+    }
+
+    // Cria um tabuleiro com sua quantidade de espaços
+    public Tabuleiro criaTabuleiro(int numCasas) {
+        return new TabuleiroUSA(numCasas);
+    }
+
+    public GerenteJogo criaGerente(FactoryCriador factory, Mensagens mensagens, GerenteCompraVenda gerenteCompraVendaConcreto, GerenteSorteCofre gerenteSorteCofre) {
+        return new GerenteJogoConcreto(factory, mensagens, gerenteCompraVendaConcreto, gerenteSorteCofre);
+    }
+
+    public GerenteSorteCofre criaGerenteSorteCofre(BaralhoSorteReves bSR, BaralhoCofreComunitario bCC) {
+        return new GerenteSorteCofreConcreto(bSR, bCC);
     }
 
     /**
@@ -168,17 +133,41 @@ public class FactoryUSA implements FactoryCriador {
         return new GerenteCompraVendaConcreto();
     }
 
-    
-   
-
-    public CofreComunitarioConcreto criaCofresComunitarios(int posicao, String nome) {
-            CofreComunitarioConcreto cofreComunitarioConcreto = new CofreComunitarioConcreto( nome, posicao);
-        return cofreComunitarioConcreto;
+    // Cria uma Lista de Jogadores e adiciona os jogadores concrestos na mesma.
+    public List<Jogador> criaListaJogadores(int numJogadores) {
+        ArrayList<Jogador> jogadores = new ArrayList<Jogador>(numJogadores);
+        for (int i = 0; i < numJogadores; i++) {
+            jogadores.add(new JogadorConcreto());
+        }
+        return jogadores;
     }
 
-    public SorteRevesConcreto criaSorteReves(int posicao, String nome) {
-        SorteRevesConcreto sorteRevesConcreto = new SorteRevesConcreto(nome,posicao);
-         return sorteRevesConcreto;
+    // Cria  cria um Banco e retorna um Banco concreto que serve para armazenar finanças do jogo.
+    public Banco criaBanco() {
+        return new BancoConcreto();
+    }
+
+    // Cria  mensagens e retorna MensagensJogo que seram exibidas no decorrer do jogo.
+    public Mensagens criaMensagens() {
+        return new MensagensJogo();
+    }
+
+    public BaralhoCofreComunitario criaBaralhoCofreComunitario() {
+        return new BaralhoCofreComunitario();
+    }
+
+    public BaralhoSorteReves criaBaralhoSorteReves() {
+        return new BaralhoSorteReves();
+    }
+
+    public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
+        CartaCofresComunitarios cartaCofresComunitarios = new CartaCofresComunitarios(numeroCarta, nomeCarta, descricao, observacoes);
+        baralho.addCarta(cartaCofresComunitarios);
+        return cartaCofresComunitarios;
+    }
+    public CartaSorteReves criaCartasSorteReves(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
+        CartaSorteReves cartaSorteReves = new CartaSorteReves(numeroCarta, nomeCarta, descricao, observacoes);
+        baralho.addCarta(cartaSorteReves);
+        return cartaSorteReves;
     }
 }
-

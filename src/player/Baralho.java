@@ -2,13 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package player.concretos;
+package player;
 
 import  java.util.ArrayList;
 import  java.util.List;
 import  java.util.Random;
 import  java.util.Stack;
-import  tabuleiro.Carta;
 
 /**
  *
@@ -25,6 +24,9 @@ public abstract class Baralho {
      *
      */
     public Baralho() {
+        pilhaDescarte = new Stack<Carta>();
+        pilhaJogo = new Stack<Carta>();
+        listaCarta = new ArrayList<Carta>();
     }
 
     
@@ -33,13 +35,11 @@ public abstract class Baralho {
      * @param listaCarta
      */
     public Baralho(List<Carta> listaCarta) {
-        pilhaDescarte = new Stack<Carta>();
-        pilhaJogo = new Stack<Carta>();
+        this.pilhaDescarte = new Stack<Carta>();
+        this.pilhaJogo = new Stack<Carta>();
         this.listaCarta = listaCarta;
         tracarBaralho();
     }
-
-    
 
     /**
      *
@@ -57,7 +57,6 @@ public abstract class Baralho {
         Carta carta;
         Random random = new Random();
         int numCartaEscolhida;
-
         for (int i = 0; i < listaCarta.size(); i++) {
             numCartaEscolhida = random.nextInt(listaCarta.size());
             carta = listaCarta.get(numCartaEscolhida);
@@ -73,9 +72,18 @@ public abstract class Baralho {
      * @return
      */
     public Carta retiraCartaPilha(){
+        if (pilhaJogo.empty()){
+            restauraBaralho();
+        }
         Carta c = pilhaJogo.pop();
         addPilhaDescarte(c);
         return c;
+    }
+
+    public void restauraBaralho(){
+        while(!pilhaDescarte.empty()){
+            pilhaJogo.push(pilhaDescarte.pop());
+        }
     }
 
     /**

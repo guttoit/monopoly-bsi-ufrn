@@ -24,13 +24,18 @@ public abstract class Jogador {
     private float dinheiro;
     private Peao peao;
     private List<LugarFisico> listaLugarFisico;
-
+    private boolean estaNaPrisao;
+    private boolean temCartaSorteRevesSairPrisao;
+    private boolean temCartaCofreComuSairPrisao;
     /**
      *
      */
     public Jogador(){
         listaLugarFisico = new ArrayList<LugarFisico>();
         peao = new Peao();
+        estaNaPrisao = false;
+        temCartaCofreComuSairPrisao = false;
+        temCartaSorteRevesSairPrisao = false;
     }
 
     /**
@@ -42,6 +47,9 @@ public abstract class Jogador {
         this.peao = peao;
         this.nomeJogador = nome;
         listaLugarFisico = new ArrayList<LugarFisico>();
+        estaNaPrisao = false;
+        temCartaCofreComuSairPrisao = false;
+        temCartaSorteRevesSairPrisao = false;
 
     }
 // Assinatura do metodo abstrato jogaDado que recebe uma instancia de dado com parametro.
@@ -125,6 +133,31 @@ public abstract class Jogador {
     public boolean comprar(LugarFisico l) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
+
+    public boolean isEstaNaPrisao() {
+        return estaNaPrisao;
+    }
+
+    public void setEstaNaPrisao(boolean estaNaPrisao) {
+        this.estaNaPrisao = estaNaPrisao;
+    }
+
+    public boolean isTemCartaCofreComuSairPrisao() {
+        return temCartaCofreComuSairPrisao;
+    }
+
+    public void setTemCartaCofreComuSairPrisao(boolean temCartaCofreComuSairPrisao) {
+        this.temCartaCofreComuSairPrisao = temCartaCofreComuSairPrisao;
+    }
+
+    public boolean isTemCartaSorteRevesSairPrisao() {
+        return temCartaSorteRevesSairPrisao;
+    }
+
+    public void setTemCartaSorteRevesSairPrisao(boolean temCartaSorteRevesSairPrisao) {
+        this.temCartaSorteRevesSairPrisao = temCartaSorteRevesSairPrisao;
+    }
+
 
     
 }

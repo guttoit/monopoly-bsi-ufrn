@@ -7,9 +7,8 @@ import negocio.Banco;
 import negocio.FactoryCriador;
 import negocio.GerenteCompraVenda;
 import negocio.GerenteJogo;
+import negocio.GerenteSorteCofre;
 import negocio.Mensagens;
-import negocio.objetosNulo.GerenteCompraVendaObjetoNulo;
-import negocio.objetosNulo.MensagensObjetoNulo;
 import player.Jogador;
 import player.concretos.DadoDuplo;
 import player.concretos.Peao;
@@ -17,6 +16,8 @@ import tabuleiro.Imposto;
 import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.Tabuleiro;
+import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
+import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
 
 /**
  *
@@ -24,50 +25,23 @@ import tabuleiro.Tabuleiro;
  */
 /**
  *
- * @class A class GerenteConcreto implementa o GerenteJogo. Ela tem a responsabilidade de gerenciar
+ * @class A class GerenteJogoConcreto implementa o GerenteJogo. Ela tem a responsabilidade de gerenciar
  * um modo específico de Jogo.
  */
-public class GerenteConcreto implements GerenteJogo {
+public class GerenteJogoConcreto extends GerenteJogo {
 
-    private FactoryCriador factory;
     private String cores[] = new String[8];
-    private int numJogadores = 0;
-    private Mensagens mensagens = new MensagensObjetoNulo();
-    private GerenteCompraVenda gerenteCompraVenda = new GerenteCompraVendaObjetoNulo();
-
-    /**
-     *
-     * @param f FactoryCriador
-     */
-    public GerenteConcreto(FactoryCriador f) {
-        factory = f;
-        inicializaCores();
-    }
-
-    /**
-     *
-     * @param f
-     * @param mens
-     */
-    public GerenteConcreto(FactoryCriador f, Mensagens mens){
-        factory = f;
-        inicializaCores();
-        this.mensagens = mens;
-    }
-    /**
-     *
-     * @param f
-     * @param mens
-     * @param gerente
-     */
-    public GerenteConcreto(FactoryCriador f, Mensagens mens, GerenteCompraVenda gerente){
-        factory = f;
-        inicializaCores();
-        this.mensagens = mens;
-        this.gerenteCompraVenda = gerente;
+ 
+    public GerenteJogoConcreto(FactoryCriador factory) {
+        super(factory);
     }
 
 
+    public GerenteJogoConcreto(FactoryCriador f, Mensagens mens, GerenteCompraVenda gerente, GerenteSorteCofre gerenteSorteCofre){
+        super(f, mens, gerente, gerenteSorteCofre);
+        inicializaCores();
+        
+    }
 
     /**
      * Método usado para inicar um vetor String contendo as cores disponíveis para os jogadores.
@@ -95,12 +69,15 @@ public class GerenteConcreto implements GerenteJogo {
         // Verifica se o peão passou pela posição de origem ou não. Caso tenha passado, a sua posição
         // é transforma nos parâmetros que o jogo aceita.
         if (verificaPosicao(valorDado, jogador, tabuleiro)) {
+            if(aux == 40){
+                p.setPosicao(40 - 1);
+            }
             p.setPosicao(0 + aux - 40);
         } else {
             p.setPosicao(aux);
         }
         // Pega o lugar no qual o peão se encontra após ter andado
-        Lugar l = tabuleiro.getListaLugar().get(p.getPosicao());
+        Lugar l = tabuleiro.getListaLugar().get(p.getPosicao()+1);
 
         // Chama o método mostraMensAndaPeao da classe MensagensJogo para mostrar ao usuário o seu lugar no jogo.
         mensagens.mostraMensAndaPeao(jogador, l, valorDado);
@@ -126,83 +103,12 @@ public class GerenteConcreto implements GerenteJogo {
         }
         return false;
     }
-
-    /**
-     * Método utilizado pra gerenciar o jogo. É ele que "conversa" com o jogador ou dispara outros
-     * métodos.
-     * @param tab
-     * @param teclado
-     * @param banco
-     * @param jogadores
-     */
-    public void gerenciaJogo(Tabuleiro tab, Scanner teclado, Banco banco, List<Jogador> jogadores) {
-        int auxNumJogadores;
-        int nivelBurrice = 0;
-        System.out.println("Digite o numero de jogadores: ");
-        // Esse laço é usado para verificar se o jogador tem condições de entender os comandos do jogo.
-        // Caso o jogador erre o número de jogadores mais de 4 vezes o jogo é encerrado.
-        while (numJogadores == 0 && nivelBurrice < 4) {
-
-            if (teclado.hasNextInt()) {
-
-                auxNumJogadores = teclado.nextInt();
-
-                if (auxNumJogadores >= 2 && auxNumJogadores <= 8) {
-                    numJogadores = auxNumJogadores;
-                    jogadores = factory.criaListaJogadores(numJogadores);
-
-
-                } else {
-                    nivelBurrice++;
-                    System.out.println(mensagens.nivelBurrice(nivelBurrice, auxNumJogadores));
-                }
-            } else {
-                System.out.println("Digite um número inteiro entre 2 e 8: ");
-                teclado.next();
-
-            }
-        }
-        if (nivelBurrice == 4) {
-            return;
-        }
-
-
-        // Chama o método para receber os nomes e as cores dos jogadores
-        armazenaNomeECorJogadores(jogadores, numJogadores, teclado);
-
-        System.out.println("\nO jogo iniciou\n");
-
-        int jogadorAtual = 0;
-        int jogadorDepoisJogada = 0;
-        while (numJogadores >= 2) {
-            if (jogadorAtual >= numJogadores) {
-                jogadorAtual = 0;
-            }
-            jogadorDepoisJogada = realizaJogada(jogadores, tab, jogadores.get(jogadorAtual), teclado, banco, jogadorAtual);
-            // Verifica se algum jogador desistiu do jogo ou perdeu.
-            // Caso sim, o próximo jogador estará na mesma posição na lista de jogadores que o jogador
-            //que saiu
-            if (jogadorDepoisJogada < jogadorAtual) {
-                jogadorAtual = jogadorDepoisJogada;
-            }
-            jogadorAtual++;
-
-        }
-        if (numJogadores == 1) {
-            System.out.println("\n\n\n Parabéns " + jogadores.get(0).getNomeJogador() + " ! Você é o mais novo"
-                    + " milionario da America!");
-            System.exit(0);
-        }
-    }
-
     /**
      * Método que irá pegar os nomes e as respectivas cores dos jogadores
      * @param jogadores
      * @param numJogadores
      * @param teclado
      */
-
-
     public void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado){
         String auxCor[] = cores;
         String corDigitada = "";
@@ -267,8 +173,12 @@ public class GerenteConcreto implements GerenteJogo {
                 } else if (l instanceof Imposto) {
                     gerenteCompraVenda.descontaImposto(l, jogadorVez, b);
                     
-                } else {
-                    //ImplementarCompanhia e
+                } else if(l instanceof SorteRevesConcreto){
+                    SorteRevesConcreto sorteReves= (SorteRevesConcreto) l;
+                    gerenteSorteCofre.gerenciaJogadaCarta(jogadorVez, sorteReves, (MensagensJogo) mensagens, tab, jogadores, b);
+                }else if(l instanceof CofreComunitarioConcreto){
+                    CofreComunitarioConcreto cofreComunitario= (CofreComunitarioConcreto) l;
+                    gerenteSorteCofre.gerenciaJogadaCarta(jogadorVez, cofreComunitario, (MensagensJogo) mensagens, tab, jogadores, b);
                 }
             } else if (comando.equalsIgnoreCase("status")) {
                 mensagens.statusJogador(jogadorVez, tab);
@@ -352,4 +262,22 @@ public class GerenteConcreto implements GerenteJogo {
     public void setNumJogadores(int numJogadores) {
         this.numJogadores = numJogadores;
     }
+
+    public GerenteCompraVenda getGerenteCompraVenda() {
+        return gerenteCompraVenda;
+    }
+
+    public void setGerenteCompraVenda(GerenteCompraVenda gerenteCompraVenda) {
+        this.gerenteCompraVenda = gerenteCompraVenda;
+    }
+
+    public GerenteSorteCofre getGerenteSorteCofre() {
+        return gerenteSorteCofre;
+    }
+
+    public void setGerenteSorteCofre(GerenteSorteCofre gerenteSorteCofre) {
+        this.gerenteSorteCofre = gerenteSorteCofre;
+    }
+
+    
 }

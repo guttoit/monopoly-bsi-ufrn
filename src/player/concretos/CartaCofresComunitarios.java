@@ -5,7 +5,7 @@
 
 package player.concretos;
 
-import tabuleiro.Carta;
+import player.Carta;
 
 /**
  *
@@ -13,9 +13,6 @@ import tabuleiro.Carta;
  */
 public class CartaCofresComunitarios extends Carta {
 
-    /**
-     *
-     */
     public CartaCofresComunitarios() {
         super();
     }
@@ -31,6 +28,4 @@ public class CartaCofresComunitarios extends Carta {
         super(numeroCarta, nomeCarta, descricao, observacoes);
     }
 
-    
-    
 }
