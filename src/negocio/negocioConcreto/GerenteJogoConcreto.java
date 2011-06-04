@@ -10,6 +10,8 @@ import negocio.GerenteJogo;
 import negocio.GerenteSorteCofre;
 import negocio.Mensagens;
 import player.Jogador;
+import player.concretos.BaralhoCofreComunitario;
+import player.concretos.BaralhoSorteReves;
 import player.concretos.DadoDuplo;
 import player.concretos.Peao;
 import tabuleiro.Imposto;
@@ -17,8 +19,9 @@ import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
+import tabuleiro.tabuleiroConcreto.Prisao;
 import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
-
+import tabuleiro.tabuleiroConcreto.VaParaPrisao;
 /**
  *
  * @author Gutto
@@ -31,7 +34,7 @@ import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
 public class GerenteJogoConcreto extends GerenteJogo {
 
     private String cores[] = new String[8];
- 
+
     /**
      *
      * @param factory
@@ -89,6 +92,7 @@ public class GerenteJogoConcreto extends GerenteJogo {
         }
         // Pega o lugar no qual o peão se encontra após ter andado
         Lugar l = tabuleiro.getListaLugar().get(p.getPosicao()+1);
+
 
         // Chama o método mostraMensAndaPeao da classe MensagensJogo para mostrar ao usuário o seu lugar no jogo.
         mensagens.mostraMensAndaPeao(jogador, l, valorDado);
@@ -183,14 +187,19 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
                 } else if (l instanceof Imposto) {
                     gerenteCompraVenda.descontaImposto(l, jogadorVez, b);
-                    
                 } else if(l instanceof SorteRevesConcreto){
                     SorteRevesConcreto sorteReves= (SorteRevesConcreto) l;
                     gerenteSorteCofre.gerenciaJogadaCarta(jogadorVez, sorteReves, (MensagensJogo) mensagens, tab, jogadores, b);
                 }else if(l instanceof CofreComunitarioConcreto){
                     CofreComunitarioConcreto cofreComunitario= (CofreComunitarioConcreto) l;
                     gerenteSorteCofre.gerenciaJogadaCarta(jogadorVez, cofreComunitario, (MensagensJogo) mensagens, tab, jogadores, b);
+                } else if (l instanceof VaParaPrisao){
+                          jogadorVez.getPeao().setPosicao(10);
+                          jogadorVez.setEstaNaPrisao(true);
+                } else if (l instanceof Prisao){
+                          mensagens.visitaPrisao();
                 }
+
             } else if (comando.equalsIgnoreCase("status")) {
                 mensagens.statusJogador(jogadorVez, tab);
                 acertouComando = true;
@@ -274,6 +283,7 @@ public class GerenteJogoConcreto extends GerenteJogo {
         this.numJogadores = numJogadores;
     }
 
+
     /**
      *
      * @return
@@ -281,7 +291,6 @@ public class GerenteJogoConcreto extends GerenteJogo {
     public GerenteCompraVenda getGerenteCompraVenda() {
         return gerenteCompraVenda;
     }
-
     /**
      *
      * @param gerenteCompraVenda
@@ -306,5 +315,4 @@ public class GerenteJogoConcreto extends GerenteJogo {
         this.gerenteSorteCofre = gerenteSorteCofre;
     }
 
-    
 }

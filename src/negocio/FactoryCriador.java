@@ -21,7 +21,9 @@ import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.Propriedade;
 import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
+import tabuleiro.tabuleiroConcreto.Prisao;
 import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
+import tabuleiro.tabuleiroConcreto.VaParaPrisao;
 
 /**
  *
@@ -224,5 +226,16 @@ public interface FactoryCriador {
      * @return BaralhoSorteReves
      */
     public BaralhoSorteReves criaBaralhoSorteReves();
+
+    
+
+    public Lugar criaPrisao (String nome, int posicao);
+
+    public Lugar criaVaParaPrisao(String nome, int posicao);
+
+    public Lugar criaServicopublico(String nome, int posicao, float preco);
+
+
+
 
 }

@@ -208,4 +208,10 @@ public class MensagensJogo implements Mensagens {
                     + " e " + valorDado[1] + ". O peao avancou para  " + l.getPosicao() + ", " + l.getNome());
         }
     }
+
+    public void visitaPrisao(){
+          System.out.println("Visitando Prisao");
+
+
+    }
 }

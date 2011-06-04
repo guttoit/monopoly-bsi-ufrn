@@ -97,6 +97,7 @@ public class Jogo {
     private Lugar cofreComunitario2;
     private Lugar cofreComunitario3;
 
+
     private CartaCofresComunitarios avanceParaOPontoDePartidaGo;
     private CartaCofresComunitarios erroDoBancoEmSeuFavor;
     private CartaCofresComunitarios taxaDoMedico;
@@ -113,6 +114,9 @@ public class Jogo {
     private CartaCofresComunitarios voceTirouOSegundoLugarNoConcursoDeBeleza;
     private CartaCofresComunitarios voceHerdou;
     private CartaCofresComunitarios voceDevePagarOsReparosDaRua;
+
+    private Lugar jail;
+    private Lugar goToJail ;
 
     private CartaSorteReves avanceParaOPontoDePartida;
     private CartaSorteReves avancePara;
@@ -137,7 +141,6 @@ public class Jogo {
      */
     public Jogo(FactoryCriador factory) {
         this.factory = factory;
-
         inicializaVariaveis();
         criarLugares();
         montaTabuleiro(tabuleiro, lugares);
@@ -464,10 +467,6 @@ public class Jogo {
         this.cartasCofresComunitarios = cartasCofresComunitarios;
     }
 
-    /**
-     * pega uma lista de jogadores e os retorna
-     * @return List<Jogador>
-     */
     public List<Jogador> getJogadores() {
         return jogadores;
     }

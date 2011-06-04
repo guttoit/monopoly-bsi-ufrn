@@ -19,6 +19,7 @@ import tabuleiro.Lugar;
  *
  */
 public class ServicoPublico extends Lugar {
+
         private float preco;
     /**
      *

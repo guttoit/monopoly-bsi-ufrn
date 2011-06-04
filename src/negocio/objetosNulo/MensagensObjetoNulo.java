@@ -52,4 +52,8 @@ public class MensagensObjetoNulo implements Mensagens{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    public void visitaPrisao() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }
