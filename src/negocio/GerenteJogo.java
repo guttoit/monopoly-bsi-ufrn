@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package negocio;
 
 import java.util.List;
@@ -17,7 +16,6 @@ import tabuleiro.Tabuleiro;
  *
  * @author adm
  */
-
 /**
  *
  * @interface GerenteJogo contem as assinaturas dos métodos utilizados por GerenteConcreto.
@@ -27,26 +25,11 @@ import tabuleiro.Tabuleiro;
  */
 public abstract class GerenteJogo {
 
-    /**
-     *
-     */
     protected FactoryCriador factory;
-    /**
-     *
-     */
-    protected  int numJogadores = 0;
-    /**
-     *
-     */
-    protected  Mensagens mensagens = new MensagensObjetoNulo();
-    /**
-     *
-     */
-    protected  GerenteCompraVenda gerenteCompraVenda = new GerenteCompraVendaObjetoNulo();
-    /**
-     *
-     */
-    protected  GerenteSorteCofre gerenteSorteCofre;
+    protected int numJogadores = 0;
+    protected Mensagens mensagens = new MensagensObjetoNulo();
+    protected GerenteCompraVenda gerenteCompraVenda = new GerenteCompraVendaObjetoNulo();
+    protected GerenteSorteCofre gerenteSorteCofre;
 
     /**
      *
@@ -70,12 +53,11 @@ public abstract class GerenteJogo {
         this.mensagens = mensagens;
     }
 
-
-
     /**
      *
      */
     public abstract void inicializaCores();
+
     /**
      * Faz o peao andar e identifica onde o mesmo se localizará a partir da jogada atual
      * @param valorDado
@@ -83,17 +65,18 @@ public abstract class GerenteJogo {
      * @param tabuleiro
      * @return Lugar
      */
-      public abstract Lugar andaPeao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro);
+    public abstract Lugar andaPeao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro);
 
-      /**
-       *
-       * @param valorDado
-       * @param jogador
-       * @param tabuleiro
-       * @return
-       */
-      public abstract boolean verificaPosicao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro);
-      /**
+    /**
+     *
+     * @param valorDado
+     * @param jogador
+     * @param tabuleiro
+     * @return
+     */
+    public abstract boolean verificaPosicao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro);
+
+    /**
      * Método utilizado pra gerenciar o jogo. É ele que "conversa" com o jogador ou dispara outros
      * métodos.
      * @param tab
@@ -101,8 +84,7 @@ public abstract class GerenteJogo {
      * @param b
      * @param jogadores
      */
-
-    public void gerenciaJogo(Tabuleiro tab, Scanner teclado, Banco b, List<Jogador> jogadores){
+    public void gerenciaJogo(Tabuleiro tab, Scanner teclado, Banco b, List<Jogador> jogadores) {
         int auxNumJogadores;
         int nivelBurrice = 0;
         System.out.println("Digite o numero de jogadores: ");
@@ -172,7 +154,7 @@ public abstract class GerenteJogo {
      * @param i
      * @return
      */
-    public abstract int realizaJogada(List<Jogador> jogadores,Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int i);
+    public abstract int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int i);
 
     /**
      *
@@ -181,6 +163,4 @@ public abstract class GerenteJogo {
      * @param teclado
      */
     public abstract void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado);
-    
-
 }
