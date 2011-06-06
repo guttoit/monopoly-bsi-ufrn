@@ -171,7 +171,7 @@ public class GerenteJogoConcreto extends GerenteJogo {
     public void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado) {
         String auxCor[] = cores;
         String corDigitada = "";
-        String nome = "";
+        String nome = ""; 
         for (int i = 0; i < numJogadores; i++) {
             System.out.println("\nEntre com o nome do jogador " + (i + 1) + " :");
             nome = teclado.next();
