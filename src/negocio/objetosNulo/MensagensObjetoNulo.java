@@ -11,6 +11,7 @@ import player.Jogador;
 import tabuleiro.Lugar;
 import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
+import tabuleiro.tabuleiroConcreto.Propriedade;
 
 /**
  *
@@ -65,6 +66,10 @@ public class MensagensObjetoNulo implements Mensagens{
     }
 
     public String mensagemEstaPresoComCarta(Jogador jogador, Scanner teclado) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void mensagemConstruir(Jogador jogador, Propriedade propriedade) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

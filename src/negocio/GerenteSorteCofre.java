@@ -21,20 +21,11 @@ import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
  */
 public abstract class GerenteSorteCofre {
 
-    /**
-     *
-     */
-    protected  Baralho baralhoSorteReves = new Baralho() {
+    protected Baralho baralhoSorteReves = new Baralho() {
     };
-    /**
-     *
-     */
     protected Baralho baralhoCofreComunitario = new Baralho() {
     };
 
-    /**
-     *
-     */
     public GerenteSorteCofre() {
     }
 
@@ -48,8 +39,6 @@ public abstract class GerenteSorteCofre {
         this.baralhoSorteReves = bSR;
     }
 
-
-
     /**
      *
      * @param jogador
@@ -60,8 +49,6 @@ public abstract class GerenteSorteCofre {
      * @param b
      */
     public abstract void gerenciaJogadaCarta(Jogador jogador, CofreComunitarioConcreto cofreComunitario, MensagensJogo mensagens, Tabuleiro tabuleiro, List<Jogador> jogadores, Banco b);
-        
-
 
     /**
      *
@@ -72,8 +59,5 @@ public abstract class GerenteSorteCofre {
      * @param jogadores
      * @param b
      */
-    public abstract void gerenciaJogadaCarta(Jogador jogador, SorteRevesConcreto cofreComunitario, MensagensJogo mensagens, Tabuleiro tabuleiro, List<Jogador> jogadores, Banco b);
- 
-    
-
+    public abstract void gerenciaJogadaCarta(Jogador jogador, SorteRevesConcreto sorteReves, MensagensJogo mensagens, Tabuleiro tabuleiro, List<Jogador> jogadores, Banco b);
 }

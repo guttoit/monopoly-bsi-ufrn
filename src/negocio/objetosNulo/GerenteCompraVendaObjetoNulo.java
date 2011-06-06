@@ -11,6 +11,7 @@ import negocio.GerenteCompraVenda;
 import player.Jogador;
 import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
+import tabuleiro.tabuleiroConcreto.Propriedade;
 
 /**
  *
@@ -27,6 +28,14 @@ public class GerenteCompraVendaObjetoNulo implements GerenteCompraVenda{
     }
 
     public void descontaImposto(Lugar l, Jogador jogadorVez, Banco b) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void construir(Jogador jogador, Propriedade propriedade, Banco banco) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void venda(Jogador jogador, Propriedade propriedade, Banco banco) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

@@ -9,6 +9,7 @@ import player.Jogador;
 import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.Tabuleiro;
+import tabuleiro.tabuleiroConcreto.Propriedade;
 
 /**
  *
@@ -84,5 +85,7 @@ public interface Mensagens {
     public String mensagemEstaPreso(Jogador jogador, Scanner teclado);
 
     public String mensagemEstaPresoComCarta(Jogador jogador, Scanner teclado);
+
+    public void mensagemConstruir(Jogador jogador, Propriedade propriedade);
 
 }

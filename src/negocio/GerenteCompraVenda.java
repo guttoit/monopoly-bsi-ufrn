@@ -9,6 +9,7 @@ import java.util.Scanner;
 import player.Jogador;
 import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
+import tabuleiro.tabuleiroConcreto.Propriedade;
 
 /**
  * @interface GerenteCompraVenda contem as assinaturas dos métodos utilizados por GerenteCompraVendaConcreto.
@@ -47,4 +48,8 @@ public interface GerenteCompraVenda {
      * @param b
      */
     public void descontaImposto(Lugar l, Jogador jogadorVez, Banco b);
+
+    public void construir(Jogador jogador, Propriedade propriedade, Banco banco);
+
+    public void venda(Jogador jogador, Propriedade propriedade, Banco banco);
 }

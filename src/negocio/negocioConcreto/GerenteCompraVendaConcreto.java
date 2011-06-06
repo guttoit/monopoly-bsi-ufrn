@@ -8,6 +8,7 @@ package negocio.negocioConcreto;
 import java.util.Scanner;
 import negocio.Banco;
 import negocio.GerenteCompraVenda;
+import org.omg.CORBA.BAD_CONTEXT;
 import player.Jogador;
 import tabuleiro.Imposto;
 import tabuleiro.ImpostoRenda;
@@ -104,6 +105,18 @@ public class GerenteCompraVendaConcreto implements GerenteCompraVenda {
             }
         }
         return false;
+
+    }
+
+    public void construir(Jogador jogador, Propriedade propriedade, Banco banco){
+        //Verificar se o jogador pode ou não construir uma casa ou hotel
+        //Caso possa construir, mostrar mensagem utilizando o método mensagemConstruir
+        // da classe mensagens, com as opções de casas e propriedades que o jogador tem para construir
+        //Pegar a opção escolhida pelo jogador
+
+    }
+
+    public void venda(Jogador jogador, Propriedade propriedade, Banco banco){
 
     }
 

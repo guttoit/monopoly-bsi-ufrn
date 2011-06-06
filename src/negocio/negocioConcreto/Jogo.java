@@ -48,7 +48,6 @@ public class Jogo {
     private Banco banco;
     private BaralhoCofreComunitario baralhoCofreComunitario;
     private BaralhoSorteReves baralhoSorteReves;
-
     private Lugar posicaoZero;
     private Lugar mediterraneanAvenue;
     private Lugar communityChest1;
@@ -96,8 +95,6 @@ public class Jogo {
     private Lugar cofreComunitario1;
     private Lugar cofreComunitario2;
     private Lugar cofreComunitario3;
-
-
     private CartaCofresComunitarios avanceParaOPontoDePartidaGo;
     private CartaCofresComunitarios erroDoBancoEmSeuFavor;
     private CartaCofresComunitarios taxaDoMedico;
@@ -114,10 +111,8 @@ public class Jogo {
     private CartaCofresComunitarios voceTirouOSegundoLugarNoConcursoDeBeleza;
     private CartaCofresComunitarios voceHerdou;
     private CartaCofresComunitarios voceDevePagarOsReparosDaRua;
-
     private Lugar jail;
-    private Lugar goToJail ;
-
+    private Lugar goToJail;
     private CartaSorteReves avanceParaOPontoDePartida;
     private CartaSorteReves avancePara;
     private CartaSorteReves avanceParaStCharlesPlace;
@@ -172,7 +167,7 @@ public class Jogo {
         jogadores = factory.criaListaJogadores(8);
 
         teclado = new Scanner(System.in);
-        
+
         banco = factory.criaBanco();
 
     }

@@ -54,7 +54,7 @@ public abstract class GerenteJogo {
     }
 
     /**
-     *
+     *Método usado para inicializar um vetor de strings que conterá as cores do jogo.
      */
     public abstract void inicializaCores();
 
@@ -68,6 +68,8 @@ public abstract class GerenteJogo {
     public abstract Lugar andaPeao(Integer[] valorDado, Jogador jogador, Tabuleiro tabuleiro);
 
     /**
+     * Método usado em andaPeao para verificar qual a posição antiga com a próxima, verificando se ele
+     * passou pela posição inicial do jogo o que acarretará em um ganho de 200 pelo jogador.
      *
      * @param valorDado
      * @param jogador
@@ -78,11 +80,12 @@ public abstract class GerenteJogo {
 
     /**
      * Método utilizado pra gerenciar o jogo. É ele que "conversa" com o jogador ou dispara outros
-     * métodos.
+     * métodos. Esse método usará o padrão de projeto Template method
      * @param tab
      * @param teclado
      * @param b
      * @param jogadores
+     *
      */
     public void gerenciaJogo(Tabuleiro tab, Scanner teclado, Banco b, List<Jogador> jogadores) {
         int auxNumJogadores;
@@ -135,6 +138,7 @@ public abstract class GerenteJogo {
             jogadorAtual++;
 
         }
+        // Verifica se os outros jogadores perderam ou desistiram, restando apenas um, que será o vencedor.
         if (numJogadores == 1) {
             System.out.println("\n\n\n Parabéns " + jogadores.get(0).getNomeJogador() + " ! Você é o mais novo"
                     + " milionario da America!");
@@ -143,8 +147,18 @@ public abstract class GerenteJogo {
 
     }
 
+    /**
+     * Esse método tem a função quase que idêntica a do método realizaJogada, porém é utilizado quando um
+     * jogador encontra-se na prisão.
+     * @param jogadores
+     * @param tab
+     * @param jogadorVez
+     * @param teclado
+     * @param b
+     * @param numJogAtual
+     * @return
+     */
     public abstract Lugar realizaJogadaPrisao(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int numJogAtual);
-
 
     /**
      * Método responsável por analisar e realizar a jogada escolhida pelo jogador. Ele é chamado
@@ -160,11 +174,10 @@ public abstract class GerenteJogo {
     public abstract int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int i);
 
     /**
-     *
+     * Método usado para coletar e armazenar os nomes e as respectivas cores dos jogadores.
      * @param jogadores
      * @param numJogadores
      * @param teclado
      */
     public abstract void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado);
-
 }
