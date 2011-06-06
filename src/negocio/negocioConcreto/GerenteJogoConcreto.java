@@ -230,49 +230,13 @@ public class GerenteJogoConcreto extends GerenteJogo {
         Lugar l = null;
         boolean acertouComando = false;
 
-        /*if (jogadorVez.isEstaNaPrisao()) {
-        while (!acertouComando) {
-        // Verifica se o jogador possui uma carta para sair da prisão. Caso possua então
-        // é mostrado a ele a opção de usar carta.
-        if (jogadorVez.isTemCartaCofreComuSairPrisao() || jogadorVez.isTemCartaSorteRevesSairPrisao()) {
-        mensagens.mensagemEstaPresoComCarta(jogadorVez);
-        } else {
-        mensagens.mensagemEstaPreso(jogadorVez);
-        }
-        comando = teclado.next();
-        if (comando.equalsIgnoreCase("pagar")) {
-        jogadorVez.setDinheiro(jogadorVez.getDinheiro() - 50);
-        jogadorVez.setEstaNaPrisao(false);
-        acertouComando = true;
-        return numJogAtual;
-        } else if (comando.equalsIgnoreCase("carta")) {
-        if (jogadorVez.isTemCartaCofreComuSairPrisao()) {
-        jogadorVez.setEstaNaPrisao(false);
-        jogadorVez.setTemCartaCofreComuSairPrisao(false);
-        acertouComando = true;
-        return numJogAtual;
-        } else if (jogadorVez.isTemCartaSorteRevesSairPrisao()) {
-        jogadorVez.setEstaNaPrisao(false);
-        jogadorVez.setTemCartaSorteRevesSairPrisao(false);
-        acertouComando = true;
-        return numJogAtual;
-        }
-        } else if (comando.equalsIgnoreCase("jogar")) {
-        l = andaPeao(jogadorVez.jogaDado(new DadoDuplo()), jogadorVez, tab);
-        acertouComando = true;
-        }
-        }
-        System.out.println("\nA jogada de " + jogadorVez.getNomeJogador() + " comecou.");
-        System.out.println("\nComandos disponiveis: [Jogar]   [Sair]   [status]");
-        System.out.println("\nEntre com o comando");
-        comando = teclado.next().trim();*/
         while (!acertouComando || jogadorVez.isJogaNovamente()) {
             if (jogadorVez.isEstaNaPrisao()) {
                 l = realizaJogadaPrisao(jogadores, tab, jogadorVez, teclado, b, numJogAtual);
 
             } else {
                 System.out.println("\nA jogada de " + jogadorVez.getNomeJogador() + " comecou.");
-                System.out.println("\nComandos disponiveis: [Jogar]   [Sair]   [status]");
+                System.out.println("\nComandos disponiveis: [Construir] [Jogar]   [Sair]   [status]");
                 System.out.println("\nEntre com o comando");
                 comando = teclado.next().trim();
             }
@@ -295,7 +259,11 @@ public class GerenteJogoConcreto extends GerenteJogo {
             } else if (comando.equalsIgnoreCase("jogar")) {
                 acertouComando = true;
                 l = andaPeao(jogadorVez.jogaDado(new DadoDuplo()), jogadorVez, tab);
+            }else if(comando.equalsIgnoreCase("construir")){
+                System.out.println("Não está funcionando ainda... Tente os outros comandos");
+                //Chama o gerente de compra e venda
             }
+            // Gambiarra para evitar que ele entre nas condições abaixo sem ter jogado o dado
             if (comando.equalsIgnoreCase("jogar") || comando.equalsIgnoreCase("pagar") || comando.equalsIgnoreCase("carta")) {
                 if (l == null) {
                     if (jogadorVez.getNumVezesDadosIguais() >= 3) {
@@ -304,7 +272,7 @@ public class GerenteJogoConcreto extends GerenteJogo {
                     }
 
                 } else if (l.getPosicao() == 40) {
-                    return numJogAtual;
+                    
                     //Não faz nada
                 } else if (l instanceof LugarFisico) {
                     LugarFisico lf = (LugarFisico) l;

@@ -223,4 +223,7 @@ public class MensagensJogo implements Mensagens {
         return teclado.next().trim();
     }
 
+    public void mensagemConstruir(Jogador jogador, Propriedade propriedade){
+        
+    }
 }
