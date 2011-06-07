@@ -18,9 +18,9 @@ import tabuleiro.Lugar;
  *
  *
  */
-public class ServicoPublico extends Lugar {
+public class ServicoPublico extends LugarFisico {
 
-        private float preco;
+        
     /**
      *
      */
@@ -34,9 +34,7 @@ public class ServicoPublico extends Lugar {
      * @param preco
      */
     public ServicoPublico(String nome, int posicao, float preco) {
-        super(nome, posicao);
-        this.preco = preco;
-
+        super(nome, posicao, preco);
     }
 
 
