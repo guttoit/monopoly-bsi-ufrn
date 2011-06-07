@@ -281,7 +281,7 @@ public class Jogo {
 
         stCharlesPlace = factory.criaPropriedade(lugares, 11, "stCharlesPlace", "Cinza", 140, 500, 50, 150, 450, 625, 750, 70, 100);
 
-        //serviços públicos  electricCompany= factory.criaPropriedade(lugares,12, "electricCompany", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        electricCompany= factory.criaServicopublico("electricCompany", 12 , 150);
 
         statesAvenue = factory.criaPropriedade(lugares, 13, "statesAvenue", "roxo", 60, 500, 10, 30, 90, 160, 250, 30, 90);
 
@@ -313,7 +313,7 @@ public class Jogo {
 
         ventnorAvenue = factory.criaPropriedade(lugares, 27, "ventnorAvenue", "Amarelo", 260, 500, 110, 330, 800, 975, 1150, 130, 150);
 
-        //serviços públicos  waterWorks= factory.cria
+        waterWorks= factory.criaServicopublico("waterWorks", 28, 150) ;
 
         marvinGardens = factory.criaPropriedade(lugares, 29, "marvinGardens", "Amarelo", 280, 500, 120, 360, 850, 1025, 1200, 140, 150);
 
