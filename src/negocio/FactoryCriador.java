@@ -112,7 +112,7 @@ public interface FactoryCriador {
     public Ferrovia criaFerrovia(List<Lugar> lugares, int posicao, String nome, float preco, float hipoteca);
 
     /**
-     *
+     *<p> cria imposto de renda no qual o jogador poderá ser taxado </p>
      * @param lugares
      * @param posicao
      * @param nome
@@ -122,7 +122,7 @@ public interface FactoryCriador {
     public ImpostoRenda criaImpostoRenda(List<Lugar> lugares, int posicao, String nome, float preco);
 
     /**
-     *
+     *<p> cria imposto de renda no qual o jogador poderá ser taxado </p>
      * @param lugares
      * @param posicao
      * @param nome
@@ -132,14 +132,14 @@ public interface FactoryCriador {
     public ImpostoRiqueza criaImpostoRiqueza(List<Lugar> lugares, int posicao, String nome, float preco);
 
     /**
-     *
+     *<p> cria Tabuleiro a ser percorrido pelo jogador </p>
      * @param numCasas
      * @return Tabuleiro
      */
     public Tabuleiro criaTabuleiro(int numCasas);
 
     /**
-     *
+     *<p> Cria gerente que é responsável por controlar o jogo  </p>
      * @param f
      * @param mens 
      * @param gCV
@@ -149,7 +149,7 @@ public interface FactoryCriador {
     public GerenteJogo criaGerente(FactoryCriador f, Mensagens mens, GerenteCompraVenda gCV, GerenteSorteCofre gSC);
 
     /**
-     *
+     *<p> Cria gerenteSorteCofre que é responsável gerenciar as cartas do cofre comunitario e sorte reves <p>
      * @param bSR
      * @param bCC
      * @return
@@ -157,7 +157,7 @@ public interface FactoryCriador {
     public GerenteSorteCofre criaGerenteSorteCofre(BaralhoSorteReves bSR, BaralhoCofreComunitario bCC);
         
     /**
-     *
+     * <p> Cria CofreComunitarioConcreto que é responsável por gerenciar o lugar aCofresComunitarios <p>
      * @param lugares
      * @param posicao
      * @param nome
@@ -166,14 +166,14 @@ public interface FactoryCriador {
     public CofreComunitarioConcreto criaCofresComunitarios(List<Lugar> lugares, int posicao, String nome);
 
     /**
-     *
+     *<p> Cria  GerenteCompraVenda que é responsável por gerenciar a compra e venda de propriedade <p>
      * @param f
      * @return
      */
     public GerenteCompraVenda criaGerenteCompraVenda(FactoryCriador f);
 
     /**
-     *
+     * <p> Cria  CartaCofresComunitarios que é responsável por gerenciar as cartar referente ao cofre comunitario <p>
      * @param baralho
      * @param numeroCarta
      * @param nomeCarta
@@ -184,7 +184,7 @@ public interface FactoryCriador {
     public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes);
 
     /**
-     *
+     *  <p> Cria  SorteRevesConcretoque é um lugar no tabuleiro <p>
      * @param lugares
      * @param posicao
      * @param nome
@@ -193,7 +193,7 @@ public interface FactoryCriador {
     public SorteRevesConcreto criaSorteReves(List<Lugar> lugares, int posicao , String nome);
 
     /**
-     *
+     * <p> Cria CartasSorteReves que é responsável por gerenciar as cartar referente ao Sorte reves<p>
      * @param baralho
      * @param numeroCarta
      * @param nomeCarta
@@ -229,12 +229,38 @@ public interface FactoryCriador {
 
     
 
-    public Lugar criaPrisao (String nome, int posicao);
+    /**
+     *
+     * @param nome
+     * @param posicao
+     * @return
+     */
+    public Lugar criaPrisao(String nome, int posicao);
 
+    /**
+     *
+     * @param nome
+     * @param posicao
+     * @return
+     */
     public Lugar criaVaParaPrisao(String nome, int posicao);
 
+    /**
+     *
+     * @param nome
+     * @param posicao
+     * @param preco
+     * @return
+     */
     public Lugar criaServicopublico(String nome, int posicao, float preco);
 
+    /**
+     *
+     * @param nome
+     * @param posicao
+     * @param preco
+     * @return
+     */
     public Lugar criaParadaLivre(String nome, int posicao, float preco);
 
 

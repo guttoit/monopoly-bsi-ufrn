@@ -78,14 +78,37 @@ public interface Mensagens {
      */
     public void mostraMensAndaPeao(Jogador jogador, Lugar l, Integer[] valorDado);
 
+    /**
+     *
+     */
     public void visitaPrisao();
 
+    /**
+     *
+     */
     public void vaParaPrisao();
 
+    /**
+     *
+     * @param jogador
+     * @param teclado
+     * @return
+     */
     public String mensagemEstaPreso(Jogador jogador, Scanner teclado);
 
+    /**
+     *
+     * @param jogador
+     * @param teclado
+     * @return
+     */
     public String mensagemEstaPresoComCarta(Jogador jogador, Scanner teclado);
 
+    /**
+     *
+     * @param jogador
+     * @param propriedade
+     */
     public void mensagemConstruir(Jogador jogador, Propriedade propriedade);
 
 }
