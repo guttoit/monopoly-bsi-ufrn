@@ -49,7 +49,19 @@ public interface GerenteCompraVenda {
      */
     public void descontaImposto(Lugar l, Jogador jogadorVez, Banco b);
 
+    /**
+     *
+     * @param jogador
+     * @param propriedade
+     * @param banco
+     */
     public void construir(Jogador jogador, Propriedade propriedade, Banco banco);
 
+    /**
+     *
+     * @param jogador
+     * @param propriedade
+     * @param banco
+     */
     public void venda(Jogador jogador, Propriedade propriedade, Banco banco);
 }

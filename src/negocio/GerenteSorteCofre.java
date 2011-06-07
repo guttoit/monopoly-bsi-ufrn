@@ -21,11 +21,20 @@ import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
  */
 public abstract class GerenteSorteCofre {
 
+    /**
+     *
+     */
     protected Baralho baralhoSorteReves = new Baralho() {
     };
+    /**
+     *
+     */
     protected Baralho baralhoCofreComunitario = new Baralho() {
     };
 
+    /**
+     *
+     */
     public GerenteSorteCofre() {
     }
 
@@ -53,7 +62,7 @@ public abstract class GerenteSorteCofre {
     /**
      *
      * @param jogador
-     * @param cofreComunitario
+     * @param sorteReves
      * @param mensagens
      * @param tabuleiro
      * @param jogadores

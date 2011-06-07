@@ -133,7 +133,7 @@ public class FactoryUSA implements FactoryCriador {
     public Tabuleiro criaTabuleiro(int numCasas) {
         return new TabuleiroUSA(numCasas);
     }
-
+    // Cria um gerente que controla o jogo
     public GerenteJogo criaGerente(FactoryCriador factory, Mensagens mensagens, GerenteCompraVenda gerenteCompraVendaConcreto, GerenteSorteCofre gerenteSorteCofre) {
         return new GerenteJogoConcreto(factory, mensagens, gerenteCompraVendaConcreto, gerenteSorteCofre);
     }
@@ -156,6 +156,11 @@ public class FactoryUSA implements FactoryCriador {
     public GerenteCompraVenda criaGerenteCompraVenda(FactoryCriador f) {
         return new GerenteCompraVendaConcreto();
     }
+    /**
+     *
+     * @param numJogadores
+     * @return
+     */
 
     // Cria uma Lista de Jogadores e adiciona os jogadores concrestos na mesma.
     public List<Jogador> criaListaJogadores(int numJogadores) {
@@ -183,32 +188,76 @@ public class FactoryUSA implements FactoryCriador {
     public BaralhoSorteReves criaBaralhoSorteReves() {
         return new BaralhoSorteReves();
     }
-
+    /**
+     *
+     * @param baralho
+     * @param numeroCarta
+     * @param nomeCarta
+     * @param descricao
+     * @param observacao
+     * @return
+     */
     public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
         CartaCofresComunitarios cartaCofresComunitarios = new CartaCofresComunitarios(numeroCarta, nomeCarta, descricao, observacoes);
         baralho.addCarta(cartaCofresComunitarios);
         return cartaCofresComunitarios;
     }
+    /**
+     *
+     * @param baralho
+     * @param numeroCarta
+     * @param nomeCarta
+     * @param descricao
+     * @param observacao
+     * @return
+     */
     public CartaSorteReves criaCartasSorteReves(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
         CartaSorteReves cartaSorteReves = new CartaSorteReves(numeroCarta, nomeCarta, descricao, observacoes);
         baralho.addCarta(cartaSorteReves);
         return cartaSorteReves;
     }
    
-
+    /**
+     *
+     * @param nome
+     * @param posicao
+     *
+     * @return
+     */
     public Lugar criaPrisao(String nome, int posicao) {
          Prisao prisao = new  Prisao(nome, posicao);
            return prisao;
     }
-
+     /**
+     *
+     * @param nome
+     * @param posicao
+     *
+     * @return
+     */
     public Lugar criaVaParaPrisao(String nome, int posicao) {
         VaParaPrisao vaParaPrisao = new VaParaPrisao(nome, posicao);
             return vaParaPrisao;
     }
+     /**
+     *
+     * @param nome
+     * @param posicao
+     * @param preco
+     * @return
+     */
     public Lugar criaServicopublico(String nome, int posicao, float preco){
          ServicoPublico servicoPublico = new ServicoPublico(nome, posicao, preco);
          return servicoPublico;
     }
+
+    /**
+     *
+     * @param nome
+     * @param posicao
+     * @param preco
+     * @return
+     */
 
     public Lugar criaParadaLivre(String nome, int posicao, float preco) {
            ParadaLivre paradaLivre = new ParadaLivre(nome, posicao, preco);
