@@ -197,7 +197,7 @@ public class Jogo {
 
         connecticutAvenue = factory.criaPropriedade(lugares, 9, "connecticutAvenue", "AzulClaro", 120, 500, 40, 100, 300, 450, 600, 60, 50);
 
-        jailJustVisiting= factory.criaPrisao("jailJustVisiting", 10 );
+        jailJustVisiting= factory.criaPrisao("jailJustVisiting" , 10 );
 
         stCharlesPlace = factory.criaPropriedade(lugares, 11, "stCharlesPlace", "Cinza", 140, 500, 50, 150, 450, 625, 750, 70, 100);
 
@@ -217,7 +217,7 @@ public class Jogo {
 
         newYorkAvenue = factory.criaPropriedade(lugares, 19, "newYorkAvenue", "Laranja", 200, 500, 80, 220, 600, 800, 1000, 100, 100);
 
-        // freeParking= factory.cria
+        freeParking = factory.criaParadaLivre("freeParking", 20, 0);
 
         kentuckyAvenue = factory.criaPropriedade(lugares, 21, "kentuckyAvenue", "Vermelho", 220, 500, 90, 250, 700, 875, 1050, 110, 150);
 
@@ -237,7 +237,7 @@ public class Jogo {
 
         marvinGardens = factory.criaPropriedade(lugares, 29, "marvinGardens", "Amarelo", 280, 500, 120, 360, 850, 1025, 1200, 140, 150);
 
-        // gotoJail= factory.criaPropriedade(lugares,30, "gotoJail", "roxo", 60, 2, 10, 30, 90, 160, 250, 30, 90);
+        gotoJail= factory.criaVaParaPrisao("gotoJail", 30);
 
         pacificAvenue = factory.criaPropriedade(lugares, 31, "pacificAvenue", "Verde", 300, 500, 130, 390, 900, 1100, 1275, 150, 200);
 

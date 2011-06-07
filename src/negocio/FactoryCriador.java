@@ -235,6 +235,12 @@ public interface FactoryCriador {
 
     public Lugar criaServicopublico(String nome, int posicao, float preco);
 
+    public Lugar criaParadaLivre(String nome, int posicao, float preco);
+
+
+
+    
+
 
 
 
