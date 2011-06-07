@@ -17,6 +17,7 @@ public abstract class PilhaCartaAbstrata {
 
     /**
      *
+     *
      */
     public List<CartaCofresComunitarios> listaCartaCofresComunitarios ;
     /**
