@@ -28,6 +28,7 @@ import tabuleiro.tabuleiroConcreto.Propriedade;
 
 import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
+import tabuleiro.tabuleiroConcreto.ParadaLivre;
 import tabuleiro.tabuleiroConcreto.Prisao;
 import tabuleiro.tabuleiroConcreto.ServicoPublico;
 import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
@@ -207,5 +208,10 @@ public class FactoryUSA implements FactoryCriador {
     public Lugar criaServicopublico(String nome, int posicao, float preco){
          ServicoPublico servicoPublico = new ServicoPublico(nome, posicao, preco);
          return servicoPublico;
+    }
+
+    public Lugar criaParadaLivre(String nome, int posicao, float preco) {
+           ParadaLivre paradaLivre = new ParadaLivre(nome, posicao, preco);
+            return paradaLivre;
     }
 }
