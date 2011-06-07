@@ -36,13 +36,20 @@ public abstract class Banco {
      */
     public Banco() {
     }
-    /**
-     * Construtor do banco que recebe uma lista de lugares do tabuleiro como parâmetro.
-     * @param lugares
-     */
-    public Banco(List<Lugar> lugares) {
-        this.lugares = lugares;
-    }
+
+    private static Banco unicaInstancia;
+
+    public static Banco getInstance(){
+       if (unicaInstancia == null){
+           synchronized (Banco.class){
+           if (unicaInstancia == null) {
+               unicaInstancia = new Banco() {};
+            }
+           }
+       }
+       return unicaInstancia;
+   }
+    
 
     /**
      *
@@ -72,5 +79,7 @@ public abstract class Banco {
     public void setLugares(List<Lugar> lugares) {
         this.lugares = lugares;
     }
+
+    
 
 }
