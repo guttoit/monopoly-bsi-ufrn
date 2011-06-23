@@ -17,6 +17,7 @@ import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
 import tabuleiro.tabuleiroConcreto.Prisao;
+import tabuleiro.tabuleiroConcreto.Propriedade;
 import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
 import tabuleiro.tabuleiroConcreto.VaParaPrisao;
 
@@ -317,6 +318,8 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
             }
             if (jogadorVez.getDinheiro() <= 0) {
+                GerenteJogo gerenteJogo = null;
+                gerenteJogo.evitaFalencia(jogadorVez, null, null);
                 System.out.println("\n" + jogadorVez.getNomeJogador() + " Você perdeu. Seu saldo é: " + jogadorVez.getDinheiro());
                 numJogAtual--;
                 numJogadores--;
@@ -328,6 +331,24 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
 
     }
+
+
+    public void evitaFalencia(Jogador jogador, Jogo jogo, Propriedade propriedade) {
+            if ( jogador.getListaLugarFisico().size() > 0 ){
+
+                if(podeVender(jogador)){
+
+
+            }
+
+
+
+
+
+            }
+
+    }
+
 
     /**
      * 
@@ -446,6 +467,21 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
     }
 
+   public boolean podeVender(Jogador j) {
+
+        for(LugarFisico l : j.getListaLugarFisico())
+        {
+            if (l instanceof Propriedade)
+            {
+                if(((Propriedade) l).getnCasas() > 0)
+                    return true;
+            }
+        }
+
+        return false;
+
+    }
+
     /**
      *
      * @param gerenteSorteCofre
@@ -455,4 +491,8 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
 
     }
+
+
+
+
 }
