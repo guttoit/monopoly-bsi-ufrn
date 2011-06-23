@@ -241,7 +241,8 @@ public class MensagensJogo implements Mensagens {
      }
 
      public String MensagemVendaHabitacoes(Propriedade p, Scanner teclado){
-        System.out.println("\nVoce possui"+ p.getnCasas());
+
+         System.out.println("\nVoce possui"+ p.getnCasas());
         System.out.println("\n Digite o numero correspondente a qual deseja Vender");
         return teclado.next().trim();
      }
