@@ -36,6 +36,7 @@ public class MensagensObjetoNulo implements Mensagens{
     }
 
     public void geraStatus(Jogador j, LugarFisico l) {
+        
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
