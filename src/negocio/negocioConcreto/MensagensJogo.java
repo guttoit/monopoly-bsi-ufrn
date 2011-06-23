@@ -226,4 +226,8 @@ public class MensagensJogo implements Mensagens {
     public void mensagemConstruir(Jogador jogador, Propriedade propriedade){
         
     }
+
+    public void mensagemVenda(Jogador j , Scanner teclado) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
