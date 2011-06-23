@@ -227,8 +227,25 @@ public class MensagensJogo implements Mensagens {
         
     }
 
-    public void mensagemVenda(Jogador j , Scanner teclado) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public String mensagemVenda(Jogador j , Scanner teclado) {
+         System.out.println("\nVoce esta na Venda.");
+         System.out.println("\nVoce pode vender habitações ou hipotecar titulos ");
+         System.out.println("\nComandos disponiveis: [Vender] [Hipotecar] [Status] [sair]");
+         return teclado.next().trim();
     }
+
+    public String MensagemTitulosHipoteca(Jogador j, Scanner teclado){
+       System.out.println("\nVoce possui"+ j.getListaLugarFisico());
+       System.out.println("\n Digite o numero correspondente a qual deseja hipotecar");
+       return teclado.next().trim();
+     }
+
+     public String MensagemVendaHabitacoes(Propriedade p, Scanner teclado){
+        System.out.println("\nVoce possui"+ p.getnCasas());
+        System.out.println("\n Digite o numero correspondente a qual deseja Vender");
+        return teclado.next().trim();
+     }
+
+
 
 }

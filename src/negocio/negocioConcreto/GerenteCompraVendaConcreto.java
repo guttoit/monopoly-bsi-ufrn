@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package negocio.negocioConcreto;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import negocio.Banco;
 import negocio.GerenteCompraVenda;
@@ -14,6 +15,7 @@ import tabuleiro.Imposto;
 import tabuleiro.ImpostoRenda;
 import tabuleiro.ImpostoRiqueza;
 import tabuleiro.Lugar;
+import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.Ferrovia;
 import tabuleiro.tabuleiroConcreto.Grupo;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
@@ -109,18 +111,32 @@ public class GerenteCompraVendaConcreto implements GerenteCompraVenda {
 
     }
 
-    public void construir(Jogador jogador, Propriedade propriedade, Banco banco){
-        
+    public void construir(Jogador jogador, Banco banco) {
+        List<LugarFisico> listaLugarFisico = jogador.getListaLugarFisico();
+        List<LugarFisico> listaQuePodeConstruir = new ArrayList<LugarFisico>();
+        for (int i = 0; i < listaLugarFisico.size(); i++) {
+            Grupo grupo = (Grupo) listaLugarFisico.get(i).getGrupo();
+            if (grupo.grupoEMeu(jogador)) {
+                for (int j = 0; j < grupo.getLugaresFisicos().size(); j++) {
+                    Propriedade lugarFisico = (Propriedade) grupo.getLugaresFisicos().get(j);
+                    if (jogador.getDinheiro() > lugarFisico.getPrecoCasa()) {
+                        listaQuePodeConstruir.add(lugarFisico);
+                    }
 
-        //Verificar se o jogador pode ou não construir uma casa ou hotel
-        //Caso possa construir, mostrar mensagem utilizando o método mensagemConstruir
-        // da classe mensagens, com as opções de casas e propriedades que o jogador tem para construir
-        //Pegar a opção escolhida pelo jogador
+                }
+            }
+        }
 
     }
 
-    public void venda(Jogador jogador, Propriedade propriedade, Banco banco){
-
+//Verificar se o jogador pode ou não construir uma casa ou hotel
+//Caso possa construir, mostrar mensagem utilizando o método mensagemConstruir
+// da classe mensagens, com as opções de casas e propriedades que o jogador tem para construir
+//Pegar a opção escolhida pelo jogador
+    public void venda(Jogador jogador, Propriedade propriedade, Banco banco) {
     }
 
+    public void construir(Jogador jogador, Propriedade propriedade, Banco banco) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

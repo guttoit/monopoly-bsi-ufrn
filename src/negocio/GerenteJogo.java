@@ -6,11 +6,13 @@ package negocio;
 
 import java.util.List;
 import java.util.Scanner;
+import negocio.negocioConcreto.Jogo;
 import negocio.objetosNulo.GerenteCompraVendaObjetoNulo;
 import negocio.objetosNulo.MensagensObjetoNulo;
 import player.Jogador;
 import tabuleiro.Lugar;
 import tabuleiro.Tabuleiro;
+import tabuleiro.tabuleiroConcreto.Propriedade;
 
 /**
  *
@@ -180,4 +182,8 @@ public abstract class GerenteJogo {
      * @param teclado
      */
     public abstract void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado);
+
+
+
+    public abstract void evitaFalencia(Jogador jogador, Jogo jogo, Propriedade propriedade );
 }

@@ -112,5 +112,13 @@ public interface Mensagens {
     public void mensagemConstruir(Jogador jogador, Propriedade propriedade);
 
 
-    public void mensagemVenda(Jogador j, Scanner teclado);
+    public String mensagemVenda(Jogador j, Scanner teclado);
+
+    public String MensagemTitulosHipoteca(Jogador j, Scanner teclado);
+
+    public String MensagemVendaHabitacoes(Propriedade p,Scanner teclado);
+
+
+
+
 }
