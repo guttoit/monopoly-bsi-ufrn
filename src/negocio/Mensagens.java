@@ -112,5 +112,5 @@ public interface Mensagens {
     public void mensagemConstruir(Jogador jogador, Propriedade propriedade);
 
 
-    public void mensagemVenda(Jogador j);
+    public void mensagemVenda(Jogador j, Scanner teclado);
 }
