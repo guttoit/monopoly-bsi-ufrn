@@ -8,6 +8,7 @@ package tabuleiro.tabuleiroConcreto;
 import java.util.ArrayList;
 import java.util.List;
 import player.Jogador;
+import player.concretos.JogadorConcreto;
 import tabuleiro.GrupoAbstrato;
 
 /**
@@ -27,15 +28,31 @@ public class Grupo implements GrupoAbstrato{
     //Testa se o grupo é meu ou tem mais de um proprietario
     public boolean grupoEMeu(Jogador j){
         if(grupoEstaCompleto()){
-            if(jogadores.size() == 1){
-                if(jogadores.contains(j)){
-                    return true;
+            preencheListaJogadores();
+            for(Jogador jog: jogadores){
+                if(!jog.equals(j)){
+                    return false;
                 }
             }
+           
+              
+        }else{
+            return false;
         }
-        return false;
+        return true;
     }
 
+    /*
+     * Preenche a lista dos jogadores que possuem propriedades desse grupo
+     */
+    public void preencheListaJogadores(){
+
+        for(LugarFisico lf: lugaresFisicos){
+            if(lf.getProprietario()!=null){
+                jogadores.add(lf.getProprietario());
+            }
+        }
+    }
     /*
      * Testa se o grupo esta completo
      */
