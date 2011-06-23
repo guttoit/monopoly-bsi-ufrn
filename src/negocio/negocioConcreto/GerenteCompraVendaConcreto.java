@@ -15,6 +15,7 @@ import tabuleiro.ImpostoRenda;
 import tabuleiro.ImpostoRiqueza;
 import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.Ferrovia;
+import tabuleiro.tabuleiroConcreto.Grupo;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.tabuleiroConcreto.Propriedade;
 
@@ -109,6 +110,8 @@ public class GerenteCompraVendaConcreto implements GerenteCompraVenda {
     }
 
     public void construir(Jogador jogador, Propriedade propriedade, Banco banco){
+        
+
         //Verificar se o jogador pode ou não construir uma casa ou hotel
         //Caso possa construir, mostrar mensagem utilizando o método mensagemConstruir
         // da classe mensagens, com as opções de casas e propriedades que o jogador tem para construir
