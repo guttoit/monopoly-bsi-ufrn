@@ -2,12 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package negocio.negocioConcreto;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import negocio.Banco;
 import negocio.GerenteCompraVenda;
+import negocio.Mensagens;
 import org.omg.CORBA.BAD_CONTEXT;
 import player.Jogador;
 import tabuleiro.Imposto;
@@ -109,18 +111,74 @@ public class GerenteCompraVendaConcreto implements GerenteCompraVenda {
 
     }
 
-    public void construir(Jogador jogador, Propriedade propriedade, Banco banco){
-        
+    /*
+     * Verificar se o jogador pode ou não construir uma casa ou hotel.
+     * Caso possa construir, mostra mensagem utilizando o método mensagemConstruir
+     * da classe mensagens, com as opções de casas e propriedades que o jogador tem para construir
+     */
+    public void construir(Jogador jogador, List<LugarFisico> lugares, Scanner teclado, Banco banco, Mensagens mens) {
 
-        //Verificar se o jogador pode ou não construir uma casa ou hotel
-        //Caso possa construir, mostrar mensagem utilizando o método mensagemConstruir
-        // da classe mensagens, com as opções de casas e propriedades que o jogador tem para construir
-        //Pegar a opção escolhida pelo jogador
+        //Lista que irá armazenar os lugares possíveis para construir
+        List<LugarFisico> lugaresPossiveis = new ArrayList<LugarFisico>();
+        //Irá armazenar os grupos que já foram testados para que não teste duas vezes
+        List<Grupo> listaGruposTestados = new ArrayList<Grupo>();
+        for (LugarFisico lf : lugares) {
+            if (lf != null && !listaGruposTestados.contains((Grupo) lf.getGrupo())) {
+                if (lf instanceof Propriedade) {
+                    Grupo g = (Grupo) lf.getGrupo();
+                    if (g.grupoEMeu(jogador)) {
+                        //Adiciona o grupo testao a uma lista de grupos para que não necessite mais testar propriedades
+                        //desse grupo
+                        listaGruposTestados.add(g);
+                        //Laço que pega as propriedades possíveis de serem construídas e adiciona a lista de lugaresPossiveis
+                        for (LugarFisico l : g.getLugaresFisicos()) {
+                            Propriedade p = (Propriedade) l;
+                            // Testa se a propriedade já tem hotel construído. Quando tem hotel o numero de casas é 5
+                            if (p.getnCasas() < 5) {
+                                //Testa se o jogador tem dinheiro suficiente
+                                if (jogador.getDinheiro() > p.getPrecoCasa()) {
+                                    lugaresPossiveis.add(l);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (!lugaresPossiveis.isEmpty()) {
+            controlaJogadaConstruir(jogador, lugaresPossiveis, mens, teclado, banco);
+        }
 
     }
 
-    public void venda(Jogador jogador, Propriedade propriedade, Banco banco){
+    public void controlaJogadaConstruir(Jogador jogador, List<LugarFisico> lugaresPossiveis, Mensagens mens, Scanner teclado, Banco b) {
+        int escolha = -1;
+        //Laço que controlará a jogada construir. O mesmo será executado até que o jogador escolha a opção 0 (para sair)
+        // ou que não exista mais lugares que ele possa construir ou ainda que não exista mais casas disponíveis no banco
+        while (escolha != 0 && !lugaresPossiveis.isEmpty() && b.getNumCasasDisponiveis() > 0) {
+            escolha = mens.mensagemConstruir(jogador, lugaresPossiveis, teclado);
+            if (escolha != 0) {
+                Propriedade p = (Propriedade) lugaresPossiveis.get(escolha - 1);
+                p.setnCasas(p.getnCasas() + 1);
+                jogador.setDinheiro(jogador.getDinheiro() - p.getPrecoCasa());
+                lugaresPossiveis.remove(p);
+                //O código abaixc verifica se as propriedades do grupo em questão ficaram niveladas, ou seja, estão com o mesmo
+                //número de casas construídas, sendo assim, todas voltam a lista de lugaresPossiveis.
+                Grupo grupo = (Grupo) p.getGrupo();
+                p.getGrupo().addPropriedadeNaoPodeConstruir(p);
+                if (grupo.getPropriedadesNaoPodeConstruir().isEmpty()) {
+                    for (LugarFisico l : grupo.getPropriedadesNaoPodeConstruir()) {
+                        lugaresPossiveis.add(l);
+                    }
+                }
+
+                b.setNumCasasDisponiveis(b.getNumCasasDisponiveis() - 1);
+
+            }
+        }
 
     }
 
+    public void venda(Jogador jogador, Propriedade propriedade, Banco banco) {
+    }
 }

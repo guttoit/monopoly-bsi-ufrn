@@ -5,7 +5,7 @@
 package negocio;
 
 import java.util.List;
-import negocio.negocioConcreto.GerenteSorteCofreConcreto;
+
 import player.Dado;
 import player.Jogador;
 import player.Baralho;
@@ -14,6 +14,7 @@ import player.concretos.BaralhoSorteReves;
 import player.concretos.CartaCofresComunitarios;
 import player.concretos.Peao;
 import player.concretos.CartaSorteReves;
+import tabuleiro.GrupoAbstrato;
 import tabuleiro.tabuleiroConcreto.Ferrovia;
 import tabuleiro.tabuleiroConcreto.ImpostoRenda;
 import tabuleiro.tabuleiroConcreto.ImpostoRiqueza;
@@ -21,9 +22,9 @@ import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.Propriedade;
 import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
-import tabuleiro.tabuleiroConcreto.Prisao;
+import tabuleiro.tabuleiroConcreto.Grupo;
+import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
-import tabuleiro.tabuleiroConcreto.VaParaPrisao;
 
 /**
  *
@@ -98,7 +99,7 @@ public interface FactoryCriador {
      * @param precoCasa
      * @return Propriedade
      */
-    public Propriedade criaPropriedade(List<Lugar> lugares, int posicao, String nome, String cor, float precoP, float aluguelSCasa, float c1, float c2, float c3, float c4, float hotel, float hip, float precoCasa);
+    public Propriedade criaPropriedade(List<Lugar> lugares, int posicao, String nome, Grupo grupo, float precoP, float aluguelSCasa, float c1, float c2, float c3, float c4, float hotel, float hip, float precoCasa);
 
     /**
      * <p> Cria uma Ferrovia</p>
@@ -138,6 +139,10 @@ public interface FactoryCriador {
      */
     public Tabuleiro criaTabuleiro(int numCasas);
 
+    public GrupoAbstrato criaGrupo(List<LugarFisico> lugares, String cor);
+
+    public GrupoAbstrato criaGrupo(String cor);
+
     /**
      *<p> Cria gerente que é responsável por controlar o jogo  </p>
      * @param f
@@ -155,7 +160,7 @@ public interface FactoryCriador {
      * @return
      */
     public GerenteSorteCofre criaGerenteSorteCofre(BaralhoSorteReves bSR, BaralhoCofreComunitario bCC);
-        
+
     /**
      * <p> Cria CofreComunitarioConcreto que é responsável por gerenciar o lugar aCofresComunitarios <p>
      * @param lugares
@@ -190,7 +195,7 @@ public interface FactoryCriador {
      * @param nome
      * @return
      */
-    public SorteRevesConcreto criaSorteReves(List<Lugar> lugares, int posicao , String nome);
+    public SorteRevesConcreto criaSorteReves(List<Lugar> lugares, int posicao, String nome);
 
     /**
      * <p> Cria CartasSorteReves que é responsável por gerenciar as cartar referente ao Sorte reves<p>
@@ -227,8 +232,6 @@ public interface FactoryCriador {
      */
     public BaralhoSorteReves criaBaralhoSorteReves();
 
-    
-
     /**
      *
      * @param nome
@@ -262,12 +265,4 @@ public interface FactoryCriador {
      * @return
      */
     public Lugar criaParadaLivre(String nome, int posicao, float preco);
-
-
-
-    
-
-
-
-
 }

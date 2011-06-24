@@ -30,6 +30,7 @@ public class Propriedade extends LugarFisico {
     private float precoCasa;
     private String cor;
     private float preco;
+    
     /**
      *
      */
@@ -54,7 +55,7 @@ public class Propriedade extends LugarFisico {
      * @param hip
      * @param precoCasa
      */
-    public Propriedade(int posicao,String nome, String cor, float precoP, float aluguelSCasa,float c1, float c2, float c3, float c4, float hotel,  float hip, float precoCasa){
+    public Propriedade(int posicao,String nome, Grupo grupo, float precoP, float aluguelSCasa,float c1, float c2, float c3, float c4, float hotel,  float hip, float precoCasa){
         super.setPreco(precoP);
         super.setNome(nome);
         this.cor = cor;
@@ -70,8 +71,10 @@ public class Propriedade extends LugarFisico {
         this.precoCasa = precoCasa;
         aluguelSemCasa = aluguelSCasa;
         aluguelAtual = aluguelSCasa;
+        super.setGrupo(grupo);
+        grupo.addLugarFisico(this);
     }
-
+    
     /**
      *
      * @return
