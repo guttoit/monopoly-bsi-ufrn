@@ -4,6 +4,7 @@
  */
 package negocio.negocioConcreto;
 
+import java.util.List;
 import java.util.Scanner;
 import negocio.Mensagens;
 import player.Jogador;
@@ -223,7 +224,48 @@ public class MensagensJogo implements Mensagens {
         return teclado.next().trim();
     }
 
-    public void mensagemConstruir(Jogador jogador, Propriedade propriedade){
-        
+    public int mensagemConstruir(Jogador jogador, List<LugarFisico> lugares, Scanner teclado) {
+        int escolha = -1;
+        System.out.println(jogador.getNomeJogador() + " possui " + jogador.getDinheiro());
+        System.out.println("Escolha onde quer construir: ");
+        while (escolha == -1) {
+            int i;
+            for (i = 0; i < lugares.size(); i++) {
+                Propriedade p = (Propriedade) lugares.get(i);
+                //Verifica se o jogador possui dinheiro para construir...
+                if (jogador.getDinheiro() > p.getPrecoCasa()) {
+                    System.out.println((i+1) + " - " + p.getNome() + " tem " + p.getnCasas() + " construídas,"
+                            + " a casa custa $" + p.getPrecoCasa());
+                }else{
+                    lugares.remove(p);
+                }
+            }
+            //Verifica se ele possui lugares onde pode construir, se não possuir, então imediatamente é atribuído
+            //0 ao valor da escolha e a função é retornada.
+            if(lugares.isEmpty()){
+                System.out.println("Você não possui mais dinheiro para construir... ");
+                escolha = 0;
+                return escolha;
+            }
+            System.out.println("Entre com o número da propriedade ou 0 para sair: ");
+            if (teclado.hasNextInt()) {
+                escolha = teclado.nextInt();
+                if ((escolha - 1) > i) {
+                    System.out.println("Comando errado. Digite um número inteiro dentre os oferecidos ");
+                    escolha = -1;
+
+                }
+
+            } else {
+                teclado.next();
+                System.out.println("Comando errado. Digite um número inteiro dentre os oferecidos ");
+                escolha = -1;
+            }
+        }
+        return escolha;
+    }
+
+    public void mensagemVenda(Jogador j, Scanner teclado) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

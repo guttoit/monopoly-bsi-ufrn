@@ -17,6 +17,7 @@ import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
 import tabuleiro.tabuleiroConcreto.Prisao;
+import tabuleiro.tabuleiroConcreto.Propriedade;
 import tabuleiro.tabuleiroConcreto.SorteRevesConcreto;
 import tabuleiro.tabuleiroConcreto.VaParaPrisao;
 
@@ -171,7 +172,7 @@ public class GerenteJogoConcreto extends GerenteJogo {
     public void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado) {
         String auxCor[] = cores;
         String corDigitada = "";
-        String nome = ""; 
+        String nome = "";
         for (int i = 0; i < numJogadores; i++) {
             System.out.println("\nEntre com o nome do jogador " + (i + 1) + " :");
             nome = teclado.next();
@@ -229,14 +230,23 @@ public class GerenteJogoConcreto extends GerenteJogo {
     public int realizaJogada(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int numJogAtual) {
         Lugar l = null;
         boolean acertouComando = false;
-
+        //Pega os lugares em que o jogador pode construir casas ou hoteis
+        List<LugarFisico> lugaresParaConstruir = jogadorVez.lugaresPossoConstruir();
         while (!acertouComando || jogadorVez.isJogaNovamente()) {
             if (jogadorVez.isEstaNaPrisao()) {
                 l = realizaJogadaPrisao(jogadores, tab, jogadorVez, teclado, b, numJogAtual);
 
             } else {
                 System.out.println("\nA jogada de " + jogadorVez.getNomeJogador() + " comecou.");
-                System.out.println("\nComandos disponiveis: [Construir] [Jogar]   [Sair]   [status]");
+
+                //Testa se existe algum lugar disponível para construir e chama a função do gerenteCompraVenda
+                if (!lugaresParaConstruir.isEmpty() && (b.getNumCasasDisponiveis() > 0)) {
+                    System.out.println("\nComandos disponiveis: [Construir] [Jogar]   [Sair]   [status]");
+
+                } else {
+                    System.out.println("\nComandos disponiveis: [Jogar]   [Sair]   [status]");
+                }
+
                 System.out.println("\nEntre com o comando");
                 comando = teclado.next().trim();
             }
@@ -259,9 +269,8 @@ public class GerenteJogoConcreto extends GerenteJogo {
             } else if (comando.equalsIgnoreCase("jogar")) {
                 acertouComando = true;
                 l = andaPeao(jogadorVez.jogaDado(new DadoDuplo()), jogadorVez, tab);
-            }else if(comando.equalsIgnoreCase("construir")){
-                System.out.println("Não está funcionando ainda... Tente os outros comandos");
-                //Chama o gerente de compra e venda
+            } else if (comando.equalsIgnoreCase("construir")) {
+                gerenteCompraVenda.construir(jogadorVez, lugaresParaConstruir, teclado, b, mensagens);
             }
             // Gambiarra para evitar que ele entre nas condições abaixo sem ter jogado o dado
             if (comando.equalsIgnoreCase("jogar") || comando.equalsIgnoreCase("pagar") || comando.equalsIgnoreCase("carta")) {
@@ -272,7 +281,6 @@ public class GerenteJogoConcreto extends GerenteJogo {
                     }
 
                 } else if (l.getPosicao() == 40) {
-                    
                     //Não faz nada
                 } else if (l instanceof LugarFisico) {
                     LugarFisico lf = (LugarFisico) l;
@@ -317,6 +325,8 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
             }
             if (jogadorVez.getDinheiro() <= 0) {
+
+                evitaFalencia(jogadorVez, null, null);
                 System.out.println("\n" + jogadorVez.getNomeJogador() + " Você perdeu. Seu saldo é: " + jogadorVez.getDinheiro());
                 numJogAtual--;
                 numJogadores--;
@@ -326,6 +336,30 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
         return numJogAtual;
 
+
+    }
+
+    public void evitaFalencia(Jogador jogador, Jogo jogo, Propriedade propriedade) {
+        if (jogador.getListaLugarFisico().size() > 0) {
+
+            if (podeVender(jogador)) {
+            }
+
+        }
+
+    }
+
+     public boolean podeVender(Jogador j) {
+
+        for (LugarFisico l : j.getListaLugarFisico()) {
+            if (l instanceof Propriedade) {
+                if (((Propriedade) l).getnCasas() > 0) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
 
     }
 
@@ -446,6 +480,7 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
     }
 
+   
     /**
      *
      * @param gerenteSorteCofre
