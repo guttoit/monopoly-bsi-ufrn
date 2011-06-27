@@ -9,13 +9,12 @@ import java.util.List;
 import java.util.Scanner;
 import negocio.Banco;
 import negocio.GerenteCompraVenda;
-import org.omg.CORBA.BAD_CONTEXT;
+import negocio.Mensagens;
 import player.Jogador;
 import tabuleiro.Imposto;
 import tabuleiro.ImpostoRenda;
 import tabuleiro.ImpostoRiqueza;
 import tabuleiro.Lugar;
-import tabuleiro.Tabuleiro;
 import tabuleiro.tabuleiroConcreto.Ferrovia;
 import tabuleiro.tabuleiroConcreto.Grupo;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
@@ -32,8 +31,9 @@ public class GerenteCompraVendaConcreto implements GerenteCompraVenda {
         Jogador proprietario = lf.getProprietario();
         if (lf instanceof Propriedade) {
             Propriedade p = (Propriedade) lf;
-            jogadorVez.setDinheiro((float) (jogadorVez.getDinheiro() - p.getAluguelAtual()));
-            proprietario.setDinheiro(proprietario.getDinheiro() + p.getAluguelAtual());
+
+            jogadorVez.setDinheiro((float) (jogadorVez.getDinheiro() - p.getPrecoAluguelAtual()));
+            proprietario.setDinheiro(proprietario.getDinheiro() + p.getPrecoAluguelAtual());
         } else if (lf instanceof Ferrovia) {
             int numFerrovias = 0;
             for (LugarFisico lugar : proprietario.getListaLugarFisico()) {
@@ -111,32 +111,107 @@ public class GerenteCompraVendaConcreto implements GerenteCompraVenda {
 
     }
 
-    public void construir(Jogador jogador, Banco banco) {
-        List<LugarFisico> listaLugarFisico = jogador.getListaLugarFisico();
-        List<LugarFisico> listaQuePodeConstruir = new ArrayList<LugarFisico>();
-        for (int i = 0; i < listaLugarFisico.size(); i++) {
-            Grupo grupo = (Grupo) listaLugarFisico.get(i).getGrupo();
-            if (grupo.grupoEMeu(jogador)) {
-                for (int j = 0; j < grupo.getLugaresFisicos().size(); j++) {
-                    Propriedade lugarFisico = (Propriedade) grupo.getLugaresFisicos().get(j);
-                    if (jogador.getDinheiro() > lugarFisico.getPrecoCasa()) {
-                        listaQuePodeConstruir.add(lugarFisico);
+    /*
+     * Verificar se o jogador pode ou não construir uma casa ou hotel.
+     * Caso possa construir, mostra mensagem utilizando o método mensagemConstruir
+     * da classe mensagens, com as opções de casas e propriedades que o jogador tem para construir
+     */
+    public void construir(Jogador jogador, List<LugarFisico> lugares, Scanner teclado, Banco banco, Mensagens mens) {
+        //Lista que irá armazenar os lugares possíveis para construir
+        List<LugarFisico> lugaresPossiveis = new ArrayList<LugarFisico>();
+        //Irá armazenar os grupos que já foram testados para que não teste duas vezes
+        List<Grupo> listaGruposTestados = new ArrayList<Grupo>();
+        for (LugarFisico lf : lugares) {
+            if (lf != null && !listaGruposTestados.contains((Grupo) lf.getGrupo())) {
+                if (lf instanceof Propriedade) {
+                    Grupo g = (Grupo) lf.getGrupo();
+                    if (g.grupoEMeu(jogador)) {
+                        //Adiciona o grupo testao a uma lista de grupos para que não necessite mais testar propriedades
+                        //desse grupo
+                        listaGruposTestados.add(g);
+                        //Laço que pega as propriedades possíveis de serem construídas e adiciona a lista de lugaresPossiveis
+                        for (LugarFisico l : g.getLugaresFisicos()) {
+                            Propriedade p = (Propriedade) l;
+                            // Testa se a propriedade já tem hotel construído. Quando tem hotel o numero de casas é 5
+                            if (p.getnCasas() < 5) {
+                                //Testa se o jogador tem dinheiro suficiente
+                                if (jogador.getDinheiro() > p.getPrecoCasa()) {
+                                    lugaresPossiveis.add(l);
+                                }
+                            }
+                        }
                     }
-
                 }
             }
+        }
+        if (!lugaresPossiveis.isEmpty()) {
+            controlaJogadaConstruir(jogador, lugaresPossiveis, mens, teclado, banco);
         }
 
     }
 
-//Verificar se o jogador pode ou não construir uma casa ou hotel
-//Caso possa construir, mostrar mensagem utilizando o método mensagemConstruir
-// da classe mensagens, com as opções de casas e propriedades que o jogador tem para construir
-//Pegar a opção escolhida pelo jogador
-    public void venda(Jogador jogador, Propriedade propriedade, Banco banco) {
+    public void controlaJogadaConstruir(Jogador jogador, List<LugarFisico> lugaresPossiveis, Mensagens mens, Scanner teclado, Banco b) {
+        int escolha = -1;
+        //Laço que controlará a jogada construir. O mesmo será executado até que o jogador escolha a opção 0 (para sair)
+        // ou que não exista mais lugares que ele possa construir ou ainda que não exista mais casas disponíveis no banco
+        while (escolha != 0 && !lugaresPossiveis.isEmpty() && b.getNumCasasDisponiveis() > 0) {
+            escolha = mens.mensagemConstruir(jogador, lugaresPossiveis, teclado);
+            if (escolha != 0) {
+                Propriedade p = (Propriedade) lugaresPossiveis.get(escolha - 1);
+                if(((Grupo)(p.getGrupo())).getPropriedadesNaoPodeConstruir().contains(p)){
+                    System.out.println("Não pode construir nessa propriedade. Construa nas outras propriedades desse grupo"
+                            + " até que fiquem niveladas. ");
+                }else if(p.getnCasas()>=5){
+                    System.out.println("Não pode construir nessa propriedade."
+                            + " Você já tem um hotel.");
+                }
+                p.setnCasas(p.getnCasas() + 1);
+                jogador.setDinheiro(jogador.getDinheiro() - p.getPrecoCasa());
+                //lugaresPossiveis.remove(p);
+                //O código abaixc verifica se as propriedades do grupo em questão ficaram niveladas, ou seja, estão com o mesmo
+                //número de casas construídas, sendo assim, todas voltam a lista de lugaresPossiveis.
+                Grupo grupo = (Grupo) p.getGrupo();
+                p.getGrupo().addPropriedadeNaoPodeConstruir(p);
+                /*if (grupo.getPropriedadesNaoPodeConstruir().isEmpty()) {
+                    lugaresPossiveis.addAll(grupo.getLugaresFisicos());
+                }*/
+
+                b.setNumCasasDisponiveis(b.getNumCasasDisponiveis() - 1);
+
+            }
+        }
     }
 
-    public void construir(Jogador jogador, Propriedade propriedade, Banco banco) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void venda(Jogador jogador, Propriedade propriedade, Banco banco) {
+
+        List<LugarFisico> novaLista = new ArrayList<LugarFisico>();
+        novaLista.addAll(((Grupo)(propriedade.getGrupo())).getLugaresFisicos());
+        novaLista.addAll(((Grupo)(propriedade.getGrupo())).getPropriedadesNaoPodeConstruir());
+
+        for(LugarFisico lf:novaLista){
+            if(propriedade.getnCasas() < ((Propriedade)lf).getnCasas()){
+                System.out.println("Você não pode vender casas nessa propriedade. /n"
+                        + "Ela possui um número de casas menor que de outras propriedades do seu grupo./n"
+                        + "Escolha outra propriedade...");
+            return;
+            }
+        }
+
+        if (propriedade.getnCasas() <= 0) {
+            System.out.println("Você não possui mas casas nessa propriedade. Escolha outra propriedade...");
+            return;
+        }
+        if (propriedade.getnCasas() == 5) {
+            propriedade.setnCasas(0);
+            jogador.setDinheiro(jogador.getDinheiro() + propriedade.getHotel() / 2);
+            banco.setNumHoteisDisponiveis(banco.getNumHoteisDisponiveis() + 1);
+
+
+        } else {
+            propriedade.setnCasas(propriedade.getnCasas() - 1);
+            jogador.setDinheiro(jogador.getDinheiro() + propriedade.getPrecoCasa() / 2);
+            banco.setNumCasasDisponiveis(banco.getNumCasasDisponiveis() + 1);
+        }
+
     }
 }

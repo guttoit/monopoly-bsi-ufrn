@@ -4,6 +4,7 @@
  */
 package negocio;
 
+import java.util.List;
 import java.util.Scanner;
 import player.Jogador;
 import tabuleiro.Lugar;
@@ -109,10 +110,10 @@ public interface Mensagens {
      * @param jogador
      * @param propriedade
      */
-    public void mensagemConstruir(Jogador jogador, Propriedade propriedade);
+    public int mensagemConstruir(Jogador jogador, List<LugarFisico> lugares, Scanner teclado);
 
 
-    public String mensagemVenda(Jogador j, Scanner teclado);
+    public int mensagemVenda(Jogador j, Scanner teclado, List<LugarFisico> lugares);
 
     public String MensagemTitulosHipoteca(Jogador j, Scanner teclado);
 
