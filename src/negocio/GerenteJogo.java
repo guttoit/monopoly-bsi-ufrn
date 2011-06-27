@@ -183,7 +183,8 @@ public abstract class GerenteJogo {
      */
     public abstract void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado);
 
-
+     // Verifica se o jogador tem propriedades para vender.
+    public abstract boolean podeVender(Jogador j);
 
     public abstract void evitaFalencia(Jogador jogador, Jogo jogo, Propriedade propriedade );
 }

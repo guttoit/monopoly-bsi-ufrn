@@ -27,6 +27,10 @@ public abstract class Banco {
      */
     protected  List<Lugar> lugares;
 
+    private int numCasasPossiveis;
+    private int numCasasDisponiveis;
+    private int numHoteisPossiveis;
+    private int numHoteisDisponiveis;
     /**
      *
      */
@@ -35,20 +39,54 @@ public abstract class Banco {
      * Construtor padrão
      */
     public Banco() {
+        this.numCasasPossiveis = 40;
+        this.numHoteisPossiveis = 20;
+        this.numCasasDisponiveis = this.numCasasPossiveis;
+        this.numHoteisDisponiveis = this.numHoteisPossiveis;
     }
 
-    private static Banco unicaInstancia;
+    public Banco(int numCasasPossiveis, int numHoteisPossiveis) {
+        this.numCasasPossiveis = numCasasPossiveis;
+        this.numHoteisPossiveis = numHoteisPossiveis;
+        this.numCasasDisponiveis = this.numCasasPossiveis;
+        this.numHoteisDisponiveis = this.numHoteisPossiveis;
+    }
 
-    public static Banco getInstance(){
-       if (unicaInstancia == null){
-           synchronized (Banco.class){
-           if (unicaInstancia == null) {
-               unicaInstancia = new Banco() {};
-            }
-           }
-       }
-       return unicaInstancia;
-   }
+
+
+    public int getNumCasasDisponiveis() {
+        return numCasasDisponiveis;
+    }
+
+    public void setNumCasasDisponiveis(int numCasasDisponiveis) {
+        this.numCasasDisponiveis = numCasasDisponiveis;
+    }
+
+    public int getNumCasasPossiveis() {
+        return numCasasPossiveis;
+    }
+
+    public void setNumCasasPossiveis(int numCasasPossiveis) {
+        this.numCasasPossiveis = numCasasPossiveis;
+    }
+
+    public int getNumHoteisDisponiveis() {
+        return numHoteisDisponiveis;
+    }
+
+    public void setNumHoteisDisponiveis(int numHoteisDisponiveis) {
+        this.numHoteisDisponiveis = numHoteisDisponiveis;
+    }
+
+    public int getNumHoteisPossiveis() {
+        return numHoteisPossiveis;
+    }
+
+    public void setNumHoteisPossiveis(int numHoteisPossiveis) {
+        this.numHoteisPossiveis = numHoteisPossiveis;
+    }
+
+  
     
 
     /**

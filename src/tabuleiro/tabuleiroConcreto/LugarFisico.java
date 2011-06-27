@@ -48,7 +48,17 @@ public class LugarFisico extends Lugar {
         proprietario = new JogadorConcreto();
         grupo = new Grupo();
 
+
     }
+    public LugarFisico(String nome, int posicao, float preco, Grupo g) {
+        super(nome, posicao);
+        this.preco = preco;
+        proprietario = new JogadorConcreto();
+        grupo = g;
+
+
+    }
+
 
     public GrupoAbstrato getGrupo() {
         return grupo;

@@ -18,6 +18,7 @@ import player.concretos.JogadorConcreto;
 import player.concretos.Peao;
 import player.concretos.CartaCofresComunitarios;
 import player.concretos.CartaSorteReves;
+import tabuleiro.GrupoAbstrato;
 import tabuleiro.tabuleiroConcreto.CofreComunitarioConcreto;
 import tabuleiro.tabuleiroConcreto.Ferrovia;
 import tabuleiro.tabuleiroConcreto.ImpostoRenda;
@@ -27,6 +28,7 @@ import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.Propriedade;
 
 import tabuleiro.Tabuleiro;
+import tabuleiro.tabuleiroConcreto.Grupo;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.tabuleiroConcreto.ParadaLivre;
 import tabuleiro.tabuleiroConcreto.Prisao;
@@ -77,8 +79,8 @@ public class FactoryUSA implements FactoryCriador {
     }
 
     // Cria uma  Propriedade  com suas caracteristicas e adiciona no respestivo lugar no tabuleiro.
-    public Propriedade criaPropriedade(List<Lugar> lugares, int posicao, String nome, String cor, float precoP, float aluguelSCasa, float c1, float c2, float c3, float c4, float hotel, float hip, float precoCasa) {
-        Propriedade p = new Propriedade(posicao, nome, cor, precoP, aluguelSCasa, c1, c2, c3, c4, hotel, hip, precoCasa);
+    public Propriedade criaPropriedade(List<Lugar> lugares, int posicao, String nome, Grupo grupo, float precoP, float aluguelSCasa, float c1, float c2, float c3, float c4, float hotel, float hip, float precoCasa) {
+        Propriedade p = new Propriedade(posicao, nome, grupo, precoP, aluguelSCasa, c1, c2, c3, c4, hotel, hip, precoCasa);
         lugares.add(p);
         return p;
     }
@@ -262,5 +264,18 @@ public class FactoryUSA implements FactoryCriador {
     public Lugar criaParadaLivre(String nome, int posicao, float preco) {
            ParadaLivre paradaLivre = new ParadaLivre(nome, posicao, preco);
             return paradaLivre;
+    }
+
+    public GrupoAbstrato criaGrupo(List<LugarFisico> lugares, String cor) {
+        Grupo grupo = new  Grupo(lugares, cor);
+        return grupo;
+    }
+    public GrupoAbstrato criaGrupo(String cor) {
+        Grupo grupo = new  Grupo(cor);
+        return grupo;
+    }
+
+    public Banco criaBanco(int numCasas, int numHoteis) {
+        return new BancoConcreto(numCasas, numHoteis);
     }
 }
