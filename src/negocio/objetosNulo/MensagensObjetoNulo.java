@@ -5,6 +5,7 @@
 
 package negocio.objetosNulo;
 
+import java.util.List;
 import java.util.Scanner;
 import negocio.Mensagens;
 import player.Jogador;
@@ -70,7 +71,8 @@ public class MensagensObjetoNulo implements Mensagens{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void mensagemConstruir(Jogador jogador, Propriedade propriedade) {
+
+    public int mensagemConstruir(Jogador jogador, List<LugarFisico> lugares, Scanner teclado) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -83,6 +85,10 @@ public class MensagensObjetoNulo implements Mensagens{
     }
 
     public String MensagemVendaHabitacoes(Propriedade p, Scanner teclado) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public int mensagemVenda(Jogador j, Scanner teclado, List<LugarFisico> lugares) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

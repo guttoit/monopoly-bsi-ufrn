@@ -22,7 +22,7 @@ public class Propriedade extends LugarFisico {
     private float aluguelSemCasa;
     private float aluguelAtual;
     private int nCasas;
-    private float hotel;
+    private float aluguelHotel;
     private float aluguelCasa1;
     private float aluguelCasa2;
     private float aluguelCasa3;
@@ -30,6 +30,7 @@ public class Propriedade extends LugarFisico {
     private float precoCasa;
     private String cor;
     private float preco;
+    
     /**
      *
      */
@@ -50,18 +51,18 @@ public class Propriedade extends LugarFisico {
      * @param c2
      * @param c3
      * @param c4
-     * @param hotel
+     * @param aluguelHotel
      * @param hip
      * @param precoCasa
      */
-    public Propriedade(int posicao,String nome, String cor, float precoP, float aluguelSCasa,float c1, float c2, float c3, float c4, float hotel,  float hip, float precoCasa){
+    public Propriedade(int posicao,String nome, Grupo grupo, float precoP, float aluguelSCasa,float c1, float c2, float c3, float c4, float hotel,  float hip, float precoCasa){
         super.setPreco(precoP);
         super.setNome(nome);
         this.cor = cor;
         super.setHipoteca(hip);
         super.setPosicao(posicao);
         super.setProprietario(null);
-        this.hotel = hotel;
+        this.aluguelHotel = hotel;
         aluguelCasa1 = c1;
         aluguelCasa2 = c2;
         aluguelCasa3 = c3;
@@ -70,6 +71,33 @@ public class Propriedade extends LugarFisico {
         this.precoCasa = precoCasa;
         aluguelSemCasa = aluguelSCasa;
         aluguelAtual = aluguelSCasa;
+        super.setGrupo(grupo);
+        grupo.addLugarFisico(this);
+    }
+
+    public float getPrecoAluguelAtual(){
+        switch(nCasas){
+            case 0:
+                return aluguelSemCasa;
+            case 1:
+                return aluguelCasa1;
+              
+            case 2:
+                return aluguelCasa2;
+                
+            case 3:
+                return aluguelCasa3;
+                
+            case 4:
+                return aluguelCasa4;
+                
+            case 5:
+                return aluguelHotel;
+
+            default:
+                return (float) 0;
+        }
+
     }
 
     /**
@@ -173,15 +201,15 @@ public class Propriedade extends LugarFisico {
      * @return
      */
     public float getHotel() {
-        return hotel;
+        return aluguelHotel;
     }
 
     /**
      *
-     * @param hotel
+     * @param aluguelHotel
      */
     public void setHotel(float hotel) {
-        this.hotel = hotel;
+        this.aluguelHotel = hotel;
     }
 
     /**

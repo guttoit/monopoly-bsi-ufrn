@@ -4,6 +4,9 @@
  */
 package negocio.negocioConcreto;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import negocio.Mensagens;
 import player.Jogador;
@@ -14,6 +17,7 @@ import tabuleiro.Lugar;
 import tabuleiro.tabuleiroConcreto.LugarFisico;
 import tabuleiro.tabuleiroConcreto.Propriedade;
 import tabuleiro.Tabuleiro;
+import tabuleiro.tabuleiroConcreto.Grupo;
 
 /**
  *
@@ -73,7 +77,7 @@ public class MensagensJogo implements Mensagens {
      * @return  String
      */
     public String mensagemNome(int numJogador, Scanner teclado) {
-        System.out.println("\nEntre com o nome do jogador " + numJogador + " :");
+        System.out.println("Entre com o nome do jogador " + numJogador + " :");
         String nome = teclado.next().trim();
 
         return nome;
@@ -99,8 +103,8 @@ public class MensagensJogo implements Mensagens {
 
         String cor = "";
 
-        System.out.println("\n" + todasCores);
-        System.out.println("\nCor do Jogador " + (numJogador + 1) + ": ");
+        System.out.println(todasCores);
+        System.out.println("Cor do Jogador " + (numJogador + 1) + ": ");
         while (!acertouCor) {
             cor = teclado.next().trim();
             for (String c : cores) {
@@ -110,7 +114,7 @@ public class MensagensJogo implements Mensagens {
                 }
             }
 
-            System.out.println("\n Essa cor não existe ou não está no nosso jogo. Digite"
+            System.out.println(" Essa cor não existe ou não está no nosso jogo. Digite"
                     + "uma cor da lista de cores : \n" + todasCores);
         }
 
@@ -124,7 +128,7 @@ public class MensagensJogo implements Mensagens {
      */
     public void geraStatus(Jogador j, LugarFisico l) {
 
-        System.out.printf("\nO título da propriedade " + j.getPeao().getPosicao() + " " + l.getNome() + " está disponivel por : " + l.getPreco()
+        System.out.printf("O título da propriedade " + j.getPeao().getPosicao() + " " + l.getNome() + " está disponivel por : " + l.getPreco()
                 + " " + j.getNomeJogador() + ".\n Voce possui " + j.getDinheiro() + "\n Deseja Comprar ?  sim [s] ou nao [n] ");
 
     }
@@ -135,7 +139,7 @@ public class MensagensJogo implements Mensagens {
      * @param carta
      */
     public void mensagemSorteCofre(Jogador j, Carta carta) {
-        System.out.printf("\nVocê tirou a carta " + carta.getNomeCarta() + "\n" + carta.getDescricao());
+        System.out.printf("Você tirou a carta " + carta.getNomeCarta() + "\n" + carta.getDescricao());
 
     }
 
@@ -147,11 +151,11 @@ public class MensagensJogo implements Mensagens {
     public void statusJogador(Jogador j, Tabuleiro t) {
         int posicaoLugar = j.getPeao().getPosicao() + 1;
         if (t.getListaLugar().get(posicaoLugar) == null) {
-            System.out.printf(" \nO status de " + j.getNomeJogador() + " - " + j.getPeao().getCorPeao()
+            System.out.printf(" O status de " + j.getNomeJogador() + " - " + j.getPeao().getCorPeao()
                     + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + " Lugar nao implementado"
                     + "\n " + "Possui" + "$" + j.getDinheiro() + "\n");
         } else {
-            System.out.printf(" \nO status de " + j.getNomeJogador() + "- " + j.getPeao().getCorPeao()
+            System.out.printf(" O status de " + j.getNomeJogador() + "- " + j.getPeao().getCorPeao()
                     + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + t.getListaLugar().get(posicaoLugar).getNome()
                     + "\n " + "Possui" + "$" + j.getDinheiro() + "\n");
         }
@@ -159,11 +163,15 @@ public class MensagensJogo implements Mensagens {
 
             if (lugar instanceof Propriedade) {
                 Propriedade p = (Propriedade) lugar;
-                System.out.printf("\n Propriedade " + lugar.getNome() + " " + p.getCor() + " " + p.getPreco());
+                if (p.getnCasas() >= 5) {
+                    System.out.printf("Propriedade " + lugar.getNome() + " " + ((Grupo) (p.getGrupo())).getCor() + " " + p.getPreco() + " ; 1" + " Hotel");
+                } else {
+                    System.out.printf("Propriedade " + lugar.getNome() + " " + ((Grupo) (p.getGrupo())).getCor() + " " + p.getPreco() + " ; " + p.getnCasas() + " Casas" );
+                }
             }
             if (lugar instanceof Ferrovia) {
                 Ferrovia f = (Ferrovia) lugar;
-                System.out.printf("\n Ferrovia " + lugar.getNome() + f.getPreco());
+                System.out.printf("Ferrovia " + lugar.getNome() + f.getPreco());
             }
         }
 
@@ -208,45 +216,134 @@ public class MensagensJogo implements Mensagens {
     }
 
     public String mensagemEstaPreso(Jogador jogador, Scanner teclado) {
-        System.out.println("\nA jogada de " + jogador.getNomeJogador() + " comecou.");
-        System.out.println("\n" + jogador.getNomeJogador() + " Você está na prisão.\n");
-        System.out.println("\nComandos disponiveis: [pagar] [jogar] [status] [sair]");
-        System.out.println("\nEntre com o comando");
+        System.out.println("A jogada de " + jogador.getNomeJogador() + " comecou.");
+        System.out.println("" + jogador.getNomeJogador() + " Você está na prisão.\n");
+        System.out.println("Comandos disponiveis: [pagar] [jogar] [status] [sair]");
+        System.out.println("Entre com o comando");
         return teclado.next().trim();
     }
 
     public String mensagemEstaPresoComCarta(Jogador jogador, Scanner teclado) {
-        System.out.println("\nA jogada de " + jogador.getNomeJogador() + " comecou.");
-        System.out.println("\n" + jogador.getNomeJogador() + " Você está na prisão.\n");
-        System.out.println("\nComandos disponiveis: [pagar] [carta] [jogar] [status] [sair]");
-        System.out.println("\nEntre com o comando");
+        System.out.println("A jogada de " + jogador.getNomeJogador() + " comecou.");
+        System.out.println("" + jogador.getNomeJogador() + " Você está na prisão.\n");
+        System.out.println("Comandos disponiveis: [pagar] [carta] [jogar] [status] [sair]");
+        System.out.println("Entre com o comando");
         return teclado.next().trim();
     }
 
-    public void mensagemConstruir(Jogador jogador, Propriedade propriedade){
-        
+    public int mensagemConstruir(Jogador jogador, List<LugarFisico> lugares, Scanner teclado) {
+        int escolha = -1;
+        System.out.println(jogador.getNomeJogador() + " possui " + jogador.getDinheiro());
+        System.out.println("Escolha onde quer construir: ");
+        while (escolha == -1) {
+            int i;
+            for (i = 0; i < lugares.size(); i++) {
+                Propriedade p = (Propriedade) lugares.get(i);
+                //Verifica se o jogador possui dinheiro para construir...
+                if (jogador.getDinheiro() > p.getPrecoCasa()) {
+                    if (p.getnCasas() >= 4) {
+                        System.out.println((i + 1) + " - " + p.getNome() + " tem " + p.getnCasas() + " construídas."
+                                + " Você só pode construir um hotel."
+                                + " \nO hotel custa $" + p.getHotel());
+                    } else {
+                        System.out.println((i + 1) + " - " + p.getNome() + " tem " + p.getnCasas() + " construídas,"
+                                + " a casa custa $" + p.getPrecoCasa());
+                    }
+                } else {
+                    lugares.remove(p);
+                }
+            }
+            //Verifica se ele possui lugares onde pode construir, se não possuir, então imediatamente é atribuído
+            //0 ao valor da escolha e a função é retornada.
+            if (lugares.isEmpty()) {
+                System.out.println("Você não possui mais propriedades para construir ou não tem mais dinheiro... ");
+                escolha = 0;
+                return escolha;
+            }
+            System.out.println("Entre com o número da propriedade ou 0 para sair: ");
+            if (teclado.hasNextInt()) {
+                escolha = teclado.nextInt();
+                if (escolha == 0) {
+                    return 0;
+                } else if ((escolha) > i) {
+                    System.out.println("Comando errado. Digite um número inteiro dentre os oferecidos ");
+                    escolha = -1;
+
+                }
+
+            } else {
+                teclado.next();
+                System.out.println("Comando errado. Digite um número inteiro dentre os oferecidos ");
+                escolha = -1;
+            }
+        }
+        return escolha;
     }
 
-    public String mensagemVenda(Jogador j , Scanner teclado) {
-         System.out.println("\nVoce esta na Venda.");
-         System.out.println("\nVoce pode vender habitações ou hipotecar titulos ");
-         System.out.println("\nComandos disponiveis: [Vender] [Hipotecar] [Status] [sair]");
-         return teclado.next().trim();
+    public int mensagemVenda(Jogador jogadorVez, Scanner teclado, List<LugarFisico> lugares) {
+        System.out.println(jogadorVez.getNomeJogador() + " tem $" + jogadorVez.getDinheiro());
+        System.out.println("Escolha o que quer vender:");
+        Map mapa = new HashMap();
+        int contador = 1;
+        for (LugarFisico lugarFisico : lugares) {
+            if (lugarFisico instanceof Propriedade) {
+                Propriedade p = (Propriedade) lugarFisico;
+                if (p.getnCasas() == 5) {
+                    System.out.println(contador + ". " + p.getNome() + " tem um hotel construído. Você recebe $"
+                            + p.getHotel() + ".");
+                } else {
+                    System.out.println(contador + ". " + p.getNome() + "tem " + p.getnCasas()
+                            + "construída(s). Você recebe $" + p.getPrecoCasa() + ".");
+                }
+
+                mapa.put(contador, lugarFisico);
+                contador++;
+            }
+
+        }
+
+        System.out.println("Entre com o número da propriedade(0 para sair): ");
+
+        int escolhaVenda = -1;
+        while (escolhaVenda == -1) {
+            if (teclado.hasNextInt()) {
+                escolhaVenda = teclado.nextInt();
+                if (escolhaVenda == 0) {
+                    return 0;
+                } else if ((escolhaVenda) > contador) {
+                    System.out.println("Comando errado. Digite um número inteiro dentre os oferecidos ");
+                    escolhaVenda = -1;
+
+                }
+
+            } else {
+                teclado.next();
+                System.out.println("Comando errado. Digite um número inteiro dentre os oferecidos ");
+                escolhaVenda = -1;
+            }
+
+        }
+        return escolhaVenda;
+
     }
 
-    public String MensagemTitulosHipoteca(Jogador j, Scanner teclado){
-       System.out.println("\nVoce possui"+ j.getListaLugarFisico());
-       System.out.println("\n Digite o numero correspondente a qual deseja hipotecar");
-       return teclado.next().trim();
-     }
-
-     public String MensagemVendaHabitacoes(Propriedade p, Scanner teclado){
-
-         System.out.println("\nVoce possui"+ p.getnCasas());
-        System.out.println("\n Digite o numero correspondente a qual deseja Vender");
+    public String MensagemTitulosHipoteca(Jogador j, Scanner teclado) {
+        System.out.println("Voce possui" + j.getListaLugarFisico());
+        System.out.println("Digite o numero correspondente a qual deseja hipotecar");
         return teclado.next().trim();
-     }
+    }
 
+    public String MensagemVendaHabitacoes(Propriedade p, Scanner teclado) {
 
+        System.out.println("Voce possui" + p.getnCasas());
+        System.out.println(" Digite o numero correspondente a qual deseja Vender");
+        return teclado.next().trim();
+    }
 
+    public String mensagemVendaCasa(Jogador jogador, Scanner teclado) {
+        System.out.println("A jogada de " + jogador.getNomeJogador() + " comecou.");
+        System.out.println("Comandos disponiveis: [vender][jogar][status][sair]");
+        System.out.println("Entre com o comando: ");
+        return teclado.next().trim();
+    }
 }

@@ -18,4 +18,14 @@ import negocio.Banco;
  */
 public class BancoConcreto extends Banco{
 
+    public BancoConcreto(){
+        super();
+    }
+
+    public BancoConcreto(int numCasasPossiveis, int numHoteisPossiveis) {
+        super.setNumCasasPossiveis(numCasasPossiveis);
+        super.setNumHoteisPossiveis(numHoteisPossiveis);
+        super.setNumCasasDisponiveis(numCasasPossiveis);
+        super.setNumHoteisDisponiveis(numHoteisPossiveis);
+    }
 }

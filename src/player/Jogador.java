@@ -42,6 +42,12 @@ public abstract class Jogador {
         jogaNovamente = false;
     }
 
+    /*
+     * O jogador deve conhecer suas propriedades e saber se ele possui dinheiro para construir casas nas mesmas.
+     * Esse método é o responsável por identificar quais as propriedades o jogador está apto para construir casas ou
+     * hoteis. Ele retorna a lista com os lugares possíveis para construir.
+     */
+    public abstract List<LugarFisico> lugaresPossoConstruir();
     /**
      *
      * @param peao

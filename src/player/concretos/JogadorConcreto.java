@@ -5,8 +5,12 @@
 
 package player.concretos;
 
+import java.util.ArrayList;
+import java.util.List;
 import player.Dado;
 import player.Jogador;
+import tabuleiro.tabuleiroConcreto.LugarFisico;
+import tabuleiro.tabuleiroConcreto.Propriedade;
 
 /**
  *
@@ -45,6 +49,20 @@ public class JogadorConcreto extends Jogador {
     @Override
     public Integer[] jogaDado(Dado dado) {
         return dado.gerarNumero();
+    }
+    
+    public List<LugarFisico> lugaresPossoConstruir(){
+        List<LugarFisico> lugaresPossiveis = new ArrayList<LugarFisico>();
+        for(LugarFisico lf:super.getListaLugarFisico()){
+            Propriedade p;
+            if(lf instanceof Propriedade){
+                p = (Propriedade) lf;
+                if(p.getGrupo().grupoEMeu(this) && getDinheiro()> p.getPrecoCasa()){
+                    lugaresPossiveis.add(p);
+                }
+            }
+        }
+        return lugaresPossiveis;
     }
 
    

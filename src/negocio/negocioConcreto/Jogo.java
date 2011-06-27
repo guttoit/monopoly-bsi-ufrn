@@ -20,6 +20,7 @@ import player.concretos.CartaCofresComunitarios;
 import player.concretos.CartaSorteReves;
 import player.concretos.Peao;
 import tabuleiro.*;
+import tabuleiro.tabuleiroConcreto.Grupo;
 
 /**
  *
@@ -46,8 +47,12 @@ public class Jogo {
     private int numJogadores;
     private Scanner teclado;
     private Banco banco;
+    
+    // Os baralhos usados
     private BaralhoCofreComunitario baralhoCofreComunitario;
     private BaralhoSorteReves baralhoSorteReves;
+
+    //Lugares do tabuleiro
     private Lugar posicaoZero;
     private Lugar mediterraneanAvenue;
     private Lugar communityChest1;
@@ -95,6 +100,8 @@ public class Jogo {
     private Lugar cofreComunitario1;
     private Lugar cofreComunitario2;
     private Lugar cofreComunitario3;
+    
+    //Cartas cofres comunitários
     private CartaCofresComunitarios avanceParaOPontoDePartidaGo;
     private CartaCofresComunitarios erroDoBancoEmSeuFavor;
     private CartaCofresComunitarios taxaDoMedico;
@@ -111,8 +118,12 @@ public class Jogo {
     private CartaCofresComunitarios voceTirouOSegundoLugarNoConcursoDeBeleza;
     private CartaCofresComunitarios voceHerdou;
     private CartaCofresComunitarios voceDevePagarOsReparosDaRua;
+    
+    //Cadeia
     private Lugar jail;
     private Lugar goToJail;
+
+    //Cartas sorte reves
     private CartaSorteReves avanceParaOPontoDePartida;
     private CartaSorteReves avancePara;
     private CartaSorteReves avanceParaStCharlesPlace;
@@ -129,6 +140,16 @@ public class Jogo {
     private CartaSorteReves voceFoiEleitoPresidenteDoTabuleiro;
     private CartaSorteReves seusEmprestimosEInvestimentoFizeramAniversario;
 
+    //Grupos
+    private GrupoAbstrato grupoPreto;
+    private GrupoAbstrato grupoBranco;
+    private GrupoAbstrato grupoVermelho;
+    private GrupoAbstrato grupoAzul;
+    private GrupoAbstrato grupoAmarelo;
+    private GrupoAbstrato grupoVerde;
+    private GrupoAbstrato grupoRosa;
+    private GrupoAbstrato grupoLaranja;
+
     /**
      * Construtor de jogo que recebe um factoryCriador como parãmetro. Esse factory será usado para
      * criar as instânicas de todas as classes do jogo.
@@ -137,6 +158,7 @@ public class Jogo {
     public Jogo(FactoryCriador factory) {
         this.factory = factory;
         inicializaVariaveis();
+        criaGrupos();
         criarLugares();
         montaTabuleiro(tabuleiro, lugares);
     }
@@ -168,10 +190,21 @@ public class Jogo {
 
         teclado = new Scanner(System.in);
 
-        banco = factory.criaBanco();
+        banco = factory.criaBanco(32, 12);
 
     }
 
+
+    public void criaGrupos(){
+        grupoAmarelo = factory.criaGrupo("Amarelo");
+        grupoAzul = factory.criaGrupo("Azul");
+        grupoVerde = factory.criaGrupo("Verde");
+        grupoVermelho = factory.criaGrupo("Vermelho");
+        grupoBranco = factory.criaGrupo("Branco");
+        grupoPreto = factory.criaGrupo("Preto");
+        grupoRosa = factory.criaGrupo("Rosa");
+        grupoLaranja = factory.criaGrupo("Laranja");
+    }
    
    
     /**
@@ -179,83 +212,83 @@ public class Jogo {
      */
     public void criarLugares() {
 
-        mediterraneanAvenue = factory.criaPropriedade(lugares, 1, "Mediterranean Avenue", "roxo", 60, 500, 10, 30, 90, 160, 250, 30, 90);
+        mediterraneanAvenue = factory.criaPropriedade(lugares, 1, "Mediterranean Avenue", (Grupo) grupoPreto, 60, 500, 10, 30, 90, 160, 250, 30, 90);
 
         cofreComunitario1 = factory.criaCofresComunitarios(lugares, 2, "cofreComunitario1");
 
-        balticAvenue = factory.criaPropriedade(lugares, 3, "balticAvenue", "roxo", 60, 500, 20, 60, 80, 160, 450, 30, 50);
+        balticAvenue = factory.criaPropriedade(lugares, 3, "balticAvenue", (Grupo) grupoPreto, 60, 500, 20, 60, 80, 160, 450, 30, 50);
 
         incomeTax = factory.criaImpostoRenda(lugares, 4, "incomeTax", 200);
 
         readingRailroad = factory.criaFerrovia(lugares, 5, "readingRailroad", 200, 100);
 
-        orientalAvenue = factory.criaPropriedade(lugares, 6, "orientalAvenue", "AzulClaro", 100, 500, 30, 90, 270, 400, 550, 50, 50);
+        orientalAvenue = factory.criaPropriedade(lugares, 6, "orientalAvenue", (Grupo) grupoBranco, 100, 500, 30, 90, 270, 400, 550, 50, 50);
 
         sorteReves1 = factory.criaSorteReves(lugares, 7, "sorteReves1");
 
-        vermontAvenue = factory.criaPropriedade(lugares, 8, "vermontAvenue", "AzulClaro", 100, 500, 30, 90, 270, 400, 550, 50, 50);
+        vermontAvenue = factory.criaPropriedade(lugares, 8, "vermontAvenue", (Grupo) grupoBranco, 100, 500, 30, 90, 270, 400, 550, 50, 50);
 
-        connecticutAvenue = factory.criaPropriedade(lugares, 9, "connecticutAvenue", "AzulClaro", 120, 500, 40, 100, 300, 450, 600, 60, 50);
+        connecticutAvenue = factory.criaPropriedade(lugares, 9, "connecticutAvenue", (Grupo) grupoBranco, 120, 500, 40, 100, 300, 450, 600, 60, 50);
 
         jailJustVisiting= factory.criaPrisao("jailJustVisiting" , 10 );
 
-        stCharlesPlace = factory.criaPropriedade(lugares, 11, "stCharlesPlace", "Cinza", 140, 500, 50, 150, 450, 625, 750, 70, 100);
+        stCharlesPlace = factory.criaPropriedade(lugares, 11, "stCharlesPlace", (Grupo) grupoRosa, 140, 500, 50, 150, 450, 625, 750, 70, 100);
 
         electricCompany= factory.criaServicopublico("electricCompany", 12 , 150);
 
-        statesAvenue = factory.criaPropriedade(lugares, 13, "statesAvenue", "roxo", 60, 500, 10, 30, 90, 160, 250, 30, 90);
+        statesAvenue = factory.criaPropriedade(lugares, 13, "statesAvenue", (Grupo) grupoRosa, 60, 500, 10, 30, 90, 160, 250, 30, 90);
 
-        virginiaAvenue = factory.criaPropriedade(lugares, 14, "virginiaAvenue", " ", 160, 500, 60, 180, 500, 700, 900, 80, 100);
+        virginiaAvenue = factory.criaPropriedade(lugares, 14, "virginiaAvenue", (Grupo) grupoRosa, 160, 500, 60, 180, 500, 700, 900, 80, 100);
 
         // esse usa cor     pennsylvaniaRailroad= factory.criaFerrovia(lugares,15, "pennsylvaniaRailroad", 200, 100);
 
-        stJamesPlace = factory.criaPropriedade(lugares, 16, "stJamesPlace", "Laranja", 180, 500, 70, 200, 550, 750, 950, 90, 100);
+        stJamesPlace = factory.criaPropriedade(lugares, 16, "stJamesPlace", (Grupo) grupoLaranja, 180, 500, 70, 200, 550, 750, 950, 90, 100);
 
         cofreComunitario2 = factory.criaCofresComunitarios(lugares, 17, "cofreComunitario2");
 
-        tennesseeAvenue = factory.criaPropriedade(lugares, 18, "tennesseeAvenue", "Laranja", 180, 500, 70, 200, 550, 750, 950, 90, 100);
+        tennesseeAvenue = factory.criaPropriedade(lugares, 18, "tennesseeAvenue", (Grupo) grupoLaranja, 180, 500, 70, 200, 550, 750, 950, 90, 100);
 
-        newYorkAvenue = factory.criaPropriedade(lugares, 19, "newYorkAvenue", "Laranja", 200, 500, 80, 220, 600, 800, 1000, 100, 100);
+        newYorkAvenue = factory.criaPropriedade(lugares, 19, "newYorkAvenue", (Grupo) grupoLaranja, 200, 500, 80, 220, 600, 800, 1000, 100, 100);
 
         freeParking = factory.criaParadaLivre("freeParking", 20, 0);
 
-        kentuckyAvenue = factory.criaPropriedade(lugares, 21, "kentuckyAvenue", "Vermelho", 220, 500, 90, 250, 700, 875, 1050, 110, 150);
+        kentuckyAvenue = factory.criaPropriedade(lugares, 21, "kentuckyAvenue", (Grupo) grupoVermelho, 220, 500, 90, 250, 700, 875, 1050, 110, 150);
 
         sorteReves2 = factory.criaSorteReves(lugares, 22, "sorteReves2");
 
-        indianaAvenue = factory.criaPropriedade(lugares, 23, "indianaAvenue", "Vermelho", 220, 500, 90, 250, 700, 875, 1050, 110, 150);
+        indianaAvenue = factory.criaPropriedade(lugares, 23, "indianaAvenue", (Grupo) grupoVermelho, 220, 500, 90, 250, 700, 875, 1050, 110, 150);
 
-        illinoisAvenue = factory.criaPropriedade(lugares, 24, "illinoisAvenue", "Vermelho", 240, 500, 100, 300, 750, 925, 1100, 120, 150);
+        illinoisAvenue = factory.criaPropriedade(lugares, 24, "illinoisAvenue", (Grupo) grupoVermelho, 240, 500, 100, 300, 750, 925, 1100, 120, 150);
 
         beORailroad = factory.criaFerrovia(lugares, 25, "beORailroad", 200, 100);
 
-        atlanticAvenue = factory.criaPropriedade(lugares, 26, "atlanticAvenue", "Amarelo", 260, 500, 110, 330, 800, 975, 1150, 130, 150);
+        atlanticAvenue = factory.criaPropriedade(lugares, 26, "atlanticAvenue", (Grupo) grupoAmarelo, 260, 500, 110, 330, 800, 975, 1150, 130, 150);
 
-        ventnorAvenue = factory.criaPropriedade(lugares, 27, "ventnorAvenue", "Amarelo", 260, 500, 110, 330, 800, 975, 1150, 130, 150);
+        ventnorAvenue = factory.criaPropriedade(lugares, 27, "ventnorAvenue", (Grupo) grupoAmarelo, 260, 500, 110, 330, 800, 975, 1150, 130, 150);
 
         waterWorks= factory.criaServicopublico("waterWorks", 28, 150) ;
 
-        marvinGardens = factory.criaPropriedade(lugares, 29, "marvinGardens", "Amarelo", 280, 500, 120, 360, 850, 1025, 1200, 140, 150);
+        marvinGardens = factory.criaPropriedade(lugares, 29, "marvinGardens", (Grupo) grupoAmarelo, 280, 500, 120, 360, 850, 1025, 1200, 140, 150);
 
         gotoJail= factory.criaVaParaPrisao("gotoJail", 30);
 
-        pacificAvenue = factory.criaPropriedade(lugares, 31, "pacificAvenue", "Verde", 300, 500, 130, 390, 900, 1100, 1275, 150, 200);
+        pacificAvenue = factory.criaPropriedade(lugares, 31, "pacificAvenue", (Grupo) grupoVerde, 300, 500, 130, 390, 900, 1100, 1275, 150, 200);
 
-        northCarolinaAvenue = factory.criaPropriedade(lugares, 32, "northCarolinaAvenue", "Verde", 260, 500, 110, 330, 800, 975, 1150, 130, 150);
+        northCarolinaAvenue = factory.criaPropriedade(lugares, 32, "northCarolinaAvenue", (Grupo) grupoVerde, 260, 500, 110, 330, 800, 975, 1150, 130, 150);
 
         cofreComunitario3 = factory.criaCofresComunitarios(lugares, 33, "cofreComunitario3");
 
-        pennsylvaniaAvenue = factory.criaPropriedade(lugares, 34, "pennsylvaniaAvenue", "Verde", 320, 500, 150, 450, 1000, 1200, 1400, 160, 200);
+        pennsylvaniaAvenue = factory.criaPropriedade(lugares, 34, "pennsylvaniaAvenue", (Grupo) grupoVerde, 320, 500, 150, 450, 1000, 1200, 1400, 160, 200);
 
         shortLineRailroad = factory.criaFerrovia(lugares, 35, "shortLineRailroad", 200, 100);
 
         sorteReves3 = factory.criaSorteReves(lugares, 36, "SorteReves");
 
-        parkPlace = factory.criaPropriedade(lugares, 37, "parkPlace", " Azul", 350, 500, 175, 500, 1100, 1300, 1500, 175, 200);
+        parkPlace = factory.criaPropriedade(lugares, 37, "parkPlace", (Grupo) grupoAzul, 350, 500, 175, 500, 1100, 1300, 1500, 175, 200);
 
         luxuryTax = factory.criaImpostoRiqueza(lugares, 38, "luxuryTax", 75);
 
-        boardwalk = factory.criaPropriedade(lugares, 39, "boardwalk", "Azul", 400, 500, 200, 600, 1400, 1700, 2000, 200, 200);
+        boardwalk = factory.criaPropriedade(lugares, 39, "boardwalk", (Grupo) grupoAzul, 400, 500, 200, 600, 1400, 1700, 2000, 200, 200);
 
         go = factory.criaLugar(lugares, 40, "Go");
     }
