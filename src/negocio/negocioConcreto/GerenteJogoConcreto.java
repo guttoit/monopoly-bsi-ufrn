@@ -236,7 +236,13 @@ public class GerenteJogoConcreto extends GerenteJogo {
         //Pega os lugares em que o jogador pode construir casas ou hoteis
         List<LugarFisico> lugaresParaConstruir = jogadorVez.lugaresPossoConstruir();
         while (!acertouComando || jogadorVez.isJogaNovamente()) {
-            if (jogadorVez.isEstaNaPrisao()) {
+            //Verifica se o jogador está com saldo negativo e pode se recuperar
+            if (jogadorVez.getDinheiro() <= 0 && jogadorVez.getListaLugarFisico().size() > 0) {
+                System.out.println(jogadorVez.getNomeJogador() + " você está com saldo negativo, mas pode vender\n"
+                        + "vender e/ou hipotecar títulos.");
+                System.out.println("Os comandos disponiveis são: [Vender] [Hipotecar] [Sair] [status]");
+                comando = teclado.next();
+            } else if (jogadorVez.isEstaNaPrisao()) {
                 l = realizaJogadaPrisao(jogadores, tab, jogadorVez, teclado, b, numJogAtual);
 
             } else {
@@ -272,8 +278,6 @@ public class GerenteJogoConcreto extends GerenteJogo {
                 return numJogAtual;
             } else if (comando.equalsIgnoreCase("status")) {
                 mensagens.statusJogador(jogadorVez, tab);
-                acertouComando = true;
-                return numJogAtual;
             } else if (comando.equalsIgnoreCase("jogar")) {
                 acertouComando = true;
                 l = andaPeao(jogadorVez.jogaDado(new DadoDuplo()), jogadorVez, tab);
@@ -282,6 +286,7 @@ public class GerenteJogoConcreto extends GerenteJogo {
             } else if (comando.equalsIgnoreCase("vender")) {
                 List<LugarFisico> lugares = new ArrayList<LugarFisico>();
                 lugares.addAll(jogadorVez.getListaLugarFisico());
+                
                 while (podeVender(jogadorVez)) {
                     System.out.println(jogadorVez.getNomeJogador() + " tem $" + jogadorVez.getDinheiro());
                     System.out.println("\nEscolha o que quer vender:");
@@ -305,16 +310,18 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
                     }
 
-
                     int escolhaVenda = -1;
-                    while (escolhaVenda == -1) {
+                    while (escolhaVenda != 0) {
                         if (teclado.hasNextInt()) {
                             escolhaVenda = teclado.nextInt();
-
                             if ((escolhaVenda) > contador) {
                                 System.out.println("Comando errado. Digite um número inteiro dentre os oferecidos ");
                                 escolhaVenda = -1;
 
+                            } else if (escolhaVenda > 0) {
+                                Propriedade p = (Propriedade) mapa.get(escolhaVenda);
+                                gerenteCompraVenda.venda(jogadorVez, p, b);
+                                escolhaVenda = 0;
                             }
 
                         } else {
@@ -324,9 +331,10 @@ public class GerenteJogoConcreto extends GerenteJogo {
                         }
 
                     }
-                    Propriedade p = (Propriedade) mapa.get(escolhaVenda);
-                    gerenteCompraVenda.venda(jogadorVez, p, b);
+
                 }
+            }else if(comando.equalsIgnoreCase("hipotecar")){
+                System.out.println(" Esta funcionalidade ainda não foi implementada. Tente a opção vender.");
             }
             // Gambiarra para evitar que ele entre nas condições abaixo sem ter jogado o dado
             if (comando.equalsIgnoreCase("jogar") || comando.equalsIgnoreCase("pagar") || comando.equalsIgnoreCase("carta")) {
@@ -377,12 +385,14 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
                 }
             } else if (!comando.equalsIgnoreCase("construir") || !comando.equalsIgnoreCase("vender")) {
-                System.out.println("\nComando errado. Tente novamente.");
-
+                // System.out.println("\nComando errado. Tente novamente.");
             }
-            if (jogadorVez.getDinheiro() <= 0) {
+            //Verifica se o jogador está com saldo negativo mas pode recuperar
+            if (jogadorVez.getDinheiro() <= 0 && jogadorVez.getListaLugarFisico().size() > 0) {
+                acertouComando = false;
+                //evitaFalencia(jogadorVez, null, null);
 
-                evitaFalencia(jogadorVez, null, null);
+            } else if (jogadorVez.getDinheiro() <= 0 && jogadorVez.getListaLugarFisico().size() <= 0) {
                 System.out.println("\n" + jogadorVez.getNomeJogador() + " Você perdeu. Seu saldo é: " + jogadorVez.getDinheiro());
                 numJogAtual--;
                 numJogadores--;
@@ -390,44 +400,25 @@ public class GerenteJogoConcreto extends GerenteJogo {
             }
 
         }
+
         return numJogAtual;
+
 
 
     }
 
+    /*public void evitaFalencia(List<Jogador> jogadores, Tabuleiro tab, Jogador jogador, Scanner teclado, Banco b, int numJogAtual) {
+
+
+        if ((jogador.getListaLugarFisico().size() > 0)) {
+            realizaJogada(jogadores, tab, jogador, teclado, b, numJogAtual);
+
+        }
+    }*/
+
+     @Override
     public void evitaFalencia(Jogador jogador, Jogo jogo, Propriedade propriedade) {
-        /*
-        MensagensJogo mensagem = null;
-        if ((jogador.getListaLugarFisico().size() > 0) || (propriedade.getnCasas() > 0)) {
-        mensagem.mensagemVenda(jogador, null);
-        String retorno = mensagem.mensagemVenda(jogador, null);
-        if (retorno.equals("hipotecar")) {
-        int escolhidoAHipotecar = Integer.parseInt(mensagem.MensagemTitulosHipoteca(jogador, null));
-        LugarFisico lugarFisico = jogador.getListaLugarFisico().get(escolhidoAHipotecar);
-        jogador.setDinheiro(jogador.getDinheiro() + lugarFisico.getHipoteca());
-        lugarFisico.setProprietario(null);
-        jogador.getListaLugarFisico().remove(escolhidoAHipotecar);
-
-        if (podeVender(jogador)) {
-        } else if (retorno.equals("vender")) {
-        int escolhidoAVenda = Integer.parseInt(mensagem.MensagemVendaHabitacoes(propriedade, null));
-        Propriedade propri = (Propriedade) jogador.getListaLugarFisico().get(escolhidoAVenda);
-        propri.setnCasas(propri.getnCasas() - 1);
-        jogador.setDinheiro(jogador.getDinheiro() + propri.getPrecoCasa() / 2);
-        propri.setProprietario(null);
-        jogador.getListaLugarFisico().remove(escolhidoAVenda);
-
-        } else if (retorno.equals("status")) {
-        mensagem.statusJogador(jogador, null);
-
-        } else if (retorno.equals("sair")) {
-        }
-
-
-        }
-
-
-        }*/
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public boolean podeVender(Jogador j) {
@@ -570,4 +561,6 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
 
     }
+
+
 }
