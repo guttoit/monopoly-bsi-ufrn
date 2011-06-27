@@ -154,7 +154,7 @@ public class GerenteCompraVendaConcreto implements GerenteCompraVenda {
         int escolha = -1;
         //Laço que controlará a jogada construir. O mesmo será executado até que o jogador escolha a opção 0 (para sair)
         // ou que não exista mais lugares que ele possa construir ou ainda que não exista mais casas disponíveis no banco
-        while (escolha != 0 && !lugaresPossiveis.isEmpty() && b.getNumCasasDisponiveis() > 0) {
+        while (escolha != 0 && !lugaresPossiveis.isEmpty() && (b.getNumCasasDisponiveis() > 0) || b.getNumHoteisDisponiveis()>0) {
             escolha = mens.mensagemConstruir(jogador, lugaresPossiveis, teclado);
             if (escolha != 0) {
                 Propriedade p = (Propriedade) lugaresPossiveis.get(escolha - 1);
@@ -164,7 +164,7 @@ public class GerenteCompraVendaConcreto implements GerenteCompraVenda {
                 }else if(p.getnCasas()>=5){
                     System.out.println("Não pode construir nessa propriedade."
                             + " Você já tem um hotel.");
-                }
+                }else{
                 p.setnCasas(p.getnCasas() + 1);
                 jogador.setDinheiro(jogador.getDinheiro() - p.getPrecoCasa());
                 //lugaresPossiveis.remove(p);
@@ -172,16 +172,27 @@ public class GerenteCompraVendaConcreto implements GerenteCompraVenda {
                 //número de casas construídas, sendo assim, todas voltam a lista de lugaresPossiveis.
                 Grupo grupo = (Grupo) p.getGrupo();
                 p.getGrupo().addPropriedadeNaoPodeConstruir(p);
-                /*if (grupo.getPropriedadesNaoPodeConstruir().isEmpty()) {
+                if(b.getNumCasasDisponiveis() <=0){
+                    System.out.println("O banco não possui mais casas para venda...");
+                }
+                if (grupo.getPropriedadesNaoPodeConstruir().isEmpty()) {
+                    //A operação abaixo previne que seja adicionado propriedades duplicadamente, em casos como
+                    // o de errar a operação na primeira tentativa de construir, aí, como não foram construídas
+                    // casas em nenhuma propriedade a lista de naoPodeConstruir vai estar vazia
+                    lugaresPossiveis.removeAll(grupo.getLugaresFisicos());
                     lugaresPossiveis.addAll(grupo.getLugaresFisicos());
-                }*/
+                }
 
                 b.setNumCasasDisponiveis(b.getNumCasasDisponiveis() - 1);
-
+                }
             }
         }
     }
+/*
+    public void controlaVenda(Jogador jogador){
 
+    }
+*/
     public void venda(Jogador jogador, Propriedade propriedade, Banco banco) {
 
         List<LugarFisico> novaLista = new ArrayList<LugarFisico>();
@@ -189,9 +200,9 @@ public class GerenteCompraVendaConcreto implements GerenteCompraVenda {
         novaLista.addAll(((Grupo)(propriedade.getGrupo())).getPropriedadesNaoPodeConstruir());
 
         for(LugarFisico lf:novaLista){
-            if(propriedade.getnCasas() < ((Propriedade)lf).getnCasas()){
-                System.out.println("Você não pode vender casas nessa propriedade. /n"
-                        + "Ela possui um número de casas menor que de outras propriedades do seu grupo./n"
+            if(propriedade.getnCasas() < ((Propriedade)lf).getnCasas() && propriedade.getnCasas()!=0){
+                System.out.println("Você não pode vender casas nessa propriedade. \n"
+                        + "Ela possui um número de casas menor que de outras propriedades do seu grupo.\n"
                         + "Escolha outra propriedade...");
             return;
             }

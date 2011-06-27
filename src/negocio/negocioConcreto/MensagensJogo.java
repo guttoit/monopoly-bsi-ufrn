@@ -77,7 +77,7 @@ public class MensagensJogo implements Mensagens {
      * @return  String
      */
     public String mensagemNome(int numJogador, Scanner teclado) {
-        System.out.println("\nEntre com o nome do jogador " + numJogador + " :");
+        System.out.println("Entre com o nome do jogador " + numJogador + " :");
         String nome = teclado.next().trim();
 
         return nome;
@@ -103,8 +103,8 @@ public class MensagensJogo implements Mensagens {
 
         String cor = "";
 
-        System.out.println("\n" + todasCores);
-        System.out.println("\nCor do Jogador " + (numJogador + 1) + ": ");
+        System.out.println(todasCores);
+        System.out.println("Cor do Jogador " + (numJogador + 1) + ": ");
         while (!acertouCor) {
             cor = teclado.next().trim();
             for (String c : cores) {
@@ -114,7 +114,7 @@ public class MensagensJogo implements Mensagens {
                 }
             }
 
-            System.out.println("\n Essa cor não existe ou não está no nosso jogo. Digite"
+            System.out.println(" Essa cor não existe ou não está no nosso jogo. Digite"
                     + "uma cor da lista de cores : \n" + todasCores);
         }
 
@@ -128,7 +128,7 @@ public class MensagensJogo implements Mensagens {
      */
     public void geraStatus(Jogador j, LugarFisico l) {
 
-        System.out.printf("\nO título da propriedade " + j.getPeao().getPosicao() + " " + l.getNome() + " está disponivel por : " + l.getPreco()
+        System.out.printf("O título da propriedade " + j.getPeao().getPosicao() + " " + l.getNome() + " está disponivel por : " + l.getPreco()
                 + " " + j.getNomeJogador() + ".\n Voce possui " + j.getDinheiro() + "\n Deseja Comprar ?  sim [s] ou nao [n] ");
 
     }
@@ -139,7 +139,7 @@ public class MensagensJogo implements Mensagens {
      * @param carta
      */
     public void mensagemSorteCofre(Jogador j, Carta carta) {
-        System.out.printf("\nVocê tirou a carta " + carta.getNomeCarta() + "\n" + carta.getDescricao());
+        System.out.printf("Você tirou a carta " + carta.getNomeCarta() + "\n" + carta.getDescricao());
 
     }
 
@@ -151,11 +151,11 @@ public class MensagensJogo implements Mensagens {
     public void statusJogador(Jogador j, Tabuleiro t) {
         int posicaoLugar = j.getPeao().getPosicao() + 1;
         if (t.getListaLugar().get(posicaoLugar) == null) {
-            System.out.printf(" \nO status de " + j.getNomeJogador() + " - " + j.getPeao().getCorPeao()
+            System.out.printf(" O status de " + j.getNomeJogador() + " - " + j.getPeao().getCorPeao()
                     + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + " Lugar nao implementado"
                     + "\n " + "Possui" + "$" + j.getDinheiro() + "\n");
         } else {
-            System.out.printf(" \nO status de " + j.getNomeJogador() + "- " + j.getPeao().getCorPeao()
+            System.out.printf(" O status de " + j.getNomeJogador() + "- " + j.getPeao().getCorPeao()
                     + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + t.getListaLugar().get(posicaoLugar).getNome()
                     + "\n " + "Possui" + "$" + j.getDinheiro() + "\n");
         }
@@ -163,11 +163,15 @@ public class MensagensJogo implements Mensagens {
 
             if (lugar instanceof Propriedade) {
                 Propriedade p = (Propriedade) lugar;
-                System.out.printf("\n Propriedade " + lugar.getNome() + " " + ((Grupo) (p.getGrupo())).getCor() + " " + p.getPreco());
+                if (p.getnCasas() >= 5) {
+                    System.out.printf("Propriedade " + lugar.getNome() + " " + ((Grupo) (p.getGrupo())).getCor() + " " + p.getPreco() + " ; 1" + " Hotel");
+                } else {
+                    System.out.printf("Propriedade " + lugar.getNome() + " " + ((Grupo) (p.getGrupo())).getCor() + " " + p.getPreco() + " ; " + p.getnCasas() + " Casas" );
+                }
             }
             if (lugar instanceof Ferrovia) {
                 Ferrovia f = (Ferrovia) lugar;
-                System.out.printf("\n Ferrovia " + lugar.getNome() + f.getPreco());
+                System.out.printf("Ferrovia " + lugar.getNome() + f.getPreco());
             }
         }
 
@@ -212,18 +216,18 @@ public class MensagensJogo implements Mensagens {
     }
 
     public String mensagemEstaPreso(Jogador jogador, Scanner teclado) {
-        System.out.println("\nA jogada de " + jogador.getNomeJogador() + " comecou.");
-        System.out.println("\n" + jogador.getNomeJogador() + " Você está na prisão.\n");
-        System.out.println("\nComandos disponiveis: [pagar] [jogar] [status] [sair]");
-        System.out.println("\nEntre com o comando");
+        System.out.println("A jogada de " + jogador.getNomeJogador() + " comecou.");
+        System.out.println("" + jogador.getNomeJogador() + " Você está na prisão.\n");
+        System.out.println("Comandos disponiveis: [pagar] [jogar] [status] [sair]");
+        System.out.println("Entre com o comando");
         return teclado.next().trim();
     }
 
     public String mensagemEstaPresoComCarta(Jogador jogador, Scanner teclado) {
-        System.out.println("\nA jogada de " + jogador.getNomeJogador() + " comecou.");
-        System.out.println("\n" + jogador.getNomeJogador() + " Você está na prisão.\n");
-        System.out.println("\nComandos disponiveis: [pagar] [carta] [jogar] [status] [sair]");
-        System.out.println("\nEntre com o comando");
+        System.out.println("A jogada de " + jogador.getNomeJogador() + " comecou.");
+        System.out.println("" + jogador.getNomeJogador() + " Você está na prisão.\n");
+        System.out.println("Comandos disponiveis: [pagar] [carta] [jogar] [status] [sair]");
+        System.out.println("Entre com o comando");
         return teclado.next().trim();
     }
 
@@ -252,7 +256,7 @@ public class MensagensJogo implements Mensagens {
             //Verifica se ele possui lugares onde pode construir, se não possuir, então imediatamente é atribuído
             //0 ao valor da escolha e a função é retornada.
             if (lugares.isEmpty()) {
-                System.out.println("Você não possui mais propriedades para construir... ");
+                System.out.println("Você não possui mais propriedades para construir ou não tem mais dinheiro... ");
                 escolha = 0;
                 return escolha;
             }
@@ -278,7 +282,7 @@ public class MensagensJogo implements Mensagens {
 
     public int mensagemVenda(Jogador jogadorVez, Scanner teclado, List<LugarFisico> lugares) {
         System.out.println(jogadorVez.getNomeJogador() + " tem $" + jogadorVez.getDinheiro());
-        System.out.println("\nEscolha o que quer vender:");
+        System.out.println("Escolha o que quer vender:");
         Map mapa = new HashMap();
         int contador = 1;
         for (LugarFisico lugarFisico : lugares) {
@@ -324,22 +328,22 @@ public class MensagensJogo implements Mensagens {
     }
 
     public String MensagemTitulosHipoteca(Jogador j, Scanner teclado) {
-        System.out.println("\nVoce possui" + j.getListaLugarFisico());
-        System.out.println("\n Digite o numero correspondente a qual deseja hipotecar");
+        System.out.println("Voce possui" + j.getListaLugarFisico());
+        System.out.println("Digite o numero correspondente a qual deseja hipotecar");
         return teclado.next().trim();
     }
 
     public String MensagemVendaHabitacoes(Propriedade p, Scanner teclado) {
 
-        System.out.println("\nVoce possui" + p.getnCasas());
-        System.out.println("\n Digite o numero correspondente a qual deseja Vender");
+        System.out.println("Voce possui" + p.getnCasas());
+        System.out.println(" Digite o numero correspondente a qual deseja Vender");
         return teclado.next().trim();
     }
 
     public String mensagemVendaCasa(Jogador jogador, Scanner teclado) {
-        System.out.println("\nA jogada de " + jogador.getNomeJogador() + " comecou.");
-        System.out.println("\nComandos disponiveis: [vender][jogar][status][sair]");
-        System.out.println("\nEntre com o comando: ");
+        System.out.println("A jogada de " + jogador.getNomeJogador() + " comecou.");
+        System.out.println("Comandos disponiveis: [vender][jogar][status][sair]");
+        System.out.println("Entre com o comando: ");
         return teclado.next().trim();
     }
 }
