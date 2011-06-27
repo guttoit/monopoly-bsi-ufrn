@@ -5,6 +5,7 @@
 
 package negocio;
 
+import java.util.List;
 import java.util.Scanner;
 import player.Jogador;
 import tabuleiro.Lugar;
@@ -55,7 +56,7 @@ public interface GerenteCompraVenda {
      * @param propriedade
      * @param banco
      */
-    public void construir(Jogador jogador, Propriedade propriedade, Banco banco);
+    public void construir(Jogador jogador,  List<LugarFisico> lugares, Scanner teclado, Banco banco, Mensagens mens);
 
     /**
      *

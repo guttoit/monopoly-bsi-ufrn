@@ -123,7 +123,7 @@ public abstract class GerenteJogo {
         // Chama o método para receber os nomes e as cores dos jogadores
         armazenaNomeECorJogadores(jogadores, numJogadores, teclado);
 
-        System.out.println("\nO jogo iniciou\n");
+        System.out.println("\nO jogo iniciou");
         int jogadorAtual = 0;
         int jogadorDepoisJogada = 0;
         while (numJogadores >= 2) {
@@ -142,7 +142,7 @@ public abstract class GerenteJogo {
         }
         // Verifica se os outros jogadores perderam ou desistiram, restando apenas um, que será o vencedor.
         if (numJogadores == 1) {
-            System.out.println("\n\n\n Parabéns " + jogadores.get(0).getNomeJogador() + " ! Você é o mais novo"
+            System.out.println("\nParabéns " + jogadores.get(0).getNomeJogador() + " ! Você é o mais novo"
                     + " milionario da America!");
             System.exit(0);
         }
@@ -183,7 +183,8 @@ public abstract class GerenteJogo {
      */
     public abstract void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado);
 
-
+     // Verifica se o jogador tem propriedades para vender.
+    public abstract boolean podeVender(Jogador j);
 
     public abstract void evitaFalencia(Jogador jogador, Jogo jogo, Propriedade propriedade );
 }
