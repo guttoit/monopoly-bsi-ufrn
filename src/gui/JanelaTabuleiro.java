@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 
 /**
  *
@@ -32,9 +33,11 @@ public class JanelaTabuleiro extends javax.swing.JFrame {
         initComponents();
         setSize(new Dimension(812, 600));
         setResizable(false);
-        arquivoImagem = new File("C:/Users/gutto/Documents/NetBeansProjects/monopoly-bsi-ufrn/src/gui/FinalTabuleiro.png");
+        arquivoImagem = new File("C:/Users/Gutto/Documents/NetBeansProjects/monopoly-bsi-ufrnFinal/monopoly-bsi-ufrnFinal/src/gui/FinalTabuleiro.png");
         iniciaComponentes();
         paint(bufferImagem.createGraphics());
+        add(botao);
+    
 
     }
 
@@ -102,9 +105,11 @@ public class JanelaTabuleiro extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private BufferedImage bufferImagem;
     private File arquivoImagem;
+    private JButton botao = new JButton("isso é um teste");
 
+    
     @Override
-    public void paint(Graphics g) {
+    public void paintComponents(Graphics g) {
         super.paint(g);
         g.drawImage(bufferImagem, 0, 0, null);
     }
