@@ -226,7 +226,7 @@ public class FactoryUSA implements FactoryCriador {
      *
      * @return
      */
-    public Lugar criaPrisao(String nome, int posicao) {
+    public Lugar criaPrisao(List<Lugar> lugares,String nome, int posicao) {
          Prisao prisao = new  Prisao(nome, posicao);
            return prisao;
     }
@@ -237,7 +237,7 @@ public class FactoryUSA implements FactoryCriador {
      *
      * @return
      */
-    public Lugar criaVaParaPrisao(String nome, int posicao) {
+    public Lugar criaVaParaPrisao(List<Lugar> lugares,String nome, int posicao) {
         VaParaPrisao vaParaPrisao = new VaParaPrisao(nome, posicao);
             return vaParaPrisao;
     }
@@ -248,7 +248,7 @@ public class FactoryUSA implements FactoryCriador {
      * @param preco
      * @return
      */
-    public Lugar criaServicopublico(String nome, int posicao, float preco){
+    public Lugar criaServicopublico(List<Lugar> lugares,String nome, int posicao, float preco){
          ServicoPublico servicoPublico = new ServicoPublico(nome, posicao, preco);
          return servicoPublico;
     }
@@ -261,7 +261,7 @@ public class FactoryUSA implements FactoryCriador {
      * @return
      */
 
-    public Lugar criaParadaLivre(String nome, int posicao, float preco) {
+    public Lugar criaParadaLivre(List<Lugar> lugares,String nome, int posicao, float preco) {
            ParadaLivre paradaLivre = new ParadaLivre(nome, posicao, preco);
             return paradaLivre;
     }
@@ -278,4 +278,12 @@ public class FactoryUSA implements FactoryCriador {
     public Banco criaBanco(int numCasas, int numHoteis) {
         return new BancoConcreto(numCasas, numHoteis);
     }
+
+
+
+
+
+
+
+   
 }

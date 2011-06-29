@@ -240,7 +240,7 @@ public interface FactoryCriador {
      * @param posicao
      * @return
      */
-    public Lugar criaPrisao(String nome, int posicao);
+    public Lugar criaPrisao(List<Lugar> lugares,String nome, int posicao);
 
     /**
      *
@@ -248,16 +248,7 @@ public interface FactoryCriador {
      * @param posicao
      * @return
      */
-    public Lugar criaVaParaPrisao(String nome, int posicao);
-
-    /**
-     *
-     * @param nome
-     * @param posicao
-     * @param preco
-     * @return
-     */
-    public Lugar criaServicopublico(String nome, int posicao, float preco);
+    public Lugar criaVaParaPrisao(List<Lugar> lugares,String nome, int posicao);
 
     /**
      *
@@ -266,5 +257,14 @@ public interface FactoryCriador {
      * @param preco
      * @return
      */
-    public Lugar criaParadaLivre(String nome, int posicao, float preco);
+    public Lugar criaServicopublico(List<Lugar> lugares, String nome, int posicao, float preco);
+
+    /**
+     *
+     * @param nome
+     * @param posicao
+     * @param preco
+     * @return
+     */
+    public Lugar criaParadaLivre(List<Lugar> lugares,String nome, int posicao, float preco);
 }
