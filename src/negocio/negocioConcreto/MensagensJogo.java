@@ -152,7 +152,7 @@ public class MensagensJogo implements Mensagens {
         int posicaoLugar = j.getPeao().getPosicao() + 1;
         if (t.getListaLugar().get(posicaoLugar) == null) {
             System.out.printf(" O status de " + j.getNomeJogador() + " - " + j.getPeao().getCorPeao()
-                    + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + " Lugar nao implementado"
+                    + "\n é o segunte:\n" + " Situado na posicao  " + j.getPeao().getPosicao() + "-" + " Lugar inexistente"
                     + "\n " + "Possui" + "$" + j.getDinheiro() + "\n");
         } else {
             System.out.printf(" O status de " + j.getNomeJogador() + "- " + j.getPeao().getCorPeao()

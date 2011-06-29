@@ -230,17 +230,17 @@ public class Jogo {
 
         connecticutAvenue = factory.criaPropriedade(lugares, 9, "connecticutAvenue", (Grupo) grupoBranco, 120, 500, 40, 100, 300, 450, 600, 60, 50);
 
-        jailJustVisiting= factory.criaPrisao("jailJustVisiting" , 10 );
+        jailJustVisiting= factory.criaPrisao( lugares , "jailJustVisiting" , 10 );
 
         stCharlesPlace = factory.criaPropriedade(lugares, 11, "stCharlesPlace", (Grupo) grupoRosa, 140, 500, 50, 150, 450, 625, 750, 70, 100);
 
-        electricCompany= factory.criaServicopublico("electricCompany", 12 , 150);
+        electricCompany= factory.criaServicopublico( lugares ,"electricCompany", 12 , 150);
 
         statesAvenue = factory.criaPropriedade(lugares, 13, "statesAvenue", (Grupo) grupoRosa, 60, 500, 10, 30, 90, 160, 250, 30, 90);
 
         virginiaAvenue = factory.criaPropriedade(lugares, 14, "virginiaAvenue", (Grupo) grupoRosa, 160, 500, 60, 180, 500, 700, 900, 80, 100);
 
-        // esse usa cor     pennsylvaniaRailroad= factory.criaFerrovia(lugares,15, "pennsylvaniaRailroad", 200, 100);
+        pennsylvaniaRailroad= factory.criaFerrovia(lugares , 15 , "pennsylvaniaRailroad", 200, 100);
 
         stJamesPlace = factory.criaPropriedade(lugares, 16, "stJamesPlace", (Grupo) grupoLaranja, 180, 500, 70, 200, 550, 750, 950, 90, 100);
 
@@ -250,7 +250,7 @@ public class Jogo {
 
         newYorkAvenue = factory.criaPropriedade(lugares, 19, "newYorkAvenue", (Grupo) grupoLaranja, 200, 500, 80, 220, 600, 800, 1000, 100, 100);
 
-        freeParking = factory.criaParadaLivre("freeParking", 20, 0);
+        freeParking = factory.criaParadaLivre(lugares,"freeParking", 20, 0);
 
         kentuckyAvenue = factory.criaPropriedade(lugares, 21, "kentuckyAvenue", (Grupo) grupoVermelho, 220, 500, 90, 250, 700, 875, 1050, 110, 150);
 
@@ -266,11 +266,11 @@ public class Jogo {
 
         ventnorAvenue = factory.criaPropriedade(lugares, 27, "ventnorAvenue", (Grupo) grupoAmarelo, 260, 500, 110, 330, 800, 975, 1150, 130, 150);
 
-        waterWorks= factory.criaServicopublico("waterWorks", 28, 150) ;
+        waterWorks= factory.criaServicopublico( lugares ,"waterWorks", 28, 150) ;
 
         marvinGardens = factory.criaPropriedade(lugares, 29, "marvinGardens", (Grupo) grupoAmarelo, 280, 500, 120, 360, 850, 1025, 1200, 140, 150);
 
-        gotoJail= factory.criaVaParaPrisao("gotoJail", 30);
+        gotoJail= factory.criaVaParaPrisao(lugares, "gotoJail", 30);
 
         pacificAvenue = factory.criaPropriedade(lugares, 31, "pacificAvenue", (Grupo) grupoVerde, 300, 500, 130, 390, 900, 1100, 1275, 150, 200);
 
