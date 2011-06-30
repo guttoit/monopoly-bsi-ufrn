@@ -4,7 +4,12 @@
  */
 package negocio;
 
+import gui.LugarTabuleiroGUI;
+import gui.TabuleiroGUI;
+import guiAbstrato.TabuleiroGUIAbstrato;
+import java.awt.Point;
 import java.util.List;
+import java.util.Map;
 
 import player.Dado;
 import player.Jogador;
@@ -75,6 +80,7 @@ public interface FactoryCriador {
      */
     public Lugar criaLugar(List<Lugar> lugares, int posicao, String nome);
 
+    public LugarTabuleiroGUI criaLugarTabuleiroGUI(Lugar lugar, Point posicao);
     /**
      * <p> Cria uma lista de lugares </p>
      * @param numLugares
@@ -240,7 +246,7 @@ public interface FactoryCriador {
      * @param posicao
      * @return
      */
-    public Lugar criaPrisao(String nome, int posicao);
+    public Lugar criaPrisao(List<Lugar> lugares,String nome, int posicao);
 
     /**
      *
@@ -248,16 +254,7 @@ public interface FactoryCriador {
      * @param posicao
      * @return
      */
-    public Lugar criaVaParaPrisao(String nome, int posicao);
-
-    /**
-     *
-     * @param nome
-     * @param posicao
-     * @param preco
-     * @return
-     */
-    public Lugar criaServicopublico(String nome, int posicao, float preco);
+    public Lugar criaVaParaPrisao(List<Lugar> lugares,String nome, int posicao);
 
     /**
      *
@@ -266,5 +263,16 @@ public interface FactoryCriador {
      * @param preco
      * @return
      */
-    public Lugar criaParadaLivre(String nome, int posicao, float preco);
+    public Lugar criaServicopublico(List<Lugar> lugares,String nome, int posicao, float preco);
+
+    /**
+     *
+     * @param nome
+     * @param posicao
+     * @param preco
+     * @return
+     */
+    public Lugar criaParadaLivre(List<Lugar> lugares,String nome, int posicao, float preco);
+
+    public TabuleiroGUI criaTabuleiroGUI(Map lugares, String caminhoImagemTab, GerenteJogo g);
 }

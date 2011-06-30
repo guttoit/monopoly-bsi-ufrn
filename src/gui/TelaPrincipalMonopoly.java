@@ -11,6 +11,14 @@
 
 package gui;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author Adm
@@ -20,6 +28,7 @@ public class TelaPrincipalMonopoly extends javax.swing.JPanel {
     /** Creates new form TelaPrincipalMonopoly */
     public TelaPrincipalMonopoly() {
         initComponents();
+        setVisible(true);
     }
 
     /** This method is called from within the constructor to
@@ -100,4 +109,26 @@ public class TelaPrincipalMonopoly extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     // End of variables declaration//GEN-END:variables
 
-}
+    @Override
+     public void paint(Graphics g) {
+        super.paint(g);
+        BufferedImage b = null;
+        try {
+            b = ImageIO.read(new File("C:/Users/gutto/Documents/NetBeansProjects/monopoly-bsi-ufrn/tabuleiroMonopoly/FinalTabuleiro.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+         public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+
+            
+            public void run() {
+                new TelaPrincipalMonopoly().setVisible(true);
+            }
+        });
+    }
+
+    }
+

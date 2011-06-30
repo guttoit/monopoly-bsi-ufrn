@@ -89,11 +89,9 @@ public class JanelaTabuleiro extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                try {
-                    new JanelaTabuleiro().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(JanelaTabuleiro.class.getName()).log(Level.SEVERE, null, ex);
-                }
+               
+                    new JanelaTabuleiro2().setVisible(true);
+                
             }
         });
     }

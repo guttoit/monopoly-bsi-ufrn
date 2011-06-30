@@ -1,7 +1,12 @@
 package negocio.negocioConcreto;
 
+import gui.LugarTabuleiroGUI;
+import gui.TabuleiroGUI;
+import guiAbstrato.TabuleiroGUIAbstrato;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import negocio.Banco;
 import negocio.FactoryCriador;
 import negocio.GerenteCompraVenda;
@@ -219,15 +224,9 @@ public class FactoryUSA implements FactoryCriador {
         return cartaSorteReves;
     }
    
-    /**
-     *
-     * @param nome
-     * @param posicao
-     *
-     * @return
-     */
-    public Lugar criaPrisao(String nome, int posicao) {
+   public Lugar criaPrisao(List<Lugar> lugares,String nome, int posicao) {
          Prisao prisao = new  Prisao(nome, posicao);
+         lugares.add(prisao);
            return prisao;
     }
      /**
@@ -237,8 +236,9 @@ public class FactoryUSA implements FactoryCriador {
      *
      * @return
      */
-    public Lugar criaVaParaPrisao(String nome, int posicao) {
+    public Lugar criaVaParaPrisao(List<Lugar> lugares,String nome, int posicao) {
         VaParaPrisao vaParaPrisao = new VaParaPrisao(nome, posicao);
+        lugares.add(vaParaPrisao);
             return vaParaPrisao;
     }
      /**
@@ -248,8 +248,9 @@ public class FactoryUSA implements FactoryCriador {
      * @param preco
      * @return
      */
-    public Lugar criaServicopublico(String nome, int posicao, float preco){
+    public Lugar criaServicopublico(List<Lugar> lugares,String nome, int posicao, float preco){
          ServicoPublico servicoPublico = new ServicoPublico(nome, posicao, preco);
+         lugares.add(servicoPublico);
          return servicoPublico;
     }
 
@@ -261,8 +262,9 @@ public class FactoryUSA implements FactoryCriador {
      * @return
      */
 
-    public Lugar criaParadaLivre(String nome, int posicao, float preco) {
+    public Lugar criaParadaLivre(List<Lugar> lugares,String nome, int posicao, float preco) {
            ParadaLivre paradaLivre = new ParadaLivre(nome, posicao, preco);
+           lugares.add(paradaLivre);
             return paradaLivre;
     }
 
@@ -278,4 +280,14 @@ public class FactoryUSA implements FactoryCriador {
     public Banco criaBanco(int numCasas, int numHoteis) {
         return new BancoConcreto(numCasas, numHoteis);
     }
+
+    public LugarTabuleiroGUI criaLugarTabuleiroGUI(Lugar lugar, Point posicao) {
+        return new LugarTabuleiroGUI(lugar, posicao);
+    }
+
+    public TabuleiroGUI criaTabuleiroGUI(Map lugares, String caminhoImagemTab, GerenteJogo g) {
+        return new TabuleiroGUI(lugares, caminhoImagemTab,g);
+    }
+
+   
 }

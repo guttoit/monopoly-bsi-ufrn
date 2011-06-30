@@ -20,6 +20,7 @@ public class Peao {
 
     private String corPeao;
     private int posicao;
+    private String caminhoImagemPeao;
 
     /**
      *
@@ -67,5 +68,15 @@ public class Peao {
     public void setCorPeao(String corPeao) {
         this.corPeao = corPeao;
     }
+
+    public String getCaminhoImagemPeao() {
+        return caminhoImagemPeao;
+    }
+
+    public void setCaminhoImagemPeao(String caminhoImagemPeao) {
+        this.caminhoImagemPeao = caminhoImagemPeao;
+    }
+
+    
 
 }
