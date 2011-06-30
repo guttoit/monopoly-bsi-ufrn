@@ -5,7 +5,10 @@
 
 package gui;
 
+
+
 import javax.swing.JFrame;
+
 
 /**
  *
@@ -14,14 +17,17 @@ import javax.swing.JFrame;
 public class JanelaTabuleiroGUI extends JFrame{
 
     private TabuleiroGUI tabuleiro;
-
+    //private PainelMensagensGUI painelMensagensGUI;
+    
     /**
      *
      * @param tabuleiro
      */
     public JanelaTabuleiroGUI(TabuleiroGUI tabuleiro){
+        
         this.tabuleiro=tabuleiro;
-        setSize(1024, 630);
+        //this.painelMensagensGUI = new PainelMensagensGUI();
+        setSize(1024, 640);
         setResizable(false);
         posicionaComponentes();
         setVisible(true);
@@ -33,7 +39,13 @@ public class JanelaTabuleiroGUI extends JFrame{
      *
      */
     public void posicionaComponentes(){
+
+       
         getContentPane().add(tabuleiro);
+      
+        //getContentPane().add(painelMensagensGUI);
     }
+
+
 
 }
