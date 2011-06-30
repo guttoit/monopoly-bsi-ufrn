@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import negocio.GerenteJogo;
+import player.Jogador;
 import player.concretos.JogadorConcreto;
 import player.concretos.Peao;
 
@@ -30,24 +31,26 @@ public class TabuleiroGUI extends JLabel {
     private File arquivoImagem;
     private BufferedImage imagemFundo;
     private List<Peao> listaPeoes;
-    private JLabel panelGrafico = new JLabel();
+    private JLabel panelGrafico;
     private GerenteJogo gerenteJogo;
-    private List<JogadorConcreto> listaJogadores;
+    private List<Jogador> listaJogadores = new ArrayList<Jogador>();
         
 
     public TabuleiroGUI(String caminhoImagem, GerenteJogo gerente ) {
         pegaImagem(caminhoImagem);
+        this.gerenteJogo = gerente;
         iniciaComponentes(new HashMap());
         panelGrafico = new JLabel();
-        this.gerenteJogo = gerente;
+        
     }
 
     //Construtor que recebe os lugares
     public TabuleiroGUI(Map lugares, String caminhoImagem, GerenteJogo gerente) {
         pegaImagem(caminhoImagem);
+        this.gerenteJogo = gerente;
         iniciaComponentes(lugares);
         panelGrafico = new JLabel();
-        this.gerenteJogo = gerente;
+        
     }
 
     public GerenteJogo getGerenteJogo() {
@@ -74,18 +77,25 @@ public class TabuleiroGUI extends JLabel {
             listaLugares = new HashMap();
         }
 
+
         listaPeoes = new ArrayList<Peao>();
+        
+    }
+
+    public void inicicaJogo(){
+        repaint();
     }
 
     public void andaPeao(Peao peao) {
         LugarTabuleiroGUI lugar = (LugarTabuleiroGUI) listaLugares.get(peao.getPosicao());
     }
 
-    public void addPeao(Peao peao) {
-        if (listaPeoes == null) {
-            listaPeoes = new ArrayList<Peao>();
+    public void inicializaPeoes() {
+        if(listaJogadores != null){
+            for (Jogador j: listaJogadores){
+                listaPeoes.add(j.getPeao());
+            }
         }
-        listaPeoes.add(peao);
         
     }
 
@@ -113,6 +123,16 @@ public class TabuleiroGUI extends JLabel {
         this.listaPeoes = listaPeoes;
     }
 
+    public List<Jogador> getListaJogadores() {
+        return listaJogadores;
+    }
+
+    public void setListaJogadores(List<Jogador> listaJogadores) {
+        this.listaJogadores = listaJogadores;
+    }
+
+
+
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -129,7 +149,7 @@ public class TabuleiroGUI extends JLabel {
             //Laço usado para pecorrer a lista de peoes e pintalos em seus rescpectivos lugares
             for (Peao p : listaPeoes) {
 
-                BufferedImage bImagem = ImageIO.read(new File("C:/Users/gutto/Documents/NetBeansProjects/monopoly-bsi-ufrn/tabuleiroMonopoly/peaoAzul.png"));
+                BufferedImage bImagem = ImageIO.read(new File(p.getCaminhoImagemPeao()));
                 //Verifica se foram pintados pelo menos três peoes e reajusta os fatores
                 if (contador != 0 && contador % 3 == 0) {
                     fatorY++;

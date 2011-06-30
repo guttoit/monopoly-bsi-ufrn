@@ -143,7 +143,7 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
         // Chama o método mostraMensAndaPeao da classe MensagensJogo para mostrar ao usuário o seu lugar no jogo.
         mensagens.mostraMensAndaPeao(jogador, l, valorDado);
-
+        tabuleiroGUI.repaint();
         return l;
     }
 
@@ -184,6 +184,7 @@ public class GerenteJogoConcreto extends GerenteJogo {
             System.out.println("\n O nome escolhido foi " + nome);
             corDigitada = mensagens.mensagemCores(jogadores.get(i), auxCor, i, teclado);
             jogadores.get(i).getPeao().setCorPeao(corDigitada);
+            jogadores.get(i).getPeao().setCaminhoImagemPeao(pegaCaminhoPeao(corDigitada));
             jogadores.get(i).setDinheiro(1500);
             for (int j = 0; j < auxCor.length; j++) {
                 if (corDigitada.equalsIgnoreCase(auxCor[j])) {
@@ -194,8 +195,32 @@ public class GerenteJogoConcreto extends GerenteJogo {
         }
 
     }
+
+    public String pegaCaminhoPeao(String cor){
+        if(cor.equalsIgnoreCase("branco")){
+
+        }else if(cor.equalsIgnoreCase("azul")){
+            return new String("C:/Users/gutto/Desktop/monopoly-bsi-ufrn/tabuleiroMonopoly/peaoAzul.png");
+        }else if(cor.equalsIgnoreCase("verde")){
+
+        }else if(cor.equalsIgnoreCase("amarelo")){
+
+        }else if(cor.equalsIgnoreCase("vermelho")){
+
+        }else if(cor.equalsIgnoreCase("preto")){
+
+        }else if(cor.equalsIgnoreCase("rosa")){
+
+        }else if(cor.equalsIgnoreCase("laranja")){
+
+        }
+        return new String("C:/Users/gutto/Desktop/monopoly-bsi-ufrn/tabuleiroMonopoly/peaoAzul.png");
+    }
+
     //Variável usada apenas nos métodos realizaJogada e realizaJogadaPrisao
     String comando = "";
+
+
 
     public Lugar realizaJogadaPrisao(List<Jogador> jogadores, Tabuleiro tab, Jogador jogadorVez, Scanner teclado, Banco b, int numJogAtual) {
         Lugar l = null;

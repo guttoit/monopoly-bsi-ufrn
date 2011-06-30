@@ -4,6 +4,7 @@
  */
 package negocio;
 
+import gui.TabuleiroGUI;
 import java.util.List;
 import java.util.Scanner;
 import negocio.negocioConcreto.Jogo;
@@ -32,7 +33,7 @@ public abstract class GerenteJogo {
     protected Mensagens mensagens = new MensagensObjetoNulo();
     protected GerenteCompraVenda gerenteCompraVenda = new GerenteCompraVendaObjetoNulo();
     protected GerenteSorteCofre gerenteSorteCofre;
-
+    protected TabuleiroGUI tabuleiroGUI;
     /**
      *
      * @param factory
@@ -122,7 +123,10 @@ public abstract class GerenteJogo {
 
         // Chama o método para receber os nomes e as cores dos jogadores
         armazenaNomeECorJogadores(jogadores, numJogadores, teclado);
-
+        //Passa a lista de Jogadores para o TabuleiroGUI
+        tabuleiroGUI.setListaJogadores(jogadores);
+        tabuleiroGUI.inicializaPeoes();
+        tabuleiroGUI.inicicaJogo();
         System.out.println("\nO jogo iniciou");
         int jogadorAtual = 0;
         int jogadorDepoisJogada = 0;
@@ -187,4 +191,14 @@ public abstract class GerenteJogo {
     public abstract boolean podeVender(Jogador j);
 
     public abstract void evitaFalencia(Jogador jogador, Jogo jogo, Propriedade propriedade );
+
+    public TabuleiroGUI getTabuleiroGUI() {
+        return tabuleiroGUI;
+    }
+
+    public void setTabuleiroGUI(TabuleiroGUI tabuleiroGUI) {
+        this.tabuleiroGUI = tabuleiroGUI;
+    }
+
+    
 }

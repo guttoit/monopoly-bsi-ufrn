@@ -17,9 +17,11 @@ public class JanelaTabuleiroGUI extends JFrame{
 
     public JanelaTabuleiroGUI(TabuleiroGUI tabuleiro){
         this.tabuleiro=tabuleiro;
-        setSize(800, 600);
+        setSize(1024, 630);
+        setResizable(false);
         posicionaComponentes();
         setVisible(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
     }
 
