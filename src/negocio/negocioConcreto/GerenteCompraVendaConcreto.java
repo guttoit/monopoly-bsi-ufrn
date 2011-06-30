@@ -150,6 +150,14 @@ public class GerenteCompraVendaConcreto implements GerenteCompraVenda {
 
     }
 
+    /**
+     *
+     * @param jogador
+     * @param lugaresPossiveis
+     * @param mens
+     * @param teclado
+     * @param b
+     */
     public void controlaJogadaConstruir(Jogador jogador, List<LugarFisico> lugaresPossiveis, Mensagens mens, Scanner teclado, Banco b) {
         int escolha = -1;
         //Laço que controlará a jogada construir. O mesmo será executado até que o jogador escolha a opção 0 (para sair)

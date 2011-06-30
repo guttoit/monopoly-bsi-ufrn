@@ -28,11 +28,29 @@ import tabuleiro.tabuleiroConcreto.Propriedade;
  */
 public abstract class GerenteJogo {
 
+    /**
+     *
+     */
     protected FactoryCriador factory;
+    /**
+     *
+     */
     protected int numJogadores = 0;
+    /**
+     *
+     */
     protected Mensagens mensagens = new MensagensObjetoNulo();
+    /**
+     *
+     */
     protected GerenteCompraVenda gerenteCompraVenda = new GerenteCompraVendaObjetoNulo();
+    /**
+     *
+     */
     protected GerenteSorteCofre gerenteSorteCofre;
+    /**
+     *
+     */
     protected TabuleiroGUI tabuleiroGUI;
     /**
      *
@@ -188,14 +206,33 @@ public abstract class GerenteJogo {
     public abstract void armazenaNomeECorJogadores(List<Jogador> jogadores, int numJogadores, Scanner teclado);
 
      // Verifica se o jogador tem propriedades para vender.
+    /**
+     *
+     * @param j
+     * @return
+     */
     public abstract boolean podeVender(Jogador j);
 
+    /**
+     *
+     * @param jogador
+     * @param jogo
+     * @param propriedade
+     */
     public abstract void evitaFalencia(Jogador jogador, Jogo jogo, Propriedade propriedade );
 
+    /**
+     *
+     * @return
+     */
     public TabuleiroGUI getTabuleiroGUI() {
         return tabuleiroGUI;
     }
 
+    /**
+     *
+     * @param tabuleiroGUI
+     */
     public void setTabuleiroGUI(TabuleiroGUI tabuleiroGUI) {
         this.tabuleiroGUI = tabuleiroGUI;
     }

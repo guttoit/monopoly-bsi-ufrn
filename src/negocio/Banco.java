@@ -45,6 +45,11 @@ public abstract class Banco {
         this.numHoteisDisponiveis = this.numHoteisPossiveis;
     }
 
+    /**
+     *
+     * @param numCasasPossiveis
+     * @param numHoteisPossiveis
+     */
     public Banco(int numCasasPossiveis, int numHoteisPossiveis) {
         this.numCasasPossiveis = numCasasPossiveis;
         this.numHoteisPossiveis = numHoteisPossiveis;
@@ -54,34 +59,66 @@ public abstract class Banco {
 
 
 
+    /**
+     *
+     * @return
+     */
     public int getNumCasasDisponiveis() {
         return numCasasDisponiveis;
     }
 
+    /**
+     *
+     * @param numCasasDisponiveis
+     */
     public void setNumCasasDisponiveis(int numCasasDisponiveis) {
         this.numCasasDisponiveis = numCasasDisponiveis;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNumCasasPossiveis() {
         return numCasasPossiveis;
     }
 
+    /**
+     *
+     * @param numCasasPossiveis
+     */
     public void setNumCasasPossiveis(int numCasasPossiveis) {
         this.numCasasPossiveis = numCasasPossiveis;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNumHoteisDisponiveis() {
         return numHoteisDisponiveis;
     }
 
+    /**
+     *
+     * @param numHoteisDisponiveis
+     */
     public void setNumHoteisDisponiveis(int numHoteisDisponiveis) {
         this.numHoteisDisponiveis = numHoteisDisponiveis;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNumHoteisPossiveis() {
         return numHoteisPossiveis;
     }
 
+    /**
+     *
+     * @param numHoteisPossiveis
+     */
     public void setNumHoteisPossiveis(int numHoteisPossiveis) {
         this.numHoteisPossiveis = numHoteisPossiveis;
     }

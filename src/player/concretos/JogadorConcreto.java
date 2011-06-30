@@ -51,6 +51,10 @@ public class JogadorConcreto extends Jogador {
         return dado.gerarNumero();
     }
     
+    /**
+     *
+     * @return
+     */
     public List<LugarFisico> lugaresPossoConstruir(){
         List<LugarFisico> lugaresPossiveis = new ArrayList<LugarFisico>();
         for(LugarFisico lf:super.getListaLugarFisico()){

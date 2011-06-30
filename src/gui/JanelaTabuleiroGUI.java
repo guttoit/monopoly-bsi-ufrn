@@ -15,6 +15,10 @@ public class JanelaTabuleiroGUI extends JFrame{
 
     private TabuleiroGUI tabuleiro;
 
+    /**
+     *
+     * @param tabuleiro
+     */
     public JanelaTabuleiroGUI(TabuleiroGUI tabuleiro){
         this.tabuleiro=tabuleiro;
         setSize(1024, 630);
@@ -25,6 +29,9 @@ public class JanelaTabuleiroGUI extends JFrame{
 
     }
 
+    /**
+     *
+     */
     public void posicionaComponentes(){
         getContentPane().add(tabuleiro);
     }

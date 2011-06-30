@@ -50,6 +50,13 @@ public class LugarFisico extends Lugar {
 
 
     }
+    /**
+     *
+     * @param nome
+     * @param posicao
+     * @param preco
+     * @param g
+     */
     public LugarFisico(String nome, int posicao, float preco, Grupo g) {
         super(nome, posicao);
         this.preco = preco;
@@ -60,10 +67,18 @@ public class LugarFisico extends Lugar {
     }
 
 
+    /**
+     *
+     * @return
+     */
     public GrupoAbstrato getGrupo() {
         return grupo;
     }
 
+    /**
+     *
+     * @param grupo
+     */
     public void setGrupo(GrupoAbstrato grupo) {
         this.grupo = grupo;
     }

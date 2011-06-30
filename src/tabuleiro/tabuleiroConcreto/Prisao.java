@@ -13,6 +13,11 @@ import tabuleiro.Lugar;
  */
 public class Prisao extends Lugar{
 
+    /**
+     *
+     * @param nome
+     * @param posicao
+     */
     public Prisao(String nome, int posicao) {
         super(nome, posicao);
     }

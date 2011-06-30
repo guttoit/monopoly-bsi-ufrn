@@ -36,6 +36,11 @@ public class TabuleiroGUI extends JLabel {
     private List<Jogador> listaJogadores = new ArrayList<Jogador>();
         
 
+    /**
+     *
+     * @param caminhoImagem
+     * @param gerente
+     */
     public TabuleiroGUI(String caminhoImagem, GerenteJogo gerente ) {
         pegaImagem(caminhoImagem);
         this.gerenteJogo = gerente;
@@ -45,6 +50,12 @@ public class TabuleiroGUI extends JLabel {
     }
 
     //Construtor que recebe os lugares
+    /**
+     *
+     * @param lugares
+     * @param caminhoImagem
+     * @param gerente
+     */
     public TabuleiroGUI(Map lugares, String caminhoImagem, GerenteJogo gerente) {
         pegaImagem(caminhoImagem);
         this.gerenteJogo = gerente;
@@ -53,15 +64,27 @@ public class TabuleiroGUI extends JLabel {
         
     }
 
+    /**
+     *
+     * @return
+     */
     public GerenteJogo getGerenteJogo() {
         return gerenteJogo;
     }
 
+    /**
+     *
+     * @param gerenteJogo
+     */
     public void setGerenteJogo(GerenteJogo gerenteJogo) {
         this.gerenteJogo = gerenteJogo;
     }
 
     
+    /**
+     *
+     * @param caminhoImagem
+     */
     public void pegaImagem(String caminhoImagem) {
         arquivoImagem = new File(caminhoImagem);
         try {
@@ -72,6 +95,10 @@ public class TabuleiroGUI extends JLabel {
         }
     }
 
+    /**
+     *
+     * @param lugares
+     */
     public void iniciaComponentes(Map lugares) {
         if (lugares == null) {
             listaLugares = new HashMap();
@@ -82,14 +109,24 @@ public class TabuleiroGUI extends JLabel {
         
     }
 
+    /**
+     * 
+     */
     public void inicicaJogo(){
         repaint();
     }
 
+    /**
+     *
+     * @param peao
+     */
     public void andaPeao(Peao peao) {
         LugarTabuleiroGUI lugar = (LugarTabuleiroGUI) listaLugares.get(peao.getPosicao());
     }
 
+    /**
+     *
+     */
     public void inicializaPeoes() {
         if(listaJogadores != null){
             for (Jogador j: listaJogadores){
@@ -99,34 +136,66 @@ public class TabuleiroGUI extends JLabel {
         
     }
 
+    /**
+     *
+     * @return
+     */
     public BufferedImage getImagemFundo() {
         return imagemFundo;
     }
 
+    /**
+     *
+     * @param imagemFundo
+     */
     public void setImagemFundo(BufferedImage imagemFundo) {
         this.imagemFundo = imagemFundo;
     }
 
+    /**
+     *
+     * @return
+     */
     public Map getListaLugares() {
         return listaLugares;
     }
 
+    /**
+     *
+     * @param listaLugares
+     */
     public void addListaLugares(Map listaLugares) {
         this.listaLugares = listaLugares;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Peao> getListaPeoes() {
         return listaPeoes;
     }
 
+    /**
+     *
+     * @param listaPeoes
+     */
     public void setListaPeoes(List<Peao> listaPeoes) {
         this.listaPeoes = listaPeoes;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Jogador> getListaJogadores() {
         return listaJogadores;
     }
 
+    /**
+     *
+     * @param listaJogadores
+     */
     public void setListaJogadores(List<Jogador> listaJogadores) {
         this.listaJogadores = listaJogadores;
     }
