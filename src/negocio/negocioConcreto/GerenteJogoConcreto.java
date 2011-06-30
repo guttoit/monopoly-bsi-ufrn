@@ -197,22 +197,31 @@ public class GerenteJogoConcreto extends GerenteJogo {
     }
 
     public String pegaCaminhoPeao(String cor){
+        String corPeao;
         if(cor.equalsIgnoreCase("branco")){
-
+            corPeao = "C:/Users/gutto/Desktop/monopoly-bsi-ufrn/tabuleiroMonopoly/Branco.png";
+            return corPeao;
         }else if(cor.equalsIgnoreCase("azul")){
-            return new String("C:/Users/gutto/Desktop/monopoly-bsi-ufrn/tabuleiroMonopoly/peaoAzul.png");
+            corPeao = "C:/Users/gutto/Desktop/monopoly-bsi-ufrn/tabuleiroMonopoly/Azul.png";
+            return corPeao;
         }else if(cor.equalsIgnoreCase("verde")){
-
+            corPeao = "C:/Users/gutto/Desktop/monopoly-bsi-ufrn/tabuleiroMonopoly/Verde.png";
+            return corPeao;
         }else if(cor.equalsIgnoreCase("amarelo")){
-
+            corPeao = "C:/Users/gutto/Desktop/monopoly-bsi-ufrn/tabuleiroMonopoly/Amarelo.png";
+            return corPeao;
         }else if(cor.equalsIgnoreCase("vermelho")){
-
+            corPeao = "C:/Users/gutto/Desktop/monopoly-bsi-ufrn/tabuleiroMonopoly/Vermelho.png";
+            return corPeao;
         }else if(cor.equalsIgnoreCase("preto")){
-
+            corPeao = "C:/Users/gutto/Desktop/monopoly-bsi-ufrn/tabuleiroMonopoly/Preto.png";
+            return corPeao;
         }else if(cor.equalsIgnoreCase("rosa")){
-
+            corPeao = "C:/Users/gutto/Desktop/monopoly-bsi-ufrn/tabuleiroMonopoly/Rosa.png";
+            return corPeao;
         }else if(cor.equalsIgnoreCase("laranja")){
-
+            corPeao = "C:/Users/gutto/Desktop/monopoly-bsi-ufrn/tabuleiroMonopoly/Laranja.png";
+            return corPeao;
         }
         return new String("C:/Users/gutto/Desktop/monopoly-bsi-ufrn/tabuleiroMonopoly/peaoAzul.png");
     }
