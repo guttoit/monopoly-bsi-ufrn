@@ -6,7 +6,12 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,7 +32,10 @@ public class PainelMensagensGUI extends JPanel{
      *
      */
     public PainelMensagensGUI(){
-        setLayout(new BorderLayout());
+        setLayout(new GridBagLayout());
+        iniciaComponentes();
+        posicionaComponentes();
+        setPreferredSize(new Dimension(300, 600));
     }
     
     /**
@@ -43,13 +51,9 @@ public class PainelMensagensGUI extends JPanel{
         textoCorPeao = new JTextField(20);
         textoDado1 = new JTextField(10);
         textoDado2 = new JTextField(10);
-
+ 
         textoMensagem = new JTextArea();
-
-        painelJogador = new JPanel(new GridLayout());
-        painelMensagem = new JPanel(new GridLayout());
-        painelDados = new JPanel(new GridLayout());
-        painelComandos = new JPanel(new GridLayout());
+        
 
         botaoJogar = new JButton("Jogar");
         botaoSair = new JButton("Sair");
@@ -57,6 +61,52 @@ public class PainelMensagensGUI extends JPanel{
         botaoVender = new JButton("Vender");
         botaoConstruir = new JButton("Construir");
 
+        painelJogador = new JPanel(new GridLayout(2, 2));
+        painelMensagem = new JPanel(new GridLayout(1,1));
+        painelDados = new JPanel(new GridLayout(2,2));
+        painelComandos = new JPanel(new GridLayout(2,2));
+
+    }
+
+    public void posicionaComponentes(){
+        painelJogador.setBorder(BorderFactory.createTitledBorder("Jogador Vez"));
+        painelJogador.add(jogadorVez);
+        painelJogador.add(textoJogadorVez);
+        painelJogador.add(corPeao);
+        painelJogador.add(textoCorPeao);
+
+       // painelMensagem.setBorder(BorderFactory.createTitledBorder("Mensagens"));
+        //painelMensagem.add(mensagens);
+        painelMensagem.add(textoMensagem);
+
+        painelDados.add(dados);
+        painelDados.add(new JLabel(":"));
+        painelDados.add(textoDado1);
+        painelDados.add(textoDado2);
+
+        painelComandos.add(botaoJogar);
+        painelComandos.add(botaoStatus);
+        painelComandos.add(botaoConstruir);
+        painelComandos.add(botaoVender);
+        painelComandos.add(botaoSair);
+        GridBagConstraints constrains = new GridBagConstraints();
+        constrains.gridx = 0;
+        constrains.gridy = 0;
+        constrains.gridwidth = 10;
+        constrains.insets = new Insets(0, 0,80, 0);
+        this.add(painelJogador,constrains);
+        constrains.gridx = 0;
+        constrains.gridy = 4;
+        constrains.gridwidth = 10;
+        this.add(painelMensagem,constrains);
+        constrains.gridx = 0;
+        constrains.gridy = 6;
+        constrains.gridwidth = 10;
+        constrains.gridheight = 2;
+        this.add(painelDados,constrains);
+        constrains.gridx = 0;
+        constrains.gridy = 8;
+        this.add(painelComandos,constrains);
     }
 
     /**

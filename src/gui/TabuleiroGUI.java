@@ -26,7 +26,7 @@ import player.concretos.Peao;
  * @author gutto
  */
 public class TabuleiroGUI extends JLabel {
-
+ 
     private Map listaLugares;
     private File arquivoImagem;
     private BufferedImage imagemFundo;
@@ -34,7 +34,7 @@ public class TabuleiroGUI extends JLabel {
     private JLabel panelGrafico;
     private GerenteJogo gerenteJogo;
     private List<Jogador> listaJogadores = new ArrayList<Jogador>();
-        
+    private PainelMensagensGUI painelMensagens = new PainelMensagensGUI();
 
     /**
      *
@@ -42,6 +42,7 @@ public class TabuleiroGUI extends JLabel {
      * @param gerente
      */
     public TabuleiroGUI(String caminhoImagem, GerenteJogo gerente ) {
+        setLayout(null);
         pegaImagem(caminhoImagem);
         this.gerenteJogo = gerente;
         iniciaComponentes(new HashMap());
@@ -57,6 +58,7 @@ public class TabuleiroGUI extends JLabel {
      * @param gerente
      */
     public TabuleiroGUI(Map lugares, String caminhoImagem, GerenteJogo gerente) {
+        setLayout(null);
         pegaImagem(caminhoImagem);
         this.gerenteJogo = gerente;
         iniciaComponentes(lugares);
@@ -104,7 +106,8 @@ public class TabuleiroGUI extends JLabel {
             listaLugares = new HashMap();
         }
 
-
+        add(painelMensagens);
+        painelMensagens.setBounds(820, 10, 200, 600);
         listaPeoes = new ArrayList<Peao>();
         
     }
