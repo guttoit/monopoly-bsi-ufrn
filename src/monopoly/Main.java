@@ -25,6 +25,10 @@ import negocio.negocioConcreto.Jogo;
 public class Main {
 
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         FactoryCriador factory = new FactoryUSA();
         Jogo jogo = new Jogo(factory);

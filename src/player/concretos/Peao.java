@@ -69,10 +69,18 @@ public class Peao {
         this.corPeao = corPeao;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCaminhoImagemPeao() {
         return caminhoImagemPeao;
     }
 
+    /**
+     *
+     * @param caminhoImagemPeao
+     */
     public void setCaminhoImagemPeao(String caminhoImagemPeao) {
         this.caminhoImagemPeao = caminhoImagemPeao;
     }

@@ -108,15 +108,36 @@ public interface Mensagens {
     /**
      *
      * @param jogador
-     * @param propriedade
+     * @param lugares
+     * @param teclado
+     * @return
      */
     public int mensagemConstruir(Jogador jogador, List<LugarFisico> lugares, Scanner teclado);
 
 
+    /**
+     *
+     * @param j
+     * @param teclado
+     * @param lugares
+     * @return
+     */
     public int mensagemVenda(Jogador j, Scanner teclado, List<LugarFisico> lugares);
 
+    /**
+     *
+     * @param j
+     * @param teclado
+     * @return
+     */
     public String MensagemTitulosHipoteca(Jogador j, Scanner teclado);
 
+    /**
+     *
+     * @param p
+     * @param teclado
+     * @return
+     */
     public String MensagemVendaHabitacoes(Propriedade p,Scanner teclado);
 
 

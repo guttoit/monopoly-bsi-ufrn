@@ -76,18 +76,43 @@ public class MensagensObjetoNulo implements Mensagens{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     *
+     * @param j
+     * @param teclado
+     * @return
+     */
     public String mensagemVenda(Jogador j, Scanner teclado) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     *
+     * @param j
+     * @param teclado
+     * @return
+     */
     public String MensagemTitulosHipoteca(Jogador j, Scanner teclado) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     *
+     * @param p
+     * @param teclado
+     * @return
+     */
     public String MensagemVendaHabitacoes(Propriedade p, Scanner teclado) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     *
+     * @param j
+     * @param teclado
+     * @param lugares
+     * @return
+     */
     public int mensagemVenda(Jogador j, Scanner teclado, List<LugarFisico> lugares) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

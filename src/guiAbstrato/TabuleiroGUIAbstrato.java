@@ -16,11 +16,27 @@ import player.concretos.Peao;
 public abstract class TabuleiroGUIAbstrato extends JPanel{
 
 
+    /**
+     *
+     * @param caminhoImagem
+     */
     public abstract void pegaImagem(String caminhoImagem);
 
+    /**
+     *
+     * @param lugares
+     */
     public abstract void iniciaComponentes(Map lugares);
 
+    /**
+     *
+     * @param peao
+     */
     public abstract void addPeao(Peao peao);
 
+    /**
+     *
+     * @param listaLugares
+     */
     public abstract void addListaLugares(Map listaLugares) ;
 }

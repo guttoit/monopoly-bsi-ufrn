@@ -201,7 +201,6 @@ public class FactoryUSA implements FactoryCriador {
      * @param numeroCarta
      * @param nomeCarta
      * @param descricao
-     * @param observacao
      * @return
      */
     public CartaCofresComunitarios criaCartasCofresComunitarios(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
@@ -215,7 +214,6 @@ public class FactoryUSA implements FactoryCriador {
      * @param numeroCarta
      * @param nomeCarta
      * @param descricao
-     * @param observacao
      * @return
      */
     public CartaSorteReves criaCartasSorteReves(Baralho baralho, int numeroCarta, String nomeCarta, String descricao, String observacoes) {
@@ -231,7 +229,8 @@ public class FactoryUSA implements FactoryCriador {
     }
      /**
      *
-     * @param nome
+      * @param lugares
+      * @param nome
      * @param posicao
      *
      * @return
@@ -243,7 +242,8 @@ public class FactoryUSA implements FactoryCriador {
     }
      /**
      *
-     * @param nome
+      * @param lugares
+      * @param nome
      * @param posicao
      * @param preco
      * @return
@@ -256,6 +256,7 @@ public class FactoryUSA implements FactoryCriador {
 
     /**
      *
+     * @param lugares
      * @param nome
      * @param posicao
      * @param preco
@@ -268,23 +269,53 @@ public class FactoryUSA implements FactoryCriador {
             return paradaLivre;
     }
 
+    /**
+     *
+     * @param lugares
+     * @param cor
+     * @return
+     */
     public GrupoAbstrato criaGrupo(List<LugarFisico> lugares, String cor) {
         Grupo grupo = new  Grupo(lugares, cor);
         return grupo;
     }
+    /**
+     *
+     * @param cor
+     * @return
+     */
     public GrupoAbstrato criaGrupo(String cor) {
         Grupo grupo = new  Grupo(cor);
         return grupo;
     }
 
+    /**
+     *
+     * @param numCasas
+     * @param numHoteis
+     * @return
+     */
     public Banco criaBanco(int numCasas, int numHoteis) {
         return new BancoConcreto(numCasas, numHoteis);
     }
 
+    /**
+     *
+     * @param lugar
+     * @param posicao
+     * @return
+     */
     public LugarTabuleiroGUI criaLugarTabuleiroGUI(Lugar lugar, Point posicao) {
         return new LugarTabuleiroGUI(lugar, posicao);
     }
 
+    /**
+     *
+     * @param lugares
+     * @param caminhoImagemTab
+     * @param g
+     * @return
+     */
     public TabuleiroGUI criaTabuleiroGUI(Map lugares, String caminhoImagemTab, GerenteJogo g) {
         return new TabuleiroGUI(lugares, caminhoImagemTab,g);
     }

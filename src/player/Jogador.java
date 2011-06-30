@@ -31,6 +31,9 @@ public abstract class Jogador {
     private int numVezesDadosIguais;
     private boolean jogaNovamente;
     
+    /**
+     *
+     */
     public Jogador(){
         listaLugarFisico = new ArrayList<LugarFisico>();
         peao = new Peao();
@@ -46,6 +49,10 @@ public abstract class Jogador {
      * O jogador deve conhecer suas propriedades e saber se ele possui dinheiro para construir casas nas mesmas.
      * Esse método é o responsável por identificar quais as propriedades o jogador está apto para construir casas ou
      * hoteis. Ele retorna a lista com os lugares possíveis para construir.
+     */
+    /**
+     *
+     * @return
      */
     public abstract List<LugarFisico> lugaresPossoConstruir();
     /**
@@ -195,26 +202,50 @@ public abstract class Jogador {
         this.temCartaSorteRevesSairPrisao = temCartaSorteRevesSairPrisao;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getTentativasSairPrisao() {
         return tentativasSairPrisao;
     }
 
+    /**
+     *
+     * @param tentativasSairPrisao
+     */
     public void setTentativasSairPrisao(int tentativasSairPrisao) {
         this.tentativasSairPrisao = tentativasSairPrisao;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNumVezesDadosIguais() {
         return numVezesDadosIguais;
     }
 
+    /**
+     *
+     * @param numVezesDadosIguais
+     */
     public void setNumVezesDadosIguais(int numVezesDadosIguais) {
         this.numVezesDadosIguais = numVezesDadosIguais;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isJogaNovamente() {
         return jogaNovamente;
     }
 
+    /**
+     *
+     * @param jogaNovamente
+     */
     public void setJogaNovamente(boolean jogaNovamente) {
         this.jogaNovamente = jogaNovamente;
     }

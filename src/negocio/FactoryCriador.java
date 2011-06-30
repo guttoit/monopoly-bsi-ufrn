@@ -80,6 +80,12 @@ public interface FactoryCriador {
      */
     public Lugar criaLugar(List<Lugar> lugares, int posicao, String nome);
 
+    /**
+     *
+     * @param lugar
+     * @param posicao
+     * @return
+     */
     public LugarTabuleiroGUI criaLugarTabuleiroGUI(Lugar lugar, Point posicao);
     /**
      * <p> Cria uma lista de lugares </p>
@@ -93,7 +99,7 @@ public interface FactoryCriador {
      * @param lugares
      * @param posicao
      * @param nome
-     * @param cor
+     * @param grupo
      * @param precoP
      * @param aluguelSCasa
      * @param c1
@@ -145,8 +151,19 @@ public interface FactoryCriador {
      */
     public Tabuleiro criaTabuleiro(int numCasas);
 
+    /**
+     *
+     * @param lugares
+     * @param cor
+     * @return
+     */
     public GrupoAbstrato criaGrupo(List<LugarFisico> lugares, String cor);
 
+    /**
+     *
+     * @param cor
+     * @return
+     */
     public GrupoAbstrato criaGrupo(String cor);
 
     /**
@@ -226,6 +243,12 @@ public interface FactoryCriador {
      */
     public Banco criaBanco();
 
+    /**
+     *
+     * @param numCasas
+     * @param numHoteis
+     * @return
+     */
     public Banco criaBanco(int numCasas, int numHoteis);
 
     /**
@@ -242,6 +265,7 @@ public interface FactoryCriador {
 
     /**
      *
+     * @param lugares
      * @param nome
      * @param posicao
      * @return
@@ -250,6 +274,7 @@ public interface FactoryCriador {
 
     /**
      *
+     * @param lugares
      * @param nome
      * @param posicao
      * @return
@@ -258,6 +283,7 @@ public interface FactoryCriador {
 
     /**
      *
+     * @param lugares
      * @param nome
      * @param posicao
      * @param preco
@@ -267,6 +293,7 @@ public interface FactoryCriador {
 
     /**
      *
+     * @param lugares
      * @param nome
      * @param posicao
      * @param preco
@@ -274,5 +301,12 @@ public interface FactoryCriador {
      */
     public Lugar criaParadaLivre(List<Lugar> lugares,String nome, int posicao, float preco);
 
+    /**
+     *
+     * @param lugares
+     * @param caminhoImagemTab
+     * @param g
+     * @return
+     */
     public TabuleiroGUI criaTabuleiroGUI(Map lugares, String caminhoImagemTab, GerenteJogo g);
 }

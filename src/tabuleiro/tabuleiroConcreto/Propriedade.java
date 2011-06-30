@@ -44,14 +44,14 @@ public class Propriedade extends LugarFisico {
      *
      * @param posicao
      * @param nome
-     * @param cor
+     * @param grupo
      * @param precoP
      * @param aluguelSCasa
      * @param c1
      * @param c2
      * @param c3
      * @param c4
-     * @param aluguelHotel
+     * @param hotel
      * @param hip
      * @param precoCasa
      */
@@ -75,6 +75,10 @@ public class Propriedade extends LugarFisico {
         grupo.addLugarFisico(this);
     }
 
+    /**
+     *
+     * @return
+     */
     public float getPrecoAluguelAtual(){
         switch(nCasas){
             case 0:
@@ -206,7 +210,7 @@ public class Propriedade extends LugarFisico {
 
     /**
      *
-     * @param aluguelHotel
+     * @param hotel
      */
     public void setHotel(float hotel) {
         this.aluguelHotel = hotel;

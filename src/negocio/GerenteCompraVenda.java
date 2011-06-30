@@ -53,8 +53,10 @@ public interface GerenteCompraVenda {
     /**
      *
      * @param jogador
-     * @param propriedade
+     * @param lugares
+     * @param teclado 
      * @param banco
+     * @param mens
      */
     public void construir(Jogador jogador,  List<LugarFisico> lugares, Scanner teclado, Banco banco, Mensagens mens);
 

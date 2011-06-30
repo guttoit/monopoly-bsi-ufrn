@@ -13,6 +13,12 @@ import tabuleiro.Lugar;
  */
 public class ParadaLivre  extends LugarFisico{
 
+    /**
+     *
+     * @param nome
+     * @param posicao
+     * @param preco
+     */
     public ParadaLivre(String nome, int posicao, float preco) {
         super(nome, posicao, preco);
     }

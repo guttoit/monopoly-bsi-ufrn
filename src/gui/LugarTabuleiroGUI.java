@@ -17,6 +17,11 @@ public class LugarTabuleiroGUI {
     private Lugar lugarTabuleiro;
     private final Point posicao;
 
+    /**
+     *
+     * @param lugarTabuleiro
+     * @param posicao
+     */
     public LugarTabuleiroGUI(Lugar lugarTabuleiro, Point posicao) {
         this.lugarTabuleiro = lugarTabuleiro;
         this.posicao = posicao;
@@ -24,14 +29,26 @@ public class LugarTabuleiroGUI {
 
 
 
+    /**
+     *
+     * @return
+     */
     public Lugar getLugarTabuleiro() {
         return lugarTabuleiro;
     }
 
+    /**
+     *
+     * @param lugarTabuleiro
+     */
     public void setLugarTabuleiro(Lugar lugarTabuleiro) {
         this.lugarTabuleiro = lugarTabuleiro;
     }
 
+    /**
+     *
+     * @return
+     */
     public Point getPosicao() {
         return posicao;
     }

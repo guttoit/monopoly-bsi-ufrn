@@ -208,6 +208,9 @@ public class Jogo {
 
     }
 
+    /**
+     *
+     */
     public void criaGrupos() {
         grupoAmarelo = factory.criaGrupo("Amarelo");
         grupoAzul = factory.criaGrupo("Azul");
@@ -467,6 +470,10 @@ public class Jogo {
         this.cartasCofresComunitarios = cartasCofresComunitarios;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Jogador> getJogadores() {
         return jogadores;
     }

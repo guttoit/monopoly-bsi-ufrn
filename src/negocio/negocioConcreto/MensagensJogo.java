@@ -280,6 +280,13 @@ public class MensagensJogo implements Mensagens {
         return escolha;
     }
 
+    /**
+     *
+     * @param jogadorVez
+     * @param teclado
+     * @param lugares
+     * @return
+     */
     public int mensagemVenda(Jogador jogadorVez, Scanner teclado, List<LugarFisico> lugares) {
         System.out.println(jogadorVez.getNomeJogador() + " tem $" + jogadorVez.getDinheiro());
         System.out.println("Escolha o que quer vender:");
@@ -327,12 +334,24 @@ public class MensagensJogo implements Mensagens {
 
     }
 
+    /**
+     *
+     * @param j
+     * @param teclado
+     * @return
+     */
     public String MensagemTitulosHipoteca(Jogador j, Scanner teclado) {
         System.out.println("Voce possui" + j.getListaLugarFisico());
         System.out.println("Digite o numero correspondente a qual deseja hipotecar");
         return teclado.next().trim();
     }
 
+    /**
+     *
+     * @param p
+     * @param teclado
+     * @return
+     */
     public String MensagemVendaHabitacoes(Propriedade p, Scanner teclado) {
 
         System.out.println("Voce possui" + p.getnCasas());
@@ -340,6 +359,12 @@ public class MensagensJogo implements Mensagens {
         return teclado.next().trim();
     }
 
+    /**
+     *
+     * @param jogador
+     * @param teclado
+     * @return
+     */
     public String mensagemVendaCasa(Jogador jogador, Scanner teclado) {
         System.out.println("A jogada de " + jogador.getNomeJogador() + " comecou.");
         System.out.println("Comandos disponiveis: [vender][jogar][status][sair]");

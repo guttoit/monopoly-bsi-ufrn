@@ -196,6 +196,11 @@ public class GerenteJogoConcreto extends GerenteJogo {
 
     }
 
+    /**
+     *
+     * @param cor
+     * @return
+     */
     public String pegaCaminhoPeao(String cor){
         String corPeao;
         if(cor.equalsIgnoreCase("branco")){
@@ -450,12 +455,23 @@ public class GerenteJogoConcreto extends GerenteJogo {
         }
     }*/
 
-     @Override
+    /**
+     *
+     * @param jogador
+     * @param jogo
+     * @param propriedade
+     */
+    @Override
     public void evitaFalencia(Jogador jogador, Jogo jogo, Propriedade propriedade) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public boolean podeVender(Jogador j) {
+     /**
+      *
+      * @param j
+      * @return
+      */
+     public boolean podeVender(Jogador j) {
 
         for (LugarFisico l : j.getListaLugarFisico()) {
             if (l instanceof Propriedade) {
